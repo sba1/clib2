@@ -40,7 +40,7 @@
  * Uncomment this to build a library which has the memory debugging features
  * enabled.
  */
-/*#define __MEM_DEBUG */
+/*#define __MEM_DEBUG*/
 
 /****************************************************************************/
 

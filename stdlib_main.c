@@ -31,10 +31,6 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-/*#define DEBUG*/
-
-/****************************************************************************/
-
 #ifndef EXEC_EXECBASE_H
 #include <exec/execbase.h>
 #endif /* EXEC_EXECBASE_H */

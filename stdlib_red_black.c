@@ -130,7 +130,7 @@ rotate_right (struct MemoryTree * tree, struct MemoryNode * y)
 
 /****************************************************************************/
 
-STATIC STRUCT MemoryNode *
+STATIC struct MemoryNode *
 get_successor (struct MemoryTree * tree, struct MemoryNode * x)
 {
 	struct MemoryNode *nil = &tree->mt_NullNode;

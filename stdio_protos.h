@@ -54,6 +54,12 @@
 
 /****************************************************************************/
 
+#ifndef _STDLIB_MEMORY_H
+#include "stdlib_memory.h"
+#endif /* _STDLIB_MEMORY_H */
+
+/****************************************************************************/
+
 #ifndef _STDIO_HEADERS_H
 
 /* Forward declarations */

@@ -49,11 +49,7 @@
 /****************************************************************************/
 
 #ifndef _STDLIB_MEMORY_H
-
-/* Forward declarations */
-struct MemoryNode;
-struct MemoryTree;
-
+#include "stdlib_memory.h"
 #endif /* _STDLIB_MEMORY_H */
 
 /****************************************************************************/

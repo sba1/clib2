@@ -52,7 +52,7 @@
 
 /****************************************************************************/
 
-STATIC CHAR
+STATIC char
 get_hex_char(int n)
 {
 	char result;

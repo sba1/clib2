@@ -439,6 +439,7 @@ STDLIB_OBJ = \
 	stdlib_swapstack.o \
 	stdlib_system.o \
 	stdlib_unsetenv.o \
+	stdlib_utilitybase.o \
 	stdlib_wildcard_expand.o \
 	stdlib_stdio_window_spec.o
 

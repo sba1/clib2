@@ -31,8 +31,8 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef _STDLIB_LOCALE_UTILITY_H
-#define _STDLIB_LOCALE_UTILITY_H
+#ifndef _STDLIB_LOCALEBASE_H
+#define _STDLIB_LOCALEBASE_H
 
 /****************************************************************************/
 
@@ -44,7 +44,6 @@
 #define __NOGLOBALIFACE__
 #endif /* __NOGLOBALIFACE__ */
 
-#include <proto/utility.h>
 #include <proto/locale.h>
 
 /****************************************************************************/
@@ -55,7 +54,6 @@
 
 /****************************************************************************/
 
-extern struct Library * NOCOMMON __UtilityBase;
 extern struct Library * NOCOMMON __LocaleBase;
 
 /****************************************************************************/
@@ -64,14 +62,9 @@ extern struct Library * NOCOMMON __LocaleBase;
 
 /****************************************************************************/
 
-extern struct UtilityIFace NOCOMMON *	__IUtility;
-extern struct LocaleIFace NOCOMMON *	__ILocale;
+extern struct LocaleIFace NOCOMMON * __ILocale;
 
 /****************************************************************************/
-
-#define DECLARE_UTILITYBASE() \
-	struct Library *		UNUSED	UtilityBase	= __UtilityBase; \
-	struct UtilityIFace *			IUtility	= __IUtility
 
 #define DECLARE_LOCALEBASE() \
 	struct Library *		UNUSED	LocaleBase	= __LocaleBase; \
@@ -83,9 +76,6 @@ extern struct LocaleIFace NOCOMMON *	__ILocale;
 
 /****************************************************************************/
 
-#define DECLARE_UTILITYBASE() \
-	struct Library * UtilityBase = __UtilityBase
-
 #define DECLARE_LOCALEBASE() \
 	struct Library * LocaleBase = __LocaleBase
 
@@ -95,4 +85,4 @@ extern struct LocaleIFace NOCOMMON *	__ILocale;
 
 /****************************************************************************/
 
-#endif /* _STDLIB_LOCALE_UTILITY_H */
+#endif /* _STDLIB_LOCALEBASE_H */

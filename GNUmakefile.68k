@@ -346,6 +346,7 @@ C_LIB = \
 	stdlib_system.o \
 	stdlib_termination_message.o \
 	stdlib_threshold.o \
+	stdlib_utilitybase.o \
 	stdlib_udivsi3.o \
 	stdlib_udivsi4.o \
 	stdlib_umodsi3.o \

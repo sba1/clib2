@@ -31,56 +31,20 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef _STRING_HEADERS_H
-#define _STRING_HEADERS_H
+#define __NOLIBBASE__
+
+#ifndef PROTO_UTILITY_H
+#include <proto/utility.h>
+#endif /* PROTO_UTILITY_H */
 
 /****************************************************************************/
 
-#include <string.h>
-#include <stdlib.h>
-#include <limits.h>
-#include <locale.h>
-#include <errno.h>
-#include <ctype.h>
-#include <dos.h>
+struct Library * __UtilityBase;
 
 /****************************************************************************/
 
-#ifndef _STDLIB_LOCALEBASE_H
-#include "stdlib_localebase.h"
-#endif /* _STDLIB_LOCALEBASE_H */
+#if defined(__amigaos4__)
 
-#ifndef _STDLIB_UTILITYBASE_H
-#include "stdlib_utilitybase.h"
-#endif /* _STDLIB_UTILITYBASE_H */
+struct UtilityIFace * __IUtility;
 
-/****************************************************************************/
-
-#ifndef _MACROS_H
-#include "macros.h"
-#endif /* _MACROS_H */
-
-#ifndef _DEBUG_H
-#include "debug.h"
-#endif /* _DEBUG_H */
-
-/****************************************************************************/
-
-/* Address is neither aligned to a word or long word boundary. */
-#define IS_UNALIGNED(a) ((((unsigned long)(a)) & 1) != 0)
-
-/* Address is aligned to a word boundary, but not to a long
-   word boundary. */
-#define IS_SHORT_ALIGNED(a) ((((unsigned long)(a)) & 3) == 2)
-
-/* Address is aligned to a long word boundary. For an 68030 and beyond the
-   alignment does not matter. */
-#if defined(M68020)
-#define IS_LONG_ALIGNED(a) (1)
-#else
-#define IS_LONG_ALIGNED(a) ((((unsigned long)(a)) & 3) == 0)
-#endif /* M68020 */
-
-/****************************************************************************/
-
-#endif /* _STRING_HEADERS_H */
+#endif /* __amigaos4__ */

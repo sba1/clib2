@@ -138,7 +138,7 @@ __socket_hook_entry(
 
 			SHOWMSG("file_hook_action_set_blocking");
 
-			param = (int)(message->block == 0);
+			param = (int)(message->arg == 0);
 
 			result	= __IoctlSocket(fd->fd_DefaultFile,FIONBIO,&param);
 			error	= errno;
@@ -149,7 +149,7 @@ __socket_hook_entry(
 
 			SHOWMSG("file_hook_action_set_async");
 
-			param = (int)(message->block != 0);
+			param = (int)(message->arg != 0);
 
 			result	= __IoctlSocket(fd->fd_DefaultFile,FIOASYNC,&param);
 			error	= errno;

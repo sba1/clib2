@@ -135,7 +135,7 @@ __close(int file_descriptor,int * error_ptr)
 			SHOWMSG("resetting non-blocking access mode");
 
 			message.action	= file_hook_action_set_blocking;
-			message.block	= 1;
+			message.arg		= 1;
 
 			assert( fd->fd_Hook != NULL );
 

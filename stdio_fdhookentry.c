@@ -1829,7 +1829,7 @@ __fd_hook_entry(
 
 				SHOWMSG("changing the mode");
 
-				if(message->block)
+				if(message->arg != 0)
 					mode = 0; /* buffered mode */
 				else
 					mode = 1; /* single character mode */

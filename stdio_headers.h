@@ -327,7 +327,7 @@ struct file_hook_message
 	struct flock *			lock;		/* Record locking request */
 	int						command;	/* What kind of locking command was sent */
 
-	int						block;		/* Whether or not this file should
+	int						arg;		/* Whether or not this file should
 										   be set non-blocking */
 
 	uid_t					owner;

@@ -979,15 +979,8 @@ vfprintf(FILE * stream,const char * format, va_list arg)
 				else
 					(void)va_arg(arg, double);
 
-				#ifndef NDEBUG
-				{
-					output_buffer = "*FLOATING POINT NUMBER*";
-					output_len = strlen(output_buffer);
-				}
-				#endif /* NDEBUG */
-
-				CLEAR_FLAG(format_flags,FORMATF_ProduceSign);
-				CLEAR_FLAG(format_flags,FORMATF_ProduceSpace);
+				minimum_field_width = 0;
+				format_flags = 0;
 			}
 			#endif /* FLOATING_POINT_SUPPORT */
 		}

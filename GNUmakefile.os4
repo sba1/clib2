@@ -232,6 +232,7 @@ C_LIB = \
 	stdio_putchar.o \
 	stdio_puts.o \
 	stdio_remove.o \
+	stdio_remove_fd_alias.o \
 	stdio_rename.o \
 	stdio_rewind.o \
 	stdio_scanf.o \

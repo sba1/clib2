@@ -65,7 +65,7 @@ vsprintf(char *s,const char *format,va_list arg)
 	if(__check_abort_enabled)
 		__check_abort();
 
-	__initialize_iob(&string_iob,(HOOKFUNC)__vsprintf_hook_entry,
+	__initialize_iob(&string_iob,__vsprintf_hook_entry,
 		NULL,
 		buffer,sizeof(buffer),
 		-1,

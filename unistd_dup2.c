@@ -44,7 +44,6 @@
 int
 dup2(int file_descriptor1, int file_descriptor2)
 {
-	DECLARE_UTILITYBASE();
 	struct fd * fd1;
 	int result = -1;
 
@@ -52,8 +51,6 @@ dup2(int file_descriptor1, int file_descriptor2)
 
 	SHOWVALUE(file_descriptor1);
 	SHOWVALUE(file_descriptor2);
-
-	assert( UtilityBase != NULL );
 
 	if(__check_abort_enabled)
 		__check_abort();

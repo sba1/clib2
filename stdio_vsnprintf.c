@@ -78,7 +78,7 @@ vsnprintf(char *buffer,size_t size,const char *format,va_list arg)
 	if(__check_abort_enabled)
 		__check_abort();
 
-	__initialize_iob(&string_iob,(HOOKFUNC)__vsnprintf_hook_entry,
+	__initialize_iob(&string_iob,__vsnprintf_hook_entry,
 		NULL,
 		local_buffer,sizeof(local_buffer),
 		-1,

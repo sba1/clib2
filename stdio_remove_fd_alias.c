@@ -31,59 +31,51 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef _STDLIB_NULL_POINTER_CHECK_H
-#include "stdlib_null_pointer_check.h"
-#endif /* _STDLIB_NULL_POINTER_CHECK_H */
-
-/****************************************************************************/
-
 #ifndef _STDIO_HEADERS_H
 #include "stdio_headers.h"
 #endif /* _STDIO_HEADERS_H */
 
 /****************************************************************************/
 
-int
-__vsnprintf_hook_entry(
-	struct iob *					string_iob,
-	struct file_action_message *	fam)
+void
+__remove_fd_alias(struct fd * fd)
 {
-	int result = -1;
-	int error = OK;
+	assert( fd != NULL );
 
-	assert( fam != NULL && string_iob != NULL );
-
-	if(fam->fam_Action != file_action_write)
+	if(fd->fd_Original != NULL) /* this is an alias */
 	{
-		error = EBADF;
-		goto out;
-	}
+		struct fd * list_fd;
 
-	if(fam->fam_Size > 0 && string_iob->iob_StringSize > 0 && string_iob->iob_StringPosition < string_iob->iob_StringSize)
+		assert( fd->fd_Original != fd );
+		assert( fd->fd_Original->fd_Original == NULL );
+
+		/* Remove this alias from the list. */
+		for(list_fd = fd->fd_Original ;
+		    list_fd != NULL ;
+		    list_fd = list_fd->fd_NextLink)
+		{
+			if(list_fd->fd_NextLink == fd)
+			{
+				list_fd->fd_NextLink = fd->fd_NextLink;
+				break;
+			}
+		}
+	}
+	else if (fd->fd_NextLink != NULL) /* this one has aliases attached; it is the 'original' resource */
 	{
-		int num_bytes_left;
-		int num_bytes;
+		struct fd * first_alias;
+		struct fd * list_fd;
 
-		num_bytes_left = string_iob->iob_StringSize - string_iob->iob_StringPosition;
+		/* The first link now becomes the original resource */
+		first_alias = fd->fd_NextLink;
+		first_alias->fd_Original = NULL;
 
-		num_bytes = fam->fam_Size;
-		if(num_bytes > num_bytes_left)
-			num_bytes = num_bytes_left;
-
-		assert( num_bytes >= 0 );
-
-		assert( fam->fam_Data != NULL );
-		assert( string_iob->iob_String != NULL );
-
-		memmove(&string_iob->iob_String[string_iob->iob_StringPosition],fam->fam_Data,(size_t)num_bytes);
-		string_iob->iob_StringPosition += num_bytes;
+		/* The resources are migrated to the first link. */
+		for(list_fd = first_alias->fd_NextLink ;
+		    list_fd != NULL ;
+		    list_fd = list_fd->fd_NextLink)
+		{
+			list_fd->fd_Original = first_alias;
+		}
 	}
-
-	result = fam->fam_Size;
-
- out:
-
-	fam->fam_Error = error;
-
-	return(result);
 }

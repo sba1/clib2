@@ -88,7 +88,7 @@ __vasprintf(const char *file,int line,char **ret,const char *format,va_list arg)
 
 	(*ret) = NULL;
 
-	__initialize_iob(&string_iob,(HOOKFUNC)__vasprintf_hook_entry,
+	__initialize_iob(&string_iob,__vasprintf_hook_entry,
 		NULL,
 		local_buffer,sizeof(local_buffer),
 		-1,

@@ -80,7 +80,7 @@ socket(int domain,int type,int protocol)
 
 	fd = __fd[fd_slot_number];
 
-	__initialize_fd(fd,(HOOKFUNC)__socket_hook_entry,(BPTR)socket_fd,FDF_IN_USE | FDF_IS_SOCKET | FDF_READ | FDF_WRITE);
+	__initialize_fd(fd,__socket_hook_entry,(BPTR)socket_fd,FDF_IN_USE | FDF_IS_SOCKET | FDF_READ | FDF_WRITE);
 
 	result = fd_slot_number;
 

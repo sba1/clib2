@@ -42,23 +42,16 @@
 /****************************************************************************/
 
 int
-__close(int file_descriptor,int * error_ptr)
+close(int file_descriptor)
 {
-	DECLARE_UTILITYBASE();
-
-	struct file_hook_message message;
+	struct file_action_message fam;
 	struct fd * fd;
 	int result = -1;
-	BOOL no_close;
-	BOOL is_alias;
 
 	ENTER();
 
 	SHOWVALUE(file_descriptor);
 
-	assert( UtilityBase != NULL );
-
-	assert( error_ptr != NULL );
 	assert( file_descriptor >= 0 && file_descriptor < __num_fd );
 	assert( __fd[file_descriptor] != NULL );
 	assert( FLAG_IS_SET(__fd[file_descriptor]->fd_Flags,FDF_IN_USE) );
@@ -69,120 +62,19 @@ __close(int file_descriptor,int * error_ptr)
 	fd = __get_file_descriptor(file_descriptor);
 	if(fd == NULL)
 	{
-		(*error_ptr) = EBADF;
+		__set_errno(EBADF);
 		goto out;
 	}
 
-	result = 0;
+	fam.fam_Action = file_action_close;
 
-	SHOWMSG("last customer; cleaning up");
+	assert( fd->fd_Action != NULL );
 
-	if(fd->fd_Original != NULL) /* this is an alias */
-	{
-		struct fd * list_fd;
-
-		SHOWMSG("taking out the alias");
-
-		assert( fd->fd_Original != fd );
-		assert( fd->fd_Original->fd_Original == NULL );
-
-		/* Remove this alias from the list. */
-		for(list_fd = fd->fd_Original ;
-		    list_fd != NULL ;
-		    list_fd = list_fd->fd_NextLink)
-		{
-			if(list_fd->fd_NextLink == fd)
-			{
-				list_fd->fd_NextLink = fd->fd_NextLink;
-				break;
-			}
-		}
-
-		no_close = TRUE;
-		is_alias = TRUE;
-	}
-	else if (fd->fd_NextLink != NULL) /* this one has aliases attached; it is the 'original' resource */
-	{
-		struct fd * first_alias;
-		struct fd * list_fd;
-
-		SHOWMSG("closing original descriptor; migrating it to first alias");
-
-		/* The first link now becomes the original resource */
-		first_alias = fd->fd_NextLink;
-		first_alias->fd_Original = NULL;
-
-		/* The resources are migrated to the first link. */
-		for(list_fd = first_alias->fd_NextLink ;
-		    list_fd != NULL ;
-		    list_fd = list_fd->fd_NextLink)
-		{
-			list_fd->fd_Original = first_alias;
-		}
-
-		no_close = TRUE;
-		is_alias = TRUE;
-	}
-	else
-	{
-		no_close = FLAG_IS_SET(fd->fd_Flags,FDF_NO_CLOSE);
-		is_alias = FALSE;
-	}
-
-	/* Reset the console to regular buffered/unbuffered input. We don't do this
-	   for aliases and their like since the original stream is still in use. */
-	if(NOT is_alias)
-	{
-		if(FLAG_IS_SET(fd->fd_Flags,FDF_NON_BLOCKING))
-		{
-			SHOWMSG("resetting non-blocking access mode");
-
-			message.action	= file_hook_action_set_blocking;
-			message.arg		= TRUE;
-
-			assert( fd->fd_Hook != NULL );
-
-			CallHookPkt(fd->fd_Hook,fd,&message);
-		}
-	}
-
-	(*error_ptr) = OK;
-
-	if(NOT no_close && NOT is_alias)
-	{
-		SHOWMSG("shutting down");
-
-		message.action = file_hook_action_close;
-
-		assert( fd->fd_Hook != NULL );
-
-		CallHookPkt(fd->fd_Hook,fd,&message);
-
-		result = message.result;
-
-		(*error_ptr) = message.error;
-	}
-
-	memset(fd,0,sizeof(*fd));
+	result = (*fd->fd_Action)(fd,&fam);
+	if(result < 0)
+		__set_errno(fam.fam_Error);
 
  out:
-
-	RETURN(result);
-	return(result);
-}
-
-/****************************************************************************/
-
-int
-close(int file_descriptor)
-{
-	int result;
-	int error;
-
-	ENTER();
-
-	result = __close(file_descriptor,&error);
-	__set_errno(error);
 
 	RETURN(result);
 	return(result);

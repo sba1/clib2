@@ -59,17 +59,6 @@ __machine_test(void)
 	}
 	#endif /* M68020 */
 
-	#if defined(M68881_FLOATING_POINT_SUPPORT)
-	{
-		if(FLAG_IS_CLEAR(((struct ExecBase *)SysBase)->AttnFlags,AFF_68881))
-		{
-			__show_error("This program requires a floating point processor.");
-
-			goto out;
-		}
-	}
-	#endif /* M68881_FLOATING_POINT_SUPPORT */
-
 	result = OK;
 
  out:

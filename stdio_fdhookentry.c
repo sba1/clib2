@@ -440,7 +440,7 @@ __fd_hook_entry(
 							break;
 						}
 
-						if(__grow_file_size(fd,new_position - fib->fib_Size) != OK)
+						if(__grow_file_size(fd,new_position - fib->fib_Size) < 0)
 						{
 							fam->fam_Error = __translate_io_error_to_errno(IoErr());
 							break;

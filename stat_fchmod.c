@@ -155,7 +155,7 @@ fchmod(int file_descriptor, mode_t mode)
 		goto out;
 	}
 
-	result = OK;
+	result = 0;
 
  out:
 

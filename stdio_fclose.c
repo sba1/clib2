@@ -54,7 +54,7 @@ fclose(FILE *stream)
 {
 	struct iob * file = (struct iob *)stream;
 	struct file_action_message fam;
-	int result = OK;
+	int result = 0;
 
 	ENTER();
 

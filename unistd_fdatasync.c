@@ -79,7 +79,7 @@ fdatasync(int file_descriptor)
 
 	__sync_fd(fd,0); /* flush just the data */
 
-	result = OK;
+	result = 0;
 
  out:
 

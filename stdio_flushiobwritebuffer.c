@@ -84,6 +84,7 @@ __flush_iob_write_buffer(struct iob * file)
 			SET_FLAG(file->iob_Flags,IOBF_ERROR);
 
 			__set_errno(fam.fam_Error);
+
 			goto out;
 		}
 

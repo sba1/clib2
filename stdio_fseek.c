@@ -80,9 +80,10 @@ fseek(FILE *stream, long int offset, int wherefrom)
  	{
  		SHOWMSG("this file is not even in use");
 
+		SET_FLAG(file->iob_Flags,IOBF_ERROR);
+
 		__set_errno(EBADF);
  
-		SET_FLAG(file->iob_Flags,IOBF_ERROR);
  		goto out;
  	}
 
@@ -90,9 +91,10 @@ fseek(FILE *stream, long int offset, int wherefrom)
 	{
 		SHOWMSG("invalid wherefrom parameter");
 
+		SET_FLAG(file->iob_Flags,IOBF_ERROR);
+
 		__set_errno(EBADF);
 
-		SET_FLAG(file->iob_Flags,IOBF_ERROR);
 		goto out;
 	}
 

@@ -121,7 +121,7 @@ fstatfs(int file_descriptor, struct statfs *buf)
 
 	__convert_info_to_statfs(id,buf);
 
-	result = OK;
+	result = 0;
 
  out:
 

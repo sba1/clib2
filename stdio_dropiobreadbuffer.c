@@ -87,9 +87,9 @@ __drop_iob_read_buffer(struct iob * file)
 				{
 					SHOWMSG("that didn't work");
 
-					SET_FLAG(file->iob_Flags,IOBF_ERROR);
-
 					result = -1;
+
+					SET_FLAG(file->iob_Flags,IOBF_ERROR);
 
 					__set_errno(fam.fam_Error);
 

@@ -98,7 +98,7 @@ __vfscanf(FILE *stream, const char *format, va_list arg)
 	}
 	#endif /* CHECK_FOR_NULL_POINTERS */
 
-	if(__fgetc_check(stream) != OK)
+	if(__fgetc_check(stream) < 0)
 		goto out;
 
 	/* Just so we can detect errors and tell them apart from

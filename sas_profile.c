@@ -133,7 +133,7 @@ send_profiler_message(ULONG clock_value,char * id,ULONG flags)
 	PutMsg(profiler_port,(struct Message *)spm);
 	WaitPort(reply_port);
 
-	result = OK;
+	result = 0;
 
  out:
 

@@ -82,9 +82,10 @@ fwrite(const void *ptr,size_t element_size,size_t count,FILE *stream)
 	{
 		SHOWMSG("this file is not even in use");
 
+		SET_FLAG(file->iob_Flags,IOBF_ERROR);
+
 		__set_errno(EBADF);
 
-		SET_FLAG(file->iob_Flags,IOBF_ERROR);
 		goto out;
 	}
 
@@ -92,9 +93,10 @@ fwrite(const void *ptr,size_t element_size,size_t count,FILE *stream)
 	{
 		SHOWMSG("this stream is not write-enabled");
 
+		SET_FLAG(file->iob_Flags,IOBF_ERROR);
+
 		__set_errno(EBADF);
 
-		SET_FLAG(file->iob_Flags,IOBF_ERROR);
 		goto out;
 	}
 

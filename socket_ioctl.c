@@ -85,7 +85,7 @@ ioctl(int sockfd,unsigned long request, ... /* char *arg */)
 	result = __IoctlSocket((LONG)fd->fd_DefaultFile,request,param);
 	PROFILE_ON();
 
-	if(result == OK)
+	if(result == 0)
 	{
 		int * option = (int *)param;
 

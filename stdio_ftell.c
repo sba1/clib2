@@ -74,9 +74,10 @@ ftell(FILE *stream)
 	{
 		SHOWMSG("this file is not even in use");
 
+		SET_FLAG(file->iob_Flags,IOBF_ERROR);
+
 		__set_errno(EBADF);
 
-		SET_FLAG(file->iob_Flags,IOBF_ERROR);
 		goto out;
 	}
 

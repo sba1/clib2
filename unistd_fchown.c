@@ -159,7 +159,7 @@ fchown(int file_descriptor, uid_t owner, gid_t group)
 		goto out;
 	}
 
-	result = OK;
+	result = 0;
 
  out:
 

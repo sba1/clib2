@@ -78,7 +78,7 @@ fsync(int file_descriptor)
 
 	__sync_fd(fd,1); /* flush everything */
 
-	result = OK;
+	result = 0;
 
  out:
 

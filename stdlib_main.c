@@ -354,7 +354,7 @@ _main(void)
 			__stack_size = size;
 	}
 
-	/* How much stack size was provided? */
+	/* How much stack space was provided? */
 	current_stack_size = get_stack_size();
 
 	/* If this is a resident program, don't allow for the detach

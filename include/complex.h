@@ -65,7 +65,7 @@ extern "C" {
 
 /****************************************************************************/
 
-/* Basic types. */
+/* Basic types; imaginary is assumed not to be implemented yet. */
 #define complex _Complex
 
 /****************************************************************************/

@@ -85,7 +85,7 @@ sscanf(const char *s,const char *format, ...)
 	string_iob.iob_StringLength	= strlen(s);
 
 	va_start(arg,format);
-	result = __vfscanf((FILE *)&string_iob,format,arg);
+	result = vfscanf((FILE *)&string_iob,format,arg);
 	va_end(arg);
 
  out:

@@ -400,6 +400,15 @@ extern int __vasprintf(const char *file,int line,char **ret,const char *format,v
 
 /****************************************************************************/
 
+/* The following is not part of the ISO 'C' (1994) standard, but it should
+   be part of ISO/IEC 9899:1999, also known as "C99". */
+
+/****************************************************************************/
+
+extern int vfscanf(FILE *stream, const char *format, va_list arg);
+
+/****************************************************************************/
+
 #ifdef __cplusplus
 }
 #endif /* __cplusplus */

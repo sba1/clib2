@@ -65,6 +65,7 @@ extern "C" {
 #define O_EXCL		(1<<4)
 #define O_TRUNC		(1<<5)
 #define O_NONBLOCK	(1<<6)
+#define O_NDELAY	O_NONBLOCK
 #define O_SYNC		(0)
 #define O_NOCTTY	(0)
 #define O_ASYNC		(1<<7)

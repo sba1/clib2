@@ -31,55 +31,8 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef _LIMITS_H
-#define _LIMITS_H
-
-/****************************************************************************/
-
-#define CHAR_BIT 8
-
-/****************************************************************************/
-
-#define SCHAR_MIN -128
-#define SCHAR_MAX 127
-#define UCHAR_MAX 255
-
-/****************************************************************************/
-
-/*
- * The following defines the range a 'char' can cover by checking a
- * preprocessor symbol; we support both SAS/C and GCC here.
- */
-
-#if (defined(__GNUC__) && defined(__CHAR_UNSIGNED__)) || (defined(__SASC) && defined(_UNSCHAR))
-
-#define CHAR_MIN 0
-#define CHAR_MAX 255
-
-#else
-
-#define CHAR_MIN -128
-#define CHAR_MAX 127
-
-#endif /* (__GNUC__ && __CHAR_UNSIGNED) || (__SASC && _UNSCHAR) */
-
-/****************************************************************************/
-
-#define SHRT_MIN	-32768
-#define SHRT_MAX	32767
-#define USHRT_MAX	65535
-
-/****************************************************************************/
-
-#define INT_MIN		(-2147483647L - 1)
-#define INT_MAX		2147483647L
-#define UINT_MAX	4294967295UL
-
-/****************************************************************************/
-
-#define LONG_MIN	(-2147483647L - 1)
-#define LONG_MAX	2147483647L
-#define ULONG_MAX	4294967295UL
+#ifndef _SYS_UIO_H
+#define _SYS_UIO_H
 
 /****************************************************************************/
 
@@ -87,18 +40,45 @@
 
 /****************************************************************************/
 
-#define	LLONG_MIN	(-0x7fffffffffffffffLL-1)
-#define	LLONG_MAX	0x7fffffffffffffffLL
-#define	ULLONG_MAX	0xffffffffffffffffULL
+#ifdef __cplusplus
+extern "C" {
+#endif /* __cplusplus */
 
 /****************************************************************************/
 
-#define SSIZE_MAX 2147483647L
+#ifndef _SYS_TYPES_H
+#include <sys/types.h>
+#endif /* _SYS_TYPES_H */
+
+#ifndef _STDDEF_H
+#include <stddef.h>
+#endif /* _STDDEF_H */
 
 /****************************************************************************/
 
-#define PATH_MAX 1024
+/*
+ * The size of MAX_IOVEC is rather arbitrary since there is no kernel support
+ * for vectored I/O and even a single struct iovec can overflow a ssize_t.
+ */
+#define	MAX_IOVEC	1024
+
+typedef struct iovec
+{
+	void *	iov_base;
+	size_t	iov_len;
+} iovec_t;
 
 /****************************************************************************/
 
-#endif /* _LIMITS_H */
+extern ssize_t readv(int file_descriptor,const struct iovec *iov,int vec_count);
+extern ssize_t writev(int file_descriptor,const struct iovec *iov,int vec_count);
+
+/****************************************************************************/
+
+#ifdef __cplusplus
+}
+#endif /* __cplusplus */
+
+/****************************************************************************/
+
+#endif /* _SYS_UIO_H */

@@ -72,7 +72,7 @@ fscanf(FILE *stream, const char *format, ...)
 	#endif /* CHECK_FOR_NULL_POINTERS */
 
 	va_start(arg,format);
-	result = __vfscanf(stream,format,arg);
+	result = vfscanf(stream,format,arg);
 	va_end(arg);
 
  out:

@@ -31,74 +31,51 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef _LIMITS_H
-#define _LIMITS_H
+#ifndef _STDBOOL_H
+#define _STDBOOL_H
 
 /****************************************************************************/
 
-#define CHAR_BIT 8
+/* The following is not part of the ISO 'C' (1994) standard, but it should
+   be part of ISO/IEC 9899:1999, also known as "C99". */
 
 /****************************************************************************/
 
-#define SCHAR_MIN -128
-#define SCHAR_MAX 127
-#define UCHAR_MAX 255
+#if defined(__cplusplus) && defined(__GNUC__)
+#warning C99 header used in C++.
+#endif /* __GNUC__ */
 
 /****************************************************************************/
 
-/*
- * The following defines the range a 'char' can cover by checking a
- * preprocessor symbol; we support both SAS/C and GCC here.
- */
-
-#if (defined(__GNUC__) && defined(__CHAR_UNSIGNED__)) || (defined(__SASC) && defined(_UNSCHAR))
-
-#define CHAR_MIN 0
-#define CHAR_MAX 255
-
-#else
-
-#define CHAR_MIN -128
-#define CHAR_MAX 127
-
-#endif /* (__GNUC__ && __CHAR_UNSIGNED) || (__SASC && _UNSCHAR) */
+#if (__STDC_VERSION__ + 0) < 199901L
+#warning C99 header file used by non-C99 compliant compiler.
+#endif /* __STDC_VERSION__ */
 
 /****************************************************************************/
 
-#define SHRT_MIN	-32768
-#define SHRT_MAX	32767
-#define USHRT_MAX	65535
+#ifdef __cplusplus
+extern "C" {
+#endif /* __cplusplus */
 
 /****************************************************************************/
 
-#define INT_MIN		(-2147483647L - 1)
-#define INT_MAX		2147483647L
-#define UINT_MAX	4294967295UL
+#define bool _Bool
 
 /****************************************************************************/
 
-#define LONG_MIN	(-2147483647L - 1)
-#define LONG_MAX	2147483647L
-#define ULONG_MAX	4294967295UL
+#define false	0
+#define true	1
 
 /****************************************************************************/
 
-/* The following is not part of the ISO 'C' (1994) standard. */
+#define __bool_true_and_false_are_defined 1
 
 /****************************************************************************/
 
-#define	LLONG_MIN	(-0x7fffffffffffffffLL-1)
-#define	LLONG_MAX	0x7fffffffffffffffLL
-#define	ULLONG_MAX	0xffffffffffffffffULL
+#ifdef __cplusplus
+}
+#endif /* __cplusplus */
 
 /****************************************************************************/
 
-#define SSIZE_MAX 2147483647L
-
-/****************************************************************************/
-
-#define PATH_MAX 1024
-
-/****************************************************************************/
-
-#endif /* _LIMITS_H */
+#endif /* _STDBOOL_H */

@@ -150,11 +150,6 @@ extern int __flush_iob_write_buffer(struct iob * file);
 
 /****************************************************************************/
 
-/* stdio_vfscanf.c */
-extern int __vfscanf(FILE *stream, const char *format, va_list arg);
-
-/****************************************************************************/
-
 /* stdio_fgetc.c */
 extern int __fgetc_check(FILE * stream);
 extern int __fgetc(FILE *stream);

@@ -187,6 +187,15 @@ extern char * mkdtemp(char *name_template);
 
 /****************************************************************************/
 
+/* The following is not part of the ISO 'C' (1994) standard, but it should
+   be part of ISO/IEC 9899:1999, also known as "C99". */
+
+/****************************************************************************/
+
+extern void _Exit(int status);
+
+/****************************************************************************/
+
 #ifdef __cplusplus
 }
 #endif /* __cplusplus */

@@ -62,7 +62,7 @@
 /****************************************************************************/
 
 int
-__vfscanf(FILE *stream, const char *format, va_list arg)
+vfscanf(FILE *stream, const char *format, va_list arg)
 {
 	enum format_size_t
 	{

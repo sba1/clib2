@@ -71,7 +71,7 @@ scanf(const char *format, ...)
 	#endif /* CHECK_FOR_NULL_POINTERS */
 
 	va_start(arg,format);
-	result = __vfscanf(stdin,format,arg);
+	result = vfscanf(stdin,format,arg);
 	va_end(arg);
 
  out:

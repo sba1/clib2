@@ -90,6 +90,12 @@ fcntl(int file_descriptor, int cmd, ... /* int arg */ )
 				goto out;
 			}
 
+			if(fd->fd_DefaultFile == ZERO)
+			{
+				__set_errno(EBADF);
+				goto out;
+			}
+
 			va_start(arg,cmd);
 			l = va_arg(arg,struct flock *);
 			va_end(arg);
@@ -139,6 +145,12 @@ fcntl(int file_descriptor, int cmd, ... /* int arg */ )
 		case F_SETFL:
 
 			SHOWMSG("cmd=F_SETFL");
+
+			if(fd->fd_DefaultFile == ZERO)
+			{
+				__set_errno(EBADF);
+				goto out;
+			}
 
 			va_start(arg,cmd);
 			flags = va_arg(arg,int);

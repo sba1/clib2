@@ -37,15 +37,21 @@
 
 /****************************************************************************/
 
-#include "stdlib_protos.h"
+#ifndef _STDLIB_CONSTRUCTOR_H
+#include "stdlib_constructor.h"
+#endif /* _STDLIB_CONSTRUCTOR_H */
 
 /****************************************************************************/
 
+#ifndef EXEC_EXECBASE_H
 #include <exec/execbase.h>
+#endif /* EXEC_EXECBASE_H */
 
 /****************************************************************************/
 
+#ifndef PROTO_EXEC_H
 #include <proto/exec.h>
+#endif /* PROTO_EXEC_H */
 
 /****************************************************************************/
 

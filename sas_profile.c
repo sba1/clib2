@@ -6,23 +6,44 @@
  * Adapted from SAS/C runtime library code.
  */
 
+#ifndef EXEC_MEMORY_H
 #include <exec/memory.h>
-#include <exec/ports.h>
-#include <exec/devices.h>
+#endif /* EXEC_MEMORY_H */
 
+#ifndef EXEC_PORTS_H
+#include <exec/ports.h>
+#endif /* EXEC_PORTS_H */
+
+#ifndef EXEC_DEVICES_H
+#include <exec/devices.h>
+#endif /* EXEC_DEVICES_H */
+
+#ifndef DEVICES_TIMER_H
 #include <devices/timer.h>
+#endif /* DEVICES_TIMER_H */
 
 /****************************************************************************/
 
 #define __NOLIBBASE__
 #define __NOGLOBALIFACE__
 
+#ifndef PROTO_EXEC_H
 #include <proto/exec.h>
+#endif /* PROTO_EXEC_H */
+
+#ifndef PROTO_TIMER_H
 #include <proto/timer.h>
+#endif /* PROTO_TIMER_H */
 
 /****************************************************************************/
 
 extern struct Library * SysBase;
+
+/****************************************************************************/
+
+#ifndef _STDLIB_CONSTRUCTOR_H
+#include "stdlib_constructor.h"
+#endif /* _STDLIB_CONSTRUCTOR_H */
 
 /****************************************************************************/
 
@@ -310,7 +331,6 @@ PROFILE_CONSTRUCTOR(profile_init)
 
 	__profile_init();
 
-	SHOWVALUE(success);
 	LEAVE();
 
 	CONSTRUCTOR_SUCCEED();

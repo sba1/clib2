@@ -49,10 +49,6 @@
 #include "stdlib_headers.h"
 #endif /* _STDLIB_HEADERS_H */
 
-#ifndef	_DEBUG_H
-#include "debug.h"
-#endif /* _DEBUG_H */
-
 /****************************************************************************/
 
 #define	OSNAME "AmigaOS"

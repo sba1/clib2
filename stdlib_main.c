@@ -33,13 +33,21 @@
 
 /*#define DEBUG*/
 
-#include "stdlib_headers.h"
-#include "stdio_headers.h"
-#include "time_headers.h"
+/****************************************************************************/
+
+#ifndef EXEC_EXECBASE_H
+#include <exec/execbase.h>
+#endif /* EXEC_EXECBASE_H */
 
 /****************************************************************************/
 
-#include <exec/execbase.h>
+#ifndef _STDLIB_HEADERS_H
+#include "stdlib_headers.h"
+#endif /* _STDLIB_HEADERS_H */
+
+#ifndef _STDIO_HEADERS_H
+#include "stdio_headers.h"
+#endif /* _STDIO_HEADERS_H */
 
 /****************************************************************************/
 
@@ -48,10 +56,6 @@
 #include <string.h>
 #include <stdio.h>
 #include <ctype.h>
-
-/****************************************************************************/
-
-#include "macros.h"
 
 /****************************************************************************/
 

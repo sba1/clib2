@@ -32,7 +32,10 @@
  */
 
 #define __NOLIBBASE__
+
+#ifndef PROTO_EXEC_H
 #include <proto/exec.h>
+#endif /* PROTO_EXEC_H */
 
 /****************************************************************************/
 

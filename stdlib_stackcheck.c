@@ -37,7 +37,9 @@
 
 /****************************************************************************/
 
-#include "macros.h"
+#ifndef _STDLIB_CONSTRUCTOR_H
+#include "stdlib_constructor.h"
+#endif /* _STDLIB_CONSTRUCTOR_H */
 
 /****************************************************************************/
 

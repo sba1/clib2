@@ -43,8 +43,31 @@
 
 /****************************************************************************/
 
+#ifndef _MACROS_H
 #include "macros.h"
+#endif /* _MACROS_H */
+
+#ifndef _DEBUG_H
 #include "debug.h"
+#endif /* _DEBUG_H */
+
+/****************************************************************************/
+
+#ifndef _MATH_FP_SUPPORT_H
+#include "math_fp_support.h"
+#endif /* _MATH_FP_SUPPORT_H */
+
+/****************************************************************************/
+
+#ifndef _STDLIB_HEADERS_H
+#include "stdlib_headers.h"
+#endif /* _STDLIB_HEADERS_H */
+
+/****************************************************************************/
+
+#ifndef _STDLIB_PROFILE_H
+#include "stdlib_profile.h"
+#endif /* _STDLIB_PROFILE_H */
 
 /****************************************************************************/
 
@@ -52,9 +75,17 @@
 
 /****************************************************************************/
 
+#ifndef PROTO_MATHIEEESINGBAS_H
 #include <proto/mathieeesingbas.h>
+#endif /* PROTO_MATHIEEESINGBAS_H */
+
+#ifndef PROTO_MATHIEEEDOUBBAS_H
 #include <proto/mathieeedoubbas.h>
+#endif /* PROTO_MATHIEEEDOUBBAS_H */
+
+#ifndef PROTO_MATHIEEEDOUBTRANS_H
 #include <proto/mathieeedoubtrans.h>
+#endif /* PROTO_MATHIEEEDOUBTRANS_H */
 
 /****************************************************************************/
 
@@ -186,20 +217,8 @@ extern double __scalbn(double x, int n);
 
 /****************************************************************************/
 
-#ifndef _MATH_FP_SUPPORT_H
-#include "math_fp_support.h"
-#endif /* _MATH_FP_SUPPORT_H */
-
-/****************************************************************************/
-
-#ifndef _STDLIB_HEADERS_H
-#include "stdlib_headers.h"
-#endif /* _STDLIB_HEADERS_H */
-
-/****************************************************************************/
-
 /* math_huge_val.c */
-double __get_huge_val(void);
+extern double __get_huge_val(void);
 
 /****************************************************************************/
 

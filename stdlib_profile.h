@@ -31,14 +31,44 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef _STDLIB_HEADERS_H
-#include "stdlib_headers.h"
-#endif /* _STDLIB_HEADERS_H */
+#ifndef _STDLIB_PROFILE_H
+#define _STDLIB_PROFILE_H
 
 /****************************************************************************/
 
-int
-__socket_init(void)
-{
-	return(OK);
-}
+/* Magic macros for code profiling, SAS/C style. Normally, you would find
+   these in <sprof.h>, which is SAS/C-specific. */
+
+/****************************************************************************/
+
+#ifdef __SASC
+
+/****************************************************************************/
+
+extern void ASM _PROLOG(REG(a0,char *));
+extern void ASM _EPILOG(REG(a0,char *));
+
+#if _PROFILE
+#define PROFILE_OFF()	_PROLOG(0L)
+#define PROFILE_ON()	_EPILOG(0L)
+#else
+#define PROFILE_OFF()	((void)0)
+#define PROFILE_ON()	((void)0)
+#endif /* _PROFILE */
+
+/****************************************************************************/
+
+#else
+
+/****************************************************************************/
+
+#define PROFILE_OFF()	((void)0)
+#define PROFILE_ON()	((void)0)
+
+/****************************************************************************/
+
+#endif /* __SASC */
+
+/****************************************************************************/
+
+#endif /* _STDLIB_PROFILE_H */

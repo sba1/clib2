@@ -34,9 +34,17 @@
 /* We don't want to pull in <clib/alib_protos.h> */
 #define CLIB_ALIB_PROTOS_H
 
+/****************************************************************************/
+
 #ifndef _STDLIB_HEADERS_H
 #include "stdlib_headers.h"
 #endif /* _STDLIB_HEADERS_H */
+
+/****************************************************************************/
+
+#ifndef _STDLIB_CONSTRUCTOR_H
+#include "stdlib_constructor.h"
+#endif /* _STDLIB_CONSTRUCTOR_H */
 
 /****************************************************************************/
 

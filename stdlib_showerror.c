@@ -31,30 +31,42 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
+#ifndef EXEC_LIBRARIES_H
 #include <exec/libraries.h>
+#endif /* EXEC_LIBRARIES_H */
 
+#ifndef INTUITION_INTUITION_H
 #include <intuition/intuition.h>
+#endif /* INTUITION_INTUITION_H */
 
+#ifndef DOS_DOS_H
 #include <dos/dos.h>
+#endif /* DOS_DOS_H */
 
+#ifndef WORKBENCH_STARTUP_H
 #include <workbench/startup.h>
+#endif /* WORKBENCH_STARTUP_H */
 
 /****************************************************************************/
 
+#ifndef PROTO_EXEC_H
 #include <proto/exec.h>
+#endif /* PROTO_EXEC_H */
 
 #define __NOLIBBASE__
 #define __NOGLOBALIFACE__
+
+#ifndef PROTO_INTUITION_H
 #include <proto/intuition.h>
+#endif /* PROTO_INTUITION_H */
+
+#ifndef PROTO_DOS_H
 #include <proto/dos.h>
+#endif /* PROTO_DOS_H */
 
 /****************************************************************************/
 
 #include <string.h>
-
-/****************************************************************************/
-
-#include "macros.h"
 
 /****************************************************************************/
 

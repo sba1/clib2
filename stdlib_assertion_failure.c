@@ -41,12 +41,20 @@
 
 /****************************************************************************/
 
+#ifndef PROTO_EXEC_H
 #include <proto/exec.h>
+#endif /* PROTO_EXEC_H */
 
 #define __NOLIBBASE__
 #define __NOGLOBALIFACE__
+
+#ifndef PROTO_INTUITION_H
 #include <proto/intuition.h>
+#endif /* PROTO_INTUITION_H */
+
+#ifndef PROTO_DOS_H
 #include <proto/dos.h>
+#endif /* PROTO_DOS_H */
 
 /****************************************************************************/
 

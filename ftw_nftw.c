@@ -44,28 +44,9 @@
 
 /****************************************************************************/
 
-#include <dirent.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <string.h>
-#include <sys/stat.h>
-#include <ftw.h>
-#include <errno.h>
-#include <dos.h>
-
-/****************************************************************************/
-
-#ifndef	_DEBUG_H
-#include "debug.h"
-#endif /* _DEBUG_H */
-
 #ifndef	_FTW_HEADERS_H
 #include "ftw_headers.h"
 #endif /* _FTW_HEADERS_H */
-
-#ifndef	_STDLIB_PROTOS_H
-#include "stdlib_protos.h"	/* get/set errno. */
-#endif /* _STDLIB_PROTOS_H */
 
 /****************************************************************************/
 

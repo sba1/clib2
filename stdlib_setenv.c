@@ -37,15 +37,21 @@
 
 /****************************************************************************/
 
-#ifndef _STDLIB_MEM_DEBUG_H
-#include "stdlib_mem_debug.h"
-#endif /* _STDLIB_MEM_DEBUG_H */
-
-/****************************************************************************/
-
 #ifndef _STDLIB_HEADERS_H
 #include "stdlib_headers.h"
 #endif /* _STDLIB_HEADERS_H */
+
+/****************************************************************************/
+
+#ifndef _STDLIB_MEMORY_H
+#include "stdlib_memory.h"
+#endif /* _STDLIB_MEMORY_H */
+
+/****************************************************************************/
+
+#ifndef _STDLIB_CONSTRUCTOR_H
+#include "stdlib_constructor.h"
+#endif /* _STDLIB_CONSTRUCTOR_H */
 
 /****************************************************************************/
 

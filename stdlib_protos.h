@@ -48,13 +48,13 @@
 
 /****************************************************************************/
 
-#ifndef _STDLIB_HEADERS_H
+#ifndef _STDLIB_MEMORY_H
 
 /* Forward declarations */
 struct MemoryNode;
 struct MemoryTree;
 
-#endif /* _STDLIB_HEADERS_H */
+#endif /* _STDLIB_MEMORY_H */
 
 /****************************************************************************/
 

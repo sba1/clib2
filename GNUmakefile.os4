@@ -378,6 +378,7 @@ C_LIB = \
 	time_numbertostring.o \
 	time_strftime.o \
 	time_time.o \
+	time_weekday.o \
 	unistd_access.o \
 	unistd_chdir.o \
 	unistd_chdir_exit.o \

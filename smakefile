@@ -484,7 +484,8 @@ TIME_OBJ = \
 	time_mktime.o \
 	time_numbertostring.o \
 	time_strftime.o \
-	time_time.o
+	time_time.o \
+	time_weekday.o
 
 UNISTD_OBJ = \
 	unistd_access.o \

@@ -111,7 +111,7 @@ WARNINGS = \
 #	-Wconversion -Wshadow
 
 INCLUDES = -Iinclude -I. -I$(SDK_INCLUDE)
-OPTIONS = -DNDEBUG -DUSE_64_BIT_INTS -D__USE_INLINE__ -Wa,-mregnames
+OPTIONS = -D__THREAD_SAFE -DNDEBUG -DUSE_64_BIT_INTS -D__USE_INLINE__ -Wa,-mregnames
 OPTIMIZE = -O -fomit-frame-pointer -funroll-loops
 #DEBUG = -g
 

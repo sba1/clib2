@@ -206,7 +206,7 @@ __socket_init(void)
 	 */
 	#if defined(__THREAD_SAFE) && defined(SBTC_CAN_SHARE_LIBRARY_BASES)
 	{
-		if(SocketBase->lib_Version >= 4)
+		if(__SocketBase->lib_Version >= 4)
 		{
 			tags[0].ti_Tag	= SBTM_SETVAL(SBTC_CAN_SHARE_LIBRARY_BASES);
 			tags[0].ti_Data	= TRUE;

@@ -94,7 +94,7 @@ puts(const char *s)
 
  out:
 
-	/* Note: if buffering is disabled for this stdout, then we still
+	/* Note: if buffering is disabled for this stream, then we still
 	   may have buffered data around, queued to be printed right now.
 	   This is intended to improve performance as it takes more effort
 	   to write a single character to a file than to write a bunch. */

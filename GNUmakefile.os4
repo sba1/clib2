@@ -568,6 +568,7 @@ NET_LIB = \
 	socket_shutdown.o \
 	socket_socket.o \
 	socket_hook_entry.o \
+	socket_hstrerror.o \
 	usergroup_crypt.o \
 	usergroup_data.o \
 	usergroup_endgrent.o \

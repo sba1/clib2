@@ -129,13 +129,14 @@ __close(int file_descriptor,int * error_ptr)
 	{
 		struct file_hook_message message;
 
-		/* Reset the console to regular buffered input. */
-		if(FLAG_IS_SET(fd->fd_Flags,FDF_NON_BLOCKING))
+		/* Reset the console to regular buffered/unbuffered input. */
+		if((FLAG_IS_SET(fd->fd_Flags,FDF_NON_BLOCKING) && FLAG_IS_CLEAR(fd->fd_Flags,FDF_DEFAULT_NON_BLOCKING)) ||
+		   (FLAG_IS_CLEAR(fd->fd_Flags,FDF_NON_BLOCKING) && FLAG_IS_SET(fd->fd_Flags,FDF_DEFAULT_NON_BLOCKING)))
 		{
 			SHOWMSG("resetting non-blocking access mode");
 
 			message.action	= file_hook_action_set_blocking;
-			message.arg		= 1;
+			message.arg		= FLAG_IS_SET(fd->fd_Flags,FDF_NON_BLOCKING);
 
 			assert( fd->fd_Hook != NULL );
 

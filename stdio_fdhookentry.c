@@ -1848,9 +1848,9 @@ __fd_hook_entry(
 				SHOWMSG("changing the mode");
 
 				if(message->arg != 0)
-					mode = 0; /* buffered mode */
+					mode = DOSFALSE;	/* buffered mode */
 				else
-					mode = 1; /* single character mode */
+					mode = DOSTRUE;		/* single character mode */
 
 				if(CANNOT SetMode(fd->fd_DefaultFile,mode))
 				{

@@ -131,35 +131,11 @@ __stdio_init(void)
 	if(__stdio_lock_init() < 0)
 		goto out;
 
-	__iob = malloc(sizeof(*__iob) * num_standard_files);
-	if(__iob == NULL)
+	if(__grow_iob_table(num_standard_files) < 0)
 		goto out;
 
-	for(i = 0 ; i < num_standard_files ; i++)
-	{
-		__iob[i] = malloc(sizeof(*__iob[i]));
-		if(__iob[i] == NULL)
-			goto out;
-
-		memset(__iob[i],0,sizeof(*__iob[i]));
-	}
-
-	__num_iob = num_standard_files;
-
-	__fd = malloc(sizeof(*__fd) * num_standard_files);
-	if(__fd == NULL)
+	if(__grow_fd_table(num_standard_files) < 0)
 		goto out;
-
-	for(i = 0 ; i < num_standard_files ; i++)
-	{
-		__fd[i] = malloc(sizeof(*__fd[i]));
-		if(__fd[i] == NULL)
-			goto out;
-
-		memset(__fd[i],0,sizeof(*__fd[i]));
-	}
-
-	__num_fd = num_standard_files;
 
 	/* Now initialize the standard I/O streams (input, output, error). */
 	for(i = STDIN_FILENO ; i <= STDERR_FILENO ; i++)

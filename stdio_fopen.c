@@ -76,7 +76,7 @@ fopen(const char *filename, const char *mode)
 	slot_number = __find_vacant_iob_entry();
 	if(slot_number < 0)
 	{
-		if(__grow_iob_table() < 0)
+		if(__grow_iob_table(0) < 0)
 		{
 			SHOWMSG("couldn't find a free file table, and no memory for a new one");
 			goto out;

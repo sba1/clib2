@@ -80,7 +80,7 @@ fdopen(int file_descriptor, const char * type)
 	slot_number = __find_vacant_iob_entry();
 	if(slot_number < 0)
 	{
-		if(__grow_iob_table() < 0)
+		if(__grow_iob_table(0) < 0)
 		{
 			SHOWMSG("not enough memory for a file buffer slot");
 			goto out;

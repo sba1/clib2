@@ -114,12 +114,12 @@ extern int __find_vacant_iob_entry(void);
 /****************************************************************************/
 
 /* stdio_growfdtable.c */
-extern int __grow_fd_table(void);
+extern int __grow_fd_table(int max_fd);
 
 /****************************************************************************/
 
 /* stdio_growiobtable.c */
-extern int __grow_iob_table(void);
+extern int __grow_iob_table(int max_fd);
 
 /****************************************************************************/
 

@@ -44,53 +44,63 @@
 /****************************************************************************/
 
 int
-__grow_fd_table(void)
+__grow_fd_table(int max_fd)
 {
 	const int granularity = 10;
-	struct fd ** new_fd;
 	int new_num_fd;
 	int result = -1;
-	int i;
 
-	new_num_fd = __num_fd + granularity;
+	if(max_fd == 0)
+		new_num_fd = __num_fd + granularity;
+	else
+		new_num_fd = max_fd;
 
-	new_fd = malloc(sizeof(*new_fd) * new_num_fd);
-	if(new_fd == NULL)
+	if(new_num_fd > __num_fd)
 	{
-		SHOWMSG("not enough memory for new file descriptor table");
+		struct fd ** new_fd;
+		int i;
 
-		__set_errno(ENOMEM);
-		goto out;
-	}
-
-	for(i = __num_fd ; i < new_num_fd ; i++)
-	{
-		new_fd[i] = malloc(sizeof(*new_fd[i]));
-		if(new_fd[i] == NULL)
+		new_fd = malloc(sizeof(*new_fd) * new_num_fd);
+		if(new_fd == NULL)
 		{
-			int j;
-
-			SHOWMSG("not enough memory for new file descriptor table entry");
-
-			for(j = __num_fd ; j < i ; j++)
-				free(new_fd[j]);
-
-			free(new_fd);
+			SHOWMSG("not enough memory for new file descriptor table");
 
 			__set_errno(ENOMEM);
 			goto out;
 		}
 
-		memset(new_fd[i],0,sizeof(*new_fd[i]));
+		for(i = __num_fd ; i < new_num_fd ; i++)
+		{
+			new_fd[i] = malloc(sizeof(*new_fd[i]));
+			if(new_fd[i] == NULL)
+			{
+				int j;
+
+				SHOWMSG("not enough memory for new file descriptor table entry");
+
+				for(j = __num_fd ; j < i ; j++)
+					free(new_fd[j]);
+
+				free(new_fd);
+
+				__set_errno(ENOMEM);
+				goto out;
+			}
+
+			memset(new_fd[i],0,sizeof(*new_fd[i]));
+		}
+
+		if(__fd != NULL)
+		{
+			for(i = 0 ; i < __num_fd ; i++)
+				new_fd[i] = __fd[i];
+
+			free(__fd);
+		}
+
+		__fd		= new_fd;
+		__num_fd	= new_num_fd;
 	}
-
-	for(i = 0 ; i < __num_fd ; i++)
-		new_fd[i] = __fd[i];
-
-	free(__fd);
-
-	__fd		= new_fd;
-	__num_fd	= new_num_fd;
 
 	result = 0;
 

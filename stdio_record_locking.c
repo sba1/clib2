@@ -147,19 +147,34 @@ obtain_file_lock_semaphore(BOOL shared)
 		{
 			SHOWMSG("didn't find it; we're going to make our own");
 
-			FileLockSemaphore = AllocMem(sizeof(*FileLockSemaphore) + strlen(__file_lock_semaphore_name)+1,MEMF_ANY|MEMF_PUBLIC);
+			#if defined(__amigaos4__)
+			{
+				FileLockSemaphore = AllocSysObjectTags(ASOT_SEMAPHORE,
+					ASOSEM_Size,	sizeof(*FileLockSemaphore),
+					ASOSEM_Name,	__file_lock_semaphore_name,
+					ASOSEM_Pri,		1,
+				TAG_END);
+			}
+			#else
+			{
+				FileLockSemaphore = AllocMem(sizeof(*FileLockSemaphore) + strlen(__file_lock_semaphore_name)+1,MEMF_ANY|MEMF_PUBLIC);
+				if(FileLockSemaphore != NULL)
+				{
+					memset(FileLockSemaphore,0,sizeof(*FileLockSemaphore));
+
+					InitSemaphore(&FileLockSemaphore->fls_Semaphore);
+
+					FileLockSemaphore->fls_Semaphore.ss_Link.ln_Name = (char *)(FileLockSemaphore + 1);
+					strcpy(FileLockSemaphore->fls_Semaphore.ss_Link.ln_Name,__file_lock_semaphore_name);
+
+					FileLockSemaphore->fls_Semaphore.ss_Link.ln_Pri = 1;
+				}
+			}
+			#endif /* __amigaos4__ */
+
 			if(FileLockSemaphore != NULL)
 			{
 				SHOWMSG("adding our own semaphore");
-
-				memset(FileLockSemaphore,0,sizeof(*FileLockSemaphore));
-
-				InitSemaphore(&FileLockSemaphore->fls_Semaphore);
-
-				FileLockSemaphore->fls_Semaphore.ss_Link.ln_Name = (char *)(FileLockSemaphore + 1);
-				strcpy(FileLockSemaphore->fls_Semaphore.ss_Link.ln_Name,__file_lock_semaphore_name);
-
-				FileLockSemaphore->fls_Semaphore.ss_Link.ln_Pri = 1;
 
 				FileLockSemaphore->fls_Size = sizeof(*FileLockSemaphore);
 				NewList((struct List *)&FileLockSemaphore->fls_LockList);

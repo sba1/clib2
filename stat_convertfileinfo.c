@@ -39,6 +39,10 @@
 #include "locale_headers.h"
 #endif /* _LOCALE_HEADERS_H */
 
+#ifndef _TIME_HEADERS_H
+#include "time_headers.h"
+#endif /* _TIME_HEADERS_H */
+
 /****************************************************************************/
 
 void
@@ -109,9 +113,7 @@ __convert_file_info_to_stat(
 	if(FLAG_IS_SET(flags,FIBF_OTR_EXECUTE))
 		SET_FLAG(mode,S_IXOTH);
 
-	mtime = UNIX_TIME_OFFSET + fib->fib_Date.ds_Days * 24*60*60 + fib->fib_Date.ds_Minute * 60 + (fib->fib_Date.ds_Tick / TICKS_PER_SECOND);
-	if(__default_locale != NULL)
-		mtime += 60 * __default_locale->loc_GMTOffset;
+	mtime = __convert_datestamp_to_time(&fib->fib_Date);
 
 	if(fib->fib_DirEntryType < 0)
 	{

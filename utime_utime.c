@@ -76,20 +76,26 @@ utime(const char * path_name,const struct utimbuf * times)
 	if(__check_abort_enabled)
 		__check_abort();
 
+	/* If a modification time is provided, convert it into the local
+	   DateStamp format, as used by the SetFileDate() function. */
 	if(times != NULL)
 	{
 		time_t seconds;
 
 		seconds = times->modtime;
 
+		/* The modification time has to lie within the AmigaOS epoch. */
 		if(seconds < UNIX_TIME_OFFSET)
 		{
 			errno = EINVAL;
 			goto out;
 		}
 
+		/* Adjust the modification time to the AmigaOS epoch. */
 		seconds -= UNIX_TIME_OFFSET;
 
+		/* If possible, adjust the modification time to match the
+		   local time zone settings. */
 		if(__default_locale != NULL)
 			seconds -= 60 * __default_locale->loc_GMTOffset;
 
@@ -99,6 +105,8 @@ utime(const char * path_name,const struct utimbuf * times)
 	}
 	else
 	{
+		/* No special modification time provided; use the current
+		   time instead. */
 		DateStamp(&ds);
 	}
 

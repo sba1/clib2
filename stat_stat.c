@@ -45,6 +45,10 @@
 #include "locale_headers.h"
 #endif /* _LOCALE_HEADERS_H */
 
+#ifndef _TIME_HEADERS_H
+#include "time_headers.h"
+#endif /* _TIME_HEADERS_H */
+
 /****************************************************************************/
 
 /* The following is not part of the ISO 'C' (1994) standard. */
@@ -108,9 +112,7 @@ stat(const char * path_name, struct stat * st)
 				DateStamp(&ds);
 				PROFILE_ON();
 
-				mtime = UNIX_TIME_OFFSET + ds.ds_Days * 24*60*60 + ds.ds_Minute * 60 + (ds.ds_Tick / TICKS_PER_SECOND);
-				if(__default_locale != NULL)
-					mtime += 60 * __default_locale->loc_GMTOffset;
+				mtime = __convert_datestamp_to_time(&ds);
 
 				st->st_mode		= S_IFDIR | S_IRUSR | S_IXUSR | S_IRGRP | S_IXGRP | S_IROTH | S_IXOTH;
 				st->st_mtime	= mtime;

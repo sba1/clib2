@@ -363,6 +363,7 @@ C_LIB = \
 	time_asctime_r.o \
 	time_clock.o \
 	time_converttime.o \
+	time_convert_datestamp.o \
 	time_ctime.o \
 	time_ctime_r.o \
 	time_data.o \

@@ -97,7 +97,7 @@ fstatfs(int file_descriptor, struct statfs *buf)
 		goto out;
 	}
 
-	if(fd->fd_DefaultFile == ZERO)
+	if(FLAG_IS_SET(fd->fd_Flags,FDF_STDIO))
 	{
 		__set_errno(EBADF);
 		goto out;

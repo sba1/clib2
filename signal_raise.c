@@ -112,10 +112,6 @@ raise(int sig)
 					__print_termination_message(break_string);
 
 					SHOWMSG("bye, bye...");
-
-					/* Note that we drop into the exit() function which
-					   does not trigger the exit trap. */
-					_exit(EXIT_FAILURE);
 				}
 
 				/* Drop straight into abort(), which might call signal()

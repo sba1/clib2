@@ -59,7 +59,9 @@ close(int file_descriptor)
 	if(__check_abort_enabled)
 		__check_abort();
 
-	fd = __get_file_descriptor(file_descriptor);
+	/* We want to affect this very file descriptor and not the
+	   original one associated with an alias of it. */
+	fd = __get_file_descriptor_dont_resolve(file_descriptor);
 	if(fd == NULL)
 	{
 		__set_errno(EBADF);

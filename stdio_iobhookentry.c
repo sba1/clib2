@@ -58,7 +58,13 @@ __iob_hook_entry(
 			assert( __fd[file_iob->iob_Descriptor] != NULL );
 			assert( FLAG_IS_SET(__fd[file_iob->iob_Descriptor]->fd_Flags,FDF_IN_USE) );
 
-			fd = __get_file_descriptor(file_iob->iob_Descriptor);
+			/* When closing, we want to affect this very file descriptor
+			   and not the original one associated with an alias of it. */
+			if(fam->fam_Action == file_action_close)
+				fd = __get_file_descriptor_dont_resolve(file_iob->iob_Descriptor);
+			else
+				fd = __get_file_descriptor(file_iob->iob_Descriptor);
+
 			if(fd == NULL)
 			{
 				fam->fam_Error = EBADF;

@@ -66,14 +66,22 @@ __remove_fd_alias(struct fd * fd)
 	else if (fd->fd_NextLink != NULL) /* this one has aliases attached; it is the 'original' resource */
 	{
 		struct fd * first_alias;
+		struct fd * next_alias;
 		struct fd * list_fd;
 
 		/* The first link now becomes the original resource */
 		first_alias = fd->fd_NextLink;
+		next_alias = first_alias->fd_NextLink;
+
+		/* Structure copy... */
+		(*first_alias) = (*fd);
+
+		/* Fix up the linkage. */
+		first_alias->fd_NextLink = next_alias;
 		first_alias->fd_Original = NULL;
 
 		/* The resources are migrated to the first link. */
-		for(list_fd = first_alias->fd_NextLink ;
+		for(list_fd = next_alias ;
 		    list_fd != NULL ;
 		    list_fd = list_fd->fd_NextLink)
 		{

@@ -274,10 +274,10 @@ FILE_CONSTRUCTOR(stdio_file_init)
 				goto out;
 			}
 
-			/* We ignore the file handle and let the file I/O code
-			   in the fd hook pick up the appropriate Input/Output/ErrorOutput
-			   handle. */
-			default_file = ZERO;
+			/* We ignore the file handle and let the file I/O
+			   code in the fd hook pick up the appropriate
+			   Input/Output/ErrorOutput handle. */
+			default_file = i;
 
 			fd_flags |= FDF_NO_CLOSE | FDF_STDIO;
 		}
@@ -364,7 +364,7 @@ FILE_CONSTRUCTOR(stdio_file_init)
 		PROFILE_OFF();
 
 		/* Figure out if the standard error stream is bound to a console. */
-		if(__fd[STDERR_FILENO]->fd_DefaultFile != ZERO)
+		if(FLAG_IS_CLEAR(__fd[STDERR_FILENO]->fd_Flags,FDF_STDIO))
 		{
 			if(IsInteractive(__fd[STDERR_FILENO]->fd_DefaultFile))
 				SET_FLAG(__fd[STDERR_FILENO]->fd_Flags,FDF_IS_INTERACTIVE);

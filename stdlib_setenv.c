@@ -53,7 +53,36 @@
 
 /****************************************************************************/
 
-struct LocalVariable * __lv_root;
+struct LocalVariable
+{
+	struct LocalVariable *	lv_Next;
+	char *					lv_Name;
+};
+
+/****************************************************************************/
+
+STATIC struct LocalVariable * __lv_root;
+
+/****************************************************************************/
+
+CLIB_DESTRUCTOR(__setenv_exit)
+{
+	ENTER();
+
+	/* Now for the local variables that may still be set. */
+	if(__lv_root != NULL)
+	{
+		do
+		{
+			D(("deleting variable '%s'",__lv_root->lv_Name));
+
+			DeleteVar(__lv_root->lv_Name,0);
+		}
+		while((__lv_root = __lv_root->lv_Next) != NULL);
+	}
+
+	LEAVE();
+}
 
 /****************************************************************************/
 

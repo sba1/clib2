@@ -60,20 +60,6 @@ __stdlib_exit(void)
 	}
 	#endif /* __MEM_DEBUG */
 
-	/* Now for the local variables that may still be set. */
-	if(__lv_root != NULL)
-	{
-		/* ZZZ why is this being done here? */
-
-		do
-		{
-			D(("deleting variable '%s'",__lv_root->lv_Name));
-
-			DeleteVar(__lv_root->lv_Name,0);
-		}
-		while((__lv_root = __lv_root->lv_Next) != NULL);
-	}
-
 	/* Clean this up, too, just to be safe. */
 	NewList((struct List *)&__alloca_memory_list);
 

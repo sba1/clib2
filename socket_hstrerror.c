@@ -118,7 +118,7 @@ hstrerror(int error_number)
 
 			case 3:	/* NO_RECOVERY */
 
-				result = "Unknown server error_number";
+				result = "Unknown server error";
 				break;
 
 			default:

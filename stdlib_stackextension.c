@@ -65,6 +65,11 @@ static struct stackframe *	__stk_spare;			/* spare stackframes */
 
 /****************************************************************************/
 
+ULONG __stk_extensions;	/* number of stack extensions performed */
+ULONG __stk_maxsize;	/* maximum amount of memory allocated for stack extension */	
+
+/****************************************************************************/
+
 #if defined(SMALL_DATA)
 #define A4(x) "a4@(" #x ":W)"
 #elif defined(SMALL_DATA32)

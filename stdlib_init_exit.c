@@ -76,6 +76,9 @@ __stdlib_init(void)
 
 	ENTER();
 
+	if(__machine_test() < 0)
+		goto out;
+
 	if(__WBenchMsg == NULL)
 	{
 		const size_t program_name_size = 256;

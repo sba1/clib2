@@ -220,4 +220,9 @@ extern int __stdio_file_init(void);
 
 /****************************************************************************/
 
+/* stdio_flush_all_files.c */
+extern int __flush_all_files(int buffer_mode);
+
+/****************************************************************************/
+
 #endif /* _STDIO_PROTOS_H */

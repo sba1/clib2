@@ -299,6 +299,7 @@ STDIO_OBJ = \
 	stdio_findvacantiobentry.o \
 	stdio_flockfile.o \
 	stdio_flush.o \
+	stdio_flush_all_files.o \
 	stdio_flushiobwritebuffer.o \
 	stdio_fopen.o \
 	stdio_fprintf.o \

@@ -200,6 +200,7 @@ C_LIB = \
 	stdio_findvacantiobentry.o \
 	stdio_flockfile.o \
 	stdio_flush.o \
+	stdio_flush_all_files.o \
 	stdio_flushiobwritebuffer.o \
 	stdio_fopen.o \
 	stdio_fprintf.o \
@@ -529,6 +530,7 @@ MATH_LIB = \
 	math_kernel_sin.o \
 	stdio_asprintf.o \
 	stdio_flush.o \
+	stdio_flush_all_files.o \
 	stdio_fprintf.o \
 	stdio_fscanf.o \
 	stdio_printf.o \

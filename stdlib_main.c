@@ -117,11 +117,8 @@ call_main(void)
 		   complicated than they already are. */
 		__check_abort_enabled = FALSE;
 
-		if(stdout != NULL)
-			fflush(stdout);
-
-		if(stderr != NULL)
-			fflush(stderr);
+		/* Dump all currently unwritten data, especially to the console. */
+		__flush_all_files(-1);
 
 		__show_error("Stack overflow detected");
 

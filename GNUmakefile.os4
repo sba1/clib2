@@ -15,7 +15,7 @@ NET_INCLUDE = netinclude
 CC = ppc-amigaos-gcc
 AR = ppc-amigaos-ar -q
 RANLIB = ppc-amigaos-ranlib
-COPY = cp
+COPY = cp -a
 DELETE = rm -r
 MAKEDIR = mkdir
 

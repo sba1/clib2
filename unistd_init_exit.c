@@ -80,21 +80,6 @@ __unistd_exit(void)
 		}
 	}
 
-	if(__timer_request != NULL)
-	{
-		if(__timer_request->tr_node.io_Device != NULL)
-			CloseDevice((struct IORequest *)__timer_request);
-
-		DeleteIORequest((struct IORequest *)__timer_request);
-		__timer_request = NULL;
-	}
-
-	if(__timer_port != NULL)
-	{
-		DeleteMsgPort(__timer_port);
-		__timer_port = NULL;
-	}
-
 	if(__current_directory_changed)
 	{
 		BPTR old_dir;

@@ -54,6 +54,14 @@ extern struct MinList __unlink_list;
 /* Local timer I/O. */
 extern struct MsgPort *		__timer_port;
 extern struct timerequest *	__timer_request;
+extern BOOL					__timer_busy;
+extern struct Library *		__TimerBase;
+
+/****************************************************************************/
+
+#if defined(__amigaos4__)
+extern struct TimerIFace * __ITimer;
+#endif /* __amigaos4__ */
 
 /****************************************************************************/
 
@@ -72,6 +80,10 @@ extern BOOL __unix_path_semantics;
 
 extern int __set_current_path(const char * path_name);
 extern void __strip_double_slash(char * file_name,int len);
+
+/****************************************************************************/
+
+extern unsigned int __time_delay(unsigned long seconds,unsigned long microseconds);
 
 /****************************************************************************/
 

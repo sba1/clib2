@@ -42,13 +42,93 @@
 /****************************************************************************/
 
 unsigned int
-sleep(unsigned int seconds)
+__time_delay(unsigned long seconds,unsigned long microseconds)
 {
-	unsigned int result;
+	unsigned int result = 0;
 
 	ENTER();
 
-	result = __time_delay(seconds,0);
+	SHOWVALUE(seconds);
+
+	if(__check_abort_enabled)
+		__check_abort();
+
+	if((seconds > 0 || microseconds > 0) && NOT __timer_busy)
+	{
+		struct Library * TimerBase = __TimerBase;
+		#if defined(__amigaos4__)
+		struct TimerIFace * ITimer = __ITimer;
+		#endif /* __amigaos4__ */
+
+		ULONG signals_to_wait_for;
+		ULONG seconds_then;
+		ULONG timer_signal;
+		struct timeval tv;
+		ULONG signals;
+
+		__timer_busy = TRUE;
+
+		__timer_request->tr_node.io_Command	= TR_ADDREQUEST;
+		__timer_request->tr_time.tv_secs	= seconds;
+		__timer_request->tr_time.tv_micro	= microseconds;
+
+		timer_signal = (1UL << __timer_port->mp_SigBit);
+
+		signals_to_wait_for = timer_signal;
+
+		SetSignal(0,signals_to_wait_for);
+
+		if(__check_abort_enabled)
+			SET_FLAG(signals_to_wait_for,SIGBREAKF_CTRL_C);
+
+		PROFILE_OFF();
+		GetSysTime(&tv);
+		PROFILE_ON();
+
+		seconds_then = tv.tv_secs + seconds;
+
+		SendIO((struct IORequest *)__timer_request);
+
+		while(TRUE)
+		{
+			PROFILE_OFF();
+			signals = Wait(signals_to_wait_for);
+			PROFILE_ON();
+
+			if(FLAG_IS_SET(signals,SIGBREAKF_CTRL_C))
+			{
+				ULONG seconds_now;
+
+				if(CheckIO((struct IORequest *)__timer_request))
+					AbortIO((struct IORequest *)__timer_request);
+
+				WaitIO((struct IORequest *)__timer_request);
+
+				SetSignal(SIGBREAKF_CTRL_C,SIGBREAKF_CTRL_C);
+				__check_abort();
+
+				/* Now figure out how many seconds have elapsed and
+				   how many would still remain. */
+				PROFILE_OFF();
+				GetSysTime(&tv);
+				PROFILE_ON();
+
+				seconds_now = tv.tv_secs;
+				if(seconds_now < seconds_then)
+					result = seconds_then - seconds_now;
+
+				break;
+			}
+
+			if(FLAG_IS_SET(signals,timer_signal))
+			{
+				WaitIO((struct IORequest *)__timer_request);
+				break;
+			}
+		}
+
+		__timer_busy = FALSE;
+	}
 
 	RETURN(result);
 	return(result);

@@ -200,22 +200,4 @@ extern void __duplicate_fd(struct fd * duplicate_fd,struct fd * original_fd);
 
 /****************************************************************************/
 
-#if defined(FLOATING_POINT_SUPPORT)
-
-/****************************************************************************/
-
-/* stdio_isnotanumber.c */
-extern int __is_not_a_number(long double number);
-
-/****************************************************************************/
-
-/* stdio_isinfinity.c */
-extern int __is_infinity(long double number);
-
-/****************************************************************************/
-
-#endif /* FLOATING_POINT_SUPPORT */
-
-/****************************************************************************/
-
 #endif /* _STDIO_PROTOS_H */

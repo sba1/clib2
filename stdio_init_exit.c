@@ -113,6 +113,8 @@ __stdio_init(void)
 
 	ENTER();
 
+	ASSERT( num_standard_files == (STDERR_FILENO-STDIN_FILENO+1) );
+
 	__iob = malloc(sizeof(*__iob) * num_standard_files);
 	if(__iob == NULL)
 		goto out;
@@ -183,11 +185,9 @@ __stdio_init(void)
 		/* Check if this stream is attached to a console window. */
 		if(default_file != ZERO)
 		{
-			struct FileHandle * fh = BADDR(default_file);
-
 			PROFILE_OFF();
 
-			if(fh->fh_Type != NULL && IsInteractive(default_file))
+			if(IsInteractive(default_file))
 				SET_FLAG(fd_flags,FDF_IS_INTERACTIVE);
 
 			PROFILE_ON();
@@ -257,9 +257,7 @@ __stdio_init(void)
 	/* Figure out if the standard error stream is bound to a console. */
 	if(__fd[STDERR_FILENO]->fd_DefaultFile != ZERO)
 	{
-		struct FileHandle * fh = BADDR(IsInteractive(__fd[STDERR_FILENO]->fd_DefaultFile));
-
-		if(fh->fh_Type != NULL && IsInteractive(__fd[STDERR_FILENO]->fd_DefaultFile))
+		if(IsInteractive(__fd[STDERR_FILENO]->fd_DefaultFile))
 			SET_FLAG(__fd[STDERR_FILENO]->fd_Flags,FDF_IS_INTERACTIVE);
 	}
 

@@ -52,6 +52,12 @@
 
 /****************************************************************************/
 
+#if defined(__amigaos4__) && !defined(Flush)
+#define Flush(fh) FFlush(fh)
+#endif /* __amigaos4__ && !Flush */
+
+/****************************************************************************/
+
 /* This is used in place of ExamineFH() in order to work around a bug in
  * dos.library V40 and below: a "NIL:" file handle will crash the
  * ExamineFH() function.

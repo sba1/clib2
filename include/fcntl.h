@@ -67,6 +67,7 @@ extern "C" {
 #define O_NONBLOCK	(1<<6)
 #define O_SYNC		(0)
 #define O_NOCTTY	(0)
+#define O_ASYNC		(1<<7)
 
 /****************************************************************************/
 

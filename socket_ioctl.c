@@ -47,6 +47,10 @@
 
 /****************************************************************************/
 
+#include <sys/ioctl.h>
+
+/****************************************************************************/
+
 int
 ioctl(int sockfd,unsigned long request, ... /* char *arg */)
 {
@@ -80,6 +84,26 @@ ioctl(int sockfd,unsigned long request, ... /* char *arg */)
 	PROFILE_OFF();
 	result = __IoctlSocket((LONG)fd->fd_DefaultFile,request,param);
 	PROFILE_ON();
+
+	if(result == OK)
+	{
+		int * arg = (int *)param;
+
+		if(request == FIONBIO)
+		{
+			if((*arg) != 0)
+				SET_FLAG(fd->fd_Flags,FDF_NON_BLOCKING);
+			else
+				CLEAR_FLAG(fd->fd_Flags,FDF_NON_BLOCKING);
+		}
+		else if (request == FIOASYNC)
+		{
+			if((*arg) != 0)
+				SET_FLAG(fd->fd_Flags,FDF_ASYNC_IO);
+			else
+				CLEAR_FLAG(fd->fd_Flags,FDF_ASYNC_IO);
+		}
+	}
 
 	va_end(arg);
 

@@ -252,6 +252,8 @@ struct iob
 										   to have its protection bits updated after
 										   it has been closed */
 #define FDF_CACHE_POSITION	(1UL<<9)	/* Cache the file position. */
+#define FDF_ASYNC_IO		(1UL<<10)	/* File was switched into asynchronous I/O
+										   mode (sockets only). */
 
 /****************************************************************************/
 
@@ -306,7 +308,8 @@ enum file_hook_action_t
 	file_hook_action_info,
 	file_hook_action_duplicate_fd,
 	file_hook_action_seek_and_extend,
-	file_hook_action_is_interactive
+	file_hook_action_is_interactive,
+	file_hook_action_set_async
 };
 
 /****************************************************************************/

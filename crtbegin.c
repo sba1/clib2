@@ -48,7 +48,7 @@ _do_ctors(void)
 static void
 _do_dtors(void)
 {
-	unsigned long i = (unsigned long)__DTOR_LIST__[0];
+	ULONG i = (ULONG)__DTOR_LIST__[0];
 	void (**pFuncPtr)(void);
 
 	if (i == ~0UL)

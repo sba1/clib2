@@ -162,20 +162,21 @@ fseek(FILE *stream, long int offset, int wherefrom)
 
 			SHOWPOINTER(&fam);
 
-			fam.fam_Action		= file_action_seek;
-			fam.fam_Position	= offset;
-			fam.fam_Mode		= wherefrom;
+			fam.fam_Action	= file_action_seek;
+			fam.fam_Offset	= offset;
+			fam.fam_Mode	= wherefrom;
 
-			SHOWVALUE(fam.fam_Position);
+			SHOWVALUE(fam.fam_Offset);
 			SHOWVALUE(fam.fam_Mode);
 
 			assert( file->iob_Action != NULL );
 
 			if((*file->iob_Action)(file,&fam) < 0)
 			{
+				SET_FLAG(file->iob_Flags,IOBF_ERROR);
+
 				__set_errno(fam.fam_Error);
 
-				SET_FLAG(file->iob_Flags,IOBF_ERROR);
 				goto out;
 			}
 		}

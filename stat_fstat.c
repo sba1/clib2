@@ -104,6 +104,8 @@ fstat(int file_descriptor, struct stat * buffer)
 
 	__convert_file_info_to_stat(fam.fam_FileSystem,fib,buffer);
 
+	result = 0;
+
  out:
 
 	RETURN(result);

@@ -49,13 +49,12 @@ __vsnprintf_hook_entry(
 	struct file_action_message *	fam)
 {
 	int result = -1;
-	int error = OK;
 
 	assert( fam != NULL && string_iob != NULL );
 
 	if(fam->fam_Action != file_action_write)
 	{
-		error = EBADF;
+		fam->fam_Error = EBADF;
 		goto out;
 	}
 
@@ -82,8 +81,6 @@ __vsnprintf_hook_entry(
 	result = fam->fam_Size;
 
  out:
-
-	fam->fam_Error = error;
 
 	return(result);
 }

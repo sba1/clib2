@@ -50,8 +50,9 @@
 ssize_t
 write(int file_descriptor, const void * buffer, size_t num_bytes)
 {
+	ssize_t num_bytes_written;
+	ssize_t result = -1;
 	struct fd * fd;
-	off_t result = -1;
 
 	ENTER();
 
@@ -108,14 +109,19 @@ write(int file_descriptor, const void * buffer, size_t num_bytes)
 
 		assert( fd->fd_Action != NULL );
 
-		result = (*fd->fd_Action)(fd,&fam);
-		if(result < 0)
+		num_bytes_written = (*fd->fd_Action)(fd,&fam);
+		if(num_bytes_written < 0)
+		{
 			__set_errno(fam.fam_Error);
+			goto out;
+		}
 	}
 	else
 	{
-		result = 0;
+		num_bytes_written = 0;
 	}
+
+	result = num_bytes_written;
 
  out:
 

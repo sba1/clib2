@@ -86,7 +86,7 @@ setsockopt(int sockfd,int level,int optname,const void *optval,int optlen)
 		goto out;
 
 	PROFILE_OFF();
-	result = __setsockopt((LONG)fd->fd_DefaultFile,level,optname,optval,optlen);
+	result = __setsockopt((LONG)fd->fd_DefaultFile,level,optname,(void *)optval,optlen);
 	PROFILE_ON();
 
  out:

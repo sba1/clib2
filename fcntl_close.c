@@ -70,9 +70,13 @@ close(int file_descriptor)
 
 	assert( fd->fd_Action != NULL );
 
-	result = (*fd->fd_Action)(fd,&fam);
-	if(result < 0)
+	if((*fd->fd_Action)(fd,&fam) < 0)
+	{
 		__set_errno(fam.fam_Error);
+		goto out;
+	}
+
+	result = 0;
 
  out:
 

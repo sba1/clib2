@@ -87,6 +87,5 @@ __sscanf_hook_entry(
 
  out:
 
-
 	return(result);
 }

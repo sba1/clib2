@@ -77,9 +77,9 @@ __drop_iob_read_buffer(struct iob * file)
 
 				SHOWMSG("calling the action function");
 
-				fam.fam_Action		= file_action_seek;
-				fam.fam_Position	= -num_unread_bytes;
-				fam.fam_Mode		= SEEK_CUR;
+				fam.fam_Action	= file_action_seek;
+				fam.fam_Offset	= -num_unread_bytes;
+				fam.fam_Mode	= SEEK_CUR;
 
 				assert( file->iob_Action != NULL );
 

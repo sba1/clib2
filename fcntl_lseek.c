@@ -46,6 +46,7 @@ lseek(int file_descriptor, off_t offset, int mode)
 {
 	struct file_action_message fam;
 	off_t result = -1;
+	off_t position;
 	struct fd * fd;
 
 	ENTER();
@@ -76,18 +77,20 @@ lseek(int file_descriptor, off_t offset, int mode)
 		goto out;
 	}
 
-	fam.fam_Action		= file_action_seek;
-	fam.fam_Position	= offset;
-	fam.fam_Mode		= mode;
+	fam.fam_Action	= file_action_seek;
+	fam.fam_Offset	= offset;
+	fam.fam_Mode	= mode;
 
 	assert( fd->fd_Action != NULL );
 
-	result = (*fd->fd_Action)(fd,&fam);
-	if(result < 0)
+	position = (*fd->fd_Action)(fd,&fam);
+	if(position < 0)
 	{
 		__set_errno(fam.fam_Error);
 		goto out;
 	}
+
+	result = position;
 
  out:
 

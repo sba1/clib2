@@ -53,7 +53,7 @@ typedef unsigned int gid_t;
 typedef unsigned int ino_t;
 typedef unsigned int mode_t;
 typedef unsigned int nlink_t;
-typedef int off_t;
+typedef long int off_t;
 typedef int pid_t;
 typedef unsigned int rlim_t;
 typedef int ssize_t;

@@ -75,15 +75,15 @@ __flush_iob_write_buffer(struct iob * file)
 
 		assert( file->iob_Action != NULL );
 
-		if((*file->iob_Action)(file,&fam) != file->iob_BufferWriteBytes)
+		if((*file->iob_Action)(file,&fam) < 0)
 		{
 			SHOWMSG("that didn't work");
+
+			result = -1;
 
 			SET_FLAG(file->iob_Flags,IOBF_ERROR);
 
 			__set_errno(fam.fam_Error);
-
-			result = -1;
 			goto out;
 		}
 

@@ -89,11 +89,11 @@ __fill_iob_read_buffer(struct iob * file)
 	num_bytes_read = (*file->iob_Action)(file,&fam);
 	if(num_bytes_read < 0)
 	{
-		__set_errno(fam.fam_Error);
+		SET_FLAG(file->iob_Flags,IOBF_ERROR);
 
 		D(("got error %ld",fam.fam_Error));
 
-		SET_FLAG(file->iob_Flags,IOBF_ERROR);
+		__set_errno(fam.fam_Error);
 		goto out;
 	}
 

@@ -123,10 +123,6 @@ __vasprintf(const char *file,int line,char **ret,const char *format,va_list arg)
 
 /****************************************************************************/
 
-#if NOT defined(__MEM_DEBUG)
-
-/****************************************************************************/
-
 int
 vasprintf(char **ret,const char *format,va_list arg)
 {
@@ -136,7 +132,3 @@ vasprintf(char **ret,const char *format,va_list arg)
 
 	return(result);
 }
-
-/****************************************************************************/
-
-#endif /* __MEM_DEBUG */

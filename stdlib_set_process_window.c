@@ -35,27 +35,26 @@
 #include "stdlib_headers.h"
 #endif /* _STDLIB_HEADERS_H */
 
-#ifndef _SIGNAL_HEADERS_H
-#include "signal_headers.h"
-#endif /* _SIGNAL_HEADERS_H */
-
-#ifndef _STDIO_HEADERS_H
-#include "stdio_headers.h"
-#endif /* _STDIO_HEADERS_H */
-
 /****************************************************************************/
 
-void
-abort(void)
+APTR
+__set_process_window(APTR new_window_pointer)
 {
-	raise(SIGABRT);
+	APTR result;
 
-	__check_abort_enabled = FALSE;
+	#if defined(__amigaos4__)
+	{
+		result = SetProcWindow(new_window_pointer);
+	}
+	#else
+	{
+		struct Process * this_process = (struct Process *)FindTask(NULL);
 
-	__print_termination_message(NULL);
+		result = this_process->pr_WindowPtr;
 
-	/* Note that we drop into the exit() function which
-	 * does not trigger the exit trap.
-	 */
-	_exit(EXIT_FAILURE);
+		this_process->pr_WindowPtr = new_window_pointer;
+	}
+	#endif /* __amigaos4__ */
+
+	return(result);
 }

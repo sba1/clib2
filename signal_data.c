@@ -57,5 +57,4 @@ BOOL __check_abort_enabled = TRUE;
 
 /****************************************************************************/
 
-BOOL __termination_message_printed;
 BOOL __termination_message_disabled;

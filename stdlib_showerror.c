@@ -89,11 +89,11 @@ __show_error(const char * message)
 
 	#if defined(__amigaos4__)
 	{
-		IDOS = (struct DOSIFace *)GetInterface((struct Library *)DOSBase, "main", 1, 0);
+		IDOS = (struct DOSIFace *)GetInterface(DOSBase, "main", 1, 0);
 		if (IDOS == NULL)
 			goto out;
 
-		IIntuition = (struct IntuitionIFace *)GetInterface((struct Library *)IntuitionBase, "main", 1, 0);
+		IIntuition = (struct IntuitionIFace *)GetInterface(IntuitionBase, "main", 1, 0);
 		if (IIntuition == NULL)
 			goto out;
 	}

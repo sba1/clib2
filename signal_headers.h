@@ -76,12 +76,7 @@ extern int NOCOMMON __signals_blocked;
 
 /****************************************************************************/
 
-extern BOOL NOCOMMON __termination_message_printed;
 extern BOOL NOCOMMON __termination_message_disabled;
-
-/****************************************************************************/
-
-extern const char NOCOMMON __abnormal_program_termination[];
 
 /****************************************************************************/
 

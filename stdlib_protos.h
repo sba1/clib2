@@ -185,6 +185,9 @@ extern void __stkovf(void);
 /* stdlib_termination_message.c */
 extern void __print_termination_message(const char * termination_message);
 
+/* stdlib_set_process_window.c */
+APTR __set_process_window(APTR new_window_pointer);
+
 /****************************************************************************/
 
 #endif /* _STDLIB_PROTOS_H */

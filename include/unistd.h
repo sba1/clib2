@@ -103,11 +103,9 @@ extern char *realpath(const char *file_name, char *resolved_name);
 
 extern char * getcwd(char * buffer, size_t buffer_size);
 
-/* This is the version for use with memory debugging; do not call
-   it directly! */
+#ifdef __MEM_DEBUG
 extern char * __getcwd(char * buffer,size_t buffer_size,const char *file,int line);
 
-#ifdef __MEM_DEBUG
 #define getcwd(buffer,buffer_size) __getcwd((buffer),(buffer_size),__FILE__,__LINE__)
 #endif /* __MEM_DEBUG */
 

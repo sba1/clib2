@@ -215,10 +215,6 @@ __getcwd(char * buffer,size_t buffer_size,const char *file,int line)
 
 /****************************************************************************/
 
-#if NOT defined(__MEM_DEBUG)
-
-/****************************************************************************/
-
 char *
 getcwd(char * buffer, size_t buffer_size)
 {
@@ -228,7 +224,3 @@ getcwd(char * buffer, size_t buffer_size)
 
 	return(result);
 }
-
-/****************************************************************************/
-
-#endif /* __MEM_DEBUG */

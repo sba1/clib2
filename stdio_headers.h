@@ -72,7 +72,6 @@
 
 /****************************************************************************/
 
-/* The following is not part of the ISO 'C' standard. */
 #include <sys/stat.h>
 #include <unistd.h>
 #include <dirent.h>

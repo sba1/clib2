@@ -645,7 +645,7 @@ vfprintf(FILE * stream,const char * format, va_list arg)
 				else
 					v = va_arg(arg, double);
 
-				if(__is_infinity(fabs(v)))
+				if(isinf(v) != 0)
 				{
 					SHOWMSG("infinity");
 
@@ -657,7 +657,7 @@ vfprintf(FILE * stream,const char * format, va_list arg)
 
 					fill_character = ' ';
 				}
-				else if (__is_not_a_number(v))
+				else if (isnan(v))
 				{
 					SHOWMSG("not a number");
 

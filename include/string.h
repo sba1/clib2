@@ -89,7 +89,7 @@ extern void *memset(void *ptr, int val, size_t len);
 
 /****************************************************************************/
 
-/* The following is not part of the ISO 'C' standard. */
+/* The following is not part of the ISO 'C' (1994) standard. */
 
 /****************************************************************************/
 

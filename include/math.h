@@ -81,6 +81,17 @@ extern double tanh(double x);
 
 /****************************************************************************/
 
+/* The following is not part of the ISO 'C' (1994) standard. */
+
+/****************************************************************************/
+
+extern double rint(double x);
+extern float rintf(float x);
+extern int isinf(double x);
+extern int isnan(double x);
+
+/****************************************************************************/
+
 #ifdef __cplusplus
 }
 #endif /* __cplusplus */

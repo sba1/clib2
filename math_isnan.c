@@ -41,6 +41,10 @@
 
 /****************************************************************************/
 
+/* The following is not part of the ISO 'C' (1994) standard. */
+
+/****************************************************************************/
+
 union ieee_long_double
 {
 	long double		value;
@@ -62,16 +66,15 @@ union ieee_single
 /****************************************************************************/
 
 int
-__is_not_a_number(long double number)
+isnan(double number)
 {
 	int result;
 
 	ENTER();
 
 	/* This assumes that a) 'number' is stored in big endian format
-	 * and b) it is stored in IEEE 754 format.
-	 */
-	if(sizeof(number) == 4) /* single precision */
+	   and b) it is stored in IEEE 754 format. */
+	if (sizeof(number) == 4) /* single precision */
 	{
 		union ieee_single x;
 
@@ -107,5 +110,7 @@ __is_not_a_number(long double number)
 	RETURN(result);
 	return(result);
 }
+
+/****************************************************************************/
 
 #endif /* FLOATING_POINT_SUPPORT */

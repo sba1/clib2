@@ -308,7 +308,7 @@ extern int __flush(FILE *stream);
 
 /****************************************************************************/
 
-/* The following is not part of the ISO 'C' standard. */
+/* The following is not part of the ISO 'C' (1994) standard. */
 
 /****************************************************************************/
 

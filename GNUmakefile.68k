@@ -453,11 +453,15 @@ MATH_LIB = \
 	math_fmod.o \
 	math_frexp.o \
 	math_init_exit.o \
+	math_isinf.o \
+	math_isnan.o \
 	math_ldexp.o \
 	math_log.o \
 	math_log10.o \
 	math_modf.o \
 	math_pow.o \
+	math_rint.o \
+	math_rintf.o \
 	math_sin.o \
 	math_sinh.o \
 	math_sqrt.o \
@@ -467,8 +471,6 @@ MATH_LIB = \
 	stdio_flush.o \
 	stdio_fprintf.o \
 	stdio_fscanf.o \
-	stdio_isinfinity.o \
-	stdio_isnotanumber.o \
 	stdio_printf.o \
 	stdio_scanf.o \
 	stdio_snprintf.o \

@@ -63,7 +63,7 @@ extern int toupper(int c);
 
 /****************************************************************************/
 
-/* The following is not part of the ISO 'C' standard. */
+/* The following is not part of the ISO 'C' (1994) standard. */
 
 #define isascii(c) ((unsigned)(c) <= 127)
 

@@ -31,19 +31,13 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef _STDLIB_NULL_POINTER_CHECK_H
-#include "stdlib_null_pointer_check.h"
-#endif /* _STDLIB_NULL_POINTER_CHECK_H */
+#ifndef _STDIO_HEADERS_H
+#include "stdio_headers.h"
+#endif /* _STDIO_HEADERS_H */
 
 /****************************************************************************/
 
-#ifndef _STDLIB_HEADERS_H
-#include "stdlib_headers.h"
-#endif /* _STDLIB_HEADERS_H */
-
-/****************************************************************************/
-
-#include <sys/stat.h>
+#if defined (FLOATING_POINT_SUPPORT)
 
 /****************************************************************************/
 
@@ -51,45 +45,85 @@
 
 /****************************************************************************/
 
-char *
-mkdtemp(char *name_template)
+union ieee_long_double
 {
-	char * result = NULL;
+	long double		value;
+	unsigned long	raw[3];
+};
+
+union ieee_double
+{
+	double			value;
+	unsigned long	raw[2];
+};
+
+union ieee_single
+{
+	float			value;
+	unsigned long	raw[1];
+};
+
+/****************************************************************************/
+
+int
+isinf(double number)
+{
+	int is_infinity;
+	int result;
 
 	ENTER();
 
-	SHOWSTRING(name_template);
-
-	assert( name_template != NULL );
-
-	#if defined(CHECK_FOR_NULL_POINTERS)
+	/* This assumes that a) 'number' is stored in big endian format
+	   and b) it is stored in IEEE 754 format. */
+	if (sizeof(number) == 4) /* single precision */
 	{
-		if(name_template == NULL)
-		{
-			SHOWMSG("invalid name template");
+		union ieee_single x;
 
-			errno = EFAULT;
-			goto out;
-		}
+		x.value = number;
+
+		/* Exponent = 255 and fraction = 0.0 */
+		is_infinity = ((x.raw[0] & 0x7FFFFFFF) == 0x7F800000);
 	}
-	#endif /* CHECK_FOR_NULL_POINTERS */
-
-	if(mktemp(name_template) == NULL)
+	else if (sizeof(number) == 8) /* double precision */
 	{
-		SHOWMSG("could not pick a temp name");
-		goto out;
-	}
+		union ieee_double x;
 
-	if(mkdir(name_template,0700) == -1)
+		x.value = number;
+
+		/* Exponent = 2047 and fraction = 0.0 */
+		is_infinity = (((x.raw[0] & 0x7FFFFFFF) == 0x7FF00000) && (x.raw[1] == 0));
+	}
+	else if (sizeof(number) == 12) /* extended precision */
 	{
-		SHOWMSG("could not create directory");
-		goto out;
+		union ieee_long_double x;
+
+		x.value = number;
+
+		/* Exponent = 32767 and fraction = 0.0 */
+		is_infinity = (((x.raw[0] & 0x7FFF0000) == 0x7FFF0000) && (x.raw[1] & 0x7FFFFFFF) == 0 && (x.raw[2] == 0));
+	}
+	else
+	{
+		/* Can't happen */
+		is_infinity = 0;
 	}
 
-	result = name_template;
-
- out:
+	if(is_infinity)
+	{
+		if(number < 0)
+			result = -1;
+		else
+			result = 1;
+	}
+	else
+	{
+		result = 0;
+	}
 
 	RETURN(result);
 	return(result);
 }
+
+/****************************************************************************/
+
+#endif /* FLOATING_POINT_SUPPORT */

@@ -42,7 +42,11 @@
 /****************************************************************************/
 
 /* This enables the legacy compatible 'struct AnchorPathOld'. */
+#ifndef __amigaos4__
 #define USE_OLD_ANCHORPATH
+#endif /* USE_OLD_ANCHORPATH */
+
+/****************************************************************************/
 
 #if (INCLUDE_VERSION >= 50)
 #include <dos/anchorpath.h>

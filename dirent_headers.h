@@ -54,9 +54,10 @@ struct DirectoryHandle
 	BPTR					dh_DirLock;
 	struct FileInfoBlock	dh_FileInfo;
 	struct dirent			dh_DirectoryEntry;
+
 	int						dh_Position;
 	struct Node *			dh_VolumeNode;
-	struct List				dh_VolumeList;
+	struct MinList			dh_VolumeList;
 	BOOL					dh_ScanVolumeList;
 };
 

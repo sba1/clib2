@@ -94,8 +94,12 @@ closedir(DIR * directory_pointer)
 
 	Remove((struct Node *)dh);
 
-	while((node = RemHead(&dh->dh_VolumeList)) != NULL)
-		free(node);
+	#if defined(UNIX_PATH_SEMANTICS)
+	{
+		while((node = RemHead((struct List *)&dh->dh_VolumeList)) != NULL)
+			free(node);
+	}
+	#endif /* UNIX_PATH_SEMANTICS */
 
 	PROFILE_OFF();
 	UnLock(dh->dh_DirLock);

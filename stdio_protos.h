@@ -201,7 +201,7 @@ extern int __grow_file_size(struct fd * fd,int num_bytes);
 /****************************************************************************/
 
 /* unistd_sync_fd.c */
-extern void __sync_fd(struct fd * fd,int mode);
+extern int __sync_fd(struct fd * fd,int mode);
 
 /****************************************************************************/
 

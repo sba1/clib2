@@ -47,12 +47,26 @@
 
 /****************************************************************************/
 
-void
+int
 __sync_fd(struct fd * fd,int mode)
 {
+	int result = -1;
+
 	assert( fd != NULL );
 
 	__fd_lock(fd);
+
+	if(FLAG_IS_SET(fd->fd_Flags,FDF_IS_SOCKET))
+	{
+		__set_errno(EINVAL);
+		goto out;
+	}
+
+	if(fd->fd_DefaultFile == ZERO)
+	{
+		__set_errno(EBADF);
+		goto out;
+	}
 
 	/* The mode tells us what to flush. 0 means "flush just the data", and
 	   everything else means "flush everything. */
@@ -67,5 +81,11 @@ __sync_fd(struct fd * fd,int mode)
 			DoPkt(fh->fh_Type,ACTION_FLUSH,	0,0,0,0,0);
 	}
 
+	result = 0;
+
+ out:
+
 	__fd_unlock(fd);
+
+	return(result);
 }

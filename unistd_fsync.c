@@ -70,19 +70,8 @@ fsync(int file_descriptor)
 		goto out;
 	}
 
-	if(FLAG_IS_SET(fd->fd_Flags,FDF_IS_SOCKET))
-	{
-		__set_errno(EINVAL);
+	if(__sync_fd(fd,1) < 0) /* flush everything */
 		goto out;
-	}
-
-	if(fd->fd_DefaultFile == ZERO)
-	{
-		__set_errno(EBADF);
-		goto out;
-	}
-
-	__sync_fd(fd,1); /* flush everything */
 
 	result = 0;
 

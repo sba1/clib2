@@ -126,12 +126,6 @@ fcntl(int file_descriptor, int cmd, ... /* int arg */ )
 
 			SHOWMSG("cmd=F_GETFL");
 
-			if(FLAG_IS_SET(fd->fd_Flags,FDF_IS_SOCKET))
-			{
-				__set_errno(EINVAL);
-				goto out;
-			}
-
 			if(FLAG_IS_SET(fd->fd_Flags,FDF_NON_BLOCKING))
 				SET_FLAG(result,O_NONBLOCK);
 
@@ -145,12 +139,6 @@ fcntl(int file_descriptor, int cmd, ... /* int arg */ )
 		case F_SETFL:
 
 			SHOWMSG("cmd=F_SETFL");
-
-			if(FLAG_IS_SET(fd->fd_Flags,FDF_IS_SOCKET))
-			{
-				__set_errno(EINVAL);
-				goto out;
-			}
 
 			va_start(arg,cmd);
 			flags = va_arg(arg,int);

@@ -50,7 +50,6 @@ ftruncate(int file_descriptor, off_t length)
 	BOOL restore_initial_position = FALSE;
 	off_t current_file_size;
 	off_t initial_position = -1;
-	BOOL success;
 
 	ENTER();
 

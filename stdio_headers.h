@@ -268,8 +268,6 @@ struct iob
 											   mode (sockets only). */
 #define FDF_IS_INTERACTIVE		(1UL<<11)	/* File is attached to a console window or
 											   something like it. */
-#define FDF_DEFAULT_NON_BLOCKING (1UL<<12)	/* This file defaults to non-blocking I/O
-											   mode. */
 
 /****************************************************************************/
 

@@ -133,13 +133,12 @@ __close(int file_descriptor,int * error_ptr)
 	   for aliases and their like since the original stream is still in use. */
 	if(NOT is_alias)
 	{
-		if((FLAG_IS_SET(fd->fd_Flags,FDF_NON_BLOCKING) && FLAG_IS_CLEAR(fd->fd_Flags,FDF_DEFAULT_NON_BLOCKING)) ||
-		   (FLAG_IS_CLEAR(fd->fd_Flags,FDF_NON_BLOCKING) && FLAG_IS_SET(fd->fd_Flags,FDF_DEFAULT_NON_BLOCKING)))
+		if(FLAG_IS_SET(fd->fd_Flags,FDF_NON_BLOCKING))
 		{
 			SHOWMSG("resetting non-blocking access mode");
 
 			message.action	= file_hook_action_set_blocking;
-			message.arg		= FLAG_IS_SET(fd->fd_Flags,FDF_NON_BLOCKING);
+			message.arg		= TRUE;
 
 			assert( fd->fd_Hook != NULL );
 

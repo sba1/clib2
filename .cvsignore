@@ -1,0 +1,4 @@
+lib
+large_data*
+small_data*
+*.o

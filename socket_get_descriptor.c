@@ -42,7 +42,7 @@
 /****************************************************************************/
 
 struct fd *
-__get_socket_descriptor(int socket_descriptor)
+__get_file_descriptor_socket(int socket_descriptor)
 {
 	struct fd * result = NULL;
 	struct fd * fd;

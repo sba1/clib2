@@ -82,7 +82,7 @@ sendto(int sockfd,const void *buff,int len,int flags,struct sockaddr *to,int tol
 	assert( FLAG_IS_SET(__fd[sockfd]->fd_Flags,FDF_IN_USE) );
 	assert( FLAG_IS_SET(__fd[sockfd]->fd_Flags,FDF_IS_SOCKET) );
 
-	fd = __get_socket_descriptor(sockfd);
+	fd = __get_file_descriptor_socket(sockfd);
 	if(fd == NULL)
 		goto out;
 

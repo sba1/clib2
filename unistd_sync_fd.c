@@ -31,51 +31,40 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#if defined(SOCKET_SUPPORT)
+#ifndef _UNISTD_HEADERS_H
+#include "unistd_headers.h"
+#endif /* _UNISTD_HEADERS_H */
 
 /****************************************************************************/
 
-#ifndef _SOCKET_HEADERS_H
-#include "socket_headers.h"
-#endif /* _SOCKET_HEADERS_H */
+#if defined(__amigaos4__) && !defined(Flush)
+#define Flush(fh) FFlush(fh)
+#endif /* __amigaos4__ && !Flush */
 
 /****************************************************************************/
 
-int
-shutdown(int sockfd, int how)
+/* The following is not part of the ISO 'C' (1994) standard. */
+
+/****************************************************************************/
+
+void
+__sync_fd(struct fd * fd,int mode)
 {
-	struct fd * fd;
-	int result = -1;
+	assert( fd != NULL );
 
-	ENTER();
+	if(fd->fd_DefaultFile != ZERO)
+	{
+		/* The mode tells us what to flush. 0 means "flush just the data", and
+		   everything else means "flush everything. */
+		Flush(fd->fd_DefaultFile);
 
-	SHOWVALUE(sockfd);
-	SHOWVALUE(how);
+		if(mode != 0)
+		{
+			struct FileHandle * fh = BADDR(fd->fd_DefaultFile);
 
-	assert(__SocketBase != NULL);
-
-	assert( sockfd >= 0 && sockfd < __num_fd );
-	assert( __fd[sockfd] != NULL );
-	assert( FLAG_IS_SET(__fd[sockfd]->fd_Flags,FDF_IN_USE) );
-	assert( FLAG_IS_SET(__fd[sockfd]->fd_Flags,FDF_IS_SOCKET) );
-
-	fd = __get_file_descriptor_socket(sockfd);
-	if(fd == NULL)
-		goto out;
-
-	PROFILE_OFF();
-	result = __shutdown((LONG)fd->fd_DefaultFile,how);
-	PROFILE_ON();
-
- out:
-
-	if(__check_abort_enabled)
-		__check_abort();
-
-	RETURN(result);
-	return(result);
+			/* Verify that this file is not bound to "NIL:". */
+			if(fh->fh_Type != NULL)
+				DoPkt(fh->fh_Type,ACTION_FLUSH,	0,0,0,0,0);
+		}
+	}
 }
-
-/****************************************************************************/
-
-#endif /* SOCKET_SUPPORT */

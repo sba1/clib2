@@ -70,7 +70,7 @@ extern int NOCOMMON h_errno;
 
 /****************************************************************************/
 
-extern struct fd * __get_socket_descriptor(int socket_descriptor);
+extern struct fd * __get_file_descriptor_socket(int socket_descriptor);
 extern void __socket_hook_entry(struct Hook * hook,struct fd * fd,struct file_hook_message * message);
 
 /****************************************************************************/

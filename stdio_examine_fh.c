@@ -31,51 +31,40 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#if defined(SOCKET_SUPPORT)
+#ifndef _STDIO_HEADERS_H
+#include "stdio_headers.h"
+#endif /* _STDIO_HEADERS_H */
 
 /****************************************************************************/
 
-#ifndef _SOCKET_HEADERS_H
-#include "socket_headers.h"
-#endif /* _SOCKET_HEADERS_H */
-
-/****************************************************************************/
-
-int
-shutdown(int sockfd, int how)
+/* This is used in place of ExamineFH() in order to work around a bug in
+ * dos.library V40 and below: a "NIL:" file handle will crash the
+ * ExamineFH() function.
+ */
+LONG
+__safe_examine_file_handle(BPTR file_handle,struct FileInfoBlock *fib)
 {
-	struct fd * fd;
-	int result = -1;
+	LONG result = DOSFALSE;
 
-	ENTER();
+	assert( fib != NULL );
 
-	SHOWVALUE(sockfd);
-	SHOWVALUE(how);
+	#ifndef __amigaos4__
+	{
+		struct FileHandle * fh = (struct FileHandle *)BADDR(file_handle);
 
-	assert(__SocketBase != NULL);
-
-	assert( sockfd >= 0 && sockfd < __num_fd );
-	assert( __fd[sockfd] != NULL );
-	assert( FLAG_IS_SET(__fd[sockfd]->fd_Flags,FDF_IN_USE) );
-	assert( FLAG_IS_SET(__fd[sockfd]->fd_Flags,FDF_IS_SOCKET) );
-
-	fd = __get_file_descriptor_socket(sockfd);
-	if(fd == NULL)
-		goto out;
+		if(fh == NULL || fh->fh_Type == NULL)
+		{
+			SetIoErr(ERROR_OBJECT_WRONG_TYPE);
+			goto out;
+		}
+	}
+	#endif /* __amigaos4__ */
 
 	PROFILE_OFF();
-	result = __shutdown((LONG)fd->fd_DefaultFile,how);
+	result = ExamineFH(file_handle,fib);
 	PROFILE_ON();
 
  out:
 
-	if(__check_abort_enabled)
-		__check_abort();
-
-	RETURN(result);
 	return(result);
 }
-
-/****************************************************************************/
-
-#endif /* SOCKET_SUPPORT */

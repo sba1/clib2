@@ -59,7 +59,7 @@ listen(int sockfd,int backlog)
 	assert( FLAG_IS_SET(__fd[sockfd]->fd_Flags,FDF_IN_USE) );
 	assert( FLAG_IS_SET(__fd[sockfd]->fd_Flags,FDF_IS_SOCKET) );
 
-	fd = __get_socket_descriptor(sockfd);
+	fd = __get_file_descriptor_socket(sockfd);
 	if(fd == NULL)
 		goto out;
 

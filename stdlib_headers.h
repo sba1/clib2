@@ -194,7 +194,7 @@ struct MemoryTree
 
 /****************************************************************************/
 
-extern unsigned NOCOMMON __random_seed;
+extern unsigned int NOCOMMON __random_seed;
 
 /****************************************************************************/
 

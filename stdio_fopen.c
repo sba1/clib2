@@ -56,6 +56,9 @@ fopen(const char *filename, const char *mode)
 
 	assert( filename != NULL && mode != NULL );
 
+	if(__check_abort_enabled)
+		__check_abort();
+
 	#if defined(CHECK_FOR_NULL_POINTERS)
 	{
 		if(filename == NULL || mode == NULL)
@@ -67,9 +70,6 @@ fopen(const char *filename, const char *mode)
 		}
 	}
 	#endif /* CHECK_FOR_NULL_POINTERS */
-
-	if(__check_abort_enabled)
-		__check_abort();
 
 	slot_number = __find_vacant_iob_entry();
 	if(slot_number < 0)

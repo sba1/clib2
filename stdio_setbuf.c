@@ -53,6 +53,9 @@ setbuf(FILE *stream,char *buf)
 
 	assert(stream != NULL);
 
+	if(__check_abort_enabled)
+		__check_abort();
+
 	#if defined(CHECK_FOR_NULL_POINTERS)
 	{
 		if(stream == NULL)
@@ -64,9 +67,6 @@ setbuf(FILE *stream,char *buf)
 		}
 	}
 	#endif /* CHECK_FOR_NULL_POINTERS */
-
-	if(__check_abort_enabled)
-		__check_abort();
 
 	if(buf == NULL)
 		setvbuf(stream,NULL,IOBF_BUFFER_MODE_NONE,0);

@@ -59,6 +59,11 @@ fwrite(const void *ptr,size_t element_size,size_t count,FILE *stream)
 	assert( ptr != NULL && stream != NULL );
 	assert( (int)element_size >= 0 && (int)count >= 0 );
 
+	if(__check_abort_enabled)
+		__check_abort();
+
+	flockfile(stream);
+
 	#if defined(CHECK_FOR_NULL_POINTERS)
 	{
 		if(ptr == NULL || stream == NULL)
@@ -70,9 +75,6 @@ fwrite(const void *ptr,size_t element_size,size_t count,FILE *stream)
 		}
 	}
 	#endif /* CHECK_FOR_NULL_POINTERS */
-
-	if(__check_abort_enabled)
-		__check_abort();
 
 	assert( __is_valid_iob(file) );
 	assert( FLAG_IS_SET(file->iob_Flags,IOBF_IN_USE) );
@@ -155,6 +157,8 @@ fwrite(const void *ptr,size_t element_size,size_t count,FILE *stream)
 	}
 
  out:
+
+	funlockfile(stream);
 
 	RETURN(result);
 	return(result);

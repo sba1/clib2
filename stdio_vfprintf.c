@@ -151,6 +151,11 @@ vfprintf(FILE * stream,const char * format, va_list arg)
 
 	assert( stream != NULL && format != NULL && arg != NULL );
 
+	if(__check_abort_enabled)
+		__check_abort();
+
+	flockfile(stream);
+
 	#if defined(CHECK_FOR_NULL_POINTERS)
 	{
 		if(stream == NULL || format == NULL)
@@ -1511,6 +1516,8 @@ vfprintf(FILE * stream,const char * format, va_list arg)
 		if(__iob_write_buffer_is_valid(iob) && __flush_iob_write_buffer(iob) < 0)
 			result = EOF;
 	}
+
+	funlockfile(stream);
 
 	RETURN(result);
 	return(result);

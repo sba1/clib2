@@ -93,7 +93,8 @@ __vasprintf(const char *file,int line,char **ret,const char *format,va_list arg)
 		local_buffer,sizeof(local_buffer),
 		-1,
 		-1,
-		IOBF_IN_USE | IOBF_WRITE | IOBF_BUFFER_MODE_NONE | IOBF_INTERNAL);
+		IOBF_IN_USE | IOBF_WRITE | IOBF_BUFFER_MODE_NONE | IOBF_INTERNAL,
+		NULL);
 
 	string_iob.iob_String		= NULL;
 	string_iob.iob_StringSize	= 0;

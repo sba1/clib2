@@ -78,7 +78,8 @@ sscanf(const char *s,const char *format, ...)
 		local_buffer,sizeof(local_buffer),
 		-1,
 		-1,
-		IOBF_IN_USE | IOBF_READ | IOBF_BUFFER_MODE_FULL | IOBF_INTERNAL);
+		IOBF_IN_USE | IOBF_READ | IOBF_BUFFER_MODE_FULL | IOBF_INTERNAL,
+		NULL);
 
 	string_iob.iob_String		= (STRPTR)s;
 	string_iob.iob_StringLength	= strlen(s);

@@ -58,6 +58,9 @@ clearerr(FILE *stream)
 
 	assert( stream != NULL );
 
+	if(__check_abort_enabled)
+		__check_abort();
+
 	#if defined(CHECK_FOR_NULL_POINTERS)
 	{
 		if(stream == NULL)
@@ -68,13 +71,14 @@ clearerr(FILE *stream)
 	}
 	#endif /* CHECK_FOR_NULL_POINTERS */
 
-	if(__check_abort_enabled)
-		__check_abort();
-
 	assert( __is_valid_iob(file) );
+
+	flockfile(stream);
 
 	CLEAR_FLAG(file->iob_Flags,IOBF_ERROR);
 	CLEAR_FLAG(file->iob_Flags,IOBF_EOF_REACHED);
+
+	funlockfile(stream);
 
  out:
 

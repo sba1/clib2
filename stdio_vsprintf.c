@@ -70,7 +70,8 @@ vsprintf(char *s,const char *format,va_list arg)
 		buffer,sizeof(buffer),
 		-1,
 		-1,
-		IOBF_IN_USE | IOBF_WRITE | IOBF_BUFFER_MODE_NONE | IOBF_INTERNAL);
+		IOBF_IN_USE | IOBF_WRITE | IOBF_BUFFER_MODE_NONE | IOBF_INTERNAL,
+		NULL);
 
 	string_iob.iob_String = (STRPTR)s;
 

@@ -88,6 +88,11 @@ __vfscanf(FILE *stream, const char *format, va_list arg)
 
 	assert( stream != NULL && format != NULL );
 
+	if(__check_abort_enabled)
+		__check_abort();
+
+	flockfile(stream);
+
 	#if defined(CHECK_FOR_NULL_POINTERS)
 	{
 		if(stream == NULL || format == NULL)
@@ -1571,6 +1576,8 @@ __vfscanf(FILE *stream, const char *format, va_list arg)
 	result = num_assignments;
 
  out:
+
+	funlockfile(stream);
 
 	RETURN(result);
 	return(result); 

@@ -55,6 +55,8 @@ fflush(FILE *stream)
 	if(__check_abort_enabled)
 		__check_abort();
 
+	flockfile(stream);
+
 	#if defined(UNIX_PATH_SEMANTICS)
 	{
 		/* Flush a particular stream? */
@@ -113,6 +115,8 @@ fflush(FILE *stream)
 	result = 0;
 
  out:
+
+	funlockfile(stream);
 
 	RETURN(result);
 	return(result);

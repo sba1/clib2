@@ -262,6 +262,8 @@ struct iob
 
 	UBYTE				iob_SingleByte;			/* Fall-back buffer for 'unbuffered'
 												   files */
+
+	struct SignalSemaphore * iob_Lock;			/* For thread locking */
 };
 
 /****************************************************************************/

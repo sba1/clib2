@@ -37,19 +37,10 @@
 
 /****************************************************************************/
 
-void
-rewind(FILE *stream)
+int
+__unlockfile(FILE *stream,int c)
 {
-	assert( stream != NULL );
-
-	if(__check_abort_enabled)
-		__check_abort();
-
-	flockfile(stream);
-
-	clearerr(stream);
-
-	fseek(stream,0,SEEK_SET);
-
 	funlockfile(stream);
+
+	return(c);
 }

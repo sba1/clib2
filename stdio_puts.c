@@ -57,6 +57,11 @@ puts(const char *s)
 
 	assert( s != NULL );
 
+	if(__check_abort_enabled)
+		__check_abort();
+
+	flockfile(stdout);
+
 	#if defined(CHECK_FOR_NULL_POINTERS)
 	{
 		if(s == NULL)
@@ -66,9 +71,6 @@ puts(const char *s)
 		}
 	}
 	#endif /* CHECK_FOR_NULL_POINTERS */
-
-	if(__check_abort_enabled)
-		__check_abort();
 
 	assert( __is_valid_iob(file) );
 	assert( FLAG_IS_SET(file->iob_Flags,IOBF_IN_USE) );
@@ -106,6 +108,8 @@ puts(const char *s)
 			result = EOF;
 		}
 	}
+
+	funlockfile(stdout);
 
 	RETURN(result);
 	return(result);

@@ -31,25 +31,37 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef _STDIO_HEADERS_H
-#include "stdio_headers.h"
-#endif /* _STDIO_HEADERS_H */
+#ifndef _STDLIB_HEADERS_H
+#include "stdlib_headers.h"
+#endif /* _STDLIB_HEADERS_H */
 
 /****************************************************************************/
 
-void
-rewind(FILE *stream)
+/* Parameters of a pseudo-random-number generator from Knuth's
+   "The Art of Computer Programming, Volume 2: Seminumerical Algorithms"
+   (3rd edition), pp. 185-186. */
+
+#define MM 2147483647	/* a Mersenne prime */
+#define AA 48271		/* this does well in the spectral test */
+#define QQ 44488		/* (long)(MM/AA) */
+#define RR 3399			/* MM % AA; it is important that RR < QQ */
+
+/****************************************************************************/
+
+int
+rand_r(unsigned int * seed)
 {
-	assert( stream != NULL );
+	int X;
 
-	if(__check_abort_enabled)
-		__check_abort();
+	X = (int)((*seed) & 0x7fffffff);
+	if(X == 0)
+		X = 1; /* NOTE: for Knuth's algorithm the seed must not be zero. */
 
-	flockfile(stream);
+	X = AA * (X % QQ) - RR * (long)(X / QQ);
+	if(X < 0)
+		X += MM;
 
-	clearerr(stream);
+	(*seed) = (unsigned int)X;
 
-	fseek(stream,0,SEEK_SET);
-
-	funlockfile(stream);
+	return(X);
 }

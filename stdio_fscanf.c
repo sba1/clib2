@@ -56,6 +56,11 @@ fscanf(FILE *stream, const char *format, ...)
 
 	assert(stream != NULL && format != NULL);
 
+	if(__check_abort_enabled)
+		__check_abort();
+
+	flockfile(stream);
+
 	#if defined(CHECK_FOR_NULL_POINTERS)
 	{
 		if(stream == NULL || format == NULL)
@@ -68,14 +73,13 @@ fscanf(FILE *stream, const char *format, ...)
 	}
 	#endif /* CHECK_FOR_NULL_POINTERS */
 
-	if(__check_abort_enabled)
-		__check_abort();
-
 	va_start(arg,format);
 	result = __vfscanf(stream,format,arg);
 	va_end(arg);
 
  out:
+
+	funlockfile(stream);
 
 	RETURN(result);
 	return(result);

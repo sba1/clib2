@@ -149,6 +149,10 @@ extern long atol(const char *str);
 
 /****************************************************************************/
 
+extern int rand_r(unsigned int * seed);
+
+/****************************************************************************/
+
 /* These two functions are unavailable under SAS/C for lack of a
    "long long" data type. */
 #if ! defined(__SASC)

@@ -51,6 +51,11 @@ ungetc(int c,FILE *stream)
 
 	assert( stream != NULL );
 
+	if(__check_abort_enabled)
+		__check_abort();
+
+	flockfile(stream);
+
 	#if defined(CHECK_FOR_NULL_POINTERS)
 	{
 		if(stream == NULL)
@@ -62,9 +67,6 @@ ungetc(int c,FILE *stream)
 		}
 	}
 	#endif /* CHECK_FOR_NULL_POINTERS */
-
-	if(__check_abort_enabled)
-		__check_abort();
 
 	assert( __is_valid_iob(file) );
 	assert( FLAG_IS_SET(file->iob_Flags,IOBF_IN_USE) );
@@ -139,6 +141,8 @@ ungetc(int c,FILE *stream)
 	result = c;
 
  out:
+
+	funlockfile(stream);
 
 	return(result);
 }

@@ -31,25 +31,42 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
+#ifndef _STDLIB_NULL_POINTER_CHECK_H
+#include "stdlib_null_pointer_check.h"
+#endif /* _STDLIB_NULL_POINTER_CHECK_H */
+
+/****************************************************************************/
+
 #ifndef _STDIO_HEADERS_H
 #include "stdio_headers.h"
 #endif /* _STDIO_HEADERS_H */
 
 /****************************************************************************/
 
-void
-rewind(FILE *stream)
+#undef putchar_unlocked
+
+/****************************************************************************/
+
+int
+putchar_unlocked(int c)
 {
-	assert( stream != NULL );
+	int result = -1;
 
-	if(__check_abort_enabled)
-		__check_abort();
+	assert( stdout != NULL );
 
-	flockfile(stream);
+	#if defined(CHECK_FOR_NULL_POINTERS)
+	{
+		if(stdout == NULL)
+		{
+			__set_errno(EFAULT);
+			goto out;
+		}
+	}
+	#endif /* CHECK_FOR_NULL_POINTERS */
 
-	clearerr(stream);
+	result = __putc_unlocked(c,stdout);
 
-	fseek(stream,0,SEEK_SET);
+ out:
 
-	funlockfile(stream);
+	return(result);
 }

@@ -31,25 +31,63 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
+#ifndef _STDLIB_NULL_POINTER_CHECK_H
+#include "stdlib_null_pointer_check.h"
+#endif /* _STDLIB_NULL_POINTER_CHECK_H */
+
+/****************************************************************************/
+
 #ifndef _STDIO_HEADERS_H
 #include "stdio_headers.h"
 #endif /* _STDIO_HEADERS_H */
 
 /****************************************************************************/
 
-void
-rewind(FILE *stream)
+int
+ftrylockfile(FILE *stream)
 {
+	struct iob * file = (struct iob *)stream;
+	int result = -1;
+
+	ENTER();
+
+	SHOWPOINTER(stream);
+
 	assert( stream != NULL );
+
+	#if defined(CHECK_FOR_NULL_POINTERS)
+	{
+		if(stream == NULL)
+		{
+			SHOWMSG("invalid stream parameter");
+
+			__set_errno(EFAULT);
+			goto out;
+		}
+	}
+	#endif /* CHECK_FOR_NULL_POINTERS */
 
 	if(__check_abort_enabled)
 		__check_abort();
 
-	flockfile(stream);
+	assert( __is_valid_iob(file) );
+	assert( FLAG_IS_SET(file->iob_Flags,IOBF_IN_USE) );
 
-	clearerr(stream);
+	if(FLAG_IS_CLEAR(file->iob_Flags,IOBF_IN_USE))
+	{
+		SHOWMSG("this file is not even in use");
 
-	fseek(stream,0,SEEK_SET);
+		__set_errno(EBADF);
+		goto out;
+	}
 
-	funlockfile(stream);
+	if(file->iob_Lock != NULL && CANNOT AttemptSemaphore(file->iob_Lock))
+		goto out;
+
+	result = 0;
+
+ out:
+
+	RETURN(result);
+	return(result);
 }

@@ -40,6 +40,5 @@
 void
 srand(unsigned seed)
 {
-	/* We have to make sure that the seed is never zero. */
-	__random_seed = (seed & 0x7FFFFFFF) | 1;
+	__random_seed = seed;
 }

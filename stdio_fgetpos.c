@@ -56,6 +56,11 @@ fgetpos(FILE *stream, fpos_t *pos)
 
 	assert( stream != NULL && pos != NULL );
 
+	if(__check_abort_enabled)
+		__check_abort();
+
+	flockfile(stream);
+
 	#if defined(CHECK_FOR_NULL_POINTERS)
 	{
 		if(stream == NULL || pos == NULL)
@@ -67,9 +72,6 @@ fgetpos(FILE *stream, fpos_t *pos)
 		}
 	}
 	#endif /* CHECK_FOR_NULL_POINTERS */
-
-	if(__check_abort_enabled)
-		__check_abort();
 
 	position = ftell(stream);
 	if(position == -1)
@@ -84,6 +86,8 @@ fgetpos(FILE *stream, fpos_t *pos)
 	result = 0;
 
  out:
+
+	funlockfile(stream);
 
 	RETURN(result);
 	return(result);

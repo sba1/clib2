@@ -62,6 +62,8 @@ fclose(FILE *stream)
 
 	assert( stream != NULL );
 
+	assert( file->iob_Lock == NULL || file->iob_Lock->ss_Owner == NULL );
+
 	#if defined(CHECK_FOR_NULL_POINTERS)
 	{
 		if(stream == NULL)
@@ -138,6 +140,9 @@ fclose(FILE *stream)
 	/* Get rid of any custom file buffer allocated. */
 	if(file->iob_CustomBuffer != NULL)
 		free(file->iob_CustomBuffer);
+
+	/* Free the lock semaphore now. */
+	FreeVec(file->iob_Lock);
 
 	memset(file,0,sizeof(*file));
 

@@ -195,6 +195,7 @@ MATH_OBJ = \
 	math_ldexp.o \
 	math_log.o \
 	math_log10.o \
+	math_logb.o \
 	math_modf.o \
 	math_pow.o \
 	math_rint.o \

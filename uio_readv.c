@@ -83,13 +83,6 @@ readv(int file_descriptor,const struct iovec *iov,int vec_count)
 	/* Check for overflow. An expensive test, but better to do it here than in the read loop. */
 	for(i = 0, total_num_bytes_read = 0 ; i < vec_count ; i++)
 	{
-		/* Paraoia... */
-		if(iov[i].iov_len < 0)
-		{
-			__set_errno(EINVAL);
-			goto out;
-		}
-
 		total_num_bytes_read += iov[i].iov_len;
 		if(total_num_bytes_read < 0) /* Rollover. */
 		{
@@ -135,7 +128,7 @@ readv(int file_descriptor,const struct iovec *iov,int vec_count)
 			total_num_bytes_read += num_bytes_read;
 
 			part_num_bytes_read += num_bytes_read;
-			if(part_num_bytes_read < iov[i].iov_len)
+			if((size_t)part_num_bytes_read < iov[i].iov_len)
 			{
 				/* Avoid busy-waiting for more data here? */
 				continue;

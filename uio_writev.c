@@ -83,13 +83,6 @@ writev(int file_descriptor,const struct iovec *iov,int vec_count)
 	   here than in the write loop. */
 	for(i = 0, total_num_bytes_written = 0 ; i < vec_count ; i++)
 	{
-		if(iov[i].iov_len < 0)
-		{
-			/* Paraoia... */
-			__set_errno(EINVAL);
-			goto out;
-		}
-
 		total_num_bytes_written += iov[i].iov_len;
 		if(total_num_bytes_written < 0) /* Rollover. */
 		{

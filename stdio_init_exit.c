@@ -113,7 +113,7 @@ __stdio_init(void)
 
 	ENTER();
 
-	ASSERT( num_standard_files == (STDERR_FILENO-STDIN_FILENO+1) );
+	assert( num_standard_files == (STDERR_FILENO-STDIN_FILENO+1) );
 
 	__iob = malloc(sizeof(*__iob) * num_standard_files);
 	if(__iob == NULL)

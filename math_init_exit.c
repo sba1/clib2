@@ -57,6 +57,20 @@
 
 /****************************************************************************/
 
+#if defined(IEEE_FLOATING_POINT_SUPPORT)
+
+struct Library * MathIeeeSingBasBase;
+struct Library * MathIeeeDoubBasBase;
+struct Library * MathIeeeDoubTransBase;
+
+#endif /* IEEE_FLOATING_POINT_SUPPORT */
+
+/****************************************************************************/
+
+double __huge_val;
+
+/****************************************************************************/
+
 CLIB_DESTRUCTOR(__math_exit)
 {
 	ENTER();

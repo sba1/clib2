@@ -51,6 +51,10 @@
 
 /****************************************************************************/
 
+mode_t __current_umask = S_IWGRP | S_IWOTH;
+
+/****************************************************************************/
+
 mode_t
 umask(mode_t new_mask)
 {
@@ -66,7 +70,9 @@ umask(mode_t new_mask)
 	result = __getumask();
 	PROFILE_ON();
 
-	__umask(new_mask & (S_IRWXU | S_IRWXG | S_IRWXO));
+	__current_umask = new_mask & (S_IRWXU | S_IRWXG | S_IRWXO);
+
+	__umask(__current_umask);
 
 	RETURN(result);
 	return(result);

@@ -1577,8 +1577,7 @@ __vfscanf(FILE *stream, const char *format, va_list arg)
 		}
 	}
 
-	if(num_conversions > 0)
-		result = num_assignments;
+	result = num_assignments;
 
  out:
 

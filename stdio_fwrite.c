@@ -113,7 +113,10 @@ fwrite(const void *ptr,size_t element_size,size_t count,FILE *stream)
 
 		buffer_mode = (file->iob_Flags & IOBF_BUFFER_MODE);
 		if(buffer_mode == IOBF_BUFFER_MODE_NONE)
-			buffer_mode = IOBF_BUFFER_MODE_LINE;
+		{
+			if(FLAG_IS_SET(__fd[file->iob_Descriptor]->fd_Flags,FDF_IS_INTERACTIVE))
+				buffer_mode = IOBF_BUFFER_MODE_LINE;
+		}
 
 		if(buffer_mode == IOBF_BUFFER_MODE_LINE)
 		{
@@ -125,12 +128,6 @@ fwrite(const void *ptr,size_t element_size,size_t count,FILE *stream)
 					goto out;
 
 				total_bytes_written++;
-			}
-
-			if((file->iob_Flags & IOBF_BUFFER_MODE) == IOBF_BUFFER_MODE_NONE)
-			{
-				if(__iob_write_buffer_is_valid(file) && __flush_iob_write_buffer(file) < 0)
-					goto out;
 			}
 		}
 		else
@@ -144,6 +141,12 @@ fwrite(const void *ptr,size_t element_size,size_t count,FILE *stream)
 
 				total_bytes_written++;
 			}
+		}
+
+		if((file->iob_Flags & IOBF_BUFFER_MODE) == IOBF_BUFFER_MODE_NONE)
+		{
+			if(__iob_write_buffer_is_valid(file) && __flush_iob_write_buffer(file) < 0)
+				goto out;
 		}
 
 		result = total_bytes_written / element_size;

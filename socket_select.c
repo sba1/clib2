@@ -304,16 +304,8 @@ map_descriptor_sets(
 			}
 			else
 			{
-				LONG is_interactive;
-
-				/* We only watch files bound to
-				 * console streams.
-				 */
-				PROFILE_OFF();
-				is_interactive = IsInteractive(fd->fd_DefaultFile);
-				PROFILE_ON();
-
-				if(NOT is_interactive)
+				/* We only watch files bound to console streams. */
+				if(FLAG_IS_CLEAR(fd->fd_Flags,FDF_IS_INTERACTIVE))
 				{
 					SHOWMSG("this is a file");
 					continue;

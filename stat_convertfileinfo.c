@@ -129,8 +129,8 @@ __convert_file_info_to_stat(
 	st->st_dev		= (dev_t)file_system;
 	st->st_mode		= mode;
 	st->st_mtime	= mtime;
-	st->st_atime	= st->st_mtime;
-	st->st_ctime	= st->st_mtime;
+	st->st_atime	= mtime;
+	st->st_ctime	= mtime;
 	st->st_uid		= fib->fib_OwnerUID;
 	st->st_gid		= fib->fib_OwnerGID;
 	st->st_blksize	= 512;

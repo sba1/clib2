@@ -60,13 +60,6 @@
 
 /****************************************************************************/
 
-/* This is the difference (in seconds) between the Unix epoch (which began
-   on January 1st, 1970) and the AmigaOS epoch (which began eight years
-   later on January 1st 1978). */
-#define UNIX_TIME_OFFSET 252460800
-
-/****************************************************************************/
-
 #define NUM_ENTRIES(t) (sizeof(t) / sizeof(t[0]))
 
 /****************************************************************************/

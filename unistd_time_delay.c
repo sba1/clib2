@@ -59,9 +59,10 @@ __time_delay(unsigned long seconds,unsigned long microseconds)
 
 	if((seconds > 0 || microseconds > 0) && NOT __timer_busy)
 	{
-		struct Library * TimerBase = __TimerBase;
 		#if defined(__amigaos4__)
 		struct TimerIFace * ITimer = __ITimer;
+		#else
+		struct Library * TimerBase = __TimerBase;
 		#endif /* __amigaos4__ */
 
 		ULONG signals_to_wait_for;

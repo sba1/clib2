@@ -143,7 +143,7 @@ extern char * __getcwd(char * buffer,size_t buffer_size,const char *file,int lin
 #define	FD_SETSIZE 256
 #endif
 
-typedef	struct
+typedef	struct fd_set
 {
 	unsigned long bits[(FD_SETSIZE + 31) / 32];
 } fd_set;

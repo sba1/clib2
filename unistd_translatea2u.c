@@ -55,6 +55,7 @@ __translate_amiga_to_unix_path_name(char const ** name_ptr,struct name_translati
 
 	name = (char *)(*name_ptr);
 
+	/* Check if the name would become too long to handle. */
 	len = strlen(name);
 	if(len >= (int)sizeof(nti->substitute))
 	{
@@ -63,8 +64,6 @@ __translate_amiga_to_unix_path_name(char const ** name_ptr,struct name_translati
 		__set_errno(ENAMETOOLONG);
 		goto out;
 	}
-
-	/* Check if the name would become too long to handle. */
 
 	/* Reduce any '//' embedded in the name if possible. */
 	have_double_slash = FALSE;

@@ -47,6 +47,7 @@
 
 /****************************************************************************/
 
+/* ZZZ chdir() must be reentrant according to POSIX.1 */
 int
 chdir(const char * path_name)
 {

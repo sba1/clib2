@@ -72,8 +72,6 @@ __close_all_files(void)
 
 	ENTER();
 
-	__check_abort_enabled = FALSE;
-
 	__stdio_lock();
 
 	if(__num_iob > 0)

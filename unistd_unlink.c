@@ -53,6 +53,7 @@
 
 /****************************************************************************/
 
+/* ZZZ unlink() must be reentrant according to POSIX.1 */
 int
 unlink(const char * path_name)
 {

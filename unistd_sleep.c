@@ -41,6 +41,7 @@
 
 /****************************************************************************/
 
+/* ZZZ sleep() must be reentrant according to POSIX.1 */
 unsigned int
 sleep(unsigned int seconds)
 {

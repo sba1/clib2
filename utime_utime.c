@@ -67,6 +67,9 @@ utime(const char * path_name,const struct utimbuf * times)
 
 	assert( path_name != NULL );
 
+	if(__check_abort_enabled)
+		__check_abort();
+
 	#if defined(CHECK_FOR_NULL_POINTERS)
 	{
 		if(path_name == NULL)
@@ -76,9 +79,6 @@ utime(const char * path_name,const struct utimbuf * times)
 		}
 	}
 	#endif /* CHECK_FOR_NULL_POINTERS */
-
-	if(__check_abort_enabled)
-		__check_abort();
 
 	/* If a modification time is provided, convert it into the local
 	   DateStamp format, as used by the SetFileDate() function. */

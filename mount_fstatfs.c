@@ -63,6 +63,9 @@ fstatfs(int file_descriptor, struct statfs *buf)
 
 	assert( buf != NULL );
 
+	if(__check_abort_enabled)
+		__check_abort();
+
 	#if defined(CHECK_FOR_NULL_POINTERS)
 	{
 		if(buf == NULL)
@@ -78,9 +81,6 @@ fstatfs(int file_descriptor, struct statfs *buf)
 	assert( file_descriptor >= 0 && file_descriptor < __num_fd );
 	assert( __fd[file_descriptor] != NULL );
 	assert( FLAG_IS_SET(__fd[file_descriptor]->fd_Flags,FDF_IN_USE) );
-
-	if(__check_abort_enabled)
-		__check_abort();
 
 	fd = __get_file_descriptor(file_descriptor);
 	if(fd == NULL)

@@ -64,6 +64,9 @@ chmod(const char * path_name, mode_t mode)
 
 	assert( path_name != NULL );
 
+	if(__check_abort_enabled)
+		__check_abort();
+
 	#if defined(CHECK_FOR_NULL_POINTERS)
 	{
 		if(path_name == NULL)
@@ -75,9 +78,6 @@ chmod(const char * path_name, mode_t mode)
 		}
 	}
 	#endif /* CHECK_FOR_NULL_POINTERS */
-
-	if(__check_abort_enabled)
-		__check_abort();
 
 	#if defined(UNIX_PATH_SEMANTICS)
 	{

@@ -55,6 +55,9 @@ printf(const char *format, ...)
 
 	assert( format != NULL );
 
+	if(__check_abort_enabled)
+		__check_abort();
+
 	#if defined(CHECK_FOR_NULL_POINTERS)
 	{
 		if(format == NULL)
@@ -64,9 +67,6 @@ printf(const char *format, ...)
 		}
 	}
 	#endif /* CHECK_FOR_NULL_POINTERS */
-
-	if(__check_abort_enabled)
-		__check_abort();
 
 	va_start(arg,format);
 	result = vfprintf(stdout,format,arg);

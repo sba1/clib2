@@ -60,6 +60,9 @@ asprintf(char **ret, const char *format, ...)
 
 	assert( ret != NULL && format != NULL );
 
+	if(__check_abort_enabled)
+		__check_abort();
+
 	#if defined(CHECK_FOR_NULL_POINTERS)
 	{
 		if(ret == NULL || format == NULL)
@@ -69,9 +72,6 @@ asprintf(char **ret, const char *format, ...)
 		}
 	}
 	#endif /* CHECK_FOR_NULL_POINTERS */
-
-	if(__check_abort_enabled)
-		__check_abort();
 
 	va_start(arg,format);
 	result = vasprintf(ret,format,arg);

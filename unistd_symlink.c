@@ -63,6 +63,9 @@ symlink(const char * actual_path, const char * symbolic_path)
 
 	assert( actual_path != NULL && symbolic_path != NULL );
 
+	if(__check_abort_enabled)
+		__check_abort();
+
 	#if defined(CHECK_FOR_NULL_POINTERS)
 	{
 		if(actual_path == NULL || symbolic_path == NULL)
@@ -74,9 +77,6 @@ symlink(const char * actual_path, const char * symbolic_path)
 		}
 	}
 	#endif /* CHECK_FOR_NULL_POINTERS */
-
-	if(__check_abort_enabled)
-		__check_abort();
 
 	SHOWMSG("trying to make that link");
 

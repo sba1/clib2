@@ -65,6 +65,9 @@ link(const char * existing_path,const char * new_path)
 
 	assert( existing_path != NULL && new_path != NULL );
 
+	if(__check_abort_enabled)
+		__check_abort();
+
 	#if defined(CHECK_FOR_NULL_POINTERS)
 	{
 		if(existing_path == NULL || new_path == NULL)
@@ -76,9 +79,6 @@ link(const char * existing_path,const char * new_path)
 		}
 	}
 	#endif /* CHECK_FOR_NULL_POINTERS */
-
-	if(__check_abort_enabled)
-		__check_abort();
 
 	#if defined(UNIX_PATH_SEMANTICS)
 	{

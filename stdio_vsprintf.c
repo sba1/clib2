@@ -52,6 +52,9 @@ vsprintf(char *s,const char *format,va_list arg)
 
 	assert( s != NULL && format != NULL );
 
+	if(__check_abort_enabled)
+		__check_abort();
+
 	#if defined(CHECK_FOR_NULL_POINTERS)
 	{
 		if(s == NULL || format == NULL)
@@ -61,9 +64,6 @@ vsprintf(char *s,const char *format,va_list arg)
 		}
 	}
 	#endif /* CHECK_FOR_NULL_POINTERS */
-
-	if(__check_abort_enabled)
-		__check_abort();
 
 	__initialize_iob(&string_iob,__vsprintf_hook_entry,
 		NULL,

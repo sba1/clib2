@@ -63,6 +63,9 @@ vsnprintf(char *buffer,size_t size,const char *format,va_list arg)
 
 	assert( format != NULL && arg != NULL && (int)size >= 0 );
 
+	if(__check_abort_enabled)
+		__check_abort();
+
 	#if defined(CHECK_FOR_NULL_POINTERS)
 	{
 		if(format == NULL || (buffer == NULL && size > 0))
@@ -74,9 +77,6 @@ vsnprintf(char *buffer,size_t size,const char *format,va_list arg)
 		}
 	}
 	#endif /* CHECK_FOR_NULL_POINTERS */
-
-	if(__check_abort_enabled)
-		__check_abort();
 
 	__initialize_iob(&string_iob,__vsnprintf_hook_entry,
 		NULL,

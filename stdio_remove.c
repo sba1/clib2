@@ -54,6 +54,9 @@ remove(const char *filename)
 
 	assert( filename != NULL );
 
+	if(__check_abort_enabled)
+		__check_abort();
+
 	#if defined(CHECK_FOR_NULL_POINTERS)
 	{
 		if(filename == NULL)
@@ -65,9 +68,6 @@ remove(const char *filename)
 		}
 	}
 	#endif /* CHECK_FOR_NULL_POINTERS */
-
-	if(__check_abort_enabled)
-		__check_abort();
 
 	#if defined(UNIX_PATH_SEMANTICS)
 	{

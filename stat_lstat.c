@@ -59,6 +59,9 @@ lstat(const char * path_name, struct stat * buffer)
 
 	assert( path_name != NULL && buffer != NULL );
 
+	if(__check_abort_enabled)
+		__check_abort();
+
 	#if defined(CHECK_FOR_NULL_POINTERS)
 	{
 		if(path_name == NULL || buffer == NULL)
@@ -70,9 +73,6 @@ lstat(const char * path_name, struct stat * buffer)
 		}
 	}
 	#endif /* CHECK_FOR_NULL_POINTERS */
-
-	if(__check_abort_enabled)
-		__check_abort();
 
 	result = stat(path_name,buffer);
 

@@ -65,6 +65,9 @@ realpath(const char * path_name, char * buffer)
 
 	assert( path_name != NULL && buffer != NULL );
 
+	if(__check_abort_enabled)
+		__check_abort();
+
 	#if defined(CHECK_FOR_NULL_POINTERS)
 	{
 		if(path_name == NULL || buffer == NULL)
@@ -76,9 +79,6 @@ realpath(const char * path_name, char * buffer)
 		}
 	}
 	#endif /* CHECK_FOR_NULL_POINTERS */
-
-	if(__check_abort_enabled)
-		__check_abort();
 
 	#if defined(UNIX_PATH_SEMANTICS)
 	{

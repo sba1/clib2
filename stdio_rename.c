@@ -60,6 +60,9 @@ rename(const char *oldname,const char *newname)
 
 	assert( oldname != NULL && newname != NULL );
 
+	if(__check_abort_enabled)
+		__check_abort();
+
 	#if defined(CHECK_FOR_NULL_POINTERS)
 	{
 		if(oldname == NULL || newname == NULL)
@@ -71,9 +74,6 @@ rename(const char *oldname,const char *newname)
 		}
 	}
 	#endif /* CHECK_FOR_NULL_POINTERS */
-
-	if(__check_abort_enabled)
-		__check_abort();
 
 	#if defined(UNIX_PATH_SEMANTICS)
 	{

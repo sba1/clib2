@@ -74,6 +74,9 @@ stat(const char * path_name, struct stat * st)
 
 	assert( path_name != NULL && st != NULL );
 
+	if(__check_abort_enabled)
+		__check_abort();
+
 	#if defined(CHECK_FOR_NULL_POINTERS)
 	{
 		if(path_name == NULL || st == NULL)
@@ -85,9 +88,6 @@ stat(const char * path_name, struct stat * st)
 		}
 	}
 	#endif /* CHECK_FOR_NULL_POINTERS */
-
-	if(__check_abort_enabled)
-		__check_abort();
 
 	#if defined(UNIX_PATH_SEMANTICS)
 	{

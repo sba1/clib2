@@ -56,6 +56,9 @@ sprintf(char *s, const char *format, ...)
 
 	assert( s != NULL && format != NULL );
 
+	if(__check_abort_enabled)
+		__check_abort();
+
 	#if defined(CHECK_FOR_NULL_POINTERS)
 	{
 		if(s == NULL || format == NULL)
@@ -65,9 +68,6 @@ sprintf(char *s, const char *format, ...)
 		}
 	}
 	#endif /* CHECK_FOR_NULL_POINTERS */
-
-	if(__check_abort_enabled)
-		__check_abort();
 
 	va_start(arg,format);
 	result = vsprintf(s,format,arg);

@@ -58,6 +58,9 @@ freopen(const char *filename, const char *mode, FILE *stream)
 
 	assert( filename != NULL && mode != NULL && stream != NULL );
 
+	if(__check_abort_enabled)
+		__check_abort();
+
 	#if defined(CHECK_FOR_NULL_POINTERS)
 	{
 		if(filename == NULL || mode == NULL || stream == NULL)
@@ -69,9 +72,6 @@ freopen(const char *filename, const char *mode, FILE *stream)
 		}
 	}
 	#endif /* CHECK_FOR_NULL_POINTERS */
-
-	if(__check_abort_enabled)
-		__check_abort();
 
 	assert( __is_valid_iob(file) );
 	assert( FLAG_IS_SET(file->iob_Flags,IOBF_IN_USE) );

@@ -60,6 +60,9 @@ truncate(const char * path_name, off_t length)
 
 	assert( path_name != NULL );
 
+	if(__check_abort_enabled)
+		__check_abort();
+
 	#if defined(CHECK_FOR_NULL_POINTERS)
 	{
 		if(path_name == NULL)
@@ -71,9 +74,6 @@ truncate(const char * path_name, off_t length)
 		}
 	}
 	#endif /* CHECK_FOR_NULL_POINTERS */
-
-	if(__check_abort_enabled)
-		__check_abort();
 
 	if(length < 0)
 	{

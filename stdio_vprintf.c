@@ -55,6 +55,9 @@ vprintf(const char *format,va_list arg)
 
 	assert( format != NULL && arg != NULL );
 
+	if(__check_abort_enabled)
+		__check_abort();
+
 	#if defined(CHECK_FOR_NULL_POINTERS)
 	{
 		if(format == NULL || arg == NULL)
@@ -64,9 +67,6 @@ vprintf(const char *format,va_list arg)
 		}
 	}
 	#endif /* CHECK_FOR_NULL_POINTERS */
-
-	if(__check_abort_enabled)
-		__check_abort();
 
 	result = vfprintf(stdout,format,arg);
 

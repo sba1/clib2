@@ -70,6 +70,9 @@ getopt(int argc, char * argv[], char *opts)
 
 	assert( argc > 0 && argv != NULL && opts != NULL );
 
+	if(__check_abort_enabled)
+		__check_abort();
+
 	#if defined(CHECK_FOR_NULL_POINTERS)
 	{
 		if(argv == NULL || opts == NULL)
@@ -81,9 +84,6 @@ getopt(int argc, char * argv[], char *opts)
 		}
 	}
 	#endif /* CHECK_FOR_NULL_POINTERS */
-
-	if(__check_abort_enabled)
-		__check_abort();
 
 	SHOWVALUE(optind);
 

@@ -60,7 +60,8 @@ unsetenv(const char *original_name)
 	char * name_copy = NULL;
 	unsigned i;
 
-	__check_abort();
+	if(__check_abort_enabled)
+		__check_abort();
 
 	assert( name != NULL );
 

@@ -106,6 +106,9 @@ setenv(const char *original_name, const char *original_value, int overwrite)
 
 	assert(original_name != NULL || original_value != NULL);
 
+	if(__check_abort_enabled)
+		__check_abort();
+
 	#if defined(CHECK_FOR_NULL_POINTERS)
 	{
 		if(original_name == NULL && original_value == NULL)
@@ -117,9 +120,6 @@ setenv(const char *original_name, const char *original_value, int overwrite)
 		}
 	}
 	#endif /* CHECK_FOR_NULL_POINTERS */
-
-	if(__check_abort_enabled)
-		__check_abort();
 
 	if(name != NULL)
 	{

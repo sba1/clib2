@@ -193,13 +193,21 @@ __stdio_init(void)
 		if(buffer == NULL)
 			goto out;
 
-		/* Allocate memory for an arbitration mechanism, then
-		   initialize it. */
-		lock = AllocVec(sizeof(*lock),MEMF_ANY|MEMF_PUBLIC);
-		if(lock == NULL)
-			goto out;
+		#if defined(__THREAD_SAFE)
+		{
+			/* Allocate memory for an arbitration mechanism, then
+			   initialize it. */
+			lock = AllocVec(sizeof(*lock),MEMF_ANY|MEMF_PUBLIC);
+			if(lock == NULL)
+				goto out;
 
-		InitSemaphore(lock);
+			InitSemaphore(lock);
+		}
+		#else
+		{
+			lock = NULL;
+		}
+		#endif /* __THREAD_SAFE */
 
 		/* Check if this stream is attached to a console window. */
 		if(default_file != ZERO)

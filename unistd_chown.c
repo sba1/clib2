@@ -65,6 +65,9 @@ chown(const char * path_name, uid_t owner, gid_t group)
 
 	assert( path_name != NULL );
 
+	if(__check_abort_enabled)
+		__check_abort();
+
 	#if defined(CHECK_FOR_NULL_POINTERS)
 	{
 		if(path_name == NULL)
@@ -76,9 +79,6 @@ chown(const char * path_name, uid_t owner, gid_t group)
 		}
 	}
 	#endif /* CHECK_FOR_NULL_POINTERS */
-
-	if(__check_abort_enabled)
-		__check_abort();
 
 	if(owner > 65535 || group > 65535)
 	{

@@ -55,6 +55,9 @@ getenv(const char * name)
 
 	assert( name != NULL );
 
+	if(__check_abort_enabled)
+		__check_abort();
+
 	#if defined(CHECK_FOR_NULL_POINTERS)
 	{
 		if(name == NULL)
@@ -66,9 +69,6 @@ getenv(const char * name)
 		}
 	}
 	#endif /* CHECK_FOR_NULL_POINTERS */
-
-	if(__check_abort_enabled)
-		__check_abort();
 
 	if(GetVar((STRPTR)name,env_var_buffer,sizeof(env_var_buffer),0) < 0)
 	{

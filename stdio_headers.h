@@ -428,6 +428,32 @@ extern BOOL NOCOMMON __no_standard_io;
 
 /****************************************************************************/
 
+#if defined(__THREAD_SAFE)
+
+/****************************************************************************/
+
+extern void	__stdio_lock(void);
+extern void	__stdio_unlock(void);
+extern void	__stdio_lock_exit(void);
+extern int	__stdio_lock_init(void);
+
+/****************************************************************************/
+
+#else
+
+/****************************************************************************/
+
+#define __stdio_lock()		((void)0)
+#define __stdio_unlock()	((void)0)
+#define __stdio_lock_exit()	((void)0)
+#define __stdio_lock_init()	(0)
+
+/****************************************************************************/
+
+#endif /* __THREAD_SAFE */
+
+/****************************************************************************/
+
 #ifndef _STDIO_PROTOS_H
 #include "stdio_protos.h"
 #endif /* _STDIO_PROTOS_H */

@@ -999,7 +999,9 @@ __handle_record_locking(int cmd,struct flock * l,struct fd * fd,int * error_ptr)
 
 					(*error_ptr) = EINTR;
 
-					__check_abort();
+					if(__check_abort_enabled)
+						__check_abort();
+
 					goto out;
 				}
 

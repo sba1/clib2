@@ -60,6 +60,9 @@ snprintf(char *s, size_t size, const char *format, ...)
 	assert( size == 0 || s != NULL );
 	assert( (int)size >= 0);
 
+	if(__check_abort_enabled)
+		__check_abort();
+
 	#if defined(CHECK_FOR_NULL_POINTERS)
 	{
 		if((size > 0 && s == NULL) || format == NULL)
@@ -69,9 +72,6 @@ snprintf(char *s, size_t size, const char *format, ...)
 		}
 	}
 	#endif /* CHECK_FOR_NULL_POINTERS */
-
-	if(__check_abort_enabled)
-		__check_abort();
 
 	va_start(arg,format);
 	result = vsnprintf(s,size,format,arg);

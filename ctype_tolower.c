@@ -43,6 +43,8 @@ tolower(int c)
 	DECLARE_LOCALEBASE();
 	int result;
 
+	__locale_lock();
+
 	if(__locale_table[LC_CTYPE] != NULL)
 	{
 		assert( LocaleBase != NULL );
@@ -53,6 +55,8 @@ tolower(int c)
 	{
 		result = ('A' <= c && c <= 'Z') ? (c + ('a' - 'A')) : c;
 	}
+
+	__locale_unlock();
 
 	return(result);
 }

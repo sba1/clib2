@@ -46,6 +46,8 @@ __is_valid_fd(struct fd * fd)
 {
 	BOOL result = FALSE;
 
+	__stdio_lock();
+
 	if(__fd != NULL && __num_fd > 0)
 	{
 		int i;
@@ -59,6 +61,8 @@ __is_valid_fd(struct fd * fd)
 			}
 		}
 	}
+
+	__stdio_unlock();
 
 	return(result);
 }

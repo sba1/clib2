@@ -47,6 +47,8 @@ iscntrl(int c)
 	DECLARE_LOCALEBASE();
 	int result;
 
+	__locale_lock();
+
 	if(__locale_table[LC_CTYPE] != NULL)
 	{
 		assert( LocaleBase != NULL );
@@ -57,6 +59,8 @@ iscntrl(int c)
 	{
 		result = (('\0' <= c && c < ' ') || (c == 127));
 	}
+
+	__locale_unlock();
 
 	return(result);
 }

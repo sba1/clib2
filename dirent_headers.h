@@ -73,4 +73,9 @@ extern struct MinList NOCOMMON __directory_list;
 
 /****************************************************************************/
 
+extern void __dirent_lock(void);
+extern void __dirent_unlock(void);
+
+/****************************************************************************/
+
 #endif /* _DIRENT_HEADERS_H */

@@ -57,6 +57,9 @@ __fgetc(FILE *stream)
 
 	if(__iob_read_buffer_is_empty(file))
 	{
+		if(__check_abort_enabled)
+			__check_abort();
+
 		if(__fill_iob_read_buffer(file) < 0)
 			goto out;
 

@@ -47,6 +47,8 @@ isdigit(int c)
 	DECLARE_LOCALEBASE();
 	int result;
 
+	__locale_lock();
+
 	if(__locale_table[LC_CTYPE] != NULL)
 	{
 		assert( LocaleBase != NULL );
@@ -57,6 +59,8 @@ isdigit(int c)
 	{
 		result = ('0' <= c && c <= '9');
 	}
+
+	__locale_unlock();
 
 	return(result);
 }

@@ -215,4 +215,12 @@ extern void __remove_fd_alias(struct fd * fd);
 
 /****************************************************************************/
 
+/* stdio_lock.c */
+extern void __stdio_lock(void);
+extern void __stdio_unlock(void);
+extern void __stdio_lock_exit(void);
+extern int __stdio_lock_init(void);
+
+/****************************************************************************/
+
 #endif /* _STDIO_PROTOS_H */

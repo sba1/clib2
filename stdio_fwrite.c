@@ -118,8 +118,12 @@ fwrite(const void *ptr,size_t element_size,size_t count,FILE *stream)
 		buffer_mode = (file->iob_Flags & IOBF_BUFFER_MODE);
 		if(buffer_mode == IOBF_BUFFER_MODE_NONE)
 		{
+			__stdio_lock();
+
 			if(FLAG_IS_SET(__fd[file->iob_Descriptor]->fd_Flags,FDF_IS_INTERACTIVE))
 				buffer_mode = IOBF_BUFFER_MODE_LINE;
+
+			__stdio_unlock();
 		}
 
 		if(buffer_mode == IOBF_BUFFER_MODE_LINE)

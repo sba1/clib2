@@ -53,8 +53,12 @@ __is_valid_iob(struct iob * iob)
 	}
 	else
 	{
+		__stdio_lock();
+
 		if(__iob != NULL && __num_iob > 0 && 0 <= iob->iob_SlotNumber && iob->iob_SlotNumber < __num_iob && __iob[iob->iob_SlotNumber] == iob)
 			result = TRUE;
+
+		__stdio_unlock();
 	}
 
 	return(result);

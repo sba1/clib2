@@ -101,6 +101,8 @@ CLIB_DESTRUCTOR(__stdio_exit)
 
 	__close_all_files();
 
+	__stdio_lock_exit();
+
 	LEAVE();
 }
 
@@ -120,6 +122,9 @@ __stdio_init(void)
 	int i;
 
 	ENTER();
+
+	if(__stdio_lock_init() < 0)
+		goto out;
 
 	__iob = malloc(sizeof(*__iob) * num_standard_files);
 	if(__iob == NULL)

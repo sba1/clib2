@@ -81,6 +81,8 @@ gettimeofday(struct timeval *tp, struct timezone *tzp)
 	seconds			= tv.tv_sec + UNIX_TIME_OFFSET;
 	microseconds	= tv.tv_usec;
 
+	__locale_lock();
+
 	/* If possible, adjust for the local time zone. We do this because the
 	   AmigaOS system time is returned in local time and we want to return
 	   it in UTC. */
@@ -110,6 +112,8 @@ gettimeofday(struct timeval *tp, struct timezone *tzp)
 		SHOWVALUE(tzp->tz_minuteswest);
 		SHOWVALUE(tzp->tz_dsttime);
 	}
+
+	__locale_unlock();
 
 	RETURN(0);
 	return(0);

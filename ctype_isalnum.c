@@ -49,6 +49,8 @@ isalnum(int c)
 	DECLARE_LOCALEBASE();
 	int result;
 
+	__locale_lock();
+
 	if(__locale_table[LC_CTYPE] != NULL)
 	{
 		assert( LocaleBase != NULL );
@@ -59,6 +61,8 @@ isalnum(int c)
 	{
 		result = isalpha(c) || isdigit(c);
 	}
+
+	__locale_unlock();
 
 	return(result);
 }

@@ -60,6 +60,8 @@ closedir(DIR * directory_pointer)
 	if(__check_abort_enabled)
 		__check_abort();
 
+	__dirent_lock();
+
 	if(directory_pointer == NULL)
 	{
 		__set_errno(EBADF);
@@ -111,6 +113,8 @@ closedir(DIR * directory_pointer)
 	result = 0;
 
  out:
+
+	__dirent_unlock();
 
 	RETURN(result);
 	return(result);

@@ -244,7 +244,11 @@ opendir(const char * path_name)
 
 	assert( __directory_list.mlh_Head != NULL );
 
+	__dirent_lock();
+
 	AddTail((struct List *)&__directory_list,(struct Node *)dh);
+
+	__dirent_unlock();
 
 	result = (DIR *)dh;
 	dh = NULL;

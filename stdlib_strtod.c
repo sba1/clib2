@@ -153,6 +153,9 @@ strtod(const char *str, char ** ptr)
 	 * dot.
 	 */
 	decimal_point_matches = 0;
+
+	__locale_lock();
+
 	if(__locale_table[LC_NUMERIC] != NULL)
 	{
 		char * point;
@@ -166,6 +169,8 @@ strtod(const char *str, char ** ptr)
 			str++;
 		}
 	}
+
+	__locale_unlock();
 
 	if(NOT decimal_point_matches)
 	{

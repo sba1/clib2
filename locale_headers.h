@@ -78,6 +78,8 @@ extern char NOCOMMON __locale_name_table[NUM_LOCALES][MAX_LOCALE_NAME_LEN];
 
 /****************************************************************************/
 
+extern void __locale_lock(void);
+extern void __locale_unlock(void);
 extern void __close_all_locales(void);
 
 /****************************************************************************/

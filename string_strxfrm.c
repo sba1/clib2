@@ -73,6 +73,8 @@ strxfrm(char *dest, const char *src, size_t len)
 	}
 	#endif /* CHECK_FOR_NULL_POINTERS */
 
+	__locale_lock();
+
 	if(__locale_table[LC_COLLATE] != NULL)
 	{
 		assert( LocaleBase != NULL );
@@ -106,6 +108,8 @@ strxfrm(char *dest, const char *src, size_t len)
 			result = strlen(src);
 		}
 	}
+
+	__locale_unlock();
 
  out:
 

@@ -47,6 +47,8 @@ isalpha(int c)
 	DECLARE_LOCALEBASE();
 	int result;
 
+	__locale_lock();
+
 	if(__locale_table[LC_CTYPE] != NULL)
 	{
 		assert( LocaleBase != NULL );
@@ -58,6 +60,8 @@ isalpha(int c)
 		result = (('a' <= c && c <= 'z') ||
 		          ('A' <= c && c <= 'Z'));
 	}
+
+	__locale_unlock();
 
 	return(result);
 }

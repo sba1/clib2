@@ -59,6 +59,8 @@ fopen(const char *filename, const char *mode)
 	if(__check_abort_enabled)
 		__check_abort();
 
+	__stdio_lock();
+
 	#if defined(CHECK_FOR_NULL_POINTERS)
 	{
 		if(filename == NULL || mode == NULL)
@@ -93,6 +95,8 @@ fopen(const char *filename, const char *mode)
 	result = (FILE *)__iob[slot_number];
 
  out:
+
+	__stdio_unlock();
 
 	RETURN(result);
 	return(result);

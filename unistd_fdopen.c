@@ -60,6 +60,11 @@ fdopen(int file_descriptor, const char * type)
 
 	assert(type != NULL);
 
+	if(__check_abort_enabled)
+		__check_abort();
+
+	__stdio_lock();
+
 	#if defined(CHECK_FOR_NULL_POINTERS)
 	{
 		if(type == NULL)
@@ -71,9 +76,6 @@ fdopen(int file_descriptor, const char * type)
 		}
 	}
 	#endif /* CHECK_FOR_NULL_POINTERS */
-
-	if(__check_abort_enabled)
-		__check_abort();
 
 	slot_number = __find_vacant_iob_entry();
 	if(slot_number < 0)
@@ -101,6 +103,8 @@ fdopen(int file_descriptor, const char * type)
 	result = (FILE *)__iob[slot_number];
 
  out:
+
+	__stdio_unlock();
 
 	RETURN(result);
 	return(result);

@@ -64,10 +64,12 @@ __stdlib_exit(void)
 int
 __stdlib_init(void)
 {
+	int result;
+
 	ENTER();
 
-	__memory_init();
+	result = __memory_init();
 
-	RETURN(OK);
-	return(OK);
+	RETURN(result);
+	return(result);
 }

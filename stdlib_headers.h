@@ -198,9 +198,10 @@ extern unsigned int NOCOMMON __random_seed;
 
 /****************************************************************************/
 
-extern struct MemoryTree NOCOMMON	__memory_tree;
-extern struct MinList NOCOMMON		__memory_list;
-extern APTR NOCOMMON				__memory_pool;
+extern struct SignalSemaphore * NOCOMMON	__memory_semaphore;
+extern struct MemoryTree NOCOMMON			__memory_tree;
+extern struct MinList NOCOMMON				__memory_list;
+extern APTR NOCOMMON						__memory_pool;
 
 /****************************************************************************/
 

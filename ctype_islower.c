@@ -47,6 +47,8 @@ islower(int c)
 	DECLARE_LOCALEBASE();
 	int result;
 
+	__locale_lock();
+
 	if(__locale_table[LC_CTYPE] != NULL)
 	{
 		assert( LocaleBase != NULL );
@@ -57,6 +59,8 @@ islower(int c)
 	{
 		result = ('a' <= c && c <= 'z');
 	}
+
+	__locale_unlock();
 
 	return(result);
 }

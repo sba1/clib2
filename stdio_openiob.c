@@ -61,14 +61,16 @@ __open_iob(const char *filename, const char *mode, int file_descriptor, int slot
 	SHOWSTRING(mode);
 	SHOWVALUE(slot_number);
 
+	if(__check_abort_enabled)
+		__check_abort();
+
+	__stdio_lock();
+
 	assert( mode != NULL && 0 <= slot_number && slot_number < __num_iob );
 
 	file = __iob[slot_number];
 
 	assert( FLAG_IS_CLEAR(file->iob_Flags,IOBF_IN_USE) );
-
-	if(__check_abort_enabled)
-		__check_abort();
 
 	/* Figure out if the file descriptor provided is any use. */
 	if(file_descriptor >= 0)
@@ -196,6 +198,8 @@ __open_iob(const char *filename, const char *mode, int file_descriptor, int slot
 
 	if(buffer != NULL)
 		free(buffer);
+
+	__stdio_unlock();
 
 	RETURN(result);
 	return(result);

@@ -31,54 +31,64 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef _STDLIB_NULL_POINTER_CHECK_H
-#include "stdlib_null_pointer_check.h"
-#endif /* _STDLIB_NULL_POINTER_CHECK_H */
+#ifndef _STDIO_HEADERS_H
+#include "stdio_headers.h"
+#endif /* _STDIO_HEADERS_H */
 
 /****************************************************************************/
 
-#ifndef _STRING_HEADERS_H
-#include "string_headers.h"
-#endif /* _STRING_HEADERS_H */
+static struct SignalSemaphore * stdio_lock;
 
-#ifndef _LOCALE_HEADERS_H
-#include "locale_headers.h"
-#endif /* _LOCALE_HEADERS_H */
+/****************************************************************************/
+
+void
+__stdio_lock(void)
+{
+	assert( stdio_lock != NULL );
+
+	if(stdio_lock != NULL)
+		ObtainSemaphore(stdio_lock);
+}
+
+/****************************************************************************/
+
+void
+__stdio_unlock(void)
+{
+	assert( stdio_lock != NULL );
+
+	if(stdio_lock != NULL)
+		ReleaseSemaphore(stdio_lock);
+}
+
+/****************************************************************************/
+
+void
+__stdio_lock_exit(void)
+{
+	assert( stdio_lock == NULL || stdio_lock->ss_Owner == NULL );
+
+	if(stdio_lock != NULL)
+	{
+		FreeVec(stdio_lock);
+		stdio_lock = NULL;
+	}
+}
 
 /****************************************************************************/
 
 int
-strcoll(const char *s1, const char *s2)
+__stdio_lock_init(void)
 {
-	DECLARE_LOCALEBASE();
-	int result = 0;
+	int result = -1;
 
-	assert( s1 != NULL && s2 != NULL );
+	stdio_lock = AllocVec(sizeof(*stdio_lock),MEMF_ANY|MEMF_PUBLIC);
+	if(stdio_lock == NULL)
+		goto out;
 
-	#if defined(CHECK_FOR_NULL_POINTERS)
-	{
-		if(s1 == NULL || s2 == NULL)
-		{
-			__set_errno(EFAULT);
-			goto out;
-		}
-	}
-	#endif /* CHECK_FOR_NULL_POINTERS */
+	InitSemaphore(stdio_lock);
 
-	__locale_lock();
-
-	if(__locale_table[LC_COLLATE] != NULL)
-	{
-		assert( LocaleBase != NULL );
-
-		result = StrnCmp(__locale_table[LC_COLLATE],(STRPTR)s1,(STRPTR)s2,-1,SC_COLLATE1);
-	}
-	else
-	{
-		result = strcmp(s1,s2);
-	}
-
-	__locale_unlock();
+	result = 0;
 
  out:
 

@@ -67,6 +67,8 @@ localtime_r(const time_t *t,struct tm * tm_ptr)
 	}
 	#endif /* CHECK_FOR_NULL_POINTERS */
 
+	__locale_lock();
+
 	/* The time parameter given represents UTC and
 	 * must be converted to local time before we proceed.
 	 */
@@ -74,6 +76,8 @@ localtime_r(const time_t *t,struct tm * tm_ptr)
 		gmt_offset = 60 * __default_locale->loc_GMTOffset;
 	else
 		gmt_offset = 0;
+
+	__locale_unlock();
 
 	SHOWVALUE(gmt_offset);
 

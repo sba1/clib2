@@ -43,6 +43,8 @@ __get_file_descriptor(int file_descriptor)
 	struct fd * result = NULL;
 	struct fd * fd;
 
+	__stdio_lock();
+
 	if(file_descriptor < 0 || file_descriptor >= __num_fd)
 	{
 		SHOWMSG("invalid file descriptor");
@@ -65,6 +67,8 @@ __get_file_descriptor(int file_descriptor)
 	result = fd;
 
  out:
+
+	__stdio_unlock();
 
 	return(result);
 }

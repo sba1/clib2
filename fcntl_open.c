@@ -117,6 +117,8 @@ open(const char *path_name, int open_flag, ... /* mode_t mode */ )
 	if(__check_abort_enabled)
 		__check_abort();
 
+	__stdio_lock();
+
 	#if defined(CHECK_FOR_NULL_POINTERS)
 	{
 		if(path_name == NULL)
@@ -448,6 +450,8 @@ open(const char *path_name, int open_flag, ... /* mode_t mode */ )
 		Close(handle);
 
 	UnLock(lock);
+
+	__stdio_unlock();
 
 	PROFILE_ON();
 

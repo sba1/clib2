@@ -56,9 +56,13 @@ __convert_time_to_datestamp(time_t time_value,struct DateStamp * ds)
 	/* Adjust the time to the AmigaOS epoch. */
 	time_value -= UNIX_TIME_OFFSET;
 
+	__locale_lock();
+
 	/* If possible, adjust the time to match the local time zone settings. */
 	if(__default_locale != NULL)
 		time_value -= 60 * __default_locale->loc_GMTOffset;
+
+	__locale_unlock();
 
 	ds->ds_Days		= (time_value / (24 * 60 * 60));
 	ds->ds_Minute	= (time_value % (24 * 60 * 60)) / 60;

@@ -55,6 +55,8 @@ dup2(int file_descriptor1, int file_descriptor2)
 	if(__check_abort_enabled)
 		__check_abort();
 
+	__stdio_lock();
+
 	assert( file_descriptor1 >= 0 && file_descriptor1 < __num_fd );
 	assert( __fd[file_descriptor1] != NULL );
 	assert( FLAG_IS_SET(__fd[file_descriptor1]->fd_Flags,FDF_IN_USE) );
@@ -125,6 +127,8 @@ dup2(int file_descriptor1, int file_descriptor2)
 	result = file_descriptor2;
 
  out:
+
+	__stdio_unlock();
 
 	RETURN(result);
 	return(result);

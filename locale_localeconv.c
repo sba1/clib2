@@ -42,11 +42,16 @@ localeconv(void)
 {
 	static struct lconv loc;
 
-	struct Locale * numeric_locale = __locale_table[LC_NUMERIC];
-	struct Locale * monetary_locale = __locale_table[LC_MONETARY];
+	struct Locale * numeric_locale;
+	struct Locale * monetary_locale;
 	struct lconv * result;
 
 	ENTER();
+
+	__locale_lock();
+
+	numeric_locale	= __locale_table[LC_NUMERIC];
+	monetary_locale	= __locale_table[LC_MONETARY];
 
 	/* This makes up the current locale settings from the various
 	 * components in use.
@@ -71,6 +76,8 @@ localeconv(void)
 	loc.n_sign_posn			= (monetary_locale != NULL) ? monetary_locale->loc_MonNegativeSignPos : CHAR_MAX;
 
 	result = &loc;
+
+	__locale_unlock();
 
 	RETURN(result);
 	return(result);

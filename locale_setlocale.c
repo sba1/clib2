@@ -52,6 +52,8 @@ setlocale(int category, const char *locale)
 	else
 		SHOWSTRING(locale);
 
+	__locale_lock();
+
 	if(category < LC_ALL || category > LC_TIME)
 	{
 		SHOWMSG("invalid category");
@@ -154,6 +156,8 @@ setlocale(int category, const char *locale)
 	SHOWSTRING(result);
 
  out:
+
+	__locale_unlock();
 
 	RETURN(result);
 	return(result);

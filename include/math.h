@@ -90,6 +90,7 @@ extern float rintf(float x);
 extern int isinf(double x);
 extern int isnan(double x);
 extern double logb(double x);
+extern double hypot(double x,double y);
 
 /****************************************************************************/
 

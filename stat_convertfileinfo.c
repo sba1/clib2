@@ -41,10 +41,6 @@
 
 /****************************************************************************/
 
-/* The following is not part of the ISO 'C' (1994) standard. */
-
-/****************************************************************************/
-
 void
 __convert_file_info_to_stat(
 	const struct MsgPort *			file_system,

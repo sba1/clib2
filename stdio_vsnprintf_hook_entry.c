@@ -43,10 +43,6 @@
 
 /****************************************************************************/
 
-/* The following is not part of the ISO 'C' (1994) standard. */
-
-/****************************************************************************/
-
 void
 __vsnprintf_hook_entry(
 	struct Hook *				UNUSED	unused_hook,

@@ -37,10 +37,6 @@
 
 /****************************************************************************/
 
-/* The following is not part of the ISO 'C' (1994) standard. */
-
-/****************************************************************************/
-
 /* Directories being scanned whose locks need to be freed when shutting down. */
 struct MinList __directory_list;
 

@@ -77,6 +77,9 @@ extern "C" {
 #include <devices/timer.h>
 #endif /* DEVICES_TIMER_H */
 
+/* Assume that the 'struct timeval' definition is now in place. */
+#define __TIMEVAL_ALREADY_DEFINED
+
 /****************************************************************************/
 
 #endif /* INCLUDE_VERSION */

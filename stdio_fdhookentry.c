@@ -52,16 +52,6 @@
 
 /****************************************************************************/
 
-#ifndef ID_CON
-#define ID_CON (0x434F4E00L)
-#endif /* ID_CON */
-
-#ifndef ID_RAWCON
-#define ID_RAWCON (0x52415700L)
-#endif /* ID_RAWCON */
-
-/****************************************************************************/
-
 int
 __fd_hook_entry(
 	struct fd *						fd,
@@ -581,7 +571,6 @@ __fd_hook_entry(
 
 			if(CANNOT __safe_examine_file_handle(file,fam->fam_FileInfo))
 			{
-				D_S(struct InfoData,id);
 				LONG error;
 
 				/* So that didn't work. Did the file system simply fail to
@@ -598,16 +587,7 @@ __fd_hook_entry(
 
 				/* OK, let's have another look at this file. Could it be a
 				   console stream? */
-				if(CANNOT DoPkt(fh->fh_Type,ACTION_DISK_INFO,MKBADDR(id),	0,0,0,0))
-				{
-					SHOWMSG("couldn't examine the file");
-
-					fam->fam_Error = __translate_io_error_to_errno(IoErr());
-					goto out;
-				}
-
-				if(id->id_DiskType != ID_CON &&
-				   id->id_DiskType != ID_RAWCON)
+				if(NOT IsInteractive(file))
 				{
 					SHOWMSG("whatever it is, we don't know");
 

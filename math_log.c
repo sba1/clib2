@@ -135,7 +135,7 @@ __log(double x)
 
 /****************************************************************************/
 
-#if defined(PPC_FLOATING_POINT_SUPPORT)
+#if defined(__PPC__)
 
 static const double
 ln2_hi  =  6.93147180369123816490e-01,	/* 3fe62e42 fee00000 */

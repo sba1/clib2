@@ -135,7 +135,7 @@ __sqrt(double x)
 
 /****************************************************************************/
 
-#if defined(PPC_FLOATING_POINT_SUPPORT)
+#ifdef __PPC__
 
 static	const double	one	= 1.0, tiny=1.0e-300;
 
@@ -236,7 +236,7 @@ __sqrt(double x)
 	return z;
 }
 
-#endif /* PPC_FLOATING_POINT_SUPPORT */
+#endif
 
 /****************************************************************************/
 

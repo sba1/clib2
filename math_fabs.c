@@ -141,6 +141,17 @@ __fabs(double x)
 
 }
 
+#else
+
+INLINE static const double
+__fabs(double x)
+{
+	if (x > 0)
+		return x;
+	else
+		return -x;
+}
+
 #endif /* PPC_FLOATING_POINT_SUPPORT */
 
 /****************************************************************************/

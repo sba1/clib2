@@ -109,7 +109,7 @@ __modf(double x,double *nptr)
 
 /****************************************************************************/
 
-#if defined(PPC_FLOATING_POINT_SUPPORT)
+#if defined(__PPC__)
 
 INLINE static const double
 __modf(double x,double *nptr)

@@ -52,7 +52,8 @@ time(time_t * tptr)
 	PROFILE_ON();
 
 	/* This converts the DateStamp contents into the number of
-	   seconds elapsed since January 1st 1970. */
+	   seconds elapsed since January 1st 1970. The time is
+	   given as relative to UTC, not local time. */
 	result = __convert_datestamp_to_time(&ds);
 
 	if(tptr != NULL)

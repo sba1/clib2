@@ -41,6 +41,10 @@
 #include "time_headers.h"
 #endif /* _TIME_HEADERS_H */
 
+#ifndef _LOCALE_HEADERS_H
+#include "locale_headers.h"
+#endif /* _LOCALE_HEADERS_H */
+
 /****************************************************************************/
 
 time_t
@@ -184,6 +188,11 @@ mktime(struct tm *tm)
 	delta = Date2Amiga(&clock_data);
 
 	tm->tm_yday	= (seconds - delta) / (24 * 60 * 60);
+
+	/* The data in 'struct tm *tm' was given in local time. We need
+	   to convert the result into UTC. */
+	if(__default_locale != NULL)
+		seconds += 60 * __default_locale->loc_GMTOffset;
 
 	/* Finally, adjust for the difference between the Unix and the
 	   AmigaOS epochs, which differ by 8 years. */

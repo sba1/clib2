@@ -57,12 +57,25 @@ typedef char * va_list;
 /****************************************************************************/
 
 #else
- #if defined(__GNUC__)
-  #undef _STDARG_H
-  #include_next "stdarg.h"
- #else
-  #error "Unknown compiler"
- #endif /* __GNUC__ */
+
+/****************************************************************************/
+
+#if defined(__GNUC__)
+
+/* Use the compiler supplied, machine specific <stdarg.h> file. */
+#undef _STDARG_H
+#include_next "stdarg.h"
+
+#include <sys/amigaos-va.h>
+
+#else
+
+#error "Unknown compiler"
+
+#endif /* __GNUC__ */
+
+/****************************************************************************/
+
 #endif /* __amigaos4__ */
 
 /****************************************************************************/

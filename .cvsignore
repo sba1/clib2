@@ -6,4 +6,7 @@ netinclude*
 *.o
 *_rev.i
 *_rev.s
+*.lib
+*.a
+*.info
 ID

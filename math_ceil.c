@@ -150,7 +150,6 @@ __ceil(double x)
 
 #if defined(PPC_FLOATING_POINT_SUPPORT)
 
-
 static const double huge = 1.0e300;
 
 INLINE static const double
@@ -233,6 +232,7 @@ __ceil(double x)
 }
 	
 #endif /* PPC_FLOATING_POINT_SUPPORT */
+
 /****************************************************************************/
 
 double

@@ -43,7 +43,6 @@ __convert_time(ULONG seconds, LONG gmt_offset, struct tm * tm)
 	DECLARE_UTILITYBASE();
 	struct ClockData clock_data;
 	struct tm * result;
-	ULONG delta;
 
 	ENTER();
 
@@ -62,8 +61,13 @@ __convert_time(ULONG seconds, LONG gmt_offset, struct tm * tm)
 	/* Now the local time offset will have to go. */
 	seconds -= gmt_offset;
 
+	/* Convert the number of seconds into a more useful format. */
 	Amiga2Date(seconds, &clock_data);
 
+	/* The 'struct clockdata' layout and contents are very similar
+	 * to the 'struct tm' contents. We don't have to convert much,
+	 * except for the 'tm.tm_yday' field below.
+	 */
 	tm->tm_sec		= clock_data.sec;
 	tm->tm_min		= clock_data.min;
 	tm->tm_hour		= clock_data.hour;
@@ -73,12 +77,8 @@ __convert_time(ULONG seconds, LONG gmt_offset, struct tm * tm)
 	tm->tm_wday		= clock_data.wday;
 	tm->tm_isdst	= -1;
 
-	clock_data.mday		= 1;
-	clock_data.month	= 1;
-
-	delta = Date2Amiga(&clock_data);
-
-	tm->tm_yday = (seconds - delta) / (24 * 60 * 60);
+	/* Now figure out how many days have passed since January 1st. */
+	tm->tm_yday = __calculate_days_per_date(clock_data.year,clock_data.month,clock_data.mday) - __calculate_days_per_date(clock_data.year,1,1);
 
 	result = tm;
 

@@ -31,19 +31,7 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef _STDLIB_NULL_POINTER_CHECK_H
-#include "stdlib_null_pointer_check.h"
-#endif /* _STDLIB_NULL_POINTER_CHECK_H */
-
 /****************************************************************************/
-
-#ifndef _UTIME_HEADERS_H
-#include "utime_headers.h"
-#endif /* _UTIME_HEADERS_H */
-
-#ifndef _LOCALE_HEADERS_H
-#include "locale_headers.h"
-#endif /* _LOCALE_HEADERS_H */
 
 #ifndef _TIME_HEADERS_H
 #include "time_headers.h"
@@ -51,81 +39,18 @@
 
 /****************************************************************************/
 
-/* The following is not part of the ISO 'C' (1994) standard. */
-
-/****************************************************************************/
-
+/* This calculates the number of days that have passed up to the
+   given date. */
 int
-utime(const char * path_name,const struct utimbuf * times)
+__calculate_days_per_date(int year,int month,int day)
 {
-	#if defined(UNIX_PATH_SEMANTICS)
-	struct name_translation_info path_name_nti;
-	#endif /* UNIX_PATH_SEMANTICS */
-	struct DateStamp ds;
-	int result = -1;
-	LONG status;
+	int result;
 
-	assert( path_name != NULL );
+	month	= month + 9;
+	year	= year - 1 + (month / 12);
+	month	= (month % 12) * 306 + 5;
 
-	#if defined(CHECK_FOR_NULL_POINTERS)
-	{
-		if(path_name == NULL)
-		{
-			errno = EFAULT;
-			goto out;
-		}
-	}
-	#endif /* CHECK_FOR_NULL_POINTERS */
-
-	if(__check_abort_enabled)
-		__check_abort();
-
-	/* If a modification time is provided, convert it into the local
-	   DateStamp format, as used by the SetFileDate() function. */
-	if(times != NULL)
-	{
-		if(CANNOT __convert_time_to_datestamp(times->modtime,&ds))
-		{
-			errno = EINVAL;
-			goto out;
-		}
-	}
-	else
-	{
-		/* No special modification time provided; use the current
-		   time instead. */
-		DateStamp(&ds);
-	}
-
-	#if defined(UNIX_PATH_SEMANTICS)
-	{
-		if(__unix_path_semantics)
-		{
-			if(__translate_unix_to_amiga_path_name(&path_name,&path_name_nti) != 0)
-				goto out;
-
-			if(path_name_nti.is_root)
-			{
-				errno = EACCES;
-				goto out;
-			}
-		}
-	}
-	#endif /* UNIX_PATH_SEMANTICS */
-
-	PROFILE_OFF();
-	status = SetFileDate((STRPTR)path_name,&ds);
-	PROFILE_ON();
-
-	if(status == DOSFALSE)
-	{
-		__translate_io_error_to_errno(IoErr(),&errno);
-		goto out;
-	}
-
-	result = 0;
-
- out:
+	result = (year * 365) + (year / 4) - (year / 100) + (year / 400) + (month / 10) + day - 1;
 
 	return(result);
 }

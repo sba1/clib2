@@ -58,18 +58,37 @@ DoTimer(struct timeval *tv,LONG unit,LONG command)
 
 	assert( tv != NULL );
 
-	mp = AllocVec(sizeof(*mp),MEMF_ANY|MEMF_PUBLIC|MEMF_CLEAR);
-	if(mp == NULL)
+	#if defined(__amigaos4__)
 	{
-		error = IOERR_OPENFAIL;
-		goto out;
-	}
+		mp = AllocSysObjectTags(ASOT_PORT,
+			ASOPORT_Action,	PA_SIGNAL,
+			ASOPORT_Signal,	SIGB_SINGLE,
+			ASOPORT_Target,	FindTask(NULL),
+		TAG_DONE);
 
-	mp->mp_Node.ln_Type	= NT_MSGPORT;
-	mp->mp_Flags		= PA_SIGNAL;
-	mp->mp_SigBit		= SIGB_SINGLE;
-	mp->mp_SigTask		= FindTask(NULL);
-	NewList(&mp->mp_MsgList);
+		if(mp == NULL)
+		{
+			error = IOERR_OPENFAIL;
+			goto out;
+		}
+	}
+	#else
+	{
+		mp = AllocVec(sizeof(*mp),MEMF_ANY|MEMF_PUBLIC|MEMF_CLEAR);
+		if(mp == NULL)
+		{
+			error = IOERR_OPENFAIL;
+			goto out;
+		}
+
+		mp->mp_Node.ln_Type	= NT_MSGPORT;
+		mp->mp_Flags		= PA_SIGNAL;
+		mp->mp_SigBit		= SIGB_SINGLE;
+		mp->mp_SigTask		= FindTask(NULL);
+
+		NewList(&mp->mp_MsgList);
+	}
+	#endif /* __amigaos4__ */
 
 	tr = (struct timerequest *)CreateIORequest(mp,sizeof(*tr));
 	if(tr == NULL)
@@ -107,7 +126,16 @@ DoTimer(struct timeval *tv,LONG unit,LONG command)
 		DeleteIORequest((struct IORequest *)tr);
 	}
 
-	FreeVec(mp);
+	#if defined(__amigaos4__)
+	{
+		if(mp != NULL)
+			FreeSysObject(ASOT_PORT,mp);
+	}
+	#else
+	{
+		FreeVec(mp);
+	}
+	#endif /* __amigaos4__ */
 
 	return(error);
 }

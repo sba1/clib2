@@ -229,12 +229,6 @@ memcpy(void *dst, const void *src, size_t len)
 
 /****************************************************************************/
 
-#define IS_UNALIGNED(a) 	((((unsigned long)(a)) & 1) != 0)
-#define IS_SHORT_ALIGNED(a)	((((unsigned long)(a)) & 3) == 2)
-#define IS_LONG_ALIGNED(a)	((((unsigned long)(a)) & 1) == 0)
-
-/****************************************************************************/
-
 INLINE static void 
 __memcpy(unsigned char * to,unsigned char * from,size_t len)
 {

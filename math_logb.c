@@ -59,7 +59,7 @@ __logb(double x)
 {
 	double result;
 
-	result = log(x) / log(FLT_RADIX);
+	result = log(x) / log((double)FLT_RADIX);
 
 	return(result);
 }

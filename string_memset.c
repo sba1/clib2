@@ -43,12 +43,6 @@
 
 /****************************************************************************/
 
-#define IS_UNALIGNED(a) 	((((unsigned long)(a)) & 1) != 0)
-#define IS_SHORT_ALIGNED(a)	((((unsigned long)(a)) & 3) == 2)
-#define IS_LONG_ALIGNED(a)	((((unsigned long)(a)) & 1) == 0)
-
-/****************************************************************************/
-
 INLINE static void
 __memset(unsigned char * to,unsigned char value,size_t len)
 {

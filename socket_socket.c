@@ -104,7 +104,11 @@ socket(int domain,int type,int protocol)
 
 	__stdio_unlock();
 
-	__delete_semaphore(lock);
+	#if defined(__THREAD_SAFE)
+	{
+		__delete_semaphore(lock);
+	}
+	#endif /* __THREAD_SAFE */
 
 	if(__check_abort_enabled)
 		__check_abort();

@@ -341,8 +341,12 @@ __fd_hook_entry(
 
 			__fd_unlock(fd);
 
-			/* Free the lock semaphore now. */
-			__delete_semaphore(fd->fd_Lock);
+			#if defined(__THREAD_SAFE)
+			{
+				/* Free the lock semaphore now. */
+				__delete_semaphore(fd->fd_Lock);
+			}
+			#endif /* __THREAD_SAFE */
 
 			/* And that's the last for this file descriptor. */
 			memset(fd,0,sizeof(*fd));

@@ -322,7 +322,11 @@ __socket_init(void)
 					{
 						SHOWMSG("could not duplicate daemon socket");
 
-						__delete_semaphore(lock);
+						#if defined(__THREAD_SAFE)
+						{
+							__delete_semaphore(lock);
+						}
+						#endif /* __THREAD_SAFE */
 
 						__show_error("Network server streams could not be initialized.");
 						goto out;

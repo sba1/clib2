@@ -42,6 +42,8 @@ __remove_fd_alias(struct fd * fd)
 {
 	assert( fd != NULL );
 
+	__stdio_lock();
+
 	if(fd->fd_Original != NULL) /* this is an alias */
 	{
 		struct fd * list_fd;
@@ -78,4 +80,6 @@ __remove_fd_alias(struct fd * fd)
 			list_fd->fd_Original = first_alias;
 		}
 	}
+
+	__stdio_unlock();
 }

@@ -44,6 +44,7 @@
 int
 socket(int domain,int type,int protocol)
 {
+	struct SignalSemaphore * lock = NULL;
 	int result = -1;
 	struct fd * fd;
 	int fd_slot_number;
@@ -70,6 +71,19 @@ socket(int domain,int type,int protocol)
 		assert( fd_slot_number >= 0 );
 	}
 
+	#if defined(__THREAD_SAFE)
+	{
+		lock = AllocVec(sizeof(*lock),MEMF_ANY|MEMF_PUBLIC);
+		if(lock == NULL)
+		{
+			__set_errno(ENOMEM);
+			goto out;
+		}
+
+		InitSemaphore(lock);
+	}
+	#endif /* __THREAD_SAFE */
+
 	PROFILE_OFF();
 	socket_fd = __socket(domain,type,protocol);
 	PROFILE_ON();
@@ -82,13 +96,17 @@ socket(int domain,int type,int protocol)
 
 	fd = __fd[fd_slot_number];
 
-	__initialize_fd(fd,__socket_hook_entry,(BPTR)socket_fd,FDF_IN_USE | FDF_IS_SOCKET | FDF_READ | FDF_WRITE);
+	__initialize_fd(fd,__socket_hook_entry,(BPTR)socket_fd,FDF_IN_USE | FDF_IS_SOCKET | FDF_READ | FDF_WRITE,lock);
+
+	lock = NULL;
 
 	result = fd_slot_number;
 
  out:
 
 	__stdio_unlock();
+
+	FreeVec(lock);
 
 	if(__check_abort_enabled)
 		__check_abort();

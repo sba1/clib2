@@ -92,7 +92,7 @@ extern int __fd_hook_entry(struct fd * fd,struct file_action_message * fam);
 /****************************************************************************/
 
 /* stdio_initializefd.c */
-extern void __initialize_fd(struct fd * fd,file_action_fd_t action_function,BPTR default_file,ULONG flags);
+extern void __initialize_fd(struct fd * fd,file_action_fd_t action_function,BPTR default_file,ULONG flags,struct SignalSemaphore * lock);
 
 /****************************************************************************/
 

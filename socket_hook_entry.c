@@ -56,6 +56,8 @@ __socket_hook_entry(
 
 	assert( fam != NULL && fd != NULL );
 
+	__fd_lock(fd);
+
 	switch(fam->fam_Action)
 	{
 		case file_action_read:
@@ -119,6 +121,11 @@ __socket_hook_entry(
 					PROFILE_ON();
 				}
 			}
+
+			__fd_unlock(fd);
+
+			/* Free the lock semaphore now. */
+			FreeVec(fd->fd_Lock);
 
 			/* And that's the last for this file descriptor. */
 			memset(fd,0,sizeof(*fd));
@@ -189,6 +196,8 @@ __socket_hook_entry(
 
 			break;
 	}
+
+	__fd_unlock(fd);
 
 	RETURN(result);
 	return(result);

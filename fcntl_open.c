@@ -94,6 +94,7 @@ open(const char *path_name, int open_flag, ... /* mode_t mode */ )
 	struct name_translation_info path_name_nti;
 	#endif /* UNIX_PATH_SEMANTICS */
 	D_S(struct FileInfoBlock,fib);
+	struct SignalSemaphore * fd_lock;
 	LONG is_file_system = FALSE;
 	LONG open_mode;
 	BPTR lock = ZERO;
@@ -328,9 +329,26 @@ open(const char *path_name, int open_flag, ... /* mode_t mode */ )
 		goto out;
 	}
 
+	#if defined(__THREAD_SAFE)
+	{
+		fd_lock = AllocVec(sizeof(*fd_lock),MEMF_ANY|MEMF_PUBLIC);
+		if(fd_lock == NULL)
+		{
+			__set_errno(ENOMEM);
+			goto out;
+		}
+
+		InitSemaphore(fd_lock);
+	}
+	#else
+	{
+		fd_lock = NULL;
+	}
+	#endif /* __THREAD_SAFE */
+
 	fd = __fd[fd_slot_number];
 
-	__initialize_fd(fd,__fd_hook_entry,handle,0);
+	__initialize_fd(fd,__fd_hook_entry,handle,0,fd_lock);
 
 	/* Figure out if this stream is attached to a console. */
 	PROFILE_OFF();

@@ -70,6 +70,8 @@ __fd_hook_entry(
 	assert( fam != NULL && fd != NULL );
 	assert( __is_valid_fd(fd) );
 
+	__fd_lock(fd);
+
 	switch(fam->fam_Action)
 	{
 		case file_action_read:
@@ -351,6 +353,11 @@ __fd_hook_entry(
 				}
 			}
 
+			__fd_unlock(fd);
+
+			/* Free the lock semaphore now. */
+			FreeVec(fd->fd_Lock);
+
 			/* And that's the last for this file descriptor. */
 			memset(fd,0,sizeof(*fd));
 
@@ -535,6 +542,8 @@ __fd_hook_entry(
 			fam->fam_Error = EBADF;
 			break;
 	}
+
+	__fd_unlock(fd);
 
 	if(buffer != NULL)
 		free(buffer);

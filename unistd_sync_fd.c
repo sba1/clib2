@@ -52,6 +52,8 @@ __sync_fd(struct fd * fd,int mode)
 {
 	assert( fd != NULL );
 
+	__fd_lock(fd);
+
 	if(fd->fd_DefaultFile != ZERO)
 	{
 		/* The mode tells us what to flush. 0 means "flush just the data", and
@@ -67,4 +69,6 @@ __sync_fd(struct fd * fd,int mode)
 				DoPkt(fh->fh_Type,ACTION_FLUSH,	0,0,0,0,0);
 		}
 	}
+
+	__fd_unlock(fd);
 }

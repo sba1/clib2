@@ -49,7 +49,7 @@ fchown(int file_descriptor, uid_t owner, gid_t group)
 	BPTR old_current_dir = ZERO;
 	BOOL current_dir_changed = FALSE;
 	int result = -1;
-	struct fd * fd;
+	struct fd * fd = NULL;
 	LONG success;
 
 	ENTER();
@@ -71,6 +71,8 @@ fchown(int file_descriptor, uid_t owner, gid_t group)
 		__set_errno(EBADF);
 		goto out;
 	}
+
+	__fd_lock(fd);
 
 	if(FLAG_IS_SET(fd->fd_Flags,FDF_IS_SOCKET))
 	{
@@ -162,6 +164,8 @@ fchown(int file_descriptor, uid_t owner, gid_t group)
 	result = 0;
 
  out:
+
+	__fd_unlock(fd);
 
 	PROFILE_OFF();
 

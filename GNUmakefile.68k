@@ -143,6 +143,7 @@ C_LIB = \
 	fcntl_creat.o \
 	fcntl_fcntl.o \
 	fcntl_get_default_file.o \
+	fcntl_lock.o \
 	fcntl_lseek.o \
 	fcntl_open.o \
 	fcntl_read.o \

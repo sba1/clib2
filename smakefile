@@ -161,6 +161,7 @@ FCNTL_OBJ = \
 	fcntl_close.o \
 	fcntl_creat.o \
 	fcntl_fcntl.o \
+	fcntl_lock.o \
 	fcntl_lseek.o \
 	fcntl_open.o \
 	fcntl_read.o \

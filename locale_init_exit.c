@@ -222,7 +222,7 @@ CLIB_DESTRUCTOR(__locale_exit_destructor)
 
 	#if defined(__THREAD_SAFE)
 	{
-		FreeVec(locale_lock);
+		__delete_semaphore(locale_lock);
 		locale_lock = NULL;
 	}
 	#endif /* __THREAD_SAFE */
@@ -241,11 +241,9 @@ CLIB_CONSTRUCTOR(__locale_init_constructor)
 
 	#if defined(__THREAD_SAFE)
 	{
-		locale_lock = AllocVec(sizeof(*locale_lock),MEMF_ANY|MEMF_PUBLIC);
+		locale_lock = __create_semaphore();
 		if(locale_lock == NULL)
 			goto out;
-
-		InitSemaphore(locale_lock);
 	}
 	#endif /* __THREAD_SAFE */
 

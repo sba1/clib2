@@ -331,14 +331,12 @@ open(const char *path_name, int open_flag, ... /* mode_t mode */ )
 
 	#if defined(__THREAD_SAFE)
 	{
-		fd_lock = AllocVec(sizeof(*fd_lock),MEMF_ANY|MEMF_PUBLIC);
+		fd_lock = __create_semaphore();
 		if(fd_lock == NULL)
 		{
 			__set_errno(ENOMEM);
 			goto out;
 		}
-
-		InitSemaphore(fd_lock);
 	}
 	#else
 	{

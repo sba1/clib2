@@ -356,7 +356,7 @@ __fd_hook_entry(
 			__fd_unlock(fd);
 
 			/* Free the lock semaphore now. */
-			FreeVec(fd->fd_Lock);
+			__delete_semaphore(fd->fd_Lock);
 
 			/* And that's the last for this file descriptor. */
 			memset(fd,0,sizeof(*fd));

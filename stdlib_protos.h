@@ -185,18 +185,26 @@ extern void __stkovf(void);
 /* stdlib_termination_message.c */
 extern void __print_termination_message(const char * termination_message);
 
+/****************************************************************************/
+
 /* stdlib_set_process_window.c */
-APTR __set_process_window(APTR new_window_pointer);
+extern APTR __set_process_window(APTR new_window_pointer);
 
 /****************************************************************************/
 
 /* stdlib_set_errno.c */
-void __set_errno(int new_errno);
+extern void __set_errno(int new_errno);
 
 /****************************************************************************/
 
 /* stdlib_get_errno.c */
-int __get_errno(void);
+extern int __get_errno(void);
+
+/****************************************************************************/
+
+/* stdlib_semaphore.c */
+extern struct SignalSemaphore * __create_semaphore(void);
+extern void __delete_semaphore(struct SignalSemaphore * semaphore);
 
 /****************************************************************************/
 

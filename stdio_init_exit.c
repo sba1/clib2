@@ -202,19 +202,16 @@ __stdio_init(void)
 		{
 			/* Allocate memory for an arbitration mechanism, then
 			   initialize it. */
-			stdio_lock	= AllocVec(sizeof(*stdio_lock),MEMF_ANY|MEMF_PUBLIC);
-			fd_lock		= AllocVec(sizeof(*fd_lock),MEMF_ANY|MEMF_PUBLIC);
+			stdio_lock	= __create_semaphore();
+			fd_lock		= __create_semaphore();
 
 			if(stdio_lock == NULL || fd_lock == NULL)
 			{
-				FreeVec(stdio_lock);
-				FreeVec(fd_lock);
+				__delete_semaphore(stdio_lock);
+				__delete_semaphore(fd_lock);
 
 				goto out;
 			}
-
-			InitSemaphore(stdio_lock);
-			InitSemaphore(fd_lock);
 		}
 		#else
 		{

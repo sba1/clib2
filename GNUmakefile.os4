@@ -321,6 +321,7 @@ C_LIB = \
 	stdlib_rand_r.o \
 	stdlib_realloc.o \
 	stdlib_red_black.o \
+	stdlib_semaphore.o \
 	stdlib_setenv.o \
 	stdlib_setjmp.o \
 	stdlib_set_errno.o \

@@ -70,13 +70,8 @@ __stdio_unlock(void)
 void
 __stdio_lock_exit(void)
 {
-	assert( stdio_lock == NULL || stdio_lock->ss_Owner == NULL );
-
-	if(stdio_lock != NULL)
-	{
-		FreeVec(stdio_lock);
-		stdio_lock = NULL;
-	}
+	__delete_semaphore(stdio_lock);
+	stdio_lock = NULL;
 }
 
 /****************************************************************************/
@@ -86,11 +81,9 @@ __stdio_lock_init(void)
 {
 	int result = -1;
 
-	stdio_lock = AllocVec(sizeof(*stdio_lock),MEMF_ANY|MEMF_PUBLIC);
+	stdio_lock = __create_semaphore();
 	if(stdio_lock == NULL)
 		goto out;
-
-	InitSemaphore(stdio_lock);
 
 	result = 0;
 

@@ -62,8 +62,6 @@ fclose(FILE *stream)
 
 	assert( stream != NULL );
 
-	assert( file->iob_Lock == NULL || file->iob_Lock->ss_Owner == NULL );
-
 	if(__check_abort_enabled)
 		__check_abort();
 
@@ -142,7 +140,7 @@ fclose(FILE *stream)
 		free(file->iob_CustomBuffer);
 
 	/* Free the lock semaphore now. */
-	FreeVec(file->iob_Lock);
+	__delete_semaphore(file->iob_Lock);
 
 	memset(file,0,sizeof(*file));
 

@@ -106,14 +106,12 @@ accept(int sockfd,struct sockaddr *cliaddr,int *addrlen)
 
 	#if defined(__THREAD_SAFE)
 	{
-		lock = AllocVec(sizeof(*lock),MEMF_ANY|MEMF_PUBLIC);
+		lock = __create_semaphore();
 		if(lock == NULL)
 		{
 			__set_errno(ENOMEM);
 			goto out;
 		}
-
-		InitSemaphore(lock);
 	}
 	#endif /* __THREAD_SAFE */
 
@@ -141,7 +139,7 @@ accept(int sockfd,struct sockaddr *cliaddr,int *addrlen)
 
 	__stdio_unlock();
 
-	FreeVec(lock);
+	__delete_semaphore(lock);
 
 	if(__check_abort_enabled)
 		__check_abort();

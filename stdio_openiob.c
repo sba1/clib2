@@ -169,11 +169,9 @@ __open_iob(const char *filename, const char *mode, int file_descriptor, int slot
 	{
 		/* Allocate memory for an arbitration mechanism, then
 		   initialize it. */
-		lock = AllocVec(sizeof(*lock),MEMF_ANY|MEMF_PUBLIC);
+		lock = __create_semaphore();
 		if(lock == NULL)
 			goto out;
-
-		InitSemaphore(lock);
 	}
 	#else
 	{

@@ -257,11 +257,9 @@ __socket_init(void)
 			{
 				#if defined(__THREAD_SAFE)
 				{
-					lock = AllocVec(sizeof(*lock),MEMF_ANY|MEMF_PUBLIC);
+					lock = __create_semaphore();
 					if(lock == NULL)
 						goto out;
-
-					InitSemaphore(lock);
 				}
 				#else
 				{
@@ -287,7 +285,7 @@ __socket_init(void)
 					{
 						SHOWMSG("could not duplicate daemon socket");
 
-						FreeVec(lock);
+						__delete_semaphore(lock);
 
 						__show_error("Network server streams could not be initialized.");
 						goto out;

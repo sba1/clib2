@@ -113,7 +113,7 @@ WARNINGS = \
 INCLUDES = -Iinclude -I. -I$(SDK_INCLUDE)
 OPTIONS = -D__THREAD_SAFE -DNDEBUG -DUSE_64_BIT_INTS -D__USE_INLINE__ -Wa,-mregnames
 OPTIMIZE = -O -fomit-frame-pointer -funroll-loops
-DEBUG = -g2
+#DEBUG = -g
 
 CFLAGS = $(WARNINGS) $(OPTIMIZE) $(DEBUG) $(OPTIONS) $(CODE_TYPE) $(INCLUDES)
 

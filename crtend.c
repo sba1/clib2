@@ -10,9 +10,10 @@
 
 /****************************************************************************/
 
-static volatile void (*__CTOR_LIST__[1]) (void) __attribute__((used,section(".ctors"))) = { (void *)0 };
-static volatile void (*__DTOR_LIST__[1]) (void) __attribute__((used,section(".dtors"))) = { (void *)0 };
+static void (*__CTOR_LIST__[1]) (void) __attribute__((used, section(".ctors"), aligned(sizeof(void (*)(void))) ));
+static void (*__DTOR_LIST__[1]) (void) __attribute__((used, section(".dtors"), aligned(sizeof(void (*)(void))) ));
 
 /****************************************************************************/
 
 #endif /*__amigaos4__ */
+

@@ -47,7 +47,7 @@
 
 /****************************************************************************/
 
-void *
+__static void *
 __calloc(size_t num_elements,size_t element_size,const char * file,int line)
 {
 	void * result = NULL;
@@ -82,6 +82,10 @@ __calloc(size_t num_elements,size_t element_size,const char * file,int line)
 
 /****************************************************************************/
 
+#if NOT defined(__MEM_DEBUG)
+
+/****************************************************************************/
+
 void *
 calloc(size_t num_elements,size_t element_size)
 {
@@ -91,3 +95,7 @@ calloc(size_t num_elements,size_t element_size)
 
 	return(result);
 }
+
+/****************************************************************************/
+
+#endif /* __MEM_DEBUG */

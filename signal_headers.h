@@ -85,9 +85,9 @@ extern const char NOCOMMON __abnormal_program_termination[];
 
 /****************************************************************************/
 
-#ifndef _STDLIB_PROTOS_H
-#include "stdlib_protos.h"
-#endif /* _STDLIB_PROTOS_H */
+#ifndef _STDLIB_HEADERS_H
+#include "stdlib_headers.h"
+#endif /* _STDLIB_HEADERS_H */
 
 /****************************************************************************/
 

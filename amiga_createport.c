@@ -44,6 +44,12 @@
 
 /****************************************************************************/
 
+#if defined(CreatePort)
+#undef CreatePort
+#endif /* CreatePort */
+
+/****************************************************************************/
+
 struct MsgPort *
 CreatePort(CONST_STRPTR name, LONG pri)
 {

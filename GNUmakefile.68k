@@ -487,7 +487,6 @@ MATH_LIB = \
 	stdio_vasprintf.o \
 	stdio_vfprintf.o \
 	stdio_vfscanf.o \
-	stdio_vfscanf.o \
 	stdio_vprintf.o \
 	stdio_vsnprintf.o \
 	stdio_vsprintf.o \

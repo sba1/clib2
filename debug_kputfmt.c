@@ -43,7 +43,7 @@
    parameter table is provided, pick up the parameters and store them in
    the table. The table layout follows the format string and can include
    both 16 and 32 bit data. */
-static size_t
+STATIC size_t
 process_var_args(char *format_string,va_list argument_list,unsigned short * table)
 {
 	size_t num_args = 0;
@@ -150,7 +150,7 @@ process_var_args(char *format_string,va_list argument_list,unsigned short * tabl
 
 /****************************************************************************/
 
-static VOID ASM
+STATIC VOID ASM
 raw_put_char(REG(d0,UBYTE c))
 {
 	kputc(c); 

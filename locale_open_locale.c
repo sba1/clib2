@@ -31,71 +31,10 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef __PPC__
+#ifndef _LOCALE_HEADERS_H
+#include "locale_headers.h"
+#endif /* _LOCALE_HEADERS_H */
 
 /****************************************************************************/
 
-#include <intuition/intuition.h>
-#include <intuition/classes.h>
-
-#include <clib/alib_protos.h>
-
-/****************************************************************************/
-
-#include "debug.h"
-
-/****************************************************************************/
-
-STATIC ULONG
-SetSuperAttrsA(Class * cl,Object * obj,struct TagItem * tags)
-{
-	ULONG result = 0;
-
-	ENTER();
-
-	SHOWPOINTER(cl);
-	SHOWPOINTER(obj);
-	SHOWPOINTER(tags);
-
-	assert( cl != NULL && obj != NULL );
-
-	if(cl != NULL && obj != NULL)
-	{
-		struct opSet ops;
-
-		ops.MethodID		= OM_SET;
-		ops.ops_AttrList	= tags;
-		ops.ops_GInfo		= NULL;
-
-		result = CallHookA(&cl->cl_Super->cl_Dispatcher,obj,&ops);
-	}
-
-	RETURN(result);
-	return(result);
-}
-
-/****************************************************************************/
-
-ULONG
-SetSuperAttrs(Class * cl,Object * obj,ULONG tag1,...)
-{
-	ULONG result = 0;
-
-	ENTER();
-
-	SHOWPOINTER(cl);
-	SHOWPOINTER(obj);
-	SHOWVALUE(tag1);
-
-	assert( cl != NULL && obj != NULL );
-
-	if(cl != NULL && obj != NULL)
-		result = SetSuperAttrsA(cl,obj,(struct TagItem *)&tag1);
-
-	RETURN(result);
-	return(result);
-}
-
-/****************************************************************************/
-
-#endif /* __PPC__ */
+BOOL __open_locale = TRUE;

@@ -71,7 +71,7 @@
 
 /****************************************************************************/
 
-static int
+STATIC int
 get_num_leading_digits(__long_double_t v)
 {
 	int num_digits;

@@ -97,7 +97,7 @@ ___asin:
 
 /****************************************************************************/
 
-INLINE static const double
+INLINE STATIC const double
 __asin(double x)
 {
 	double result;
@@ -119,7 +119,7 @@ __asin(double x)
 
 #if defined(M68881_FLOATING_POINT_SUPPORT)
 
-INLINE static const double
+INLINE STATIC const double
 __asin(double x)
 {
 	double result;
@@ -156,7 +156,7 @@ qS3 = -6.88283971605453293030e-01, /* 0xBFE6066C, 0x1B8D0159 */
 qS4 =  7.70381505559019352791e-02; /* 0x3FB3B8C5, 0xB12E9282 */
 
 
-INLINE static const double
+INLINE STATIC const double
 __asin(double x)
 {
 	double t,w,p,q,c,r,s;

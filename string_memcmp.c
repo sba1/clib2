@@ -43,7 +43,7 @@
 
 /****************************************************************************/
 
-INLINE static int
+INLINE STATIC int
 __memcmp(const char *m1,const char *m2,size_t len)
 {
 	int result = 0;

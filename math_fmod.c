@@ -54,7 +54,7 @@
 
 /****************************************************************************/
 
-INLINE static const double
+INLINE STATIC const double
 __fmod(double x,double y)
 {
 	double q,p,result;
@@ -79,7 +79,7 @@ __fmod(double x,double y)
 
 #if defined(M68881_FLOATING_POINT_SUPPORT)
 
-INLINE static const double
+INLINE STATIC const double
 __fmod(double x,double y)
 {
 	double result;
@@ -102,7 +102,7 @@ static const double
 one = 1.0, 
 Zero[] = {0.0, -0.0,};
 
-INLINE static const double
+INLINE STATIC const double
 __fmod(double x,double y)
 {
 	int n,hx,hy,hz,ix,iy,sx,i;

@@ -57,7 +57,7 @@ typedef LONG (* CFUNC)(APTR arg);
 
 /****************************************************************************/
 
-static LONG INTERRUPT ASM
+STATIC LONG INTERRUPT ASM
 call_routine(REG(a1,struct Isrvstr *i))
 {
 	CFUNC p = (CFUNC)i->ccode;

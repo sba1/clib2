@@ -97,7 +97,7 @@ ___sin:
 
 /****************************************************************************/
 
-INLINE static const double
+INLINE STATIC const double
 __sin(double x)
 {
 	double result;
@@ -119,7 +119,7 @@ __sin(double x)
 
 #if defined(M68881_FLOATING_POINT_SUPPORT)
 
-INLINE static const double
+INLINE STATIC const double
 __sin(double x)
 {
 	double result;
@@ -137,7 +137,7 @@ __sin(double x)
 
 #if defined(PPC_FLOATING_POINT_SUPPORT)
 
-INLINE static const double
+INLINE STATIC const double
 __sin(double x)
 {
 	double y[2],z=0.0;

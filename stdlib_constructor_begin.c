@@ -62,7 +62,7 @@ __construct(void)
 
 /****************************************************************************/
 
-static void
+STATIC VOID
 _do_ctors(void)
 {
 	void * volatile p = &__ctors;
@@ -82,7 +82,7 @@ _do_ctors(void)
 
 /****************************************************************************/
 
-static void
+STATIC VOID
 _do_dtors(void)
 {
 	void * volatile p = &__dtors;
@@ -121,7 +121,7 @@ typedef void (*func_ptr)(void);
 
 /****************************************************************************/
 
-static void
+STATIC VOID
 _do_ctors(void)
 {
 	extern func_ptr __CTOR_LIST__[];
@@ -147,7 +147,7 @@ _do_ctors(void)
 
 /****************************************************************************/
 
-static void
+STATIC VOID
 _do_dtors(void)
 {
 	extern func_ptr __DTOR_LIST__[];

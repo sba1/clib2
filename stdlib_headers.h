@@ -139,7 +139,7 @@ extern char * __getcwd(char * buffer,size_t buffer_size,const char *file,int lin
 
 #else
 
-#define __static static
+#define __static STATIC
 
 #define __free(mem,file,line) free(mem)
 #define __malloc(size,file,line) malloc(size)

@@ -97,7 +97,7 @@ ___sinh:
 
 /****************************************************************************/
 
-INLINE static const double
+INLINE STATIC const double
 __sinh(double x)
 {
 	double result;
@@ -119,7 +119,7 @@ __sinh(double x)
 
 #if defined(M68881_FLOATING_POINT_SUPPORT)
 
-INLINE static const double
+INLINE STATIC const double
 __sinh(double x)
 {
 	double result;
@@ -139,7 +139,7 @@ __sinh(double x)
 
 static const double one = 1.0, shuge = 1.0e307;
 
-INLINE static const double
+INLINE STATIC const double
 __sinh(double x)
 {	
 	double t,w,h;

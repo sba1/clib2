@@ -58,7 +58,7 @@
 
 #if defined(IEEE_FLOATING_POINT_SUPPORT)
 
-INLINE static const double
+INLINE STATIC const double
 __frexp(double x,int * nptr)
 {
 	int int_exponent = 0;
@@ -106,7 +106,7 @@ __frexp(double x,int * nptr)
 
 #if defined(M68881_FLOATING_POINT_SUPPORT)
 
-INLINE static const double
+INLINE STATIC const double
 __frexp(double x,int * nptr)
 {
 	double float_exponent;
@@ -146,7 +146,7 @@ __frexp(double x,int * nptr)
 static const double
 two54 =  1.80143985094819840000e+16; /* 0x43500000, 0x00000000 */
 
-INLINE static const double
+INLINE STATIC const double
 __frexp(double x,int * eptr)
 {
 	int hx, ix, lx;

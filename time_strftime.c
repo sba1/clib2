@@ -56,7 +56,7 @@ struct format_hook_data
 
 /****************************************************************************/
 
-static void
+STATIC VOID
 format_hook_function(
 	struct Hook *			hook,
 	long					c,
@@ -85,7 +85,7 @@ format_hook_function(
 
 /****************************************************************************/
 
-static void
+STATIC VOID
 store_string_via_hook(const char * string,int len,struct Hook * hook)
 {
 	DECLARE_UTILITYBASE();
@@ -102,7 +102,7 @@ store_string_via_hook(const char * string,int len,struct Hook * hook)
 
 /****************************************************************************/
 
-static void
+STATIC VOID
 format_date(const char *format,const struct tm *tm,struct Hook * hook)
 {
 	char buffer[40];

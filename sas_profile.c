@@ -77,11 +77,11 @@ static BOOL					initialized;
 
 /****************************************************************************/
 
-static int send_profiler_message(ULONG clock_value, char *id, ULONG flags);
-static ULONG get_current_time(void);
-static void update_overhead(void);
-static void __profile_init(void);
-static void __profile_exit(void);
+STATIC int send_profiler_message(ULONG clock_value, char *id, ULONG flags);
+STATIC ULONG get_current_time(void);
+STATIC void update_overhead(void);
+STATIC void __profile_init(void);
+STATIC void __profile_exit(void);
 
 /****************************************************************************/
 
@@ -90,7 +90,7 @@ void ASM _EPILOG(REG(a0, char *id));
 
 /****************************************************************************/
 
-static int
+STATIC int
 send_profiler_message(ULONG clock_value,char * id,ULONG flags)
 {
 	extern long __builtin_getreg(int);
@@ -142,7 +142,7 @@ send_profiler_message(ULONG clock_value,char * id,ULONG flags)
 
 /****************************************************************************/
 
-static ULONG
+STATIC ULONG
 get_current_time(void)
 {
 	ULONG result;
@@ -156,7 +156,7 @@ get_current_time(void)
 
 /****************************************************************************/
 
-static void
+STATIC void
 update_overhead(void)
 {
 	struct EClockVal ev;
@@ -192,7 +192,7 @@ _EPILOG(REG(a0,char * id))
 
 /****************************************************************************/
 
-static void
+STATIC VOID
 __profile_init(void)
 {
 	struct SPROFMSG * spm;
@@ -258,7 +258,7 @@ __profile_init(void)
 
 /****************************************************************************/
 
-static void
+STATIC VOID
 __profile_exit(void)
 {
 	if(initialized)

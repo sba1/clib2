@@ -97,7 +97,7 @@ ___ceil:
 
 /****************************************************************************/
 
-INLINE static const double
+INLINE STATIC const double
 __ceil(double x)
 {
 	double result;
@@ -119,7 +119,7 @@ __ceil(double x)
 
 #if defined(M68881_FLOATING_POINT_SUPPORT)
 
-INLINE static const double
+INLINE STATIC const double
 __ceil(double x)
 {
 	int rounding_mode, round_up;
@@ -152,7 +152,7 @@ __ceil(double x)
 
 static const double huge = 1.0e300;
 
-INLINE static const double
+INLINE STATIC const double
 __ceil(double x)
 {
 	int i0,i1,j0;

@@ -66,7 +66,7 @@ union dtol
 	long	ival[2];
 };
 
-INLINE static const double
+INLINE STATIC const double
 __ldexp(double x,int n)
 {
 	union dtol number;
@@ -96,7 +96,7 @@ __ldexp(double x,int n)
 
 #if defined(M68881_FLOATING_POINT_SUPPORT)
 
-INLINE static const double
+INLINE STATIC const double
 __ldexp(double x,int n)
 {
 	double result;
@@ -129,7 +129,7 @@ union dtol
 	long	ival[2];
 };
 
-INLINE static const double
+INLINE STATIC const double
 __ldexp(double x,int n)
 {
 	union dtol number;

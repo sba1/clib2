@@ -56,7 +56,7 @@
 /* This is used in place of ChangeMode() in order to work around a bug in
    dos.library V40 and below: a "NIL:" file handle will crash the
    caller of the ChangeMode() function. */
-static LONG
+STATIC LONG
 safe_change_mode(LONG type,BPTR file_handle,LONG mode)
 {
 	LONG result = DOSFALSE;

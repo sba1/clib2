@@ -351,7 +351,7 @@ memmove(void *dest, const void * src, size_t len)
 
 /****************************************************************************/
 
-INLINE static void
+INLINE STATIC VOID
 __memmove(unsigned char * to,unsigned char * from,size_t len)
 {
 	if(from < to && to < from + len)

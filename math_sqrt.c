@@ -97,7 +97,7 @@ ___sqrt:
 
 /****************************************************************************/
 
-INLINE static const double
+INLINE STATIC const double
 __sqrt(double x)
 {
 	double result;
@@ -119,7 +119,7 @@ __sqrt(double x)
 
 #if defined(M68881_FLOATING_POINT_SUPPORT)
 
-INLINE static const double
+INLINE STATIC const double
 __sqrt(double x)
 {
 	double result;
@@ -139,7 +139,7 @@ __sqrt(double x)
 
 static	const double	one	= 1.0, tiny=1.0e-300;
 
-INLINE static const double
+INLINE STATIC const double
 __sqrt(double x)
 {
 	double z;

@@ -133,7 +133,7 @@ _POPDEBUGLEVEL(void)
 
 /****************************************************************************/
 
-static void
+STATIC VOID
 _INDENT(void)
 {
 	if(program_name_len > 0)

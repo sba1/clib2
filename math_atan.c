@@ -97,7 +97,7 @@ ___atan:
 
 /****************************************************************************/
 
-INLINE static const double
+INLINE STATIC const double
 __atan(double x)
 {
 	double result;
@@ -119,7 +119,7 @@ __atan(double x)
 
 #if defined(M68881_FLOATING_POINT_SUPPORT)
 
-INLINE static const double
+INLINE STATIC const double
 __atan(double x)
 {
 	double result;
@@ -169,7 +169,7 @@ static const double
 one   = 1.0,
 huge   = 1.0e300;
 
-INLINE static const double
+INLINE STATIC const double
 __atan(double x)
 {
 	double w,s1,s2,z;

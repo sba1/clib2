@@ -89,7 +89,7 @@
 /******************************************************************/
 
 /* swap nbytes between a and b */
-INLINE static void
+INLINE STATIC void
 swap(char * a, char * b, size_t nbytes)
 {
 	char temp;

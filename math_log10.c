@@ -97,7 +97,7 @@ ___log10:
 
 /****************************************************************************/
 
-INLINE static const double
+INLINE STATIC const double
 __log10(double x)
 {
 	double result;
@@ -119,7 +119,7 @@ __log10(double x)
 
 #if defined(M68881_FLOATING_POINT_SUPPORT)
 
-INLINE static const double
+INLINE STATIC const double
 __log10(double x)
 {
 	double result;
@@ -144,7 +144,7 @@ log10_2hi  =  3.01029995663611771306e-01, /* 0x3FD34413, 0x509F6000 */
 log10_2lo  =  3.69423907715893078616e-13, /* 0x3D59FEF3, 0x11F12B36 */
 zero       =  0.0;
 
-INLINE static const double
+INLINE STATIC const double
 __log10(double x)
 {
 	double y,z;

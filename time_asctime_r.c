@@ -43,7 +43,7 @@
 
 /****************************************************************************/
 
-static void
+STATIC VOID
 add_to_string(char * to,size_t to_size,const char * string,size_t * offset_ptr)
 {
 	size_t offset,len;

@@ -41,6 +41,7 @@ struct lconv *
 localeconv(void)
 {
 	static struct lconv loc;
+
 	struct Locale * numeric_locale = __locale_table[LC_NUMERIC];
 	struct Locale * monetary_locale = __locale_table[LC_MONETARY];
 	struct lconv * result;

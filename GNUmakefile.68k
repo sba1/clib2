@@ -151,6 +151,7 @@ C_LIB = \
 	libgen_dirname.o \
 	locale_init_exit.o \
 	locale_localeconv.o \
+	locale_open_locale.o \
 	locale_setlocale.o \
 	mount_convertinfo.o \
 	mount_fstatfs.o \

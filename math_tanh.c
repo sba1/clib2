@@ -97,7 +97,7 @@ ___tanh:
 
 /****************************************************************************/
 
-INLINE static const double
+INLINE STATIC const double
 __tanh(double x)
 {
 	double result;
@@ -119,7 +119,7 @@ __tanh(double x)
 
 #if defined(M68881_FLOATING_POINT_SUPPORT)
 
-INLINE static const double
+INLINE STATIC const double
 __tanh(double x)
 {
 	double result;
@@ -139,7 +139,7 @@ __tanh(double x)
 
 static const double one=1.0, two=2.0, tiny = 1.0e-300;
 
-INLINE static const double
+INLINE STATIC const double
 __tanh(double x)
 {
 	double t,z;

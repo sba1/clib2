@@ -273,6 +273,32 @@ extern unsigned int (* __get_default_stack_size)(void);
 /****************************************************************************/
 
 /*
+ * This library falls back onto locale.library to perform string collation
+ * in strcoll(), character conversion in toupper() and various other
+ * functions. This may not your intention. To restrict the library to use
+ * only the "C" language locale, declare the following variable in your
+ * code and set it to FALSE, so that it overrides the default settings.
+ * The variable value is checked during program startup and, if set to
+ * TRUE, has the effect of opening locale.library and obtaining the
+ * default locale.
+ */
+extern BOOL __open_locale;
+
+/*
+ * Two functions control how this library uses the locale.library API to
+ * perform string collation, character and time conversion, etc.
+ *
+ * __locale_init() opens locale.library and attempts to open the default
+ * locale. If it succeeds, it will return 0 and -1 otherwise.
+ *
+ * __locale_exit() releases the default locale and closes locale.library.
+ */
+extern void __locale_exit(void);
+extern int __locale_init(void);
+
+/****************************************************************************/
+
+/*
  * If linked with -lunix, Unix path names are translated to Amiga path
  * names (and the other way round). If you wish to disable this, set the
  * following variable to FALSE. Only the path name translation is affected

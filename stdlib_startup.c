@@ -90,7 +90,7 @@ UBYTE * __quote_vector;
 
 /****************************************************************************/
 
-static BOOL
+STATIC BOOL
 is_escape_character(UBYTE c)
 {
 	BOOL result;
@@ -102,7 +102,7 @@ is_escape_character(UBYTE c)
 
 /****************************************************************************/
 
-static BOOL
+STATIC BOOL
 is_final_quote_character(const char * str)
 {
 	BOOL result;

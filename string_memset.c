@@ -43,7 +43,7 @@
 
 /****************************************************************************/
 
-INLINE static void
+INLINE STATIC VOID
 __memset(unsigned char * to,unsigned char value,size_t len)
 {
 	/* The setup below is intended to speed up changing larger

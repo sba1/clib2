@@ -229,7 +229,7 @@ memcpy(void *dst, const void *src, size_t len)
 
 /****************************************************************************/
 
-INLINE static void 
+INLINE STATIC VOID 
 __memcpy(unsigned char * to,unsigned char * from,size_t len)
 {
 	/* The setup below is intended to speed up copying larger

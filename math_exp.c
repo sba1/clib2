@@ -97,7 +97,7 @@ ___exp:
 
 /****************************************************************************/
 
-INLINE static const double
+INLINE STATIC const double
 __exp(double x)
 {
 	double result;
@@ -119,7 +119,7 @@ __exp(double x)
 
 #if defined(M68881_FLOATING_POINT_SUPPORT)
 
-INLINE static const double
+INLINE STATIC const double
 __exp(double x)
 {
 	double result;
@@ -155,7 +155,7 @@ P3   =  6.61375632143793436117e-05,        /* 0x3F11566A, 0xAF25DE2C */
 P4   = -1.65339022054652515390e-06,        /* 0xBEBBBD41, 0xC5D26BF1 */
 P5   =  4.13813679705723846039e-08;        /* 0x3E663769, 0x72BEA4D0 */
 
-INLINE static const double
+INLINE STATIC const double
 __exp(double x)
 {
 	double y,hi,lo,c,t;

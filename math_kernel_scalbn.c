@@ -50,7 +50,7 @@
 
 /****************************************************************************/
 
-INLINE static double copysign(double x, double y)
+INLINE STATIC double copysign(double x, double y)
 {
 	unsigned int hx,hy;
 

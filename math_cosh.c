@@ -97,7 +97,7 @@ ___cosh:
 
 /****************************************************************************/
 
-INLINE static const double
+INLINE STATIC const double
 __cosh(double x)
 {
 	double result;
@@ -119,7 +119,7 @@ __cosh(double x)
 
 #if defined(M68881_FLOATING_POINT_SUPPORT)
 
-INLINE static const double
+INLINE STATIC const double
 __cosh(double x)
 {
 	double result;
@@ -139,7 +139,7 @@ __cosh(double x)
 
 static const double one = 1.0, half=0.5, huge = 1.0e300;
 
-INLINE static const double
+INLINE STATIC const double
 __cosh(double x)
 {	
 	double t,w;

@@ -49,7 +49,7 @@
 
 /****************************************************************************/
 
-static int
+STATIC int
 do_escape(int cc)
 {
 	int result;
@@ -91,7 +91,7 @@ do_escape(int cc)
 
 /****************************************************************************/
 
-static ULONG
+STATIC ULONG
 do_angle(STRPTR * strp, struct InputEvent *ie)
 {
 	ULONG result;

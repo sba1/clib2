@@ -52,7 +52,7 @@
 
 #if defined(IEEE_FLOATING_POINT_SUPPORT) || defined(M68881_FLOATING_POINT_SUPPORT)
 
-INLINE static const double
+INLINE STATIC const double
 __hypot(double x,double y)
 {
 	double yx;
@@ -85,7 +85,7 @@ __hypot(double x,double y)
 
 static const double one = 1.0;
 
-INLINE static const double
+INLINE STATIC const double
 __hypot(double x,double y)
 {
 	int n0;

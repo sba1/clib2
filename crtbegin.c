@@ -30,7 +30,7 @@ static void (*__DTOR_LIST__[1]) (void) __attribute__((section(".dtors"))) = { (v
 
 /****************************************************************************/
 
-static void
+STATIC VOID
 _do_ctors(void)
 {
 	void (**pFuncPtr)(void);
@@ -45,7 +45,7 @@ _do_ctors(void)
 
 /****************************************************************************/
 
-static void
+STATIC VOID
 _do_dtors(void)
 {
 	ULONG i = (ULONG)__DTOR_LIST__[0];
@@ -79,7 +79,7 @@ typedef void (*func_ptr)(void);
 
 /****************************************************************************/
 
-static void
+STATIC VOID
 _do_ctors(void)
 {
 	extern func_ptr __CTOR_LIST__[];
@@ -92,7 +92,7 @@ _do_ctors(void)
 
 /****************************************************************************/
 
-static void
+STATIC VOID
 _do_dtors(void)
 {
 	extern func_ptr __DTOR_LIST__[];

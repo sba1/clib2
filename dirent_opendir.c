@@ -57,7 +57,7 @@
 
 /****************************************************************************/
 
-static struct Node *
+STATIC struct Node *
 find_by_name(struct List * list,const char * name)
 {
 	struct Node * result = NULL;

@@ -46,7 +46,7 @@
 
 /******************************************************************************/
 
-static unsigned int
+STATIC unsigned int
 get_default_stack_size(void)
 {
 	unsigned int result = 0;

@@ -48,7 +48,7 @@
 
 /****************************************************************************/
 
-INLINE static void *
+INLINE STATIC void *
 __memchr(const unsigned char * m,unsigned char val,size_t len)
 {
 	void * result = NULL;

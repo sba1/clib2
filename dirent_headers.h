@@ -42,6 +42,12 @@
 
 /****************************************************************************/
 
+#ifndef _MACROS_H
+#include "macros.h"
+#endif /* _MACROS_H */
+
+/****************************************************************************/
+
 struct DirectoryHandle
 {
 	struct MinNode			dh_MinNode;
@@ -56,7 +62,7 @@ struct DirectoryHandle
 
 /****************************************************************************/
 
-extern struct MinList __directory_list;
+extern struct MinList NOCOMMON __directory_list;
 
 /****************************************************************************/
 

@@ -62,7 +62,7 @@ extern "C" {
  * correspond to a real limitation for this 'C' runtime library and is
  * included solely for ISO 'C' (1994) compliance.
  */
-#define FOPEN_MAX 8
+#define FOPEN_MAX 64
 
 /****************************************************************************/
 

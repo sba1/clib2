@@ -113,6 +113,18 @@ extern void __set_a4(unsigned long value);
 /****************************************************************************/
 
 /*
+ * Obtain the low level 'file' handle or socket ID bound to a file
+ * descriptor. This function returns 0 for success and non-zero
+ * otherwise (if, for example, the file descriptor value you
+ * provided is not valid; errno will be set to the appropriate
+ * error code, too). Put a pointer to the file handle variable you
+ * want to be filled in into the second parameter to this function.
+ */
+extern int __get_default_file(int file_descriptor,long * file_ptr);
+
+/****************************************************************************/
+
+/*
  * This will be set to TRUE if the current program was launched from
  * the internet superserver ('inetd') or an equivalent facility.
  */

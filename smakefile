@@ -163,7 +163,8 @@ FCNTL_OBJ = \
 	fcntl_lseek.o \
 	fcntl_open.o \
 	fcntl_read.o \
-	fcntl_write.o
+	fcntl_write.o \
+	fcntl_get_default_file.o
 
 LIBGEN_OBJ = \
 	libgen_basename.o \

@@ -226,7 +226,7 @@ acos(double x)
 	}
 	else
 	{
-		result = HUGE_VAL;
+		result = 0;
 		errno = EDOM;
 	}
 

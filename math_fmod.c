@@ -284,7 +284,7 @@ fmod(double x,double y)
 	}
 	else
 	{
-		result = HUGE_VAL;
+		result = x;
 		errno = EDOM;
 	}
 

@@ -165,4 +165,9 @@ extern double __scalbn(double x, int n);
 
 /****************************************************************************/
 
+extern double __not_a_number;
+extern double __infinity;
+
+/****************************************************************************/
+
 #endif /* _MATH_HEADERS_H */

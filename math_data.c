@@ -48,3 +48,5 @@ struct Library * MathIeeeDoubTransBase;
 /****************************************************************************/
 
 double __huge_val;
+double __not_a_number;
+double __infinity;

@@ -357,6 +357,7 @@ STDIO_OBJ = \
 STDLIB_OBJ = \
 	stdlib_abort.o \
 	stdlib_abs.o \
+	stdlib_alloca.o \
 	stdlib_assertion_failure.o \
 	stdlib_atexit.o \
 	stdlib_atof.o \

@@ -441,8 +441,7 @@ free_memory(void * ptr,BOOL force,const char * file,int line)
 	assert(ptr != NULL);
 
 	/* Try to get rid of now unused memory. */
-	/*if(NOT IsListEmpty((struct List *)&__alloca_memory_list))
-		__alloca_cleanup(file,line);*/
+	/*__alloca_cleanup(file,line);*/
 
 	#ifdef __MEM_DEBUG
 	{
@@ -509,4 +508,73 @@ void
 free(void * ptr)
 {
 	__free(ptr,NULL,0);
+}
+
+/****************************************************************************/
+
+void
+__memory_exit(void)
+{
+	ENTER();
+
+	#ifdef __MEM_DEBUG
+	{
+		kprintf("[%s] %ld bytes still allocated upon exit, maximum of %ld bytes allocated at a time.\n",
+			__program_name,__current_memory_allocated,__maximum_memory_allocated);
+
+		kprintf("[%s] %ld chunks of memory still allocated upon exit, maximum of %ld chunks allocated at a time.\n",
+			__program_name,__current_num_memory_chunks_allocated,__maximum_num_memory_chunks_allocated);
+
+		__check_memory_allocations(__FILE__,__LINE__);
+	}
+	#endif /* __MEM_DEBUG */
+
+	#if defined(__MEM_DEBUG)
+	{
+		__never_free = FALSE;
+
+		if(__memory_list.mlh_Head != NULL)
+		{
+			while(NOT IsListEmpty((struct List *)&__memory_list))
+			{
+				((struct MemoryNode *)__memory_list.mlh_Head)->mn_AlreadyFree = FALSE;
+
+				__free_memory_node((struct MemoryNode *)__memory_list.mlh_Head,__FILE__,__LINE__);
+			}
+		}
+	}
+	#endif /* __MEM_DEBUG */
+
+	#if defined(__USE_MEM_TREES) && defined(__MEM_DEBUG)
+	{
+		__initialize_red_black_tree(&__memory_tree);
+	}
+	#endif /* __USE_MEM_TREES && __MEM_DEBUG */
+
+	if(__memory_pool != NULL)
+	{
+		NewList((struct List *)&__memory_list);
+
+		DeletePool(__memory_pool);
+		__memory_pool = NULL;
+	}
+	else
+	{
+		if(__memory_list.mlh_Head != NULL)
+		{
+			#ifdef __MEM_DEBUG
+			{
+				while(NOT IsListEmpty((struct List *)&__memory_list))
+					__free_memory_node((struct MemoryNode *)__memory_list.mlh_Head,__FILE__,__LINE__);
+			}
+			#else
+			{
+				while(NOT IsListEmpty((struct List *)&__memory_list))
+					__free_memory_node((struct MemoryNode *)__memory_list.mlh_Head,NULL,0);
+			}
+			#endif /* __MEM_DEBUG */
+		}
+	}
+
+	LEAVE();
 }

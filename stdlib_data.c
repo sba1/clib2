@@ -43,28 +43,6 @@
 
 /****************************************************************************/
 
-/* NOTE: for Knuth's algorithm below the seed must not be zero. */
-unsigned __random_seed = 1;
-
-/****************************************************************************/
-
-#if defined(__USE_MEM_TREES) && defined(__MEM_DEBUG)
-
-struct MemoryTree __memory_tree;
-
-#endif /* __USE_MEM_TREES && __MEM_DEBUG */
-
-/****************************************************************************/
-
-APTR			__memory_pool;
-struct MinList	__memory_list;
-
-/****************************************************************************/
-
-struct MinList __alloca_memory_list;
-
-/****************************************************************************/
-
 struct WBStartup * __WBenchMsg;
 
 /****************************************************************************/
@@ -74,21 +52,9 @@ BOOL	__free_program_name;
 
 /****************************************************************************/
 
-BOOL __stack_overflow;
-UBYTE * __stk_limit;
-/*UBYTE ** __stackborders;*/
-/*UBYTE * __stk_initial;*/
-ULONG __stk_maxsize;
-ULONG __stk_size;
-ULONG __stk_extensions;
-
-/****************************************************************************/
-
-#if defined(__SASC)
-
-UBYTE * __base;
-
-#endif /* __SASC */
+BOOL	__stack_overflow;
+ULONG	__stk_maxsize;
+ULONG	__stk_extensions;
 
 /****************************************************************************/
 

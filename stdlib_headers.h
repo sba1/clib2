@@ -159,10 +159,6 @@ extern APTR NOCOMMON				__memory_pool;
 
 /****************************************************************************/
 
-extern struct MinList NOCOMMON __alloca_memory_list;
-
-/****************************************************************************/
-
 extern unsigned long NOCOMMON __maximum_memory_allocated;
 extern unsigned long NOCOMMON __current_memory_allocated;
 extern unsigned long NOCOMMON __maximum_num_memory_chunks_allocated;

@@ -244,11 +244,10 @@ log(double x)
 {
 	double result;
 
-	/* ZZZ when do we consider 'x' to be invalid? If it's close
-	 * enough to zero or negative. How large is epsilon, and how
-	 * do we return minus infinity?
+	/* When do we consider 'x' to be invalid? If it's close
+	 * enough to zero or negative.
 	 */
-	if(x > 0.0)
+	if(x > DBL_EPSILON)
 	{
 		result = __log(x);
 	}

@@ -48,7 +48,7 @@
 /****************************************************************************/
 
 int
-sendto(int sockfd,void *buff,int len,int flags,struct sockaddr *to,int tolen)
+sendto(int sockfd,const void *buff,int len,int flags,struct sockaddr *to,int tolen)
 {
 	struct fd * fd;
 	int result = -1;

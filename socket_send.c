@@ -48,7 +48,7 @@
 /****************************************************************************/
 
 int
-send(int sockfd,void *buff,size_t nbytes,int flags)
+send(int sockfd,const void *buff,size_t nbytes,int flags)
 {
 	struct fd * fd;
 	int result = -1;

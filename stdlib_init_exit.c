@@ -51,7 +51,7 @@ char * __program_name;
 
 /****************************************************************************/
 
-STDLIB_DESTRUCTOR(__stdlib_exit)
+STDLIB_DESTRUCTOR(stdlib_exit)
 {
 	__memory_exit();
 
@@ -64,7 +64,7 @@ STDLIB_DESTRUCTOR(__stdlib_exit)
 
 /****************************************************************************/
 
-STDLIB_CONSTRUCTOR(__stdlib_init)
+STDLIB_CONSTRUCTOR(stdlib_init)
 {
 	BOOL success = FALSE;
 

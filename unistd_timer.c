@@ -59,7 +59,7 @@ struct TimerIFace * __ITimer;
 
 /****************************************************************************/
 
-CLIB_CONSTRUCTOR(__timer_init)
+CLIB_CONSTRUCTOR(timer_init)
 {
 	BOOL success = FALSE;
 
@@ -112,7 +112,7 @@ CLIB_CONSTRUCTOR(__timer_init)
 
 /****************************************************************************/
 
-CLIB_DESTRUCTOR(__timer_exit)
+CLIB_DESTRUCTOR(timer_exit)
 {
 	ENTER();
 

@@ -41,7 +41,7 @@ static struct DateStamp start_time;
 
 /****************************************************************************/
 
-CLIB_CONSTRUCTOR(init_start_time)
+CLIB_CONSTRUCTOR(clock_init)
 {
 	/* Remember when this program was started. */
 	DateStamp(&start_time);

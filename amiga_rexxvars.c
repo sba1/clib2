@@ -60,7 +60,7 @@ static struct RexxSysIFace * IRexxSys;
 
 /****************************************************************************/
 
-CLIB_CONSTRUCTOR(__rexxvars_init)
+CLIB_CONSTRUCTOR(rexxvars_init)
 {
 	ENTER();
 
@@ -85,7 +85,7 @@ CLIB_CONSTRUCTOR(__rexxvars_init)
 
 /****************************************************************************/
 
-CLIB_DESTRUCTOR(__rexxvars_exit)
+CLIB_DESTRUCTOR(rexxvars_exit)
 {
 	ENTER();
 

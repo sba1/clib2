@@ -282,7 +282,7 @@ ULONG __stk_size;
 
 /****************************************************************************/
 
-STK_CONSTRUCTOR(__stk_init)
+STK_CONSTRUCTOR(stk_init)
 {
 	struct Task *task = FindTask(NULL);
 
@@ -300,7 +300,7 @@ STK_CONSTRUCTOR(__stk_init)
 /****************************************************************************/
 
 /* Free all spare stackframes */
-STK_DESTRUCTOR(__stk_exit)
+STK_DESTRUCTOR(stk_exit)
 {
 	if(__memory_pool == NULL)
 	{

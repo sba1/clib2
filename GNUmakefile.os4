@@ -27,7 +27,7 @@ MAKEDIR = mkdir
 # DELETE = delete all quiet
 # MAKEDIR = makedir
 
-MAKE = make -f GNUmakefile.os4
+MAKE = $(MAKE_COMMAND) -f GNUmakefile.os4
 
 ##############################################################################
 

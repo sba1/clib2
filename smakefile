@@ -427,13 +427,9 @@ STDLIB_OBJ = \
 	stdlib_shell_escape.o \
 	stdlib_showerror.o \
 	stdlib_srand.o \
-	stdlib_stackcheck.o \
-	stdlib_stackoverflow.o \
-	stdlib_stackargbytes.o \
-	stdlib_stacksafezone.o \
-	stdlib_stacksize.o \
-	stdlib_stack_usage.o \
 	stdlib_arg.o \
+	stdlib_stack_usage.o \
+	stdlib_stacksize.o \
 	stdlib_strtod.o \
 	stdlib_strtol.o \
 	stdlib_strtoul.o \

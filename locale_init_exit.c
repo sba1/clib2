@@ -214,7 +214,7 @@ __locale_unlock(void)
 
 /****************************************************************************/
 
-CLIB_DESTRUCTOR(__locale_exit_destructor)
+CLIB_DESTRUCTOR(locale_exit)
 {
 	ENTER();
 
@@ -232,7 +232,7 @@ CLIB_DESTRUCTOR(__locale_exit_destructor)
 
 /****************************************************************************/
 
-CLIB_CONSTRUCTOR(__locale_init_constructor)
+CLIB_CONSTRUCTOR(locale_init)
 {
 	BOOL success = FALSE;
 	int i;

@@ -46,7 +46,7 @@ struct MinList __unlink_list;
 
 /****************************************************************************/
 
-CLIB_CONSTRUCTOR(__unistd_init)
+CLIB_CONSTRUCTOR(unistd_init)
 {
 	ENTER();
 
@@ -59,7 +59,7 @@ CLIB_CONSTRUCTOR(__unistd_init)
 
 /****************************************************************************/
 
-CLIB_DESTRUCTOR(__unistd_exit)
+CLIB_DESTRUCTOR(unistd_exit)
 {
 	ENTER();
 

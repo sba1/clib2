@@ -110,7 +110,7 @@ is_final_quote_character(const unsigned char * str)
 
 /****************************************************************************/
 
-ARG_CONSTRUCTOR(__arg_init)
+ARG_CONSTRUCTOR(arg_init)
 {
 	BOOL success = FALSE;
 

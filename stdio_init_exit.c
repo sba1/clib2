@@ -99,7 +99,7 @@ __close_all_files(void)
 
 /****************************************************************************/
 
-STDIO_DESTRUCTOR(__stdio_exit)
+STDIO_DESTRUCTOR(stdio_exit)
 {
 	__close_all_files();
 
@@ -108,7 +108,7 @@ STDIO_DESTRUCTOR(__stdio_exit)
 
 /****************************************************************************/
 
-STDIO_CONSTRUCTOR(__stdio_init)
+STDIO_CONSTRUCTOR(stdio_init)
 {
 	const int num_standard_files = (STDERR_FILENO - STDIN_FILENO + 1);
 

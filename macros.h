@@ -101,8 +101,8 @@
 	int __stdargs _STI_##pri##_##name(void)
 
 #define DESTRUCTOR(name,pri) \
-	int __stdargs _STD_##pri##_##name(void); \
-	int __stdargs _STD_##pri##_##name(void)
+	void __stdargs _STD_##pri##_##name(void); \
+	void __stdargs _STD_##pri##_##name(void)
 
 #define CONSTRUCTOR_SUCCEED() \
 	return(0)

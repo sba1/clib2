@@ -196,7 +196,7 @@ wb_file_init(void)
 
 /****************************************************************************/
 
-FILE_CONSTRUCTOR(__stdio_file_init)
+FILE_CONSTRUCTOR(stdio_file_init)
 {
 	struct SignalSemaphore * stdio_lock;
 	struct SignalSemaphore * fd_lock;

@@ -226,6 +226,11 @@ extern UBYTE * NOCOMMON __base;
 
 /****************************************************************************/
 
+extern ULONG NOCOMMON __stk_extensions;
+extern ULONG NOCOMMON __stk_maxsize;
+
+/****************************************************************************/
+
 extern ULONG NOCOMMON __stk_argbytes;
 extern ULONG NOCOMMON __stk_safezone;
 extern ULONG NOCOMMON __stk_size;

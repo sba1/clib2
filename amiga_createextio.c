@@ -44,6 +44,12 @@
 
 /****************************************************************************/
 
+#if defined(CreateExtIO)
+#undef CreateExtIO
+#endif /* CreateExtIO */
+
+/****************************************************************************/
+
 struct IORequest *
 CreateExtIO(CONST struct MsgPort * port, LONG io_size)
 {

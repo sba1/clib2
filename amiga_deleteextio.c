@@ -44,6 +44,12 @@
 
 /****************************************************************************/
 
+#if defined(DeleteExtIO)
+#undef DeleteExtIO
+#endif /* DeleteExtIO */
+
+/****************************************************************************/
+
 VOID
 DeleteExtIO(struct IORequest * io)
 {

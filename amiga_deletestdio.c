@@ -44,6 +44,12 @@
 
 /****************************************************************************/
 
+#if defined(DeleteStdIO)
+#undef DeleteStdIO
+#endif /* DeleteStdIO */
+
+/****************************************************************************/
+
 VOID
 DeleteStdIO(struct IOStdReq * io)
 {

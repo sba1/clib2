@@ -44,6 +44,12 @@
 
 /****************************************************************************/
 
+#if defined(CreateStdIO)
+#undef CreateStdIO
+#endif /* CreateStdIO */
+
+/****************************************************************************/
+
 struct IOStdReq *
 CreateStdIO(CONST struct MsgPort * port)
 {

@@ -293,8 +293,8 @@ extern BOOL __open_locale;
  *
  * __locale_exit() releases the default locale and closes locale.library.
  */
-extern void __locale_exit(void);
 extern int __locale_init(void);
+extern void __locale_exit(void);
 
 /****************************************************************************/
 

@@ -81,6 +81,8 @@ __convert_file_info_to_stat(
 		mode = S_IFIFO;
 	else if (fib->fib_DirEntryType == ST_SOCKET)
 		mode = S_IFSOCK;
+	else if (fib->fib_DirEntryType == ST_CONSOLE)
+		mode = S_IFCHR;
 	else if (fib->fib_DirEntryType < 0)
 		mode = S_IFREG;
 	else

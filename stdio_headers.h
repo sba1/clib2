@@ -165,6 +165,9 @@ struct iob;
 /* The directory entry type a socket is identified with (in a FileInfoBlock). */
 #define ST_SOCKET (31082002)
 
+/* The same for a console stream. */
+#define ST_CONSOLE (20050402)
+
 /****************************************************************************/
 
 /* Operations that can be performed by the file action function. */

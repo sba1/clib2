@@ -42,13 +42,13 @@
 
 /****************************************************************************/
 
-extern struct Library * __UserGroupBase;
+extern struct Library * NOCOMMON __UserGroupBase;
 
 /****************************************************************************/
 
 #if defined(__amigaos4__)
 
-extern struct UserGroupIFace *__IUserGroup;
+extern struct UserGroupIFace * NOCOMMON __IUserGroup;
 
 #endif /* __amigaos4__ */
 

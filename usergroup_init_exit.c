@@ -54,16 +54,12 @@ extern char * __program_name;
 
 /****************************************************************************/
 
-extern void __show_error(const char * message);
-
-/****************************************************************************/
-
-struct Library * __UserGroupBase;
+struct Library * NOCOMMON __UserGroupBase;
 
 /****************************************************************************/
 
 #if defined(__amigaos4__)
-struct UserGroupIFace * __IUserGroup;
+struct UserGroupIFace * NOCOMMON __IUserGroup;
 #endif /* __amigaos4__ */
 
 /****************************************************************************/

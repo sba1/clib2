@@ -41,22 +41,22 @@
 
 /****************************************************************************/
 
-struct Library * __LocaleBase;
+struct Library * NOCOMMON __LocaleBase;
 
 /****************************************************************************/
 
 #if defined(__amigaos4__)
-struct LocaleIFace * __ILocale;
+struct LocaleIFace * NOCOMMON __ILocale;
 #endif /* __amigaos4__ */
 
 /****************************************************************************/
 
-struct Locale * __default_locale;
-struct Locale * __locale_table[NUM_LOCALES];
+struct Locale * NOCOMMON __default_locale;
+struct Locale * NOCOMMON __locale_table[NUM_LOCALES];
 
 /****************************************************************************/
 
-char __locale_name_table[NUM_LOCALES][MAX_LOCALE_NAME_LEN];
+char NOCOMMON __locale_name_table[NUM_LOCALES][MAX_LOCALE_NAME_LEN];
 
 /****************************************************************************/
 

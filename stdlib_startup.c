@@ -423,6 +423,8 @@ __startup_init(void)
 
 CLIB_DESTRUCTOR(__startup_exit)
 {
+	ENTER();
+
 	PROFILE_OFF();
 
 	/* Now clean up after the streams set up for the Workbench
@@ -460,4 +462,6 @@ CLIB_DESTRUCTOR(__startup_exit)
 	}
 
 	PROFILE_ON();
+
+	LEAVE();
 }

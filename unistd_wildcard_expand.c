@@ -76,13 +76,15 @@ static struct AnchorPath * anchor;
 
 CLIB_DESTRUCTOR(__wildcard_expand_exit)
 {
+	ENTER();
+
 	if(anchor != NULL)
 	{
 		MatchEnd(anchor);
-
-		free(anchor);
 		anchor = NULL;
 	}
+
+	LEAVE();
 }
 
 /****************************************************************************/

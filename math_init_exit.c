@@ -55,6 +55,8 @@
 
 CLIB_DESTRUCTOR(__math_exit)
 {
+	ENTER();
+
 	#if defined(IEEE_FLOATING_POINT_SUPPORT)
 	{
 		if(MathIeeeSingBasBase != NULL)
@@ -76,6 +78,8 @@ CLIB_DESTRUCTOR(__math_exit)
 		}
 	}
 	#endif /* IEEE_FLOATING_POINT_SUPPORT */
+
+	LEAVE();
 }
 
 /****************************************************************************/

@@ -69,12 +69,12 @@
 
 /****************************************************************************/
 
-extern struct Locale * __default_locale;
-extern struct Locale * __locale_table[NUM_LOCALES];
+extern struct Locale * NOCOMMON __default_locale;
+extern struct Locale * NOCOMMON __locale_table[NUM_LOCALES];
 
 /****************************************************************************/
 
-extern char __locale_name_table[NUM_LOCALES][MAX_LOCALE_NAME_LEN];
+extern char NOCOMMON __locale_name_table[NUM_LOCALES][MAX_LOCALE_NAME_LEN];
 
 /****************************************************************************/
 

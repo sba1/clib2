@@ -84,10 +84,6 @@
 
 /****************************************************************************/
 
-extern struct DateStamp __start_time;
-
-/****************************************************************************/
-
 extern const char * const __abbreviated_week_day_names[7];
 extern const char * const __week_day_names[7];
 extern const char * const __abbreviated_month_names[12];

@@ -148,8 +148,10 @@
 #ifndef UNUSED
 #ifdef __GNUC__
 #define UNUSED __attribute__((unused))
+#define NOCOMMON __attribute__((nocommon))
 #else
 #define UNUSED /* UNUSED */
+#define NOCOMMON /* NOCOMMON */
 #endif
 #endif /* UNUSED */
 

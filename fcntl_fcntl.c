@@ -146,7 +146,8 @@ fcntl(int file_descriptor, int cmd, ... /* int arg */ )
 
 			SHOWMSG("cmd=F_SETFL");
 
-			if(fd->fd_DefaultFile == ZERO)
+			/* If this is a file, make sure that we don't hit a zero file handle. */
+			if(FLAG_IS_CLEAR(fd->fd_Flags,FDF_IS_SOCKET) && fd->fd_DefaultFile == ZERO)
 			{
 				__set_errno(EBADF);
 				goto out;

@@ -121,6 +121,7 @@ hstrerror(int error_number)
 				result = "Unknown server error_number";
 				break;
 
+			default:
 			case 4:	/* NO_ADDRESS */
 
 				result = "No address associated with name";

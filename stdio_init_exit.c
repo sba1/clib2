@@ -58,7 +58,7 @@ __close_all_files(void)
 
 	__stdio_lock();
 
-	if(__iob != NULL && __num_iob > 0)
+	if(__num_iob > 0)
 	{
 		for(i = 0 ; i < __num_iob ; i++)
 		{
@@ -66,11 +66,10 @@ __close_all_files(void)
 				fclose((FILE *)__iob[i]);
 		}
 
-		__num_iob	= 0;
-		__iob		= NULL;
+		__num_iob = 0;
 	}
 
-	if(__fd != NULL && __num_fd > 0)
+	if(__num_fd > 0)
 	{
 		for(i = 0 ; i < __num_fd ; i++)
 		{
@@ -78,8 +77,7 @@ __close_all_files(void)
 				close(i);
 		}
 
-		__num_fd	= 0;
-		__fd		= NULL;
+		__num_fd = 0;
 	}
 
 	__stdio_unlock();

@@ -1,4 +1,4 @@
-#
+_#
 # $Id$
 #
 # :ts=8
@@ -501,8 +501,10 @@ UNISTD_OBJ = \
 	unistd_dup.o \
 	unistd_dup2.o \
 	unistd_fchown.o \
+	unistd_fdatasync.o \
 	unistd_fdopen.o \
 	unistd_fileno.o \
+	unistd_fsync.o \
 	unistd_ftruncate.o \
 	unistd_getcwd.o \
 	unistd_getopt.o \

@@ -174,6 +174,15 @@ __socket_hook_entry(
 
 			break;
 
+		case file_hook_action_flush:
+
+			SHOWMSG("file_hook_action_flush attempted on socket");
+
+			result = -1;
+			error = EINVAL;
+
+			break;
+
 		default:
 
 			SHOWVALUE(message->action);

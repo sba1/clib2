@@ -323,7 +323,8 @@ enum file_hook_action_t
 	file_hook_action_duplicate_fd,
 	file_hook_action_seek_and_extend,
 	file_hook_action_is_interactive,
-	file_hook_action_set_async
+	file_hook_action_set_async,
+	file_hook_action_flush
 };
 
 /****************************************************************************/

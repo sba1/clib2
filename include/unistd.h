@@ -98,6 +98,8 @@ extern void usleep(unsigned long microseconds);
 extern int getopt(int argc, char * argv[], char *opts);
 extern pid_t getpid(void);
 extern char *realpath(const char *file_name, char *resolved_name);
+extern int fsync(int file_descriptor);
+extern int fdatasync(int file_descriptor);
 
 /****************************************************************************/
 

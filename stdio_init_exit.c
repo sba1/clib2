@@ -176,12 +176,12 @@ __stdio_init(void)
 		PROFILE_ON();
 
 		/* Allocate a little more memory than necessary. */
-		buffer = malloc(BUFSIZ + 15);
+		buffer = malloc(BUFSIZ + (CACHE_LINE_SIZE-1));
 		if(buffer == NULL)
 			goto out;
 
 		/* Align the buffer start address to a cache line boundary. */
-		aligned_buffer = (char *)((ULONG)(buffer + 15) & ~15UL);
+		aligned_buffer = (char *)((ULONG)(buffer + (CACHE_LINE_SIZE-1)) & ~(CACHE_LINE_SIZE-1));
 
 		__initialize_fd(__fd[i],(HOOKFUNC)__fd_hook_entry,default_file,fd_flags);
 

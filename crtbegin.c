@@ -60,7 +60,7 @@ _fini(void)
 	   the next following destructor. */
 	(void)setjmp(__exit_jmp_buf);
 
-	for(i = j, num_dtors = 0 ; __DTOR_LIST__[j] != NULL ; j++)
+	for(j = 0, num_dtors = 0 ; __DTOR_LIST__[j] != NULL ; j++)
 		num_dtors++;
 
 	while(i++ < num_dtors)

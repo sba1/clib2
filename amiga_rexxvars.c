@@ -50,12 +50,12 @@
 
 /****************************************************************************/
 
-STATIC struct Library * RexxSysBase;
+static struct Library * RexxSysBase;
 
 /****************************************************************************/
 
 #if defined(__amigaos4__)
-STATIC struct RexxSysIFace * IRexxSys;
+static struct RexxSysIFace * IRexxSys;
 #endif /* __amigaos4__ */
 
 /****************************************************************************/
@@ -144,7 +144,7 @@ CheckRexxMsg(struct RexxMsg *message)
 LONG
 GetRexxVar(struct RexxMsg *message,STRPTR variable_name,STRPTR *buffer_pointer)
 {
-	STATIC TEXT buffer[256];
+	static UBYTE buffer[256];
 	LONG result;
 
 	/* The following uses a function which was added to rexxsyslib.library V45.

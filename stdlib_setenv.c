@@ -61,7 +61,7 @@ struct LocalVariable
 
 /****************************************************************************/
 
-STATIC struct LocalVariable * __lv_root;
+static struct LocalVariable * __lv_root;
 
 /****************************************************************************/
 

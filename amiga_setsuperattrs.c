@@ -46,7 +46,7 @@
 
 /****************************************************************************/
 
-STATIC ULONG
+static ULONG
 SetSuperAttrsA(Class * cl,Object * obj,struct TagItem * tags)
 {
 	ULONG result = 0;

@@ -54,7 +54,7 @@ __print_termination_message(const char * termination_message)
 	{
 		termination_message_printed = TRUE;
 
-		if(NOT __termination_message_disabled && NOT __no_standard_io)
+		if(NOT __no_standard_io)
 		{
 			fputs((termination_message != NULL) ? termination_message : "Abnormal program termination",stderr);
 

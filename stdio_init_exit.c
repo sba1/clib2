@@ -171,7 +171,7 @@ __stdio_init(void)
 
 				iob_flags		= IOBF_IN_USE | IOBF_WRITE | IOBF_NO_NUL | IOBF_BUFFER_MODE_NONE;
 				fd_flags		= FDF_IN_USE | FDF_WRITE;
-				default_file	= ZERO;
+				default_file	= ZERO; /* NOTE: this is really initialized later; see below... */
 				break;
 		}
 

@@ -69,7 +69,7 @@ system(const char * command)
 	}
 	else
 	{
-		STATIC const struct TagItem system_tags[2] =
+		static const struct TagItem system_tags[2] =
 		{
 			{ SYS_UserShell,	TRUE },
 			{ TAG_END,			0 }

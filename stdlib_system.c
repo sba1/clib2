@@ -35,6 +35,10 @@
 #include "stdlib_headers.h"
 #endif /* _STDLIB_HEADERS_H */
 
+#ifndef _STIO_HEADERS_H
+#include "stdio_headers.h"
+#endif /* _STDIO_HEADERS_H */
+
 /****************************************************************************/
 
 #ifndef _STDLIB_MEMORY_H
@@ -172,7 +176,18 @@ system(const char * command)
 		SHOWSTRING(command);
 
 		PROFILE_OFF();
+
+		/* In thread-safe mode, system() operation can interfere with
+		   regular file I/O if the same dos.library file handles are
+		   involved. Because we really cannot predict which file handles
+		   will be associated with the current Output() and Input()
+		   streams, we play it safe and just block everything. */
+		__stdio_lock();
+
 		result = SystemTagList((STRPTR)command, (struct TagItem *)system_tags);
+
+		__stdio_unlock();
+
 		PROFILE_ON();
 	}
 

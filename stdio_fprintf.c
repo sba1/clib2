@@ -59,8 +59,6 @@ fprintf(FILE *stream,const char *format,...)
 	if(__check_abort_enabled)
 		__check_abort();
 
-	flockfile(stream);
-
 	#if defined(CHECK_FOR_NULL_POINTERS)
 	{
 		if(stream == NULL || format == NULL)
@@ -76,8 +74,6 @@ fprintf(FILE *stream,const char *format,...)
 	va_end(arg);
 
  out:
-
-	funlockfile(stream);
 
 	RETURN(result);
 	return(result);

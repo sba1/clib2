@@ -387,17 +387,13 @@ __startup_init(void)
 		{
 			struct FileHandle * fh = BADDR(input);
 
-			/* Careful: "NIL:" will have a NULL MsgPort in the file handle. */
-			if(fh->fh_Type != NULL)
-			{
-				old_console_task = SetConsoleTask(fh->fh_Type);
+			old_console_task = SetConsoleTask(fh->fh_Type);
 
-				output = Open("CONSOLE:",MODE_NEWFILE);
-				if(output != ZERO)
-					restore_console_task = TRUE;
-				else
-					SetConsoleTask((struct MsgPort *)old_console_task);
-			}
+			output = Open("CONSOLE:",MODE_NEWFILE);
+			if(output != ZERO)
+				restore_console_task = TRUE;
+			else
+				SetConsoleTask((struct MsgPort *)old_console_task);
 		}
 
 		if(output == ZERO)

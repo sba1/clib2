@@ -132,7 +132,7 @@ mktime(struct tm *tm)
 	}
 
 	/* The day of the month must be valid. */
-	if(tm->tm_mday > max_month_days)
+	if(tm->tm_mday < 0 || tm->tm_mday > max_month_days)
 	{
 		SHOWVALUE(tm->tm_mday);
 		SHOWMSG("invalid day of month");

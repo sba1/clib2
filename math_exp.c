@@ -194,7 +194,7 @@ __exp(double x)
 	    } 
 		else 
 		{
-			k  = invln2*x+halF[xsb];
+			k  = (int)(invln2*x+halF[xsb]);
 			t  = k;
 			hi = x - t*ln2HI[0];	/* t*ln2HI is exact here */
 			lo = t*ln2LO[0];

@@ -153,11 +153,12 @@ extern int rand_r(unsigned int * seed);
 
 /****************************************************************************/
 
-/* These two functions are unavailable under SAS/C for lack of a
+/* These functions are unavailable under SAS/C for lack of a
    "long long" data type. */
 #if ! defined(__SASC)
 extern long long strtoll(const char *str, char **ptr, int base);
 extern unsigned long long strtoull(const char *str, char **ptr, int base);
+extern long long atoll(const char *str);
 #endif /* __SASC */
 
 /****************************************************************************/

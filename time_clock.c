@@ -43,10 +43,12 @@ static struct DateStamp start_time;
 
 CLIB_CONSTRUCTOR(clock_init)
 {
+	ENTER();
+
 	/* Remember when this program was started. */
 	DateStamp(&start_time);
 
-	RETURN(OK);
+	LEAVE();
 
 	CONSTRUCTOR_SUCCEED();
 }

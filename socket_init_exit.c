@@ -94,6 +94,8 @@ int h_errno;
 
 SOCKET_DESTRUCTOR(socket_exit)
 {
+	ENTER();
+
 	/* Disable ^C checking. */
 	if(__SocketBase != NULL)
 	{
@@ -130,6 +132,8 @@ SOCKET_DESTRUCTOR(socket_exit)
 		CloseLibrary(__SocketBase);
 		__SocketBase = NULL;
 	}
+
+	LEAVE();
 }
 
 /****************************************************************************/
@@ -139,6 +143,8 @@ SOCKET_CONSTRUCTOR(socket_init)
 	struct TagItem tags[5];
 	BOOL success = FALSE;
 	LONG status;
+
+	ENTER();
 
 	PROFILE_OFF();
 
@@ -337,6 +343,9 @@ SOCKET_CONSTRUCTOR(socket_init)
 	success = TRUE;
 
  out:
+
+	SHOWVALUE(success);
+	LEAVE();
 
 	if(success)
 		CONSTRUCTOR_SUCCEED();

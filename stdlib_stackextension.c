@@ -286,6 +286,8 @@ STK_CONSTRUCTOR(stk_init)
 {
 	struct Task *task = FindTask(NULL);
 
+	ENTER();
+
 	__stk_initial_sp_lower = __stk_sp_lower = task->tc_SPLower; /* Lower stack bound */
 	__stk_initial_sp_upper = __stk_sp_upper = task->tc_SPUpper; /* Upper stack bound +1 */
 
@@ -293,6 +295,8 @@ STK_CONSTRUCTOR(stk_init)
 	SHOWPOINTER(__stk_sp_upper);
 
 	D(("stack size = %ld",(ULONG)__stk_sp_upper - (ULONG)__stk_sp_lower));
+
+	LEAVE();
 
 	CONSTRUCTOR_SUCCEED();
 }
@@ -302,6 +306,8 @@ STK_CONSTRUCTOR(stk_init)
 /* Free all spare stackframes */
 STK_DESTRUCTOR(stk_exit)
 {
+	ENTER();
+
 	if(__memory_pool == NULL)
 	{
 		struct stackframe *sf, *sf_next;
@@ -317,6 +323,8 @@ STK_DESTRUCTOR(stk_exit)
 	}
 
 	__stk_spare = NULL;
+
+	LEAVE();
 }
 
 /****************************************************************************/

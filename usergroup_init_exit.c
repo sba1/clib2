@@ -138,7 +138,8 @@ CLIB_CONSTRUCTOR(usergroup_init)
 
 	PROFILE_ON();
 
-	RETURN(success);
+	SHOWVALUE(success);
+	LEAVE();
 
 	if(success)
 		CONSTRUCTOR_SUCCEED();

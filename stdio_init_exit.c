@@ -101,9 +101,13 @@ __close_all_files(void)
 
 STDIO_DESTRUCTOR(stdio_exit)
 {
+	ENTER();
+
 	__close_all_files();
 
 	__stdio_lock_exit();
+
+	LEAVE();
 }
 
 /****************************************************************************/
@@ -128,6 +132,9 @@ STDIO_CONSTRUCTOR(stdio_init)
 	success = TRUE;
 
  out:
+
+	SHOWVALUE(success);
+	LEAVE();
 
 	if(success)
 		CONSTRUCTOR_SUCCEED();

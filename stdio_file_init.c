@@ -207,6 +207,8 @@ FILE_CONSTRUCTOR(stdio_file_init)
 	char * aligned_buffer;
 	int i;
 
+	ENTER();
+
 	/* If we were invoked from Workbench, set up the standard I/O streams. */
 	if(__WBenchMsg != NULL)
 	{
@@ -358,6 +360,9 @@ FILE_CONSTRUCTOR(stdio_file_init)
 	success = TRUE;
 
  out:
+
+	SHOWVALUE(success);
+	LEAVE();
 
 	if(success)
 		CONSTRUCTOR_SUCCEED();

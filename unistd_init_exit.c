@@ -52,7 +52,7 @@ CLIB_CONSTRUCTOR(unistd_init)
 
 	NewList((struct List *)&__unlink_list);
 
-	RETURN(OK);
+	LEAVE();
 
 	CONSTRUCTOR_SUCCEED();
 }

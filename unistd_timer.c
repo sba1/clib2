@@ -102,7 +102,8 @@ CLIB_CONSTRUCTOR(timer_init)
 
  out:
 
-	RETURN(success);
+	SHOWVALUE(success);
+	LEAVE();
 
 	if(success)
 		CONSTRUCTOR_SUCCEED();

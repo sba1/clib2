@@ -114,6 +114,8 @@ ARG_CONSTRUCTOR(arg_init)
 {
 	BOOL success = FALSE;
 
+	ENTER();
+
 	/* Shell startup? */
 	if(__WBenchMsg == NULL)
 	{
@@ -323,6 +325,9 @@ ARG_CONSTRUCTOR(arg_init)
 	success = TRUE;
 
  out:
+
+	SHOWVALUE(success);
+	LEAVE();
 
 	if(success)
 		CONSTRUCTOR_SUCCEED();

@@ -131,12 +131,16 @@
 #else
 
 #define CONSTRUCTOR(name,pri) \
-	VOID __attribute__((constructor)) __ctor##pri##_##name##(VOID); \
-	VOID __attribute__((constructor)) __ctor##pri##_##name##(VOID)
+	asm(".stabs \"___INIT_LIST__\",22,0,0,___ctor_" #name); \
+	asm(".stabs \"___INIT_LIST__\",20,0,0," #pri); \
+	VOID __ctor_##name##(VOID); \
+	VOID __ctor_##name##(VOID)
 
 #define DESTRUCTOR(name,pri) \
-	VOID __attribute__((destructor)) __dtor##pri##_##name##(VOID); \
-	VOID __attribute__((destructor)) __dtor##pri##_##name##(VOID)
+	asm(".stabs \"___EXIT_LIST__\",22,0,0,___dtor_" #name); \
+	asm(".stabs \"___EXIT_LIST__\",20,0,0," #pri); \
+	VOID __dtor_##name##(VOID); \
+	VOID __dtor_##name##(VOID)
 
 #endif /* __amigaos4__ */
 

@@ -80,6 +80,8 @@ CLIB_CONSTRUCTOR(rexxvars_init)
 	}
 	#endif /* __amigaos4__ */
 
+	LEAVE();
+
 	CONSTRUCTOR_SUCCEED();
 }
 

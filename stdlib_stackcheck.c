@@ -120,6 +120,8 @@ STK_CONSTRUCTOR(stk_init)
 	struct Task * this_task = FindTask(NULL);
 	ULONG lower = (ULONG)this_task->tc_SPLower;
 
+	ENTER();
+
 	#if defined(__GNUC__)
 	{
 		__stk_limit = (UBYTE *)(lower + __stk_safezone + __stk_argbytes);
@@ -131,6 +133,8 @@ STK_CONSTRUCTOR(stk_init)
 		__base = (UBYTE *)(lower + __stk_safezone + __stk_argbytes);
 	}
 	#endif /* __SASC */
+
+	LEAVE();
 
 	CONSTRUCTOR_SUCCEED();
 }

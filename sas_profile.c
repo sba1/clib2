@@ -306,7 +306,12 @@ __profile_exit(void)
 
 PROFILE_CONSTRUCTOR(profile_init)
 {
+	ENTER();
+
 	__profile_init();
+
+	SHOWVALUE(success);
+	LEAVE();
 
 	CONSTRUCTOR_SUCCEED();
 }
@@ -315,5 +320,9 @@ PROFILE_CONSTRUCTOR(profile_init)
 
 PROFILE_DESTRUCTOR(profile_exit)
 {
+	ENTER();
+
 	__profile_exit();
+
+	LEAVE();
 }

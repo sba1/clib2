@@ -257,7 +257,8 @@ CLIB_CONSTRUCTOR(locale_init)
 
  out:
 
-	RETURN(success);
+	SHOWVALUE(success);
+	LEAVE();
 
 	if(success)
 		CONSTRUCTOR_SUCCEED();

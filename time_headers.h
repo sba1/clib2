@@ -84,10 +84,10 @@
 
 /****************************************************************************/
 
-extern const char * const __abbreviated_week_day_names[7];
-extern const char * const __week_day_names[7];
-extern const char * const __abbreviated_month_names[12];
-extern const char * const __month_names[12];
+extern const char * const NOCOMMON __abbreviated_week_day_names[7];
+extern const char * const NOCOMMON __week_day_names[7];
+extern const char * const NOCOMMON __abbreviated_month_names[12];
+extern const char * const NOCOMMON __month_names[12];
 
 /****************************************************************************/
 

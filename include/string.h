@@ -122,6 +122,11 @@ extern int bcmp(const void *a,const void *b,size_t len);
 
 /****************************************************************************/
 
+extern size_t strlcpy(char *dst, const char *src, size_t siz);
+extern size_t strlcat(char *dst, const char *src, size_t siz);
+
+/****************************************************************************/
+
 #ifdef __cplusplus
 }
 #endif /* __cplusplus */

@@ -31,23 +31,6 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef _STAT_HEADERS_H
-#define _STAT_HEADERS_H
-
-/****************************************************************************/
-
-#ifndef _STDIO_HEADERS_H
-#include "stdio_headers.h"
-#endif /* _STDIO_HEADERS_H */
-
-/****************************************************************************/
-
-extern mode_t NOCOMMON __current_umask;
-
-/****************************************************************************/
-
-extern void __convert_file_info_to_stat(const struct MsgPort * file_system,const struct FileInfoBlock * fib,struct stat * st);
-
-/****************************************************************************/
-
-#endif /* _STAT_HEADERS_H */
+/* We use an invalid priority value to indicate "do not change the program's
+   task priority". */
+int __priority = 256;

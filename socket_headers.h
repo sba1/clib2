@@ -48,19 +48,19 @@
 
 /****************************************************************************/
 
-extern struct Library * __SocketBase;
+extern struct Library * NOCOMMON __SocketBase;
 
 /****************************************************************************/
 
 #if defined(__amigaos4__)
 
-extern struct SocketIFace *__ISocket;
+extern struct SocketIFace * NOCOMMON __ISocket;
 
 #endif /* __amigaos4__ */
 
 /****************************************************************************/
 
-extern int h_errno;
+extern int NOCOMMON h_errno;
 
 /****************************************************************************/
 

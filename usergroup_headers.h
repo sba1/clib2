@@ -54,14 +54,14 @@ extern struct UserGroupIFace * NOCOMMON __IUserGroup;
 
 /****************************************************************************/
 
-extern BOOL __root_mode;
+extern BOOL NOCOMMON __root_mode;
 
 /****************************************************************************/
 
-extern int __root_uid;
-extern int __root_gid;
-extern int __root_euid;
-extern int __root_egid;
+extern int NOCOMMON __root_uid;
+extern int NOCOMMON __root_gid;
+extern int NOCOMMON __root_euid;
+extern int NOCOMMON __root_egid;
 
 /****************************************************************************/
 

@@ -42,7 +42,7 @@
 
 /****************************************************************************/
 
-extern char __current_path_name[MAXPATHLEN];
+extern char NOCOMMON __current_path_name[MAXPATHLEN];
 
 /****************************************************************************/
 
@@ -73,7 +73,7 @@ extern BOOL NOCOMMON __unlock_current_directory;
 
 /****************************************************************************/
 
-extern BOOL __unix_path_semantics;
+extern BOOL NOCOMMON __unix_path_semantics;
 
 /****************************************************************************/
 

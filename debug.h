@@ -57,9 +57,17 @@
 
 /****************************************************************************/
 
+#ifndef _STDLIB_H
+#include <stdlib.h>
+#endif /* _STDLIB_H */
+
+#ifndef _DOS_H
+#include <dos.h>
+#endif /* _DOS_H */
+
+/****************************************************************************/
+
 extern void kprintf(const char *format,...);
-extern void abort(void);
-extern char * __program_name;
 
 /****************************************************************************/
 

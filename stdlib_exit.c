@@ -52,10 +52,18 @@ _exit(int return_code)
 
 /****************************************************************************/
 
+/* The C99 version of _exit(). */
+void
+_Exit(int return_code)
+{
+	_exit(return_code);
+}
+
+/****************************************************************************/
+
 void
 exit(int return_code)
 {
-	/* ZZZ what about inifinite recursion in __exit_trap_trigger()? */
 	__exit_trap_trigger();
 
 	_exit(return_code);

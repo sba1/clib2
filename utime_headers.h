@@ -40,6 +40,20 @@
 #include "stdio_headers.h"
 #endif /* _STDIO_HEADERS_H */
 
+#ifndef _LOCALE_HEADERS_H
+#include "locale_headers.h"
+#endif /* _LOCALE_HEADERS_H */
+
+#ifndef _TIME_HEADERS_H
+#include "time_headers.h"
+#endif /* _TIME_HEADERS_H */
+
+/****************************************************************************/
+
+#ifndef _STDLIB_PROFILE_H
+#include "stdlib_profile.h"
+#endif /* _STDLIB_PROFILE_H */
+
 /****************************************************************************/
 
 #endif /* _UTIME_HEADERS_H */

@@ -215,4 +215,9 @@ extern void __remove_fd_alias(struct fd * fd);
 
 /****************************************************************************/
 
+/* stdio_file_init.c */
+extern int __stdio_file_init(void);
+
+/****************************************************************************/
+
 #endif /* _STDIO_PROTOS_H */

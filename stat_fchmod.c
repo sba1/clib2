@@ -80,6 +80,12 @@ fchmod(int file_descriptor, mode_t mode)
 		goto out;
 	}
 
+	if(fd->fd_DefaultFile == ZERO)
+	{
+		__set_errno(EBADF);
+		goto out;
+	}
+
 	protection = 0;
 
 	if(FLAG_IS_SET(mode,S_IRUSR))

@@ -80,6 +80,12 @@ fchown(int file_descriptor, uid_t owner, gid_t group)
 		goto out;
 	}
 
+	if(fd->fd_DefaultFile == ZERO)
+	{
+		__set_errno(EBADF);
+		goto out;
+	}
+
 	if(owner > 65535 || group > 65535)
 	{
 		SHOWMSG("owner or group not OK");

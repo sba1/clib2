@@ -77,6 +77,12 @@ ftruncate(int file_descriptor, off_t length)
 		goto out;
 	}
 
+	if(fd->fd_DefaultFile == ZERO)
+	{
+		__set_errno(EBADF);
+		goto out;
+	}
+
 	if(length < 0)
 	{
 		SHOWMSG("invalid length");

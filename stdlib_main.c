@@ -117,12 +117,12 @@ call_main(void)
 	{
 		__stdlib_init,
 		__stk_init,
-		__startup_init,
 		__stdio_init,
+		__stdio_file_init,
 		__machine_test,
 		__math_init,
 		__socket_init,
-		__wildcard_expand_init,
+		__arg_init,
 
 		NULL
 	};

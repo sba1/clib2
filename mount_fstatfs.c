@@ -97,6 +97,12 @@ fstatfs(int file_descriptor, struct statfs *buf)
 		goto out;
 	}
 
+	if(fd->fd_DefaultFile == ZERO)
+	{
+		__set_errno(EBADF);
+		goto out;
+	}
+
 	PROFILE_OFF();
 	parent_dir = __safe_parent_of_file_handle(fd->fd_DefaultFile);
 	PROFILE_ON();

@@ -77,6 +77,12 @@ fdatasync(int file_descriptor)
 		goto out;
 	}
 
+	if(fd->fd_DefaultFile == ZERO)
+	{
+		__set_errno(EBADF);
+		goto out;
+	}
+
 	__sync_fd(fd,0); /* flush just the data */
 
 	result = 0;

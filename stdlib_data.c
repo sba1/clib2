@@ -47,11 +47,6 @@ struct WBStartup * __WBenchMsg;
 
 /****************************************************************************/
 
-char *	__program_name;
-BOOL	__free_program_name;
-
-/****************************************************************************/
-
 BOOL	__stack_overflow;
 ULONG	__stk_maxsize;
 ULONG	__stk_extensions;

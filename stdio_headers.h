@@ -316,6 +316,8 @@ struct iob
 											   mode (sockets only). */
 #define FDF_IS_INTERACTIVE		(1UL<<11)	/* File is attached to a console window or
 											   something like it. */
+#define FDF_STDIO				(1UL<<12)	/* File is to be attached to one of the
+											   standard input/output/error streams. */
 
 /****************************************************************************/
 

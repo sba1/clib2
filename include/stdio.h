@@ -306,9 +306,27 @@ extern char *tmpnam(char *buf);
 
 /****************************************************************************/
 
+#if defined(__THREAD_SAFE)
+
+/****************************************************************************/
+
+#define clearerr(file)	((void)(flockfile(file), (file)->flags &= ~(__FILE_EOF|__FILE_ERROR), unlockfile(file)))
+#define feof(file)		(flockfile(file), __unlockfile((file),((file)->flags & __FILE_EOF) != 0))
+#define ferror(file)	(flockfile(file), __unlockfile((file),((file)->flags & __FILE_ERROR) != 0))
+
+/****************************************************************************/
+
+#else
+
+/****************************************************************************/
+
 #define clearerr(file)	((void)((file)->flags &= ~(__FILE_EOF|__FILE_ERROR)))
 #define feof(file)		(((file)->flags & __FILE_EOF) != 0)
 #define ferror(file)	(((file)->flags & __FILE_ERROR) != 0)
+
+/****************************************************************************/
+
+#endif /* __THREAD_SAFE */
 
 /****************************************************************************/
 

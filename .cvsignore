@@ -1,6 +1,7 @@
 lib
 large_data*
 small_data*
+baserel*
 netinclude*
 *.o
 *_rev.i

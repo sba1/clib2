@@ -149,8 +149,12 @@ extern long atol(const char *str);
 
 /****************************************************************************/
 
+/* These two functions are unavailable under SAS/C for lack of a
+   "long long" data type. */
+#if ! defined(__SASC)
 extern long long strtoll(const char *str, char **ptr, int base);
 extern unsigned long long strtoull(const char *str, char **ptr, int base);
+#endif /* __SASC */
 
 /****************************************************************************/
 

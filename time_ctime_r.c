@@ -37,23 +37,36 @@
 
 /****************************************************************************/
 
-#ifndef _STRING_HEADERS_H
-#include "string_headers.h"
-#endif /* _STRING_HEADERS_H */
+#ifndef _TIME_HEADERS_H
+#include "time_headers.h"
+#endif /* _TIME_HEADERS_H */
 
 /****************************************************************************/
 
 char *
-strtok(char *str, const char *separator_set)
+ctime_r(const time_t *tptr,char * buffer)
 {
-	static char * last;
-
-	char * result;
+	char * result = NULL;
+	struct tm tm;
 
 	ENTER();
 
-	result = strtok_r(str,separator_set,&last);
-	
+	assert( tptr != NULL && buffer != NULL );
+
+	#if defined(CHECK_FOR_NULL_POINTERS)
+	{
+		if(tptr == NULL || buffer == NULL)
+		{
+			errno = EFAULT;
+			goto out;
+		}
+	}
+	#endif /* CHECK_FOR_NULL_POINTERS */
+
+	result = asctime_r(localtime_r(tptr,&tm),buffer);
+
+ out:
+
 	RETURN(result);
 	return(result);
 }

@@ -354,15 +354,20 @@ C_LIB = \
 	string_strspn.o \
 	string_strstr.o \
 	string_strtok.o \
+	string_strtok_r.o \
 	string_strxfrm.o \
 	time_asctime.o \
+	time_asctime_r.o \
 	time_clock.o \
 	time_converttime.o \
 	time_ctime.o \
+	time_ctime_r.o \
 	time_data.o \
 	time_gettimeofday.o \
 	time_gmtime.o \
+	time_gmtime_r.o \
 	time_localtime.o \
+	time_localtime_r.o \
 	time_mktime.o \
 	time_numbertostring.o \
 	time_strftime.o \

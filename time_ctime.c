@@ -44,36 +44,6 @@
 /****************************************************************************/
 
 char *
-ctime_r(const time_t *tptr,char * buffer)
-{
-	char * result = NULL;
-	struct tm tm;
-
-	ENTER();
-
-	assert( tptr != NULL && buffer != NULL );
-
-	#if defined(CHECK_FOR_NULL_POINTERS)
-	{
-		if(tptr == NULL || buffer == NULL)
-		{
-			errno = EFAULT;
-			goto out;
-		}
-	}
-	#endif /* CHECK_FOR_NULL_POINTERS */
-
-	result = asctime_r(localtime_r(tptr,&tm),buffer);
-
- out:
-
-	RETURN(result);
-	return(result);
-}
-
-/****************************************************************************/
-
-char *
 ctime(const time_t *tptr)
 {
 	char * result = NULL;

@@ -44,35 +44,6 @@
 /****************************************************************************/
 
 struct tm *
-gmtime_r(const time_t *t,struct tm * tm_ptr)
-{
-	struct tm * result = NULL;
-
-	ENTER();
-
-	assert( t != NULL && tm_ptr != NULL );
-
-	#if defined(CHECK_FOR_NULL_POINTERS)
-	{
-		if(t == NULL || tm_ptr == NULL)
-		{
-			errno = EFAULT;
-			goto out;
-		}
-	}
-	#endif /* CHECK_FOR_NULL_POINTERS */
-
-	result = __convert_time((*t), 0, tm_ptr);
-
- out:
-
-	RETURN(result);
-	return(result);
-}
-
-/****************************************************************************/
-
-struct tm *
 gmtime(const time_t *t)
 {
 	static struct tm tm;

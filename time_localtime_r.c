@@ -37,23 +37,50 @@
 
 /****************************************************************************/
 
-#ifndef _STRING_HEADERS_H
-#include "string_headers.h"
-#endif /* _STRING_HEADERS_H */
+#ifndef _TIME_HEADERS_H
+#include "time_headers.h"
+#endif /* _TIME_HEADERS_H */
+
+#ifndef _LOCALE_HEADERS_H
+#include "locale_headers.h"
+#endif /* _LOCALE_HEADERS_H */
 
 /****************************************************************************/
 
-char *
-strtok(char *str, const char *separator_set)
+struct tm *
+localtime_r(const time_t *t,struct tm * tm_ptr)
 {
-	static char * last;
-
-	char * result;
+	struct tm * result = NULL;
+	LONG gmt_offset;
 
 	ENTER();
 
-	result = strtok_r(str,separator_set,&last);
-	
+	assert( t != NULL && tm_ptr != NULL );
+
+	#if defined(CHECK_FOR_NULL_POINTERS)
+	{
+		if(t == NULL || tm_ptr == NULL)
+		{
+			errno = EFAULT;
+			goto out;
+		}
+	}
+	#endif /* CHECK_FOR_NULL_POINTERS */
+
+	/* The time parameter given represents local time and
+	 * must be converted to UTC before we proceed.
+	 */
+	if(__default_locale != NULL)
+		gmt_offset = 60 * __default_locale->loc_GMTOffset;
+	else
+		gmt_offset = 0;
+
+	SHOWVALUE(gmt_offset);
+
+	result = __convert_time((*t), gmt_offset, tm_ptr);
+
+ out:
+
 	RETURN(result);
 	return(result);
 }

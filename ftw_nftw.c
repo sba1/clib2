@@ -46,10 +46,12 @@
 
 #include <dirent.h>
 #include <unistd.h>
+#include <stdlib.h>
 #include <string.h>
 #include <sys/stat.h>
 #include <ftw.h>
 #include <errno.h>
+#include <dos.h>
 
 /****************************************************************************/
 

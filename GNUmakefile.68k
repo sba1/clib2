@@ -40,7 +40,7 @@ endif
 
 .c.o:
 	@echo "Compiling $<"
-	@$(CC) -c $(CFLAGS) -DIEEE_FLOATING_POINT_SUPPORT $<
+	@$(CC) -c $(CFLAGS) $<
 
 $(LIBC_OBJS)/%.o : %.c
 	@echo "Compiling $< [$(TYPE):c]"

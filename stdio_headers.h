@@ -366,6 +366,10 @@ struct bcpl_name
 
 /****************************************************************************/
 
+extern struct WBStartup * NOCOMMON __WBenchMsg;
+
+/****************************************************************************/
+
 /* The file handle table. */
 extern struct iob ** NOCOMMON	__iob;
 extern int NOCOMMON				__num_iob;

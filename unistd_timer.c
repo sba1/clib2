@@ -46,15 +46,15 @@
 /****************************************************************************/
 
 /* Local timer I/O. */
-struct MsgPort *		NOCOMMON __timer_port;
-struct timerequest *	NOCOMMON __timer_request;
-BOOL					NOCOMMON __timer_busy;
-struct Library *		NOCOMMON __TimerBase;
+struct MsgPort *		__timer_port;
+struct timerequest *	__timer_request;
+BOOL					__timer_busy;
+struct Library *		__TimerBase;
 
 /****************************************************************************/
 
 #if defined(__amigaos4__)
-struct TimerIFace * NOCOMMON __ITimer;
+struct TimerIFace * __ITimer;
 #endif /* __amigaos4__ */
 
 /****************************************************************************/

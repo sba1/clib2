@@ -71,10 +71,8 @@ double __huge_val;
 
 /****************************************************************************/
 
-CLIB_DESTRUCTOR(__math_exit)
+MATH_DESTRUCTOR(__math_exit)
 {
-	ENTER();
-
 	#if defined(IEEE_FLOATING_POINT_SUPPORT)
 	{
 		if(MathIeeeSingBasBase != NULL)
@@ -96,16 +94,13 @@ CLIB_DESTRUCTOR(__math_exit)
 		}
 	}
 	#endif /* IEEE_FLOATING_POINT_SUPPORT */
-
-	LEAVE();
 }
 
 /****************************************************************************/
 
-int
-__math_init(void)
+MATH_CONSTRUCTOR(__math_init)
 {
-	int result = ERROR;
+	BOOL success = FALSE;
 
 	#if defined(IEEE_FLOATING_POINT_SUPPORT)
 	{
@@ -170,11 +165,14 @@ __math_init(void)
 	}
 #endif /* USE_LONG_DOUBLE */
 
-	result = OK;
+	success = TRUE;
 
  out:
 
-	return(result);
+	if(success)
+		CONSTRUCTOR_SUCCEED();
+	else
+		CONSTRUCTOR_FAIL();
 }
 
 /****************************************************************************/

@@ -92,10 +92,8 @@ int h_errno;
 
 /****************************************************************************/
 
-CLIB_DESTRUCTOR(__socket_exit)
+SOCKET_DESTRUCTOR(__socket_exit)
 {
-	ENTER();
-
 	/* Disable ^C checking. */
 	if(__SocketBase != NULL)
 	{
@@ -132,20 +130,15 @@ CLIB_DESTRUCTOR(__socket_exit)
 		CloseLibrary(__SocketBase);
 		__SocketBase = NULL;
 	}
-
-	LEAVE();
 }
 
 /****************************************************************************/
 
-int
-__socket_init(void)
+SOCKET_CONSTRUCTOR(__socket_init)
 {
 	struct TagItem tags[5];
-	int result = ERROR;
+	BOOL success = FALSE;
 	LONG status;
-
-	ENTER();
 
 	PROFILE_OFF();
 
@@ -341,12 +334,14 @@ __socket_init(void)
 		}
 	}
 
-	result = OK;
+	success = TRUE;
 
  out:
 
-	RETURN(result);
-	return(result);
+	if(success)
+		CONSTRUCTOR_SUCCEED();
+	else
+		CONSTRUCTOR_FAIL();
 }
 
 /****************************************************************************/

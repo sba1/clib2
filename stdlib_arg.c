@@ -110,10 +110,9 @@ is_final_quote_character(const unsigned char * str)
 
 /****************************************************************************/
 
-int
-__arg_init(void)
+ARG_CONSTRUCTOR(__arg_init)
 {
-	int result = ERROR;
+	BOOL success = FALSE;
 
 	/* Shell startup? */
 	if(__WBenchMsg == NULL)
@@ -321,9 +320,12 @@ __arg_init(void)
 		__argv = (char **)__WBenchMsg;
 	}
 
-	result = OK;
+	success = TRUE;
 
  out:
 
-	return(result);
+	if(success)
+		CONSTRUCTOR_SUCCEED();
+	else
+		CONSTRUCTOR_FAIL();
 }

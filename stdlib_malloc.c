@@ -63,8 +63,8 @@ struct MemoryTree __memory_tree;
 
 /****************************************************************************/
 
-APTR NOCOMMON						__memory_pool;
-struct MinList NOCOMMON				__memory_list;
+APTR			__memory_pool;
+struct MinList	__memory_list;
 
 /****************************************************************************/
 

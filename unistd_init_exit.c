@@ -42,7 +42,7 @@
 /****************************************************************************/
 
 /* Names of files and directories to delete when shutting down. */
-struct MinList NOCOMMON __unlink_list;
+struct MinList __unlink_list;
 
 /****************************************************************************/
 

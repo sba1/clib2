@@ -50,12 +50,12 @@
 
 /****************************************************************************/
 
-struct Library * NOCOMMON __UserGroupBase;
+struct Library * __UserGroupBase;
 
 /****************************************************************************/
 
 #if defined(__amigaos4__)
-struct UserGroupIFace * NOCOMMON __IUserGroup;
+struct UserGroupIFace * __IUserGroup;
 #endif /* __amigaos4__ */
 
 /****************************************************************************/

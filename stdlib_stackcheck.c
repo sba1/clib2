@@ -115,8 +115,7 @@ UBYTE * __base;
 
 /****************************************************************************/
 
-int
-__stk_init(void)
+STK_CONSTRUCTOR(__stk_init)
 {
 	struct Task * this_task = FindTask(NULL);
 	ULONG lower = (ULONG)this_task->tc_SPLower;
@@ -133,5 +132,5 @@ __stk_init(void)
 	}
 	#endif /* __SASC */
 
-	return(OK);
+	CONSTRUCTOR_SUCCEED();
 }

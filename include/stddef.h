@@ -52,7 +52,7 @@ extern "C" {
 
 /****************************************************************************/
 
-typedef long int ptrdiff_t;
+typedef int ptrdiff_t;
 typedef unsigned int size_t;
 typedef unsigned int wchar_t;
 

@@ -263,15 +263,6 @@ __stdio_init(void)
 			SET_FLAG(__fd[STDERR_FILENO]->fd_Flags,FDF_IS_INTERACTIVE);
 	}
 
-	/* Check if the standard/error output refers to a console or must
-	   be considered unusable for console output. */
-	if(FLAG_IS_CLEAR(__fd[STDOUT_FILENO]->fd_Flags,FDF_IS_INTERACTIVE) ||
-	   FLAG_IS_CLEAR(__fd[STDERR_FILENO]->fd_Flags,FDF_IS_INTERACTIVE))
-	{
-		/* The standard I/O streams are no longer attached to a console. */
-		__no_standard_io = TRUE;
-	}
-
 	PROFILE_ON();
 
 	result = OK;

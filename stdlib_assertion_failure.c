@@ -70,6 +70,7 @@ __assertion_failure(
 			struct iob * iob;
 
 			iob = (struct iob *)stderr;
+
 			if(iob != NULL &&
 			   FLAG_IS_SET(iob->iob_Flags,IOBF_IN_USE) &&
 			   FLAG_IS_SET(iob->iob_Flags,IOBF_WRITE))
@@ -77,14 +78,17 @@ __assertion_failure(
 				struct fd * fd;
 
 				fd = __get_file_descriptor(iob->iob_Descriptor);
+
 				if(fd != NULL &&
 				   FLAG_IS_SET(fd->fd_Flags,FDF_IN_USE) &&
 				   FLAG_IS_SET(fd->fd_Flags,FDF_WRITE) &&
-				   FLAG_IS_SET(fd->fd_Flags,FDF_IS_INTERACTIVE))
+				   FLAG_IS_CLEAR(fd->fd_Flags,FDF_IS_SOCKET))
 				{
-					assert( FLAG_IS_CLEAR(fd->fd_Flags,FDF_IS_SOCKET) );
+					struct FileHandle * fh = BADDR(fd->fd_DefaultFile);
 
-					use_stderr = TRUE;
+					/* Check if this is really not redirected to "NIL:". */
+					if(fh->fh_Type != NULL)
+						use_stderr = TRUE;
 				}
 			}
 		}

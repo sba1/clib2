@@ -68,6 +68,53 @@
 
 /****************************************************************************/
 
+#if NOT defined(__amigaos4__)
+
+/****************************************************************************/
+
+/* We use these short local versions of strlen() and bzero() so that this
+   module does not need to depend upon other library code which, so it happens,
+   might be built for the "wrong" CPU type. This is not a problem for the
+   PowerPC build, but it is for the 68k build. */
+
+/****************************************************************************/
+
+INLINE STATIC size_t
+local_strlen(const char *s)
+{
+	const char * start = s;
+	size_t result = 0;
+
+	while((*s) != '\0')
+		s++;
+
+	result = (size_t)(s - start);
+
+	return(result);
+}
+
+/****************************************************************************/
+
+INLINE STATIC void
+local_bzero(void *ptr, size_t len)
+{
+	unsigned char * m = ptr;
+
+	while(len-- > 0)
+		(*m++) = 0;
+}
+
+/****************************************************************************/
+
+#define strlen(s)			local_strlen(s)
+#define memset(ptr,val,len)	local_bzero((ptr),(len))
+
+/****************************************************************************/
+
+#endif /* __amigaos4__ */
+
+/****************************************************************************/
+
 void
 __show_error(const char * message)
 {

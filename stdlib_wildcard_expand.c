@@ -39,7 +39,6 @@
 
 UBYTE * WEAK __allocate_quote_vector(int num_parameters UNUSED);
 int WEAK __wildcard_expand_init(void);
-void WEAK __wildcard_expand_exit(void);
 
 /****************************************************************************/
 
@@ -55,11 +54,4 @@ int
 __wildcard_expand_init(void)
 {
 	return(0);
-}
-
-/****************************************************************************/
-
-void
-__wildcard_expand_exit(void)
-{
 }

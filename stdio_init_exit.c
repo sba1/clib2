@@ -52,7 +52,7 @@
 /****************************************************************************/
 
 void
-__stdio_exit(void)
+__close_all_files(void)
 {
 	int i;
 
@@ -60,7 +60,7 @@ __stdio_exit(void)
 
 	__check_abort_enabled = FALSE;
 
-	if(__iob != NULL)
+	if(__iob != NULL && __num_iob > 0)
 	{
 		for(i = 0 ; i < __num_iob ; i++)
 		{
@@ -72,7 +72,7 @@ __stdio_exit(void)
 		__iob		= NULL;
 	}
 
-	if(__fd != NULL)
+	if(__fd != NULL && __num_fd > 0)
 	{
 		for(i = 0 ; i < __num_fd ; i++)
 		{
@@ -83,6 +83,17 @@ __stdio_exit(void)
 		__num_fd	= 0;
 		__fd		= NULL;
 	}
+
+	LEAVE();
+}
+
+/****************************************************************************/
+
+CLIB_DESTRUCTOR(__stdio_exit)
+{
+	ENTER();
+
+	__close_all_files();
 
 	LEAVE();
 }

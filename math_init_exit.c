@@ -53,8 +53,7 @@
 
 /****************************************************************************/
 
-void
-__math_exit(void)
+CLIB_DESTRUCTOR(__math_exit)
 {
 	#if defined(IEEE_FLOATING_POINT_SUPPORT)
 	{

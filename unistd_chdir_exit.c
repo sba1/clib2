@@ -31,21 +31,44 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef _STDLIB_HEADERS_H
-#include "stdlib_headers.h"
-#endif /* _STDLIB_HEADERS_H */
+#ifndef _UNISTD_HEADERS_H
+#include "unistd_headers.h"
+#endif /* _UNISTD_HEADERS_H */
 
 /****************************************************************************/
 
-void
-__usergroup_exit(void)
-{
-}
+/* The following is not part of the ISO 'C' (1994) standard. */
 
 /****************************************************************************/
 
-int
-__usergroup_init(void)
+/* If the program's current directory was changed, here is where
+   we find out about it. */
+BPTR __original_current_directory;
+BOOL __current_directory_changed;
+BOOL __unlock_current_directory;
+
+/****************************************************************************/
+
+CLIB_DESTRUCTOR(__chdir_exit)
 {
-	return(OK);
+	ENTER();
+
+	if(__current_directory_changed)
+	{
+		BPTR old_dir;
+
+		old_dir = CurrentDir(__original_current_directory);
+		__original_current_directory = ZERO;
+
+		if(__unlock_current_directory)
+		{
+			UnLock(old_dir);
+
+			__unlock_current_directory = FALSE;
+		}
+
+		__current_directory_changed = FALSE;
+	}
+
+	LEAVE();
 }

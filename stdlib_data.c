@@ -85,15 +85,11 @@ ULONG __stk_extensions;
 /****************************************************************************/
 
 struct Library * __UtilityBase;
-struct Library * __LocaleBase;
 
 /****************************************************************************/
 
 #if defined(__amigaos4__)
-
-struct UtilityIFace *	__IUtility;
-struct LocaleIFace *	__ILocale;
-
+struct UtilityIFace * __IUtility;
 #endif /* __amigaos4__ */
 
 /****************************************************************************/

@@ -294,8 +294,7 @@ __stk_init(void)
 /****************************************************************************/
 
 /* Free all spare stackframes */
-void
-__stk_exit(void)
+CLIB_DESTRUCTOR(__stk_exit)
 {
 	ENTER();
 

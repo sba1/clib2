@@ -65,6 +65,11 @@ struct fd;
 
 /****************************************************************************/
 
+/* stdio_init_exit.c */
+void __close_all_files(void);
+
+/****************************************************************************/
+
 /* stdio_translateioerror.c */
 extern void __translate_io_error_to_errno(LONG io_error,int * errno_ptr);
 extern void __translate_access_io_error_to_errno(LONG io_error,int * errno_ptr);

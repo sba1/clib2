@@ -123,8 +123,3 @@ __stk_init(void)
 
 	return(OK);
 }
-
-void
-__stk_exit(void)
-{
-}

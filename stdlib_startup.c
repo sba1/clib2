@@ -421,8 +421,7 @@ __startup_init(void)
 
 /****************************************************************************/
 
-void
-__startup_exit(void)
+CLIB_DESTRUCTOR(__startup_exit)
 {
 	PROFILE_OFF();
 

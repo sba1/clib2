@@ -74,8 +74,7 @@ static struct AnchorPath * anchor;
 
 /****************************************************************************/
 
-void
-__wildcard_expand_exit(void)
+CLIB_DESTRUCTOR(__wildcard_expand_exit)
 {
 	if(anchor != NULL)
 	{

@@ -51,7 +51,6 @@ int
 closedir(DIR * directory_pointer)
 {
 	struct DirectoryHandle * dh;
-	struct Node * node;
 	int result = -1;
 
 	ENTER();
@@ -96,6 +95,8 @@ closedir(DIR * directory_pointer)
 
 	#if defined(UNIX_PATH_SEMANTICS)
 	{
+		struct Node * node;
+
 		while((node = RemHead((struct List *)&dh->dh_VolumeList)) != NULL)
 			free(node);
 	}

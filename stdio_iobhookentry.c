@@ -62,6 +62,9 @@ __iob_hook_entry(
 			if(fd == NULL)
 			{
 				fam->fam_Error = EBADF;
+
+				result = -1;
+
 				break;
 			}
 

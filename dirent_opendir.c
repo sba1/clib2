@@ -89,7 +89,6 @@ opendir(const char * path_name)
 	#endif /* UNIX_PATH_SEMANTICS */
 	struct DirectoryHandle * dh = NULL;
 	DIR * result = NULL;
-	struct Node * node;
 
 	ENTER();
 
@@ -123,6 +122,8 @@ opendir(const char * path_name)
 
 	#if defined(UNIX_PATH_SEMANTICS)
 	{
+		struct Node * node;
+
 		NewList((struct List *)&dh->dh_VolumeList);
 
 		if(__unix_path_semantics)
@@ -256,6 +257,8 @@ opendir(const char * path_name)
 
 		#if defined(UNIX_PATH_SEMANTICS)
 		{
+			struct Node * node;
+
 			while((node = RemHead((struct List *)&dh->dh_VolumeList)) != NULL)
 				free(node);
 		}

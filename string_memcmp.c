@@ -154,8 +154,16 @@ __memcmp(const char *m1,const char *m2,size_t len)
 
 /****************************************************************************/
 
+/* This is ugly: GCC 2.95.x assumes that 'unsigned long' is used in the built-in
+   memcmp/memcpy/memset functions instead of 'size_t'. This can produce warnings
+   where none are necessary. */
+#if defined(__GNUC__) && (__GNUC__ < 3)
+int
+memcmp(const void *ptr1, const void *ptr2, unsigned long len)
+#else
 int
 memcmp(const void *ptr1, const void *ptr2, size_t len)
+#endif /* __GNUC__ && __GNUC__ < 3 */
 {
 	int result = 0;
 

@@ -184,6 +184,11 @@ call_main(void)
 
 	SHOWMSG("invoking the destructors");
 
+	/* If one of the destructors drops into exit(), either directly
+	   or through a failed assert() call, processing will resume with
+	   the next following destructor. */
+	(void)setjmp(__exit_jmp_buf);
+
 	/* Go through the destructor list */
 	_fini();
 

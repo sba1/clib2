@@ -14,11 +14,6 @@
 
 /****************************************************************************/
 
-#include <stdlib.h>
-#include <setjmp.h>
-
-/****************************************************************************/
-
 /*
  * Dummy constructor and destructor array. The linker script will put these at the
  * very beginning of section ".ctors" and ".dtors". crtend.o contains a similar entry
@@ -48,15 +43,8 @@ _init(void)
 void
 _fini(void)
 {
-	extern jmp_buf __exit_jmp_buf;
-
 	int num_dtors,i;
 	static int j;
-
-	/* If one of the destructors drops into
-	   exit(), processing will continue with
-	   the next following destructor. */
-	(void)setjmp(__exit_jmp_buf);
 
 	for(i = 1, num_dtors = 0 ; __DTOR_LIST__[i] != NULL ; i++)
 		num_dtors++;

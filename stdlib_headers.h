@@ -253,10 +253,6 @@ extern int NOCOMMON		__argc;
 
 /****************************************************************************/
 
-extern UBYTE * NOCOMMON __quote_vector;
-
-/****************************************************************************/
-
 extern int NOCOMMON __default_pool_size;
 extern int NOCOMMON __default_puddle_size;
 

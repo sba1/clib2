@@ -105,8 +105,8 @@ extern void * __get_sp(void);
 /****************************************************************************/
 
 /* stdlib_wildcard_expand.c */
-extern UBYTE *	__allocate_quote_vector(int num_parameters);
-extern int		__wildcard_expand_init(void);
+extern int __wildcard_quote_parameter(unsigned int parameter);
+extern int __wildcard_expand_init(void);
 
 /****************************************************************************/
 

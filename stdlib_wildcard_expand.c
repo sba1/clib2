@@ -37,15 +37,15 @@
 
 /****************************************************************************/
 
-UBYTE * WEAK __allocate_quote_vector(int num_parameters UNUSED);
+int WEAK __wildcard_quote_parameter(unsigned int parameter UNUSED);
 int WEAK __wildcard_expand_init(void);
 
 /****************************************************************************/
 
-UBYTE *
-__allocate_quote_vector(int UNUSED num_parameters)
+int
+__wildcard_quote_parameter(unsigned int parameter UNUSED)
 {
-	return(NULL);
+	return(0);
 }
 
 /****************************************************************************/

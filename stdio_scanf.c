@@ -61,7 +61,7 @@ scanf(const char *format, ...)
 		{
 			SHOWMSG("invalid format parameter");
 
-			errno = EFAULT;
+			__set_errno(EFAULT);
 			goto out;
 		}
 	}

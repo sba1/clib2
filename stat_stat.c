@@ -80,7 +80,7 @@ stat(const char * path_name, struct stat * st)
 		{
 			SHOWMSG("invalid parameters");
 
-			errno = EFAULT;
+			__set_errno(EFAULT);
 			goto out;
 		}
 	}
@@ -138,7 +138,7 @@ stat(const char * path_name, struct stat * st)
 	{
 		SHOWMSG("that didn't work");
 
-		__translate_access_io_error_to_errno(IoErr(),&errno);
+		__set_errno(__translate_access_io_error_to_errno(IoErr()));
 		goto out;
 	}
 
@@ -150,7 +150,7 @@ stat(const char * path_name, struct stat * st)
 	{
 		SHOWMSG("couldn't examine it");
 
-		__translate_io_error_to_errno(IoErr(),&errno);
+		__set_errno(__translate_io_error_to_errno(IoErr()));
 		goto out;
 	}
 

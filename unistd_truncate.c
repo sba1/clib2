@@ -66,7 +66,7 @@ truncate(const char * path_name, off_t length)
 		{
 			SHOWMSG("invalid path name");
 
-			errno = EFAULT;
+			__set_errno(EFAULT);
 			goto out;
 		}
 	}
@@ -79,7 +79,7 @@ truncate(const char * path_name, off_t length)
 	{
 		SHOWMSG("invalid length");
 
-		errno = EINVAL;
+		__set_errno(EINVAL);
 		goto out;
 	}
 

@@ -96,7 +96,7 @@ strlcat(char *dst, const char *src, size_t siz)
 	{
 		if(src == NULL || (siz != 0 && dst == NULL))
 		{
-			errno = EFAULT;
+			__set_errno(EFAULT);
 
 			result = 0;
 			goto out;

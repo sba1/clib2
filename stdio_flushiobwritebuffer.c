@@ -102,9 +102,9 @@ __flush_iob_write_buffer(struct iob * file)
 
 			SET_FLAG(file->iob_Flags,IOBF_ERROR);
 
-			result	= -1;
-			errno	= message.error;
+			__set_errno(message.error);
 
+			result = -1;
 			goto out;
 		}
 

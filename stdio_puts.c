@@ -61,7 +61,7 @@ puts(const char *s)
 	{
 		if(s == NULL)
 		{
-			errno = EFAULT;
+			__set_errno(EFAULT);
 			goto out;
 		}
 	}

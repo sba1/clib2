@@ -136,10 +136,12 @@ ssize_t
 write(int file_descriptor, const void * buffer, size_t num_bytes)
 {
 	ssize_t result;
+	int error;
 
 	ENTER();
 
-	result = __write(file_descriptor,buffer,num_bytes,&errno);
+	result = __write(file_descriptor,buffer,num_bytes,&error);
+	__set_errno(error);
 
 	RETURN(result);
 	return(result);

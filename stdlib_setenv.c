@@ -112,7 +112,7 @@ setenv(const char *original_name, const char *original_value, int overwrite)
 		{
 			SHOWMSG("invalid parameters");
 
-			errno = EFAULT;
+			__set_errno(EFAULT);
 			goto out;
 		}
 	}
@@ -170,7 +170,7 @@ setenv(const char *original_name, const char *original_value, int overwrite)
 	{
 		SHOWMSG("invalid name");
 
-		errno = EINVAL;
+		__set_errno(EINVAL);
 		goto out;
 	}
 
@@ -233,7 +233,7 @@ setenv(const char *original_name, const char *original_value, int overwrite)
 			free(lv);
 		}
 
-		__translate_io_error_to_errno(IoErr(),&errno);
+		__set_errno(__translate_io_error_to_errno(IoErr()));
 		goto out;
 	}
 

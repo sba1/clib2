@@ -76,7 +76,7 @@ rewinddir(DIR * directory_pointer)
 			if(CANNOT Examine(dh->dh_DirLock,&dh->dh_FileInfo))
 			{
 				SHOWMSG("ouch. that didn't work");
-				__translate_io_error_to_errno(IoErr(),&errno);
+				__set_errno(__translate_io_error_to_errno(IoErr()));
 			}
 		}
 	}

@@ -69,7 +69,7 @@ __strdup(const char *s,const char * file,int line)
 	{
 		if(s == NULL)
 		{
-			errno = EFAULT;
+			__set_errno(EFAULT);
 			goto out;
 		}
 	}

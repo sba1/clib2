@@ -60,7 +60,7 @@ sprintf(char *s, const char *format, ...)
 	{
 		if(s == NULL || format == NULL)
 		{
-			errno = EFAULT;
+			__set_errno(EFAULT);
 			goto out;
 		}
 	}

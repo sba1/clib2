@@ -58,7 +58,7 @@ atof(const char *str)
 	{
 		if(str == NULL)
 		{
-			errno = EFAULT;
+			__set_errno(EFAULT);
 			goto out;
 		}
 	}

@@ -56,7 +56,7 @@ sigprocmask(int how, const sigset_t *set, sigset_t *oset)
 	{
 		SHOWMSG("invalid operating mode");
 
-		errno = EINVAL;
+		__set_errno(EINVAL);
 		goto out;
 	}
 

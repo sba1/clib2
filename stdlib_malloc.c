@@ -100,7 +100,7 @@ __allocate_memory(size_t size,BOOL never_free,const char * UNUSED file,int UNUSE
 	{
 		SHOWMSG("not enough free memory available to safely proceed with allocation");
 
-		errno = ENOMEM;
+		__set_errno(ENOMEM);
 		goto out;
 	}
 
@@ -130,7 +130,7 @@ __allocate_memory(size_t size,BOOL never_free,const char * UNUSED file,int UNUSE
 	{
 		SHOWMSG("not enough memory");
 
-		errno = ENOMEM;
+		__set_errno(ENOMEM);
 		goto out;
 	}
 

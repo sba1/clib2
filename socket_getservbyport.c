@@ -63,7 +63,7 @@ getservbyport(int port, const char *proto)
 		{
 			SHOWMSG("invalid parameters");
 
-			errno = EFAULT;
+			__set_errno(EFAULT);
 			goto out;
 		}
 	}

@@ -186,18 +186,16 @@ log10(double x)
 {
 	double result;
 
-	/* When do we consider 'x' to be invalid? If it's close
-	 * enough to zero or negative.
-	 */
 	if(x > DBL_EPSILON)
 	{
 		result = __log10(x);
 	}
 	else
 	{
-		/* ZZZ this should be minus infinity */
-		result = -HUGE_VAL;
-		errno = ERANGE;
+		__set_errno(ERANGE);
+
+		/* This should really be minus infinity. */
+		result = (-__get_huge_val());
 	}
 
 	return(result);

@@ -64,7 +64,7 @@ asprintf(char **ret, const char *format, ...)
 	{
 		if(ret == NULL || format == NULL)
 		{
-			errno = EFAULT;
+			__set_errno(EFAULT);
 			goto out;
 		}
 	}

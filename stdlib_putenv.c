@@ -64,7 +64,7 @@ putenv(const char *string)
 		{
 			SHOWMSG("invalid string");
 
-			errno = EFAULT;
+			__set_errno(EFAULT);
 			goto out;
 		}
 	}

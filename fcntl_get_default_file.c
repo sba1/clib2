@@ -55,7 +55,7 @@ __get_default_file(int file_descriptor,long * file_ptr)
 	fd = __get_file_descriptor(file_descriptor);
 	if(fd == NULL)
 	{
-		errno = EBADF;
+		__set_errno(EBADF);
 		goto out;
 	}
 

@@ -61,7 +61,7 @@ readdir(DIR * directory_pointer)
 	{
 		SHOWMSG("ouch. invalid parameter");
 
-		errno = EBADF;
+		__set_errno(EBADF);
 		goto out;
 	}
 
@@ -164,7 +164,7 @@ readdir(DIR * directory_pointer)
 					{
 						if(CANNOT Examine(parent_directory,fib))
 						{
-							__translate_io_error_to_errno(IoErr(),&errno);
+							__set_errno(__translate_io_error_to_errno(IoErr()));
 							goto out;
 						}
 					}
@@ -206,7 +206,7 @@ readdir(DIR * directory_pointer)
 				{
 					SHOWMSG("error scanning directory");
 
-					__translate_io_error_to_errno(IoErr(),&errno);
+					__set_errno(__translate_io_error_to_errno(IoErr()));
 					goto out;
 				}
 

@@ -65,7 +65,7 @@ getpwnam(const char *name)
 		{
 			SHOWMSG("invalid name");
 
-			errno = EFAULT;
+			__set_errno(EFAULT);
 			goto out;
 		}
 	}

@@ -66,7 +66,7 @@ gethostname(const char *hostname,int size)
 		{
 			SHOWMSG("invalid host name parameter");
 
-			errno = EFAULT;
+			__set_errno(EFAULT);
 			goto out;
 		}
 	}

@@ -87,7 +87,7 @@ __getcwd(char * buffer,size_t buffer_size,const char *file,int line)
 		{
 			SHOWMSG("invalid buffer parameter");
 
-			errno = EFAULT;
+			__set_errno(EFAULT);
 			goto out;
 		}
 	}
@@ -104,7 +104,7 @@ __getcwd(char * buffer,size_t buffer_size,const char *file,int line)
 	{
 		SHOWMSG("could not get a lock on the current directory");
 
-		__translate_io_error_to_errno(IoErr(),&errno);
+		__set_errno(__translate_io_error_to_errno(IoErr()));
 		goto out;
 	}
 
@@ -122,7 +122,7 @@ __getcwd(char * buffer,size_t buffer_size,const char *file,int line)
 		{
 			SHOWMSG("not enough memory for result buffer");
 
-			errno = ENOMEM;
+			__set_errno(ENOMEM);
 			goto out;
 		}
 
@@ -135,7 +135,7 @@ __getcwd(char * buffer,size_t buffer_size,const char *file,int line)
 		{
 			if(buffer_size == 0)
 			{
-				errno = ENOMEM;
+				__set_errno(ENOMEM);
 				goto out;
 			}
 
@@ -163,7 +163,7 @@ __getcwd(char * buffer,size_t buffer_size,const char *file,int line)
 		{
 			SHOWMSG("could not get name from lock");
 
-			__translate_io_error_to_errno(IoErr(),&errno);
+			__set_errno(__translate_io_error_to_errno(IoErr()));
 			goto out;
 		}
 
@@ -176,7 +176,7 @@ __getcwd(char * buffer,size_t buffer_size,const char *file,int line)
 
 				if(buffer_size == 0)
 				{
-					errno = ENOMEM;
+					__set_errno(ENOMEM);
 					goto out;
 				}
 

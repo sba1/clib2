@@ -70,7 +70,7 @@ chmod(const char * path_name, mode_t mode)
 		{
 			SHOWMSG("invalid path parameter");	
 
-			errno = EFAULT;
+			__set_errno(EFAULT);
 			goto out;
 		}
 	}
@@ -88,7 +88,7 @@ chmod(const char * path_name, mode_t mode)
 
 			if(path_name_nti.is_root)
 			{
-				errno = EACCES;
+				__set_errno(EACCES);
 				goto out;
 			}
 		}
@@ -142,7 +142,7 @@ chmod(const char * path_name, mode_t mode)
 
 	if(status == DOSFALSE)
 	{
-		__translate_io_error_to_errno(IoErr(),&errno);
+		__set_errno(__translate_io_error_to_errno(IoErr()));
 		goto out;
 	}
 

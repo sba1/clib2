@@ -108,7 +108,7 @@ inet_aton(const char *cp, struct in_addr *addr)
 		{
 			SHOWMSG("invalid parameters");
 
-			errno = EFAULT;
+			__set_errno(EFAULT);
 			return(0);
 		}
 	}

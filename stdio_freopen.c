@@ -64,7 +64,7 @@ freopen(const char *filename, const char *mode, FILE *stream)
 		{
 			SHOWMSG("invalid parameters");
 
-			errno = EFAULT;
+			__set_errno(EFAULT);
 			goto out;
 		}
 	}

@@ -51,7 +51,7 @@ void (*signal(int sig, void (* handler)(int)))(int)
 	{
 		SHOWMSG("unsupported signal");
 
-		errno = EINVAL;
+		__set_errno(EINVAL);
 		goto out;
 	}
 

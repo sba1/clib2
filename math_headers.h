@@ -192,8 +192,14 @@ extern double __scalbn(double x, int n);
 
 /****************************************************************************/
 
-extern double __not_a_number;
-extern double __infinity;
+#ifndef _STDLIB_HEADERS_H
+#include "stdlib_headers.h"
+#endif /* _STDLIB_HEADERS_H */
+
+/****************************************************************************/
+
+/* math_huge_val.c */
+double __get_huge_val(void);
 
 /****************************************************************************/
 

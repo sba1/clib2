@@ -63,7 +63,7 @@ getservbyname(const char *name, const char *proto)
 		{
 			SHOWMSG("invalid parameters");
 
-			errno = EFAULT;
+			__set_errno(EFAULT);
 			goto out;
 		}
 	}

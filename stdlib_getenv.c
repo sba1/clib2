@@ -61,7 +61,7 @@ getenv(const char * name)
 		{
 			SHOWMSG("invalid name parameter");
 
-			errno = EFAULT;
+			__set_errno(EFAULT);
 			goto out;
 		}
 	}
@@ -74,7 +74,7 @@ getenv(const char * name)
 	{
 		SHOWMSG("couldn't get the variable");
 
-		__translate_io_error_to_errno(IoErr(),&errno);
+		__set_errno(__translate_io_error_to_errno(IoErr()));
 		goto out;
 	}
 

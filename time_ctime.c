@@ -58,7 +58,7 @@ ctime(const time_t *tptr)
 		{
 			SHOWMSG("invalid tptr parameter");
 
-			errno = EFAULT;
+			__set_errno(EFAULT);
 			goto out;
 		}
 	}

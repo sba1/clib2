@@ -424,8 +424,9 @@ pow(double x,double y)
 
 	if(x == 0.0 && y < 0.0)
 	{
-		result = HUGE_VAL;
-		errno = EDOM;
+		__set_errno(EDOM);
+
+		result = __get_huge_val();
 		goto out;
 	}
 
@@ -436,8 +437,9 @@ pow(double x,double y)
 		abs_y = fabs(y);
 		if(floor(abs_y) != abs_y)
 		{
-			result = HUGE_VAL;
-			errno = EDOM;
+			__set_errno(EDOM);
+
+			result = __get_huge_val();
 			goto out;
 		}
 	}

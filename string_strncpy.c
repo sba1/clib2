@@ -55,7 +55,7 @@ strncpy(char *dest, const char *src, size_t n)
 	{
 		if(dest == NULL || src == NULL)
 		{
-			errno = EFAULT;
+			__set_errno(EFAULT);
 			goto out;
 		}
 	}

@@ -71,7 +71,7 @@ recvfrom(int sockfd,void *buff,int len,int flags,struct sockaddr *from,int *from
 		{
 			SHOWMSG("invalid parameters");
 
-			errno = EFAULT;
+			__set_errno(EFAULT);
 			goto out;
 		}
 	}

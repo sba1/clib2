@@ -66,7 +66,7 @@ initgroups(const char *name, gid_t basegroup)
 		{
 			SHOWMSG("invalid name");
 
-			errno = EFAULT;
+			__set_errno(EFAULT);
 			goto out;
 		}
 	}

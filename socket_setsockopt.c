@@ -70,7 +70,7 @@ setsockopt(int sockfd,int level,int optname,const void *optval,int optlen)
 		{
 			SHOWMSG("invalid optval parameter");
 
-			errno = EFAULT;
+			__set_errno(EFAULT);
 			goto out;
 		}
 	}

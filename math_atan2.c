@@ -108,7 +108,7 @@ __atan2(double y,double x)
 			else
 			{
 				result = 0;
-				errno = EDOM;
+				__set_errno(EDOM);
 			}
 		}
 	}
@@ -187,7 +187,7 @@ __atan2(double y,double x)
 			else
 			{
 				result = 0;
-				errno = EDOM;
+				__set_errno(EDOM);
 			}
 		}
 	}

@@ -182,7 +182,7 @@ memchr(const void * ptr, int val, size_t len)
 	{
 		if(ptr == NULL)
 		{
-			errno = EFAULT;
+			__set_errno(EFAULT);
 			goto out;
 		}
 	}

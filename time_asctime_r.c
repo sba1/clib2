@@ -85,7 +85,7 @@ __asctime_r(const struct tm *tm,char * buffer,size_t buffer_size)
 	{
 		if(tm == NULL || buffer == NULL )
 		{
-			errno = EFAULT;
+			__set_errno(EFAULT);
 			goto out;
 		}
 	}

@@ -178,10 +178,12 @@ int
 close(int file_descriptor)
 {
 	int result;
+	int error;
 
 	ENTER();
 
-	result = __close(file_descriptor,&errno);
+	result = __close(file_descriptor,&error);
+	__set_errno(error);
 
 	RETURN(result);
 	return(result);

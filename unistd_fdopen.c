@@ -66,7 +66,7 @@ fdopen(int file_descriptor, const char * type)
 		{
 			SHOWMSG("invalid type parameter");
 
-			errno = EFAULT;
+			__set_errno(EFAULT);
 			goto out;
 		}
 	}

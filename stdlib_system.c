@@ -116,7 +116,7 @@ system(const char * command)
 				/* This may be too long for proper translation... */
 				if(command_len > MAXPATHLEN)
 				{
-					errno = ENAMETOOLONG;
+					__set_errno(ENAMETOOLONG);
 
 					result = -1;
 					goto out;
@@ -144,7 +144,8 @@ system(const char * command)
 				command_copy = malloc(1 + strlen(command_name) + 1 + strlen(&command[command_len]) + 1);
 				if(command_copy == NULL)
 				{
-					errno = ENOMEM;
+					__set_errno(ENOMEM);
+
 					result = -1;
 					goto out;
 				}

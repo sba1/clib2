@@ -62,7 +62,7 @@ fputs(const char *s, FILE *stream)
 	{
 		if(s == NULL || stream == NULL)
 		{
-			errno = EFAULT;
+			__set_errno(EFAULT);
 			goto out;
 		}
 	}

@@ -71,7 +71,8 @@ crypt(const char *key,const char *salt)
 		if(key == NULL || salt == NULL)
 		{
 			SHOWMSG("invalid parameters");
-			errno = EFAULT;
+
+			__set_errno(EFAULT);
 			goto out;
 		}
 	}

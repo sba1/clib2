@@ -66,7 +66,7 @@ getgroups(int ngroups, gid_t *groups)
 		{
 			SHOWMSG("invalid groups parameter");
 
-			errno = EFAULT;
+			__set_errno(EFAULT);
 			goto out;
 		}
 	}

@@ -31,62 +31,14 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef _UNISTD_HEADERS_H
-#include "unistd_headers.h"
-#endif /* _UNISTD_HEADERS_H */
-
-/****************************************************************************/
-
-/* The following is not part of the ISO 'C' (1994) standard. */
+#ifndef _STDLIB_HEADERS_H
+#include "stdlib_headers.h"
+#endif /* _STDLIB_HEADERS_H */
 
 /****************************************************************************/
 
 int
-fchown(int file_descriptor, uid_t owner, gid_t group)
+__get_errno(void)
 {
-	DECLARE_UTILITYBASE();
-	struct file_hook_message message;
-	int result = -1;
-	struct fd * fd;
-
-	ENTER();
-
-	SHOWVALUE(file_descriptor);
-	SHOWVALUE(owner);
-	SHOWVALUE(group);
-
-	assert( UtilityBase != NULL );
-
-	assert( file_descriptor >= 0 && file_descriptor < __num_fd );
-	assert( __fd[file_descriptor] != NULL );
-	assert( FLAG_IS_SET(__fd[file_descriptor]->fd_Flags,FDF_IN_USE) );
-
-	if(__check_abort_enabled)
-		__check_abort();
-
-	fd = __get_file_descriptor(file_descriptor);
-	if(fd == NULL)
-	{
-		__set_errno(EBADF);
-		goto out;
-	}
-
-	SHOWMSG("calling the hook");
-
-	message.action	= file_hook_action_change_owner;
-	message.owner	= owner;
-	message.group	= group;
-
-	assert( fd->fd_Hook != NULL );
-
-	CallHookPkt(fd->fd_Hook,fd,&message);
-
-	result = message.result;
-
-	__set_errno(message.error);
-
- out:
-
-	RETURN(result);
-	return(result);
+	return(errno);
 }

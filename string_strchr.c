@@ -57,7 +57,7 @@ strchr(const char *s, int c)
 	{
 		if(us == NULL)
 		{
-			errno = EFAULT;
+			__set_errno(EFAULT);
 			goto out;
 		}
 	}

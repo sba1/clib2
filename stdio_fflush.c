@@ -97,7 +97,7 @@ fflush(FILE *stream)
 			{
 				SHOWMSG("invalid file handle");
 
-				errno = EFAULT;
+				__set_errno(EFAULT);
 				goto out;
 			}
 		}

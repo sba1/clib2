@@ -390,7 +390,7 @@ __wildcard_expand_init(void)
 
 	if(error != OK)
 	{
-		errno = error;
+		__set_errno(error);
 
 		perror(__argv[0]);
 		abort();

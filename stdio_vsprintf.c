@@ -56,7 +56,7 @@ vsprintf(char *s,const char *format,va_list arg)
 	{
 		if(s == NULL || format == NULL)
 		{
-			errno = EFAULT;
+			__set_errno(EFAULT);
 			goto out;
 		}
 	}

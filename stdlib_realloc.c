@@ -95,7 +95,7 @@ __realloc(void *ptr,size_t size,const char * file,int line)
 				/* Apparently, the address did not qualify for
 				 * reallocation.
 				 */
-				errno = ENOMEM;
+				__set_errno(ENOMEM);
 				goto out;
 			}
 		}
@@ -109,7 +109,7 @@ __realloc(void *ptr,size_t size,const char * file,int line)
 		{
 			SHOWMSG("cannot free this chunk");
 
-			errno = ENOMEM;
+			__set_errno(ENOMEM);
 			goto out;
 		}
 
@@ -163,7 +163,7 @@ __realloc(void *ptr,size_t size,const char * file,int line)
 			{
 				SHOWMSG("could not reallocate memory");
 
-				errno = ENOMEM;
+				__set_errno(ENOMEM);
 				goto out;
 			}
 

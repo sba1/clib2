@@ -115,10 +115,12 @@ off_t
 lseek(int file_descriptor, off_t offset, int mode)
 {
 	off_t result;
+	int error;
 
 	ENTER();
 
-	result = __lseek(file_descriptor,offset,mode,&errno);
+	result = __lseek(file_descriptor,offset,mode,&error);
+	__set_errno(error);
 
 	RETURN(result);
 	return(result);

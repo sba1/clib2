@@ -61,7 +61,8 @@ gets(char *s)
 		{
 			SHOWMSG("invalid parameters");
 
-			errno = EFAULT;
+			__set_errno(EFAULT);
+
 			result = NULL;
 			goto out;
 		}

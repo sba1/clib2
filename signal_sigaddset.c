@@ -60,7 +60,7 @@ sigaddset(sigset_t * set,int sig)
 	{
 		if(set == NULL)
 		{
-			errno = EFAULT;
+			__set_errno(EFAULT);
 			goto out;
 		}
 	}

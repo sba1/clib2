@@ -63,7 +63,7 @@ fgets(char *s,int n,FILE *stream)
 		{
 			SHOWMSG("invalid parameters");
 
-			errno = EFAULT;
+			__set_errno(EFAULT);
 			result = NULL;
 			goto out;
 		}

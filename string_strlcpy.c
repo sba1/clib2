@@ -93,7 +93,7 @@ strlcpy(char *dst, const char *src, size_t siz)
 	{
 		if(siz != 0 && (dst == NULL || src == NULL))
 		{
-			errno = EFAULT;
+			__set_errno(EFAULT);
 
 			result = 0;
 			goto out;

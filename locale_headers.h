@@ -53,9 +53,9 @@
 
 /****************************************************************************/
 
-#ifndef _STDLIB_LOCALE_UTILITY_H
-#include "stdlib_locale_utility.h"
-#endif /* _STDLIB_LOCALE_UTILITY_H */
+#ifndef _STDLIB_HEADERS_H
+#include "stdlib_headers.h"
+#endif /* _STDLIB_HEADERS_H */
 
 /****************************************************************************/
 

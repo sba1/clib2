@@ -56,7 +56,7 @@ strcspn(const char *s, const char *set)
 	{
 		if(s == NULL || set == NULL)
 		{
-			errno = EFAULT;
+			__set_errno(EFAULT);
 			goto out;
 		}
 	}

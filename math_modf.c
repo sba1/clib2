@@ -150,8 +150,9 @@ modf(double x,double *nptr)
 	{
 		if(nptr == NULL)
 		{
-			errno = EFAULT;
-			result = HUGE_VAL;
+			__set_errno(EFAULT);
+
+			result = __get_huge_val();
 			goto out;
 		}
 	}

@@ -74,7 +74,7 @@ statfs(const char *path, struct statfs *buf)
 		{
 			SHOWMSG("invalid parameters");
 
-			errno = EFAULT;
+			__set_errno(EFAULT);
 			goto out;
 		}
 	}
@@ -123,7 +123,7 @@ statfs(const char *path, struct statfs *buf)
 	{
 		SHOWMSG("that didn't work");
 
-		__translate_access_io_error_to_errno(IoErr(),&errno);
+		__set_errno(__translate_access_io_error_to_errno(IoErr()));
 		goto out;
 	}
 
@@ -135,7 +135,7 @@ statfs(const char *path, struct statfs *buf)
 	{
 		SHOWMSG("didn't get the info");
 
-		__translate_io_error_to_errno(IoErr(),&errno);
+		__set_errno(__translate_io_error_to_errno(IoErr()));
 		goto out;
 	}
 

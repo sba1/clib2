@@ -102,7 +102,7 @@ tmpnam(char *buf)
 			if(IoErr() == ERROR_OBJECT_NOT_FOUND)
 				result = buf;
 			else
-				__translate_io_error_to_errno(IoErr(),&errno);
+				__set_errno(__translate_io_error_to_errno(IoErr()));
 
 			break;
 		}

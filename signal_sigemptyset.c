@@ -60,7 +60,7 @@ sigemptyset(sigset_t * set)
 	{
 		if(set == NULL)
 		{
-			errno = EFAULT;
+			__set_errno(EFAULT);
 			goto out;
 		}
 	}

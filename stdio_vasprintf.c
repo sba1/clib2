@@ -77,7 +77,7 @@ __vasprintf(const char *file,int line,char **ret,const char *format,va_list arg)
 		{
 			SHOWMSG("invalid parameters");
 
-			errno = EFAULT;
+			__set_errno(EFAULT);
 			goto out;
 		}
 	}

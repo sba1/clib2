@@ -69,7 +69,7 @@ symlink(const char * actual_path, const char * symbolic_path)
 		{
 			SHOWMSG("invalid parameters");
 
-			errno = EFAULT;
+			__set_errno(EFAULT);
 			goto out;
 		}
 	}
@@ -88,7 +88,7 @@ symlink(const char * actual_path, const char * symbolic_path)
 	{
 		SHOWMSG("that didn't work");
 
-		__translate_io_error_to_errno(IoErr(),&errno);
+		__set_errno(__translate_io_error_to_errno(IoErr()));
 		goto out;
 	}
 

@@ -70,7 +70,7 @@ fstat(int file_descriptor, struct stat * buffer)
 		{
 			SHOWMSG("invalid buffer parameter");
 
-			errno = EFAULT;
+			__set_errno(EFAULT);
 			goto out;
 		}
 	}
@@ -86,7 +86,7 @@ fstat(int file_descriptor, struct stat * buffer)
 	fd = __get_file_descriptor(file_descriptor);
 	if(fd == NULL)
 	{
-		errno = EBADF;
+		__set_errno(EBADF);
 		goto out;
 	}
 
@@ -103,7 +103,7 @@ fstat(int file_descriptor, struct stat * buffer)
 	result = message.result;
 	if(result != 0)
 	{
-		errno = message.error;
+		__set_errno(message.error);
 		goto out;
 	}
 

@@ -65,7 +65,7 @@ getnetbyname(const char *name)
 		{
 			SHOWMSG("invalid name parameter");
 
-			errno = EFAULT;
+			__set_errno(EFAULT);
 			goto out;
 		}
 	}

@@ -75,7 +75,7 @@ tmpfile(void)
 	{
 		SHOWMSG("couldn't get a temp_file_lock on the current directory");
 
-		__translate_io_error_to_errno(IoErr(),&errno);
+		__set_errno(__translate_io_error_to_errno(IoErr()));
 		goto out;
 	}
 

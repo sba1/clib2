@@ -78,7 +78,7 @@ __translate_relative_path_name(char const ** name_ptr,char *replacement_buffer,s
 		/* Check if the complete string will fit, including the terminating NUL byte. */
 		if(total_len+1 > replacement_buffer_size)
 		{
-			errno = ENAMETOOLONG;
+			__set_errno(ENAMETOOLONG);
 			goto out;
 		}
 

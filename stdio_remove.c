@@ -60,7 +60,7 @@ remove(const char *filename)
 		{
 			SHOWMSG("invalid path name");
 
-			errno = EFAULT;
+			__set_errno(EFAULT);
 			goto out;
 		}
 	}
@@ -85,7 +85,7 @@ remove(const char *filename)
 
 		if(status == DOSFALSE)
 		{
-			__translate_access_io_error_to_errno(IoErr(),&errno);
+			__set_errno(__translate_access_io_error_to_errno(IoErr()));
 			goto out;
 		}
 

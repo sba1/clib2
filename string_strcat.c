@@ -54,7 +54,7 @@ strcat(char *dest, const char *src)
 	{
 		if(dest == NULL || src == NULL)
 		{
-			errno = EFAULT;
+			__set_errno(EFAULT);
 			goto out;
 		}
 	}

@@ -189,8 +189,9 @@ frexp(double x,int *nptr)
 	{
 		if(nptr == NULL)
 		{
-			result = HUGE_VAL;
-			errno = EFAULT;
+			__set_errno(EFAULT);
+
+			result = __get_huge_val();
 			goto out;
 		}
 	}

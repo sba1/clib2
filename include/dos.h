@@ -278,7 +278,7 @@ extern int __translate_relative_path_name(char const ** name_ptr,char *replace,s
 extern void __restore_path_name(char const ** name_ptr,struct name_translation_info * nti);
 extern int __translate_amiga_to_unix_path_name(char const ** name_ptr,struct name_translation_info * nti);
 extern int __translate_unix_to_amiga_path_name(char const ** name_ptr,struct name_translation_info * nti);
-extern void __translate_io_error_to_errno(LONG io_error,int * errno_ptr);
+extern int __translate_io_error_to_errno(LONG io_error);
 
 /****************************************************************************/
 

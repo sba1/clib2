@@ -61,7 +61,7 @@ localtime_r(const time_t *t,struct tm * tm_ptr)
 	{
 		if(t == NULL || tm_ptr == NULL)
 		{
-			errno = EFAULT;
+			__set_errno(EFAULT);
 			goto out;
 		}
 	}

@@ -77,7 +77,7 @@ atexit(void (*function)(void))
 	{
 		if(function == NULL)
 		{
-			errno = EFAULT;
+			__set_errno(EFAULT);
 			goto out;
 		}
 	}
@@ -85,7 +85,7 @@ atexit(void (*function)(void))
 
 	if(atexit_blocked)
 	{
-		errno = EACCES;
+		__set_errno(EACCES);
 		goto out;
 	}
 
@@ -102,7 +102,7 @@ atexit(void (*function)(void))
 		etn = malloc(sizeof(*etn));
 		if(etn == NULL)
 		{
-			errno = ENOMEM;
+			__set_errno(ENOMEM);
 			goto out;
 		}
 	}

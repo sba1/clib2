@@ -71,7 +71,7 @@ sendto(int sockfd,const void *buff,int len,int flags,struct sockaddr *to,int tol
 		{
 			SHOWMSG("invalid parameters");
 
-			errno = EFAULT;
+			__set_errno(EFAULT);
 			goto out;
 		}
 	}

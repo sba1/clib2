@@ -54,7 +54,7 @@ strstr(const char *src, const char *sub)
 	{
 		if(src == NULL || sub == NULL)
 		{
-			errno = EFAULT;
+			__set_errno(EFAULT);
 			goto out;
 		}
 	}

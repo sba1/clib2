@@ -68,7 +68,7 @@ unsetenv(const char *original_name)
 	{
 		if(name == NULL)
 		{
-			errno = EFAULT;
+			__set_errno(EFAULT);
 			goto out;
 		}
 	}

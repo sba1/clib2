@@ -103,7 +103,7 @@ logb(double x)
 
 	if(x == 0.0)
 	{
-		result = -HUGE_VAL;
+		result = -__get_huge_val();
 		goto out;
 	}
 

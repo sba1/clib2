@@ -65,7 +65,7 @@ inet_addr(const char *addr)
 		{
 			SHOWMSG("invalid parameter");
 
-			errno = EFAULT;
+			__set_errno(EFAULT);
 			goto out;
 		}
 	}

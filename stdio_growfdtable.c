@@ -59,7 +59,7 @@ __grow_fd_table(void)
 	{
 		SHOWMSG("not enough memory for new file descriptor table");
 
-		errno = ENOMEM;
+		__set_errno(ENOMEM);
 		goto out;
 	}
 
@@ -77,7 +77,7 @@ __grow_fd_table(void)
 
 			free(new_fd);
 
-			errno = ENOMEM;
+			__set_errno(ENOMEM);
 			goto out;
 		}
 

@@ -168,7 +168,7 @@ qsort(void * base, size_t count, size_t size, int (*comp)(const void * element1,
 			{
 				SHOWMSG("invalid parameters");
 
-				errno = EFAULT;
+				__set_errno(EFAULT);
 				goto out;
 			}
 		}

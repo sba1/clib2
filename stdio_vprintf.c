@@ -59,7 +59,7 @@ vprintf(const char *format,va_list arg)
 	{
 		if(format == NULL || arg == NULL)
 		{
-			errno = EFAULT;
+			__set_errno(EFAULT);
 			goto out;
 		}
 	}

@@ -68,7 +68,7 @@ mkdtemp(char *name_template)
 		{
 			SHOWMSG("invalid name template");
 
-			errno = EFAULT;
+			__set_errno(EFAULT);
 			goto out;
 		}
 	}

@@ -56,7 +56,7 @@ strtok_r(char *str, const char *separator_set,char ** state_ptr)
 	{
 		if(separator_set == NULL || state_ptr == NULL)
 		{
-			errno = EFAULT;
+			__set_errno(EFAULT);
 			goto out;
 		}
 	}

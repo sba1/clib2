@@ -65,7 +65,7 @@ getpass(const char *prompt)
 		{
 			SHOWMSG("invalid prompt");
 
-			errno = EFAULT;
+			__set_errno(EFAULT);
 			goto out;
 		}
 	}

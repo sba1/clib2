@@ -71,7 +71,7 @@ accept(int sockfd,struct sockaddr *cliaddr,int *addrlen)
 		{
 			SHOWMSG("invalid parameters");
 
-			errno = EFAULT;
+			__set_errno(EFAULT);
 			goto out;
 		}
 	}

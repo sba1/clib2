@@ -61,7 +61,7 @@ fsetpos(FILE *stream, fpos_t *pos)
 		{
 			SHOWMSG("invalid parameters");
 
-			errno = EFAULT;
+			__set_errno(EFAULT);
 			goto out;
 		}
 	}

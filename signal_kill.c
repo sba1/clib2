@@ -64,7 +64,7 @@ kill(pid_t pid, int signal_number)
 			{
 				SHOWMSG("didn't find the process");
 
-				errno = ESRCH;
+				__set_errno(ESRCH);
 				goto out;
 			}
 
@@ -95,7 +95,7 @@ kill(pid_t pid, int signal_number)
 			{
 				SHOWMSG("didn't find the process");
 
-				errno = ESRCH;
+				__set_errno(ESRCH);
 				goto out;
 			}
 

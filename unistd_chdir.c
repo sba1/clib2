@@ -70,7 +70,7 @@ chdir(const char * path_name)
 		{
 			SHOWMSG("invalid path name");
 
-			errno = EFAULT;
+			__set_errno(EFAULT);
 			goto out;
 		}
 	}
@@ -115,7 +115,7 @@ chdir(const char * path_name)
 
 	if(dir_lock == ZERO)
 	{
-		__translate_access_io_error_to_errno(IoErr(),&errno);
+		__set_errno(__translate_access_io_error_to_errno(IoErr()));
 		goto out;
 	}
 
@@ -125,7 +125,7 @@ chdir(const char * path_name)
 
 	if(status == DOSFALSE)
 	{
-		__translate_io_error_to_errno(IoErr(),&errno);
+		__set_errno(__translate_io_error_to_errno(IoErr()));
 		goto out;
 	}
 
@@ -133,7 +133,7 @@ chdir(const char * path_name)
 	{
 		SHOWMSG("this is not a directory");
 
-		errno = ENOTDIR;
+		__set_errno(ENOTDIR);
 		goto out;
 	}
 

@@ -60,7 +60,7 @@ fprintf(FILE *stream,const char *format,...)
 	{
 		if(stream == NULL || format == NULL)
 		{
-			errno = EFAULT;
+			__set_errno(EFAULT);
 			goto out;
 		}
 	}

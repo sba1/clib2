@@ -59,7 +59,7 @@ setbuf(FILE *stream,char *buf)
 		{
 			SHOWMSG("invalid stream parameter");
 
-			errno = EFAULT;
+			__set_errno(EFAULT);
 			goto out;
 		}
 	}

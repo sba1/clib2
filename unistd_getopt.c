@@ -76,7 +76,7 @@ getopt(int argc, char * argv[], char *opts)
 		{
 			SHOWMSG("invalid parameters");
 
-			errno = EFAULT;
+			__set_errno(EFAULT);
 			goto out;
 		}
 	}

@@ -64,7 +64,7 @@ snprintf(char *s, size_t size, const char *format, ...)
 	{
 		if((size > 0 && s == NULL) || format == NULL)
 		{
-			errno = EFAULT;
+			__set_errno(EFAULT);
 			goto out;
 		}
 	}

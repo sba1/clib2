@@ -63,7 +63,7 @@ closedir(DIR * directory_pointer)
 
 	if(directory_pointer == NULL)
 	{
-		errno = EBADF;
+		__set_errno(EBADF);
 		goto out;
 	}
 
@@ -84,7 +84,7 @@ closedir(DIR * directory_pointer)
 
 		if(NOT directory_pointer_is_valid)
 		{
-			errno = EBADF;
+			__set_errno(EBADF);
 			goto out;
 		}
 	}

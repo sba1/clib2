@@ -72,7 +72,7 @@ bsearch(const void *key, const void *base, size_t count, size_t size, int (*comp
 			{
 				SHOWMSG("invalid parameters");
 
-				errno = EFAULT;
+				__set_errno(EFAULT);
 				goto out;
 			}
 		}

@@ -59,7 +59,7 @@ __grow_iob_table(void)
 	{
 		SHOWMSG("not enough memory for file table");
 
-		errno = ENOMEM;
+		__set_errno(ENOMEM);
 		goto out;
 	}
 
@@ -77,7 +77,7 @@ __grow_iob_table(void)
 
 			free(new_iob);
 
-			errno = ENOMEM;
+			__set_errno(ENOMEM);
 			goto out;
 		}
 

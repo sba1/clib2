@@ -65,7 +65,7 @@ fileno(FILE * file)
 		{
 			SHOWMSG("invalid file parameter");
 
-			errno = EFAULT;
+			__set_errno(EFAULT);
 			goto out;
 		}
 	}
@@ -79,7 +79,7 @@ fileno(FILE * file)
 
 	if(FLAG_IS_CLEAR(iob->iob_Flags,IOBF_IN_USE))
 	{
-		errno = EBADF;
+		__set_errno(EBADF);
 		goto out;
 	}
 

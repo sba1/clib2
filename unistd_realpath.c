@@ -71,7 +71,7 @@ realpath(const char * path_name, char * buffer)
 		{
 			SHOWSTRING("invalid parameters");
 
-			errno = EFAULT;
+			__set_errno(EFAULT);
 			goto out;
 		}
 	}
@@ -107,7 +107,7 @@ realpath(const char * path_name, char * buffer)
 		{
 			SHOWMSG("that didn't work");
 
-			__translate_io_error_to_errno(IoErr(),&errno);
+			__set_errno(__translate_io_error_to_errno(IoErr()));
 			goto out;
 		}
 	}
@@ -115,7 +115,7 @@ realpath(const char * path_name, char * buffer)
 	{
 		SHOWMSG("couldn't get a lock");
 
-		__translate_io_error_to_errno(IoErr(),&errno);
+		__set_errno(__translate_io_error_to_errno(IoErr()));
 		goto out;
 	}
 

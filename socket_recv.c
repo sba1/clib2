@@ -70,7 +70,7 @@ recv(int sockfd,void *buff,size_t nbytes,int flags)
 		{
 			SHOWMSG("invalid buffer parameter");
 
-			errno = EFAULT;
+			__set_errno(EFAULT);
 			goto out;
 		}
 	}

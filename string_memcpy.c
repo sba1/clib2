@@ -203,7 +203,7 @@ memcpy(void *dst, const void *src, size_t len)
 	{
 		if(dst == NULL || src == NULL)
 		{
-			errno = EFAULT;
+			__set_errno(EFAULT);
 			goto out;
 		}
 	}
@@ -343,7 +343,7 @@ memcpy(void *dst, const void *src, size_t len)
 	{
 		if(dst == NULL || src == NULL)
 		{
-			errno = EFAULT;
+			__set_errno(EFAULT);
 			goto out;
 		}
 	}

@@ -65,7 +65,7 @@ lstat(const char * path_name, struct stat * buffer)
 		{
 			SHOWMSG("invalid parameters");
 
-			errno = EFAULT;
+			__set_errno(EFAULT);
 			goto out;
 		}
 	}

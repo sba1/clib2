@@ -50,13 +50,13 @@ __get_socket_descriptor(int socket_descriptor)
 	fd = __get_file_descriptor(socket_descriptor);
 	if(fd == NULL)
 	{
-		errno = EBADF;
+		__set_errno(EBADF);
 		goto out;
 	}
 
 	if(FLAG_IS_CLEAR(fd->fd_Flags,FDF_IS_SOCKET))
 	{
-		errno = ENOTSOCK;
+		__set_errno(ENOTSOCK);
 		goto out;
 	}
 

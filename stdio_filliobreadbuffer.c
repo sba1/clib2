@@ -92,9 +92,9 @@ __fill_iob_read_buffer(struct iob * file)
 
 	if(message.result < 0)
 	{
-		errno = message.error;
+		__set_errno(message.error);
 
-		D(("got error %ld",errno));
+		D(("got error %ld",message.error));
 
 		SET_FLAG(file->iob_Flags,IOBF_ERROR);
 		goto out;

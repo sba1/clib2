@@ -67,7 +67,7 @@ fchmod(int file_descriptor, mode_t mode)
 	fd = __get_file_descriptor(file_descriptor);
 	if(fd == NULL)
 	{
-		errno = EBADF;
+		__set_errno(EBADF);
 		goto out;
 	}
 
@@ -118,8 +118,9 @@ fchmod(int file_descriptor, mode_t mode)
 
 	CallHookPkt(fd->fd_Hook,fd,&message);
 
-	result	= message.result;
-	errno	= message.error;
+	result = message.result;
+
+	__set_errno(message.error);
 
  out:
 

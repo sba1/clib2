@@ -69,7 +69,7 @@ vsnprintf(char *buffer,size_t size,const char *format,va_list arg)
 		{
 			SHOWMSG("invalid parameters");
 
-			errno = EFAULT;
+			__set_errno(EFAULT);
 			goto out;
 		}
 	}

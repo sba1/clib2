@@ -52,7 +52,7 @@ raise(int sig)
 	{
 		SHOWMSG("unknown signal number");
 
-		errno = EINVAL;
+		__set_errno(EINVAL);
 		goto out;
 	}
 

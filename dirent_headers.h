@@ -42,6 +42,12 @@
 
 /****************************************************************************/
 
+#ifndef _STDLIB_HEADERS_H
+#include "stdlib_headers.h"
+#endif /* _STDLIB_HEADERS_H */
+
+/****************************************************************************/
+
 #ifndef _MACROS_H
 #include "macros.h"
 #endif /* _MACROS_H */

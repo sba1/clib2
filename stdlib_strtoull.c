@@ -70,7 +70,7 @@ strtoull(const char *str, char **ptr, int base)
 		{
 			SHOWMSG("invalid str parameter");
 
-			errno = EFAULT;
+			__set_errno(EFAULT);
 			goto out;
 		}
 	}
@@ -80,7 +80,7 @@ strtoull(const char *str, char **ptr, int base)
 	{
 		SHOWMSG("invalid base parameter");
 
-		errno = ERANGE;
+		__set_errno(ERANGE);
 		goto out;
 	}
 
@@ -164,7 +164,7 @@ strtoull(const char *str, char **ptr, int base)
 			new_sum = base * sum + c;
 			if(new_sum < sum) /* overflow? */
 			{
-				errno = ERANGE;
+				__set_errno(ERANGE);
 
 				result = ULONG_MAX;
 

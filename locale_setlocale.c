@@ -56,7 +56,7 @@ setlocale(int category, const char *locale)
 	{
 		SHOWMSG("invalid category");
 
-		errno = EINVAL;
+		__set_errno(EINVAL);
 		goto out;
 	}
 
@@ -75,7 +75,7 @@ setlocale(int category, const char *locale)
 		{
 			SHOWMSG("locale name is too long");
 
-			errno = ENAMETOOLONG;
+			__set_errno(ENAMETOOLONG);
 			goto out;
 		}
 
@@ -103,7 +103,7 @@ setlocale(int category, const char *locale)
 				{
 					SHOWMSG("couldn't open the locale");
 
-					errno = ENOENT;
+					__set_errno(ENOENT);
 					goto out;
 				}
 			}

@@ -378,7 +378,7 @@ strftime(char *s, size_t maxsize, const char *format, const struct tm *tm)
 		{
 			SHOWMSG("invalid parameters");
 
-			errno = EFAULT;
+			__set_errno(EFAULT);
 			goto out;
 		}
 	}

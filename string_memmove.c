@@ -331,7 +331,7 @@ memmove(void *dest, const void * src, size_t len)
 	{
 		if(dest == NULL || src == NULL)
 		{
-			errno = EFAULT;
+			__set_errno(EFAULT);
 			goto out;
 		}
 	}
@@ -573,7 +573,7 @@ memmove(void *dest, const void * src, size_t len)
 	{
 		if(dest == NULL || src == NULL)
 		{
-			errno = EFAULT;
+			__set_errno(EFAULT);
 			goto out;
 		}
 	}

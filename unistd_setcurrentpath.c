@@ -52,7 +52,7 @@ __set_current_path(const char * path_name)
 	{
 		SHOWMSG("path is too long");
 
-		errno = ENAMETOOLONG;
+		__set_errno(ENAMETOOLONG);
 		goto out;
 	}
 

@@ -65,8 +65,10 @@ feof(FILE *stream)
 		{
 			SHOWMSG("invalid stream parameter");
 
-			errno = EFAULT;
+			__set_errno(EFAULT);
+
 			result = 0;
+
 			goto out;
 		}
 	}

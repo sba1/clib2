@@ -66,7 +66,7 @@ creat(const char * path_name, mode_t mode)
 	{
 		if(path_name == NULL)
 		{
-			errno = EFAULT;
+			__set_errno(EFAULT);
 			goto out;
 		}
 	}

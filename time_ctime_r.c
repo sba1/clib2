@@ -57,7 +57,7 @@ ctime_r(const time_t *tptr,char * buffer)
 	{
 		if(tptr == NULL || buffer == NULL)
 		{
-			errno = EFAULT;
+			__set_errno(EFAULT);
 			goto out;
 		}
 	}

@@ -64,7 +64,7 @@ sscanf(const char *s,const char *format, ...)
 		{
 			SHOWMSG("invalid parameters");
 
-			errno = EFAULT;
+			__set_errno(EFAULT);
 			goto out;
 		}
 	}

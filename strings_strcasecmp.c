@@ -60,7 +60,7 @@ strcasecmp(const char * _s1, const char * _s2)
 	{
 		if(s1 == NULL || s2 == NULL)
 		{
-			errno = EFAULT;
+			__set_errno(EFAULT);
 			goto out;
 		}
 	}

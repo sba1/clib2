@@ -70,7 +70,7 @@ getsockopt(int sockfd,int level,int optname,void *optval,int *optlen)
 		{
 			SHOWMSG("invalid parameters");
 
-			errno = EFAULT;
+			__set_errno(EFAULT);
 			goto out;
 		}
 	}

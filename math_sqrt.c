@@ -252,7 +252,7 @@ sqrt(double x)
 	else
 	{
 		result = 0;
-		errno = EDOM;
+		__set_errno(EDOM);
 	}
 
 	return(result);

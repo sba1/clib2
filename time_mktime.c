@@ -67,7 +67,7 @@ mktime(struct tm *tm)
 		{
 			SHOWMSG("invalid tm parameter");
 
-			errno = EFAULT;
+			__set_errno(EFAULT);
 			goto out;
 		}
 	}

@@ -68,7 +68,7 @@ recvmsg(int sockfd,struct msghdr *msg,int flags)
 		{
 			SHOWMSG("invalid msg parameter");
 
-			errno = EFAULT;
+			__set_errno(EFAULT);
 			goto out;
 		}
 	}

@@ -67,7 +67,7 @@ strxfrm(char *dest, const char *src, size_t len)
 		{
 			SHOWMSG("invalid parameters");
 
-			errno = EFAULT;
+			__set_errno(EFAULT);
 			goto out;
 		}
 	}

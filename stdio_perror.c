@@ -41,7 +41,7 @@ void
 perror(const char * s)
 {
 	char * error_message;
-	int error = errno;
+	int error = __get_errno();
 
 	if(s != NULL)
 		fprintf(stderr,"%s: ",s);

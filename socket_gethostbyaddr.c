@@ -67,7 +67,7 @@ gethostbyaddr(const char *addr, int len, int type)
 		{
 			SHOWMSG("invalid addr parameter");
 
-			errno = EFAULT;
+			__set_errno(EFAULT);
 			goto out;
 		}
 	}

@@ -66,7 +66,7 @@ lchown(const char * path_name, uid_t owner, gid_t group)
 		{
 			SHOWMSG("invalid path name");
 
-			errno = EFAULT;
+			__set_errno(EFAULT);
 			goto out;
 		}
 	}

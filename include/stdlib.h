@@ -151,6 +151,11 @@ extern long atol(const char *str);
 
 /****************************************************************************/
 
+extern long long strtoll(const char *str, char **ptr, int base);
+extern unsigned long long strtoull(const char *str, char **ptr, int base);
+
+/****************************************************************************/
+
 #if defined(__GNUC__)
  #if defined(alloca)
   #undef alloca

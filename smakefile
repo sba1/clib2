@@ -415,6 +415,8 @@ STDLIB_OBJ = \
 	stdlib_strtod.o \
 	stdlib_strtol.o \
 	stdlib_strtoul.o \
+	stdlib_strtoll.o \
+	stdlib_strtoull.o \
 	stdlib_swapstack.o \
 	stdlib_system.o \
 	stdlib_unsetenv.o \

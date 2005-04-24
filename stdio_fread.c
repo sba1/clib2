@@ -137,6 +137,9 @@ fread(void *ptr,size_t element_size,size_t count,FILE *stream)
 		SHOWVALUE(count);
 
 		SHOWMSG("either element size or count is zero");
+
+		/* Don't let this appear like an EOF or error. */
+		clearerr((FILE *)file);
 	}
 
 	D(("total number of elements read = %ld",result));

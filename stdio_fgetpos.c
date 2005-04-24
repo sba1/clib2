@@ -81,7 +81,7 @@ fgetpos(FILE *stream, fpos_t *pos)
 		goto out;
 	}
 
-	(*pos) = position;
+	(*pos) = (fpos_t)position;
 
 	result = OK;
 

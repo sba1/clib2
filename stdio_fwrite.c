@@ -161,6 +161,11 @@ fwrite(const void *ptr,size_t element_size,size_t count,FILE *stream)
 
 		result = total_bytes_written / element_size;
 	}
+	else
+	{
+		/* Don't let this appear like an EOF or error. */
+		clearerr((FILE *)file);
+	}
 
  out:
 

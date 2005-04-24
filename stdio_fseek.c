@@ -108,7 +108,7 @@ fseek(FILE *stream, long int offset, int wherefrom)
 		long int current_position;
 
 		current_position = ftell(stream);
-		if(current_position >= 0)
+		if(current_position != SEEK_ERROR || __get_errno() == OK)
 		{
 			offset -= current_position;
 
@@ -143,6 +143,7 @@ fseek(FILE *stream, long int offset, int wherefrom)
 		if(NOT buffer_position_adjusted)
 		{
 			struct file_action_message fam;
+			LONG position;
 
 			/* Oh dear, no luck. So we have to get rid of the
 			 * current buffer contents and start with a clean
@@ -175,7 +176,13 @@ fseek(FILE *stream, long int offset, int wherefrom)
 
 			assert( file->iob_Action != NULL );
 
-			if((*file->iob_Action)(file,&fam) == EOF)
+			/* Note that a return value of -1 (= SEEK_ERROR) may be a
+			   valid file position in files larger than 2 GBytes. Just
+			   to be sure, we therefore also check the secondary error
+			   to verify that what could be a file position is really
+			   an error indication. */
+			position = (*file->iob_Action)(file,&fam);
+			if(position == SEEK_ERROR && fam.fam_Error != OK)
 			{
 				SET_FLAG(file->iob_Flags,IOBF_ERROR);
 
@@ -183,6 +190,11 @@ fseek(FILE *stream, long int offset, int wherefrom)
 
 				goto out;
 			}
+
+		 	/* If this is a valid file position, clear 'errno' so that
+			   it cannot be mistaken for an error. */
+			if(position < 0)
+				__set_errno(OK);
 		}
 	}
 

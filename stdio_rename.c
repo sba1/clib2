@@ -123,7 +123,7 @@ rename(const char *oldname,const char *newname)
 
 			if(CANNOT DeleteFile((STRPTR)newname))
 			{
-				SHOWMS("couldn't delete the file");
+				SHOWMSG("couldn't delete the file");
 
 				__set_errno(__translate_io_error_to_errno(error));
 				goto out;

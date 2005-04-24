@@ -72,7 +72,7 @@ fsetpos(FILE *stream, fpos_t *pos)
 	}
 	#endif /* CHECK_FOR_NULL_POINTERS */
 
-	if(fseek(stream,(long int)(*pos),SEEK_SET) != 0)
+	if(fseek(stream,(long int)(*pos),SEEK_SET) == SEEK_ERROR && __get_errno() != OK)
 	{
 		SHOWMSG("fseek failed");
 		goto out;

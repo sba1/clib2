@@ -57,7 +57,7 @@ chdir(const char * path_name)
 	D_S(struct FileInfoBlock,fib);
 	BPTR dir_lock = ZERO;
 	LONG status;
-	int result = -1;
+	int result = ERROR;
 
 	ENTER();
 
@@ -100,7 +100,7 @@ chdir(const char * path_name)
 				/* ZZZ this must not fail */
 				__set_current_path(path_name);
 
-				result = 0;
+				result = OK;
 
 				goto out;
 			}
@@ -172,7 +172,7 @@ chdir(const char * path_name)
 	}
 	#endif /* UNIX_PATH_SEMANTICS */
 
-	result = 0;
+	result = OK;
 
  out:
 

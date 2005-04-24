@@ -51,7 +51,7 @@ int
 bind(int sockfd,struct sockaddr *name,int namelen)
 {
 	struct fd * fd;
-	int result = -1;
+	int result = ERROR;
 
 	ENTER();
 

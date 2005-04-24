@@ -124,7 +124,7 @@ FILE_DESTRUCTOR(workbench_exit)
 STATIC int
 wb_file_init(void)
 {
-	int result = -1;
+	int result = ERROR;
 
 	PROFILE_OFF();
 
@@ -191,7 +191,7 @@ wb_file_init(void)
 
 	restore_streams = TRUE;
 
-	result = 0;
+	result = OK;
 
  out:
 

@@ -50,7 +50,7 @@
 int
 getchar_unlocked(void)
 {
-	int result = -1;
+	int result = EOF;
 
 	assert( stdin != NULL );
 

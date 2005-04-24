@@ -54,7 +54,7 @@ accept(int sockfd,struct sockaddr *cliaddr,int *addrlen)
 	struct fd * fd = NULL;
 	struct fd * new_fd;
 	int new_fd_slot_number;
-	int result = -1;
+	int result = ERROR;
 	LONG new_socket_fd;
 
 	ENTER();

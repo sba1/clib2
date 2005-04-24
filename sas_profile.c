@@ -117,7 +117,7 @@ send_profiler_message(ULONG clock_value,char * id,ULONG flags)
 	extern long __builtin_getreg(int);
 
 	struct SPROFMSG * spm;
-	int result = -1;
+	int result = ERROR;
 
 	spm = (struct SPROFMSG *)GetMsg(reply_port);
 	if(spm != NULL)

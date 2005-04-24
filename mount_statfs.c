@@ -56,7 +56,7 @@ statfs(const char *path, struct statfs *buf)
 	D_S(struct InfoData,id);
 	LONG status;
 	BPTR lock = ZERO;
-	int result = -1;
+	int result = ERROR;
 
 	ENTER();
 
@@ -105,7 +105,7 @@ statfs(const char *path, struct statfs *buf)
 				buf->f_bavail	= buf->f_bfree;
 				buf->f_flags	= MNT_NOATIME|MNT_SYMPERM|MNT_LOCAL|MNT_RDONLY;
 
-				result = 0;
+				result = OK;
 
 				goto out;
 			}
@@ -141,7 +141,7 @@ statfs(const char *path, struct statfs *buf)
 
 	__convert_info_to_statfs(id,buf);
 
-	result = 0;
+	result = OK;
 
  out:
 

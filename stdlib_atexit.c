@@ -69,7 +69,7 @@ int
 atexit(void (*function)(void))
 {
 	struct ExitTrapNode * etn;
-	int result = -1;
+	int result = ERROR;
 
 	assert( function != NULL );
 
@@ -114,7 +114,7 @@ atexit(void (*function)(void))
 
 	AddHead((struct List *)&exit_trap_list,(struct Node *)etn);
 
-	result = 0;
+	result = OK;
 
  out:
 

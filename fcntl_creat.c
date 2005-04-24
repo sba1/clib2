@@ -50,7 +50,7 @@
 int
 creat(const char * path_name, mode_t mode)
 {
-	int result = -1;
+	int result = ERROR;
 
 	ENTER();
 

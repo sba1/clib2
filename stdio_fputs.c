@@ -90,7 +90,7 @@ fputs(const char *s, FILE *stream)
 			goto out;
 	}
 
-	result = 0;
+	result = OK;
 
  out:
 

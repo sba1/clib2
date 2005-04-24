@@ -50,7 +50,7 @@
 int
 sigaddset(sigset_t * set,int sig)
 {
-	int result = -1;
+	int result = ERROR;
 
 	ENTER();
 
@@ -68,7 +68,7 @@ sigaddset(sigset_t * set,int sig)
 
 	(*set) |= sigmask(sig);
 
-	result = 0;
+	result = OK;
 
  out:
 

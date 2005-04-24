@@ -78,7 +78,7 @@ fsetpos(FILE *stream, fpos_t *pos)
 		goto out;
 	}
 
-	result = 0;
+	result = OK;
 
  out:
 

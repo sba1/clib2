@@ -73,7 +73,7 @@ __is_valid_iob(struct iob * iob)
 int
 __find_vacant_iob_entry(void)
 {
-	int result = -1;
+	int result = ERROR;
 	int i;
 
 	assert( __iob != NULL || __num_iob == 0 );

@@ -57,7 +57,7 @@ ioctl(int sockfd,unsigned long request, ... /* char *arg */)
 	va_list arg;
 	char * param;
 	struct fd * fd = NULL;
-	int result = -1;
+	int result = ERROR;
 
 	ENTER();
 

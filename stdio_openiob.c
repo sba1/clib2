@@ -48,7 +48,7 @@ __open_iob(const char *filename, const char *mode, int file_descriptor, int slot
 {
 	struct SignalSemaphore * lock;
 	ULONG file_flags;
-	int result = -1;
+	int result = ERROR;
 	int open_mode;
 	struct fd * fd = NULL;
 	STRPTR buffer = NULL;
@@ -198,7 +198,7 @@ __open_iob(const char *filename, const char *mode, int file_descriptor, int slot
 
 	buffer = NULL;
 
-	result = 0;
+	result = OK;
 
  out:
 

@@ -50,7 +50,7 @@
 int
 __sync_fd(struct fd * fd,int mode)
 {
-	int result = -1;
+	int result = ERROR;
 
 	assert( fd != NULL );
 
@@ -81,7 +81,7 @@ __sync_fd(struct fd * fd,int mode)
 			DoPkt(fh->fh_Type,ACTION_FLUSH,	0,0,0,0,0);
 	}
 
-	result = 0;
+	result = OK;
 
  out:
 

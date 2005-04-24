@@ -44,7 +44,7 @@
 int
 kill(pid_t pid, int signal_number)
 {
-	int result = -1;
+	int result = ERROR;
 
 	ENTER();
 
@@ -85,7 +85,7 @@ kill(pid_t pid, int signal_number)
 			SHOWMSG("but won't shut it down");
 	}
 
-	result = 0;
+	result = OK;
 
  out:
 

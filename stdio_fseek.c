@@ -47,7 +47,7 @@ int
 fseek(FILE *stream, long int offset, int wherefrom)
 {
 	struct iob * file = (struct iob *)stream;
-	int result = -1;
+	int result = SEEK_ERROR;
 
 	ENTER();
 
@@ -175,7 +175,7 @@ fseek(FILE *stream, long int offset, int wherefrom)
 
 			assert( file->iob_Action != NULL );
 
-			if((*file->iob_Action)(file,&fam) < 0)
+			if((*file->iob_Action)(file,&fam) == EOF)
 			{
 				SET_FLAG(file->iob_Flags,IOBF_ERROR);
 
@@ -186,7 +186,7 @@ fseek(FILE *stream, long int offset, int wherefrom)
 		}
 	}
 
-	result = 0;
+	result = OK;
 
  out:
 

@@ -51,7 +51,7 @@ int
 fileno(FILE * file)
 {
 	struct iob * iob = (struct iob *)file;
-	int result = -1;
+	int result = ERROR;
 
 	ENTER();
 

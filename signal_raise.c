@@ -62,7 +62,7 @@ raise(int sig)
 {
 	static int local_signals_blocked;
 
-	int result = -1;
+	int result = ERROR;
 
 	ENTER();
 
@@ -137,7 +137,7 @@ raise(int sig)
 		SHOWMSG("that signal is blocked");
 	}
 
-	result = 0;
+	result = OK;
 
  out:
 

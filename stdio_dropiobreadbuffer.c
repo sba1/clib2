@@ -45,7 +45,7 @@
 int
 __drop_iob_read_buffer(struct iob * file)
 {
-	int result = 0;
+	int result = OK;
 
 	ENTER();
 
@@ -83,11 +83,11 @@ __drop_iob_read_buffer(struct iob * file)
 
 				assert( file->iob_Action != NULL );
 
-				if((*file->iob_Action)(file,&fam) < 0)
+				if((*file->iob_Action)(file,&fam) == EOF)
 				{
 					SHOWMSG("that didn't work");
 
-					result = -1;
+					result = ERROR;
 
 					SET_FLAG(file->iob_Flags,IOBF_ERROR);
 

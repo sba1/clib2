@@ -1223,7 +1223,7 @@ __handle_record_locking(int cmd,struct flock * l,struct fd * fd,int * error_ptr)
 		}
 	}
 
-	result = 0;
+	result = OK;
 
  out:
 

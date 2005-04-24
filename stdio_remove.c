@@ -46,7 +46,7 @@
 int
 remove(const char *filename)
 {
-	int result = -1;
+	int result = ERROR;
 
 	ENTER();
 
@@ -89,7 +89,7 @@ remove(const char *filename)
 			goto out;
 		}
 
-		result = 0;
+		result = OK;
 	}
 	#endif /* UNIX_PATH_SEMANTICS */
 

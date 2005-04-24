@@ -52,7 +52,7 @@ fstatfs(int file_descriptor, struct statfs *buf)
 {
 	D_S(struct InfoData,id);
 	BPTR parent_dir = ZERO;
-	int result = -1;
+	int result = ERROR;
 	struct fd * fd = NULL;
 	LONG success;
 
@@ -129,7 +129,7 @@ fstatfs(int file_descriptor, struct statfs *buf)
 
 	__convert_info_to_statfs(id,buf);
 
-	result = 0;
+	result = OK;
 
  out:
 

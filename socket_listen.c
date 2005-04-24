@@ -45,7 +45,7 @@ int
 listen(int sockfd,int backlog)
 {
 	struct fd * fd;
-	int result = -1;
+	int result = ERROR;
 
 	ENTER();
 

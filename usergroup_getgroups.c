@@ -50,7 +50,7 @@
 int
 getgroups(int ngroups, gid_t *groups)
 {
-	int result = -1;
+	int result = ERROR;
 
 	ENTER();
 
@@ -80,7 +80,7 @@ getgroups(int ngroups, gid_t *groups)
 	}
 	else
 	{
-		result = 0;
+		result = OK;
 	}
 
  out:

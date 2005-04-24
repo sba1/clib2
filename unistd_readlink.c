@@ -56,7 +56,7 @@ readlink(const char * path_name, char * buffer, int buffer_size)
 	#endif /* UNIX_PATH_SEMANTICS */
 	struct DevProc * dvp = NULL;
 	BPTR lock = ZERO;
-	int result = -1;
+	int result = ERROR;
 
 	ENTER();
 

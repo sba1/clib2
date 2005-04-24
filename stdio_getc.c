@@ -50,7 +50,7 @@
 int
 getc(FILE *stream)
 {
-	int result = -1;
+	int result = EOF;
 
 	assert( stream != NULL );
 

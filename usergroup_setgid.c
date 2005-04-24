@@ -56,7 +56,7 @@ setgid(gid_t id)
 	{
 		__root_gid = id;
 
-		result = 0;
+		result = OK;
 	}
 	else
 	{

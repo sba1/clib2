@@ -48,7 +48,7 @@ __grow_iob_table(int max_iob)
 {
 	const int granularity = 10;
 	int new_num_iob;
-	int result = -1;
+	int result = ERROR;
 
 	if(max_iob == 0)
 		new_num_iob = __num_iob + granularity;
@@ -102,7 +102,7 @@ __grow_iob_table(int max_iob)
 		__num_iob	= new_num_iob;
 	}
 
-	result = 0;
+	result = OK;
 
  out:
 

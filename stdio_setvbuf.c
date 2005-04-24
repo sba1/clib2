@@ -186,7 +186,7 @@ setvbuf(FILE *stream,char *buf,int bufmode,size_t size)
 
 	new_buffer = NULL;
 
-	result = 0;
+	result = OK;
 
  out:
 

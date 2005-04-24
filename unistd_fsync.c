@@ -50,7 +50,7 @@ int
 fsync(int file_descriptor)
 {
 	struct fd * fd;
-	int result = -1;
+	int result = ERROR;
 
 	ENTER();
 
@@ -73,7 +73,7 @@ fsync(int file_descriptor)
 	if(__sync_fd(fd,1) < 0) /* flush everything */
 		goto out;
 
-	result = 0;
+	result = OK;
 
  out:
 

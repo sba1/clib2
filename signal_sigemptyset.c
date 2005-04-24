@@ -50,7 +50,7 @@
 int
 sigemptyset(sigset_t * set)
 {
-	int result = -1;
+	int result = ERROR;
 
 	ENTER();
 
@@ -68,7 +68,7 @@ sigemptyset(sigset_t * set)
 
 	(*set) = 0;
 
-	result = 0;
+	result = OK;
 
  out:
 

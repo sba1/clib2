@@ -44,7 +44,7 @@
 int
 sigprocmask(int how, const sigset_t *set, sigset_t *oset)
 {
-	int result = -1;
+	int result = ERROR;
 
 	ENTER();
 
@@ -92,7 +92,7 @@ sigprocmask(int how, const sigset_t *set, sigset_t *oset)
 		}
 	}
 
-	result = 0;
+	result = OK;
 
  out:
 

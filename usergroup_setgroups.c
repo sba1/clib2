@@ -50,7 +50,7 @@
 int
 setgroups(int ngroups,const gid_t *groups)
 {
-	int result = -1;
+	int result = ERROR;
 
 	ENTER();
 
@@ -80,7 +80,7 @@ setgroups(int ngroups,const gid_t *groups)
 	}
 	else
 	{
-		result = 0;
+		result = OK;
 	}
 
  out:

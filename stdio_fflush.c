@@ -134,7 +134,7 @@ fflush(FILE *stream)
 	}
 	#endif /* UNIX_PATH_SEMANTICS */
 
-	result = 0;
+	result = OK;
 
  out:
 

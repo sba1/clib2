@@ -51,7 +51,7 @@ int
 sendto(int sockfd,const void *buff,int len,int flags,struct sockaddr *to,int tolen)
 {
 	struct fd * fd;
-	int result = -1;
+	int result = ERROR;
 
 	ENTER();
 

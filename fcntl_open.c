@@ -104,7 +104,7 @@ open(const char *path_name, int open_flag, ... /* mode_t mode */ )
 	int fd_slot_number;
 	struct fd * fd;
 	int access_mode;
-	int result = -1;
+	int result = ERROR;
 	int i;
 
 	ENTER();
@@ -456,7 +456,7 @@ open(const char *path_name, int open_flag, ... /* mode_t mode */ )
 
 	handle = ZERO;
 
-	assert( result != -1 );
+	assert( result != ERROR );
 
  out:
 

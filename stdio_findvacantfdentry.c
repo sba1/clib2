@@ -76,7 +76,7 @@ __is_valid_fd(struct fd * fd)
 int
 __find_vacant_fd_entry(void)
 {
-	int result = -1;
+	int result = ERROR;
 	int i;
 
 	assert( __fd != NULL || __num_fd == 0 );

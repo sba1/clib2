@@ -111,7 +111,7 @@ __socket_hook_entry(
 
 			SHOWMSG("file_action_close");
 
-			result = 0;
+			result = OK;
 
 			/* If this is an alias, just remove it. */
 			is_aliased = __fd_is_aliased(fd);
@@ -151,7 +151,7 @@ __socket_hook_entry(
 
 			SHOWMSG("file_action_seek");
 
-			result = -1;
+			result = ERROR;
 
 			fam->fam_Error = ESPIPE;
 
@@ -195,7 +195,7 @@ __socket_hook_entry(
 			DateStamp(&fib->fib_Date);
 			PROFILE_ON();
 
-			result = 0;
+			result = OK;
 
 			break;
 
@@ -203,7 +203,7 @@ __socket_hook_entry(
 
 			SHOWVALUE(fam->fam_Action);
 
-			result = -1;
+			result = ERROR;
 
 			fam->fam_Error = EBADF;
 

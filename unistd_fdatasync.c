@@ -51,7 +51,7 @@ int
 fdatasync(int file_descriptor)
 {
 	struct fd * fd;
-	int result = -1;
+	int result = ERROR;
 
 	ENTER();
 
@@ -74,7 +74,7 @@ fdatasync(int file_descriptor)
 	if(__sync_fd(fd,0) < 0) /* flush just the data */
 		goto out;
 
-	result = 0;
+	result = OK;
 
  out:
 

@@ -61,7 +61,7 @@ setreuid(uid_t real, uid_t eff)
 		if(eff != (uid_t)-1)
 			__root_euid = eff;
 
-		result = 0;
+		result = OK;
 	}
 	else
 	{

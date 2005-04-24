@@ -50,7 +50,7 @@
 int
 putchar_unlocked(int c)
 {
-	int result = -1;
+	int result = EOF;
 
 	assert( stdout != NULL );
 

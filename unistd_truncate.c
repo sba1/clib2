@@ -50,7 +50,7 @@
 int
 truncate(const char * path_name, off_t length)
 {
-	int result = -1;
+	int result = ERROR;
 	int fd;
 
 	ENTER();

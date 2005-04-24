@@ -69,7 +69,7 @@ uname(struct utsname *info)
 	struct Library * VersionBase;
 	int Version,Revision;
 	char * version_string;
-	int result = -1;
+	int result = ERROR;
 
 	ENTER();
 
@@ -158,7 +158,7 @@ uname(struct utsname *info)
 	SHOWSTRING(info->version);
 	SHOWSTRING(info->machine);
 
-	result = 0;
+	result = OK;
 
 out:
 

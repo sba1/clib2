@@ -45,7 +45,7 @@ int
 dup2(int file_descriptor1, int file_descriptor2)
 {
 	struct fd * fd1;
-	int result = -1;
+	int result = ERROR;
 
 	ENTER();
 

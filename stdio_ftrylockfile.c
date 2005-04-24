@@ -51,7 +51,7 @@ int
 ftrylockfile(FILE *stream)
 {
 	struct iob * file = (struct iob *)stream;
-	int result = -1;
+	int result = ERROR;
 
 	ENTER();
 
@@ -88,7 +88,7 @@ ftrylockfile(FILE *stream)
 	if(file->iob_Lock != NULL && CANNOT AttemptSemaphore(file->iob_Lock))
 		goto out;
 
-	result = 0;
+	result = OK;
 
  out:
 

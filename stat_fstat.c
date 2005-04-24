@@ -52,7 +52,7 @@ fstat(int file_descriptor, struct stat * buffer)
 {
 	struct file_action_message fam;
 	D_S(struct FileInfoBlock,fib);
-	int result = -1;
+	int result = ERROR;
 	struct fd * fd;
 
 	ENTER();
@@ -104,7 +104,7 @@ fstat(int file_descriptor, struct stat * buffer)
 
 	__convert_file_info_to_stat(fam.fam_FileSystem,fib,buffer);
 
-	result = 0;
+	result = OK;
 
  out:
 

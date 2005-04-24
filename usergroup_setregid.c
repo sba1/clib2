@@ -61,7 +61,7 @@ setregid(gid_t real, gid_t eff)
 		if(eff != (gid_t)-1)
 			__root_egid = eff;
 
-		result = 0;
+		result = OK;
 	}
 	else
 	{

@@ -55,7 +55,7 @@ rmdir(const char * path_name)
 	#endif /* UNIX_PATH_SEMANTICS */
 	D_S(struct FileInfoBlock,fib);
 	BPTR dir_lock = ZERO;
-	int result = -1;
+	int result = ERROR;
 	LONG status;
 
 	ENTER();
@@ -149,7 +149,7 @@ rmdir(const char * path_name)
 		goto out;
 	}
 
-	result = 0;
+	result = OK;
 
  out:
 

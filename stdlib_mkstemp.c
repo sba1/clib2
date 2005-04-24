@@ -54,7 +54,7 @@
 int
 mkstemp(char *name_template)
 {
-	int result = -1;
+	int result = ERROR;
 
 	ENTER();
 

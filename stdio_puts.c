@@ -92,7 +92,7 @@ puts(const char *s)
 	if(__putc('\n',stdout,buffer_mode) == EOF)
 		goto out;
 
-	result = 0;
+	result = OK;
 
  out:
 

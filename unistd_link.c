@@ -55,7 +55,7 @@ link(const char * existing_path,const char * new_path)
 	struct name_translation_info new_path_name_nti;
 	#endif /* UNIX_PATH_SEMANTICS */
 	BPTR existing_path_lock = ZERO;
-	int result = -1;
+	int result = ERROR;
 	LONG status;
 
 	ENTER();
@@ -127,7 +127,7 @@ link(const char * existing_path,const char * new_path)
 		goto out;
 	}
 
-	result = 0;
+	result = OK;
 
  out:
 

@@ -56,7 +56,7 @@ setuid(uid_t id)
 	{
 		__root_uid = id;
 
-		result = 0;
+		result = OK;
 	}
 	else
 	{

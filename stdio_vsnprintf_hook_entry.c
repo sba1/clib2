@@ -48,7 +48,7 @@ __vsnprintf_hook_entry(
 	struct iob *					string_iob,
 	struct file_action_message *	fam)
 {
-	int result = -1;
+	int result = EOF;
 
 	assert( fam != NULL && string_iob != NULL );
 

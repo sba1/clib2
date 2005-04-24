@@ -51,7 +51,7 @@ int
 send(int sockfd,const void *buff,size_t nbytes,int flags)
 {
 	struct fd * fd;
-	int result = -1;
+	int result = ERROR;
 
 	ENTER();
 

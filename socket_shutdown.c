@@ -45,7 +45,7 @@ int
 shutdown(int sockfd, int how)
 {
 	struct fd * fd;
-	int result = -1;
+	int result = ERROR;
 
 	ENTER();
 

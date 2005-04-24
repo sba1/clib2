@@ -46,7 +46,7 @@
 int
 vprintf(const char *format,va_list arg)
 {
-	int result = -1;
+	int result = EOF;
 
 	ENTER();
 

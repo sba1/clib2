@@ -139,7 +139,7 @@ __locale_exit(void)
 int
 __locale_init(void)
 {
-	int result = -1;
+	int result = ERROR;
 
 	ENTER();
 
@@ -174,7 +174,7 @@ __locale_init(void)
 	}
 
 	if(__default_locale != NULL)
-		result = 0;
+		result = OK;
 
 	__locale_unlock();
 

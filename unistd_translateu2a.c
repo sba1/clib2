@@ -75,7 +75,7 @@
 int
 __translate_unix_to_amiga_path_name(char const ** name_ptr,struct name_translation_info * nti)
 {
-	int result = -1;
+	int result = ERROR;
 	char * name;
 
 	/*PUSHDEBUGLEVEL(2);*/
@@ -544,7 +544,7 @@ __translate_unix_to_amiga_path_name(char const ** name_ptr,struct name_translati
 
 	D(("translated '%s' to '%s'",nti->original_name,name));
 
-	result = 0;
+	result = OK;
 
 out:
 

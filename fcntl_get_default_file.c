@@ -45,7 +45,7 @@ int
 __get_default_file(int file_descriptor,long * file_ptr)
 {
 	struct fd * fd;
-	int result = -1;
+	int result = ERROR;
 
 	assert( file_descriptor >= 0 && file_descriptor < __num_fd );
 	assert( __fd[file_descriptor] != NULL );

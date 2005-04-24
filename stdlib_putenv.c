@@ -50,7 +50,7 @@
 int
 putenv(const char *string)
 {
-	int result = -1;
+	int result = ERROR;
 
 	ENTER();
 

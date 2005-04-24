@@ -45,7 +45,7 @@ int
 socket(int domain,int type,int protocol)
 {
 	struct SignalSemaphore * lock = NULL;
-	int result = -1;
+	int result = ERROR;
 	struct fd * fd;
 	int fd_slot_number;
 	LONG socket_fd;

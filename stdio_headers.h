@@ -383,7 +383,7 @@ struct fd
 	struct fd *			fd_NextLink;		/* Points to next duplicate of this
 											   file descriptor; NULL for none */
 	BPTR				fd_DefaultFile;		/* A dos.library file handle */
-	LONG				fd_Position;		/* Cached file position (seek offset). */
+	ULONG				fd_Position;		/* Cached file position (seek offset). */
 	fd_cleanup_t		fd_Cleanup;			/* Cleanup function, if any. */
 
 	struct SignalSemaphore * fd_Lock;		/* For thread locking */

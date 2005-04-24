@@ -53,7 +53,7 @@ sigmask(int sig)
 	assert( 0 <= sig && sig <= 31 );
 
 	if(SIGABRT <= sig && sig <= SIGTERM)
-		result = (1<<sig);
+		result = (1 << sig);
 	else
 		result = 0;
 

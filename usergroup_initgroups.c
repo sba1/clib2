@@ -50,7 +50,7 @@
 int
 initgroups(const char *name, gid_t basegroup)
 {
-	int result = -1;
+	int result = ERROR;
 
 	ENTER();
 

@@ -51,7 +51,7 @@ int
 setsockopt(int sockfd,int level,int optname,const void *optval,int optlen)
 {
 	struct fd * fd;
-	int result = -1;
+	int result = ERROR;
 
 	ENTER();
 

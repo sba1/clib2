@@ -53,7 +53,7 @@
 int
 symlink(const char * actual_path, const char * symbolic_path)
 {
-	int result = -1;
+	int result = ERROR;
 	LONG status;
 
 	ENTER();
@@ -92,7 +92,7 @@ symlink(const char * actual_path, const char * symbolic_path)
 		goto out;
 	}
 
-	result = 0;
+	result = OK;
 
  out:
 

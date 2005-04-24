@@ -40,7 +40,7 @@
 int
 __set_current_path(const char * path_name)
 {
-	int result = -1;
+	int result = ERROR;
 
 	SHOWSTRING(path_name);
 
@@ -62,7 +62,7 @@ __set_current_path(const char * path_name)
 	else
 		strcpy(__current_path_name,"");
 
-	result = 0;
+	result = OK;
 
  out:
 

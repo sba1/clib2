@@ -50,7 +50,7 @@
 int
 lchown(const char * path_name, uid_t owner, gid_t group)
 {
-	int result = -1;
+	int result = ERROR;
 
 	ENTER();
 

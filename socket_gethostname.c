@@ -50,7 +50,7 @@
 int
 gethostname(const char *hostname,int size)
 {
-	int result = -1;
+	int result = ERROR;
 
 	ENTER();
 

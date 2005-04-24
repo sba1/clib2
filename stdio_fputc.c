@@ -93,7 +93,7 @@ __fputc_check(FILE *stream)
 		goto out;
 	}
 
-	result = 0;
+	result = OK;
 
  out:
 

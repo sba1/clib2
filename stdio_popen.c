@@ -56,7 +56,7 @@
 int
 pclose(FILE *stream)
 {
-	int result = -1;
+	int result = ERROR;
 
 	ENTER();
 
@@ -84,7 +84,7 @@ pclose(FILE *stream)
 	/* ZZZ we actually could catch the program's termination code
 	 * by passing an exit function address to SystemTags() below.
 	 */
-	result = 0;
+	result = OK;
 
  out:
 

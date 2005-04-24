@@ -57,7 +57,7 @@ __grow_file_size(struct fd * fd,int num_bytes)
 	int position;
 	int current_position;
 	int alignment_skip;
-	int result = -1;
+	int result = ERROR;
 
 	assert( fd != NULL );
 
@@ -107,7 +107,7 @@ __grow_file_size(struct fd * fd,int num_bytes)
 	position = Seek(fd->fd_DefaultFile,0,OFFSET_END);
 	PROFILE_ON();
 
-	if(position < 0)
+	if(position == SEEK_ERROR)
 	{
 		SHOWMSG("could not move to the end of the file");
 		goto out;
@@ -153,7 +153,7 @@ __grow_file_size(struct fd * fd,int num_bytes)
 
 	SHOWMSG("all done.");
 
-	result = 0;
+	result = OK;
 
  out:
 

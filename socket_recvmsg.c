@@ -51,7 +51,7 @@ int
 recvmsg(int sockfd,struct msghdr *msg,int flags)
 {
 	struct fd * fd;
-	int result = -1;
+	int result = ERROR;
 
 	ENTER();
 

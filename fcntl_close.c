@@ -46,7 +46,7 @@ close(int file_descriptor)
 {
 	struct file_action_message fam;
 	struct fd * fd;
-	int result = -1;
+	int result = ERROR;
 
 	ENTER();
 
@@ -78,7 +78,7 @@ close(int file_descriptor)
 		goto out;
 	}
 
-	result = 0;
+	result = OK;
 
  out:
 

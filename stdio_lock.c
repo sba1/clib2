@@ -79,13 +79,13 @@ __stdio_lock_exit(void)
 int
 __stdio_lock_init(void)
 {
-	int result = -1;
+	int result = ERROR;
 
 	stdio_lock = __create_semaphore();
 	if(stdio_lock == NULL)
 		goto out;
 
-	result = 0;
+	result = OK;
 
  out:
 

@@ -46,7 +46,7 @@
 int
 printf(const char *format, ...)
 {
-	int result = -1;
+	int result = EOF;
 	va_list arg;
 
 	ENTER();

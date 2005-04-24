@@ -51,7 +51,7 @@ int
 recvfrom(int sockfd,void *buff,int len,int flags,struct sockaddr *from,int *fromlen)
 {
 	struct fd * fd;
-	int result = -1;
+	int result = ERROR;
 
 	ENTER();
 

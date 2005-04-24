@@ -50,7 +50,7 @@
 ssize_t
 readv(int file_descriptor,const struct iovec *iov,int vec_count)
 {
-	ssize_t result = -1;
+	ssize_t result = EOF;
 	struct file_action_message msg;
 	ssize_t total_num_bytes_read;
 	ssize_t part_num_bytes_read;
@@ -115,7 +115,7 @@ readv(int file_descriptor,const struct iovec *iov,int vec_count)
 			msg.fam_Size	= iov[i].iov_len - part_num_bytes_read;
 
 			num_bytes_read = (*fd->fd_Action)(fd,&msg);
-			if(num_bytes_read < 0)
+			if(num_bytes_read == EOF)
 			{
 				__set_errno(msg.fam_Error);
 				goto out;

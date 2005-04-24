@@ -50,7 +50,7 @@ rename(const char *oldname,const char *newname)
 	struct name_translation_info old_nti;
 	struct name_translation_info new_nti;
 	#endif /* UNIX_PATH_SEMANTICS */
-	int result = -1;
+	int result = ERROR;
 	LONG status;
 
 	ENTER();
@@ -145,7 +145,7 @@ rename(const char *oldname,const char *newname)
 		#endif /* UNIX_PATH_SEMANTICS */
 	}
 
-	result = 0;
+	result = OK;
 
  out:
 

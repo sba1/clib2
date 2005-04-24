@@ -55,7 +55,7 @@ chmod(const char * path_name, mode_t mode)
 	#endif /* UNIX_PATH_SEMANTICS */
 	ULONG protection;
 	LONG status;
-	int result = -1;
+	int result = ERROR;
 
 	ENTER();
 
@@ -146,7 +146,7 @@ chmod(const char * path_name, mode_t mode)
 		goto out;
 	}
 
-	result = 0;
+	result = OK;
 
  out:
 

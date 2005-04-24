@@ -74,7 +74,7 @@ fgetpos(FILE *stream, fpos_t *pos)
 	#endif /* CHECK_FOR_NULL_POINTERS */
 
 	position = ftell(stream);
-	if(position == -1)
+	if(position == SEEK_ERROR)
 	{
 		SHOWMSG("ftell() didn't work.");
 
@@ -83,7 +83,7 @@ fgetpos(FILE *stream, fpos_t *pos)
 
 	(*pos) = position;
 
-	result = 0;
+	result = OK;
 
  out:
 

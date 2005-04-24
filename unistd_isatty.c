@@ -44,7 +44,7 @@
 int
 isatty(int file_descriptor)
 {
-	int result = -1;
+	int result = ERROR;
 	struct fd * fd;
 
 	ENTER();

@@ -145,7 +145,7 @@ int
 closedir(DIR * directory_pointer)
 {
 	struct DirectoryHandle * dh;
-	int result = -1;
+	int result = ERROR;
 
 	ENTER();
 
@@ -204,7 +204,7 @@ closedir(DIR * directory_pointer)
 
 	free(dh);
 
-	result = 0;
+	result = OK;
 
  out:
 

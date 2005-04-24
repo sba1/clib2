@@ -69,7 +69,7 @@ __iob_hook_entry(
 			{
 				fam->fam_Error = EBADF;
 
-				result = -1;
+				result = EOF;
 
 				break;
 			}
@@ -86,7 +86,7 @@ __iob_hook_entry(
 
 			fam->fam_Error = EBADF;
 
-			result = -1;
+			result = EOF;
 
 			break;
 	}

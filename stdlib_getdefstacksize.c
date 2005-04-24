@@ -37,4 +37,14 @@
 
 /****************************************************************************/
 
+#ifndef _STDLIB_GCC_HELP_H
+#include "stdlib_gcc_help.h"
+#endif /* _STDLIB_GCC_HELP_H */
+
+/****************************************************************************/
+
+#ifndef GCC_HELP_SUPPORT
+
 unsigned int (* __get_default_stack_size)(void);
+
+#endif /* GCC_HELP_SUPPORT */

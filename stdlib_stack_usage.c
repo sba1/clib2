@@ -43,12 +43,8 @@ static struct StackSwapStruct stack_swap_struct;
 
 /****************************************************************************/
 
-#if defined(__SASC)
-
 ULONG __stk_extensions;	/* number of stack extensions performed */
 ULONG __stk_maxsize;	/* maximum amount of memory allocated for stack extension */	
-
-#endif /* __SASC */
 
 /****************************************************************************/
 

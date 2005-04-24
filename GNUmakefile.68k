@@ -929,6 +929,8 @@ $(LIBAMIGA_OBJS)/amiga.lib_rev.o : amiga.lib_rev.c amiga.lib_rev.h
 
 $(LIBC_OBJS)/stdlib_stacksize.o : stdlib_stacksize.c stdlib_gcc_help.h
 
+$(LIBC_OBJS)/stdlib_getdefstacksize.o : stdlib_getdefstacksize.c stdlib_gcc_help.h
+
 $(LIBC_OBJS)/stdlib_shell_escape.o : stdlib_shell_escape.c stdlib_gcc_help.h
 
 $(LIBC_OBJS)/stdlib_alloca.o : stdlib_alloca.c stdlib_memory.h

@@ -153,7 +153,7 @@ obtain_file_lock_semaphore(BOOL shared)
 				fls = AllocSysObjectTags(ASOT_SEMAPHORE,
 					ASOSEM_Size,	sizeof(*fls),
 					ASOSEM_Name,	semaphore_name_copy,
-					ASOSEM_Public,	FALSE; /* we want to add it ourselves */
+					ASOSEM_Public,	FALSE, /* we want to add it ourselves */
 					ASOSEM_Pri,		1,
 				TAG_END);
 			}

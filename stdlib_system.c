@@ -138,7 +138,9 @@ system(const char * command)
 
 				command_name = just_the_command_name;
 
-				if(__translate_unix_to_amiga_path_name((const char **)&command_name,&command_nti) != 0)
+				/* Don't try to translate the name of the command unless it has
+				   path name separator characters in it. */
+				if(strchr(command_name,'/') != NULL && __translate_unix_to_amiga_path_name((const char **)&command_name,&command_nti) != 0)
 				{
 					result = ERROR;
 					goto out;

@@ -44,10 +44,9 @@
 /****************************************************************************/
 
 int
-scanf(const char *format, ...)
+vscanf(const char *format,va_list arg)
 {
 	int result = EOF;
-	va_list arg;
 
 	ENTER();
 
@@ -70,9 +69,7 @@ scanf(const char *format, ...)
 	}
 	#endif /* CHECK_FOR_NULL_POINTERS */
 
-	va_start(arg,format);
-	result = vscanf(format,arg);
-	va_end(arg);
+	result = vfscanf(stdin,format,arg);
 
  out:
 

@@ -31,51 +31,18 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef _STDLIB_NULL_POINTER_CHECK_H
-#include "stdlib_null_pointer_check.h"
-#endif /* _STDLIB_NULL_POINTER_CHECK_H */
+#ifndef _STDLIB_HEADERS_H
+#include "stdlib_headers.h"
+#endif /* _STDLIB_HEADERS_H */
 
 /****************************************************************************/
 
-#ifndef _STDIO_HEADERS_H
-#include "stdio_headers.h"
-#endif /* _STDIO_HEADERS_H */
-
-/****************************************************************************/
-
-int
-scanf(const char *format, ...)
+long long
+llabs(long long x)
 {
-	int result = EOF;
-	va_list arg;
+	long long result;
 
-	ENTER();
+	result = (x < 0) ? (-x) : x;
 
-	SHOWSTRING(format);
-
-	assert(format != NULL);
-
-	if(__check_abort_enabled)
-		__check_abort();
-
-	#if defined(CHECK_FOR_NULL_POINTERS)
-	{
-		if(format == NULL)
-		{
-			SHOWMSG("invalid format parameter");
-
-			__set_errno(EFAULT);
-			goto out;
-		}
-	}
-	#endif /* CHECK_FOR_NULL_POINTERS */
-
-	va_start(arg,format);
-	result = vscanf(format,arg);
-	va_end(arg);
-
- out:
-
-	RETURN(result);
 	return(result);
 }

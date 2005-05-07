@@ -424,6 +424,8 @@ extern int __vasprintf(const char *file,int line,char **ret,const char *format,v
 /****************************************************************************/
 
 extern int vfscanf(FILE *stream, const char *format, va_list arg);
+extern int vsscanf(const char *s, const char *format, va_list arg);
+extern int vscanf(const char *format,va_list arg);
 
 /****************************************************************************/
 

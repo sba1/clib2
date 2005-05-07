@@ -46,9 +46,7 @@
 int
 sscanf(const char *s,const char *format, ...)
 {
-	struct iob string_iob;
 	int result = EOF;
-	char local_buffer[32];
 	va_list arg;
 
 	ENTER();
@@ -57,9 +55,6 @@ sscanf(const char *s,const char *format, ...)
 	SHOWSTRING(format);
 
 	assert( s != NULL && format != NULL );
-
-	if(__check_abort_enabled)
-		__check_abort();
 
 	#if defined(CHECK_FOR_NULL_POINTERS)
 	{
@@ -73,19 +68,8 @@ sscanf(const char *s,const char *format, ...)
 	}
 	#endif /* CHECK_FOR_NULL_POINTERS */
 
-	__initialize_iob(&string_iob,__sscanf_hook_entry,
-		NULL,
-		local_buffer,sizeof(local_buffer),
-		-1,
-		-1,
-		IOBF_IN_USE | IOBF_READ | IOBF_BUFFER_MODE_FULL | IOBF_INTERNAL,
-		NULL);
-
-	string_iob.iob_String		= (STRPTR)s;
-	string_iob.iob_StringLength	= strlen(s);
-
 	va_start(arg,format);
-	result = vfscanf((FILE *)&string_iob,format,arg);
+	result = vsscanf(s,format,arg);
 	va_end(arg);
 
  out:

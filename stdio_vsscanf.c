@@ -44,25 +44,27 @@
 /****************************************************************************/
 
 int
-scanf(const char *format, ...)
+vsscanf(const char *s,const char *format,va_list arg)
 {
+	struct iob string_iob;
+	char local_buffer[32];
 	int result = EOF;
-	va_list arg;
 
 	ENTER();
 
+	SHOWSTRING(s);
 	SHOWSTRING(format);
 
-	assert(format != NULL);
+	assert( s != NULL && format != NULL );
 
 	if(__check_abort_enabled)
 		__check_abort();
 
 	#if defined(CHECK_FOR_NULL_POINTERS)
 	{
-		if(format == NULL)
+		if(s == NULL || format == NULL)
 		{
-			SHOWMSG("invalid format parameter");
+			SHOWMSG("invalid parameters");
 
 			__set_errno(EFAULT);
 			goto out;
@@ -70,9 +72,18 @@ scanf(const char *format, ...)
 	}
 	#endif /* CHECK_FOR_NULL_POINTERS */
 
-	va_start(arg,format);
-	result = vscanf(format,arg);
-	va_end(arg);
+	__initialize_iob(&string_iob,__sscanf_hook_entry,
+		NULL,
+		local_buffer,sizeof(local_buffer),
+		-1,
+		-1,
+		IOBF_IN_USE | IOBF_READ | IOBF_BUFFER_MODE_FULL | IOBF_INTERNAL,
+		NULL);
+
+	string_iob.iob_String		= (STRPTR)s;
+	string_iob.iob_StringLength	= strlen(s);
+
+	result = vfscanf((FILE *)&string_iob,format,arg);
 
  out:
 

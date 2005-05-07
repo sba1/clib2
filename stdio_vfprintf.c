@@ -1362,7 +1362,7 @@ vfprintf(FILE * stream,const char * format, va_list arg)
 			{
 				char * byte_ptr;
 
-				byte_ptr = va_arg(arg, byte *);
+				byte_ptr = va_arg(arg, char *);
 
 				assert( byte_ptr != NULL );
 

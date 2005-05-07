@@ -89,7 +89,7 @@ strtof(const char *str, char ** ptr)
 
 			__set_errno(EFAULT);
 
-			result = __get_huge_val();
+			result = __get_huge_valf();
 			goto out;
 		}
 	}
@@ -298,7 +298,7 @@ strtof(const char *str, char ** ptr)
 	{
 		__set_errno(error);
 
-		sum = __get_huge_val();
+		sum = __get_huge_valf();
 	}
 
 	if(is_negative)

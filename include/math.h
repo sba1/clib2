@@ -110,6 +110,19 @@ extern double hypot(double x,double y);
 
 /****************************************************************************/
 
+/* The following is not part of the ISO 'C' (1994) standard, but it should
+   be part of ISO/IEC 9899:1999, also known as "C99". */
+
+/****************************************************************************/
+
+extern float __huge_val_float;
+
+/****************************************************************************/
+
+#define	HUGE_VALF ((const float)__huge_val_float)
+
+/****************************************************************************/
+
 #ifdef __cplusplus
 }
 #endif /* __cplusplus */

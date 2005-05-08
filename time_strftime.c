@@ -113,7 +113,9 @@ julian_day(int day,int month,int year)
 	y = year + 4800 - a;
 	m = month + 12 * a - 3;
 
-	result = day + (153 * m + 2) / 5 + 365 * y + (y/4) - (y/100) + (y/400) - 32045;
+	result = day + (153 * m + 2) / 5 + 365 * y + (y / 4) - (y / 100) + (y / 400) - 32045;
+
+	return(result);
 }
 
 STATIC int

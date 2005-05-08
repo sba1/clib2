@@ -89,6 +89,12 @@
 
 /****************************************************************************/
 
+extern struct Library * NOCOMMON MathIeeeSingBasBase;
+extern struct Library * NOCOMMON MathIeeeDoubBasBase;
+extern struct Library * NOCOMMON MathIeeeDoubTransBase;
+
+/****************************************************************************/
+
 #endif /* IEEE_FLOATING_POINT_SUPPORT */
 
 /****************************************************************************/

@@ -310,7 +310,7 @@ extern char *tmpnam(char *buf);
 
 /****************************************************************************/
 
-#define clearerr(file)	((void)(flockfile(file), (file)->flags &= ~(__FILE_EOF|__FILE_ERROR), unlockfile(file)))
+#define clearerr(file)	((void)(flockfile(file), (file)->flags &= ~(__FILE_EOF|__FILE_ERROR), funlockfile(file)))
 #define feof(file)		(flockfile(file), __unlockfile((file),((file)->flags & __FILE_EOF) != 0))
 #define ferror(file)	(flockfile(file), __unlockfile((file),((file)->flags & __FILE_ERROR) != 0))
 

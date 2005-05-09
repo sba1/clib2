@@ -431,6 +431,10 @@ format_date(const char *format,const struct tm *tm,struct Hook * hook)
 
 				__locale_unlock();
 
+				/* The GMT offset is given in minutes. We need to print
+				   it as a decimal number. */
+				gmt_offset = (100 * (gmt_offset / 60)) + (gmt_offset % 60);
+
 				__number_to_string((unsigned int)gmt_offset,buffer,sizeof(buffer),0);
 				store_string_via_hook(buffer,-1,hook);
 

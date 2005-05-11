@@ -57,6 +57,7 @@ extern int islower(int c);
 extern int isupper(int c);
 
 extern int isspace(int c);
+extern int isblank(int c);
 
 extern int tolower(int c);
 extern int toupper(int c);
@@ -99,6 +100,7 @@ extern const unsigned char __ctype_table[];
 #define islower(c)	((__ctype_table[(c) & 255] & __CTYPE_LOWER_CASE) != 0)
 #define isupper(c)	((__ctype_table[(c) & 255] & __CTYPE_UPPER_CASE) != 0)
 #define isspace(c)	((__ctype_table[(c) & 255] & __CTYPE_WHITE_SPACE) != 0)
+#define isblank(c)	((c) == ' ' || (c) == '\t')
 
 /****************************************************************************/
 

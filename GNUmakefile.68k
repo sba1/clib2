@@ -127,6 +127,7 @@ C_LIB = \
 	ctype_isalnum.o \
 	ctype_isalpha.o \
 	ctype_isascii.o \
+	ctype_isblank.o \
 	ctype_iscntrl.o \
 	ctype_isdigit.o \
 	ctype_isgraph.o \

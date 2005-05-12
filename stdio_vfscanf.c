@@ -309,7 +309,7 @@ vfscanf(FILE *stream, const char *format, va_list arg)
 			/* Check for long long parameters. */
 			if(parameter_size == parameter_size_long && c == 'l')
 			{
-				parameter_size == parameter_size_long_long;
+				parameter_size = parameter_size_long_long;
 
 				format++;
 

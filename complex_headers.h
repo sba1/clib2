@@ -42,7 +42,7 @@
 
 /****************************************************************************/
 
-#if defined(FLOATING_POINT_SUPPORT) && defined(__GNUC__) && ((__STDC_VERSION__ + 0) >= 199901L)
+#if defined(FLOATING_POINT_SUPPORT) && defined(__GNUC__) && defined(__STDC_VERSION__) && (__STDC_VERSION__ >= 199901L)
 
 /****************************************************************************/
 

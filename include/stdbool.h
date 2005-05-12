@@ -47,9 +47,9 @@
 
 /****************************************************************************/
 
-#if (__STDC_VERSION__ + 0) < 199901L
+#if !defined(__STDC_VERSION__) || (__STDC_VERSION__ < 199901L)
 #warning C99 header file used by non-C99 compliant compiler.
-#endif /* __STDC_VERSION__ */
+#endif /* !__STDC_VERSION__ || __STDC_VERSION__ < 199901L */
 
 /****************************************************************************/
 

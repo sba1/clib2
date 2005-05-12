@@ -99,8 +99,6 @@ extern struct Library * NOCOMMON MathIeeeDoubTransBase;
 
 /****************************************************************************/
 
-#if defined(PPC_FLOATING_POINT_SUPPORT)
-
 /*
  * ====================================================
  * Copyright (C) 1993 by Sun Microsystems, Inc. All rights reserved.
@@ -211,6 +209,8 @@ do {							\
   sf_u.word = (i);				\
   (d) = sf_u.value;				\
 } while (0)
+
+#if defined(PPC_FLOATING_POINT_SUPPORT)
 
 extern double __kernel_cos(double x, double y);
 extern double __kernel_sin(double x, double y, int iy);

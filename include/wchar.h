@@ -162,6 +162,20 @@ extern size_t wcsftime(wchar_t *s, size_t maxsize, const wchar_t *format, const 
 
 /****************************************************************************/
 
+/* The following is not part of the ISO 'C' (1994) standard, but it should
+   be part of ISO/IEC 9899:1999, also known as "C99". */
+
+/****************************************************************************/
+
+#if defined(__STDC_VERSION__) && (__STDC_VERSION__ >= 199901L)
+
+extern long long wcstoll(const wchar_t *str, wchar_t **ptr, int base);
+extern unsigned long long wcstoull(const wchar_t *str, wchar_t **ptr, int base);
+
+#endif /* __STDC_VERSION__ && __STDC_VERSION__ >= 199901L */
+
+/****************************************************************************/
+
 #ifdef __cplusplus
 }
 #endif /* __cplusplus */

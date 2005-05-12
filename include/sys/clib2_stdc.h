@@ -31,8 +31,8 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef _SIGNAL_H
-#define _SIGNAL_H
+#ifndef	_SYS_CLIB2_STDC_H
+#define	_SYS_CLIB2_STDC_H
 
 /****************************************************************************/
 
@@ -42,66 +42,15 @@ extern "C" {
 
 /****************************************************************************/
 
-#define SIG_IGN ((void (*)(int))0)
-#define SIG_DFL ((void (*)(int))1)
-#define SIG_ERR ((void (*)(int))-1)
-
-/****************************************************************************/
-
-#define SIGABRT	1
-#define SIGFPE	2
-#define SIGILL	3
-#define SIGINT	4
-#define SIGSEGV	5
-#define SIGTERM	6
-
-/****************************************************************************/
-
-extern void (*signal(int sig, void (*)(int)))(int);
-extern int raise(int sig);
-
-/****************************************************************************/
-
-/* The following is not part of the ISO 'C' (1994) standard, but it should
-   be part of ISO/IEC 9899:1999, also known as "C99". */
-
-/****************************************************************************/
-
-typedef int sig_atomic_t;
-
-/****************************************************************************/
-
 /* The following is not part of the ISO 'C' (1994) standard. */
 
 /****************************************************************************/
 
-#ifndef _SYS_TYPES_H
-#include <sys/types.h>
-#endif /* _SYS_TYPES_H */
-
-/****************************************************************************/
-
-typedef void (*sig_t)(int);
-
-/****************************************************************************/
-
-typedef int sigset_t;
-
-/****************************************************************************/
-
-#define SIG_BLOCK	0
-#define SIG_UNBLOCK	1
-#define SIG_SETMASK	2
-
-/****************************************************************************/
-
-extern int sigmask(int signum);
-extern int sigblock(int signal_mask);
-extern int sigsetmask(int signal_mask);
-extern int sigprocmask(int how, const sigset_t *set, sigset_t *oset);
-extern int sigemptyset(sigset_t * set);
-extern int sigaddset(sigset_t * set,int sig);
-extern int kill(pid_t pid, int signal_number);
+/* Make the "restrict" qualifier work well with 'C' compilers that do
+   not support it. We do assume that __STDC__ is defined, though. */
+#if !defined(__STDC_VERSION__) || (__STDC_VERSION__ < 199901L)
+#define restrict
+#endif /* !__STDC_VERSION__ || __STDC_VERSION__ < 199901L */
 
 /****************************************************************************/
 
@@ -111,4 +60,4 @@ extern int kill(pid_t pid, int signal_number);
 
 /****************************************************************************/
 
-#endif /* _SIGNAL_H */
+#endif /* _SYS_CLIB2_STDC_H */

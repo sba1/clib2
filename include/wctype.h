@@ -68,6 +68,7 @@ extern int iswlower(wint_t c);
 extern int iswupper(wint_t c);
 
 extern int iswspace(wint_t c);
+extern int iswblank(wint_t c);
 
 extern wint_t towlower(wint_t c);
 extern wint_t towupper(wint_t c);

@@ -83,13 +83,22 @@
 
 /****************************************************************************/
 
-/* The following is not part of the ISO 'C' (1994) standard. */
+/* The following is not part of the ISO 'C' (1994) standard, but it should
+   be part of ISO/IEC 9899:1999, also known as "C99". */
 
 /****************************************************************************/
 
 #define	LLONG_MIN	(-0x7fffffffffffffffLL-1)
 #define	LLONG_MAX	0x7fffffffffffffffLL
 #define	ULLONG_MAX	0xffffffffffffffffULL
+
+/****************************************************************************/
+
+#define MB_LEN_MAX 1
+
+/****************************************************************************/
+
+/* The following is not part of the ISO 'C' (1994) standard. */
 
 /****************************************************************************/
 

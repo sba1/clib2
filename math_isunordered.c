@@ -31,34 +31,13 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef _SIGNAL_H
-#define _SIGNAL_H
+#ifndef _STDIO_HEADERS_H
+#include "stdio_headers.h"
+#endif /* _STDIO_HEADERS_H */
 
 /****************************************************************************/
 
-#ifdef __cplusplus
-extern "C" {
-#endif /* __cplusplus */
-
-/****************************************************************************/
-
-#define SIG_IGN ((void (*)(int))0)
-#define SIG_DFL ((void (*)(int))1)
-#define SIG_ERR ((void (*)(int))-1)
-
-/****************************************************************************/
-
-#define SIGABRT	1
-#define SIGFPE	2
-#define SIGILL	3
-#define SIGINT	4
-#define SIGSEGV	5
-#define SIGTERM	6
-
-/****************************************************************************/
-
-extern void (*signal(int sig, void (*)(int)))(int);
-extern int raise(int sig);
+#if defined (FLOATING_POINT_SUPPORT)
 
 /****************************************************************************/
 
@@ -67,48 +46,72 @@ extern int raise(int sig);
 
 /****************************************************************************/
 
-typedef int sig_atomic_t;
+int
+__isunordered_float(float number_x,float number_y)
+{
+	union ieee_single x;
+	union ieee_single y;
+	int result;
 
-/****************************************************************************/
+	x.value = number_x;
+	y.value = number_y;
 
-/* The following is not part of the ISO 'C' (1994) standard. */
+	/* Exponent = 255 and fraction != 0.0 -> not a number */
+	if((x.raw[0] & 0x7f800000) == 0x7f800000 && (x.raw[0] & 0x007fffff) != 0)
+		result = 1;
+	else if((y.raw[0] & 0x7f800000) == 0x7f800000 && (y.raw[0] & 0x007fffff) != 0)
+		result = 1;
+	else
+		result = 0;
 
-/****************************************************************************/
-
-#ifndef _SYS_TYPES_H
-#include <sys/types.h>
-#endif /* _SYS_TYPES_H */
-
-/****************************************************************************/
-
-typedef void (*sig_t)(int);
-
-/****************************************************************************/
-
-typedef int sigset_t;
-
-/****************************************************************************/
-
-#define SIG_BLOCK	0
-#define SIG_UNBLOCK	1
-#define SIG_SETMASK	2
-
-/****************************************************************************/
-
-extern int sigmask(int signum);
-extern int sigblock(int signal_mask);
-extern int sigsetmask(int signal_mask);
-extern int sigprocmask(int how, const sigset_t *set, sigset_t *oset);
-extern int sigemptyset(sigset_t * set);
-extern int sigaddset(sigset_t * set,int sig);
-extern int kill(pid_t pid, int signal_number);
-
-/****************************************************************************/
-
-#ifdef __cplusplus
+	return(result);
 }
-#endif /* __cplusplus */
 
 /****************************************************************************/
 
-#endif /* _SIGNAL_H */
+int
+__isunordered_float_double(float number_x,double number_y)
+{
+	union ieee_single x;
+	union ieee_double y;
+	int result;
+
+	x.value = number_x;
+	y.value = number_y;
+
+	if((x.raw[0] & 0x7f800000) == 0x7f800000 && (x.raw[0] & 0x007fffff) != 0)
+		result = 1; /* Exponent = 255 and fraction != 0.0 -> not a number */
+	else if (((y.raw[0] & 0x7ff00000) == 0x7ff00000) && ((y.raw[0] & 0x000fffff) != 0 || (y.raw[1] != 0)))
+		result = 1; /* Exponent = 2047 and fraction != 0.0 -> not a number */
+	else
+		result = 0;
+
+	return(result);
+}
+
+/****************************************************************************/
+
+int
+__isunordered_double(double number_x,double number_y)
+{
+	union ieee_double x;
+	union ieee_double y;
+	int result;
+
+	x.value = number_x;
+	y.value = number_y;
+
+	/* Exponent = 2047 and fraction != 0.0 -> not a number */
+	if(((x.raw[0] & 0x7ff00000) == 0x7ff00000) && ((x.raw[0] & 0x000fffff) != 0 || (x.raw[1] != 0)))
+		result = 1;
+	else if (((y.raw[0] & 0x7ff00000) == 0x7ff00000) && ((y.raw[0] & 0x000fffff) != 0 || (y.raw[1] != 0)))
+		result = 1;
+	else
+		result = 0;
+
+	return(result);
+}
+
+/****************************************************************************/
+
+#endif /* FLOATING_POINT_SUPPORT */

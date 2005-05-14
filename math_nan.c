@@ -51,8 +51,8 @@ nan(const char * UNUSED tagp)
 {
 	union ieee_double x;
 
-	/* Exponent = 2047 and fraction != 0.0 */
-	x.raw[0] = 0x7ff00000;
+	/* Exponent = 2047 and fraction != 0.0; this must be a quiet nan. */
+	x.raw[0] = 0x7ff80000;
 	x.raw[1] = 0x00000001;
 
 	return(x.value);

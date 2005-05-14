@@ -51,8 +51,8 @@ nanf(const char * UNUSED tagp)
 {
 	union ieee_single x;
 
-	/* Exponent = 255 and fraction != 0.0 */
-	x.raw[0] = 0x7f800001;
+	/* Exponent = 255 and fraction != 0.0; this must be a quiet nan. */
+	x.raw[0] = 0x7fc00001;
 
 	return(x.value);
 }

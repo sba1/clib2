@@ -41,111 +41,19 @@
 
 /****************************************************************************/
 
-/* The following is not part of the ISO 'C' (1994) standard, but it should
-   be part of ISO/IEC 9899:1999, also known as "C99". */
+/* The following is not part of the ISO 'C' (1994) standard. */
 
 /****************************************************************************/
 
-int
-__fpclassify_float(float number)
+float
+__inff(void)
 {
 	union ieee_single x;
-	int result;
 
-	x.value = number;
+	/* Exponent = 255 and fraction = 0.0 -> infinity */
+	x.raw[0] = 0x7f800000;
 
-	D(("number = 0x%08lx",x.raw[0]));
-
-	if((x.raw[0] & 0x7f800000) == 0x7f800000 && (x.raw[0] & 0x007fffff) != 0)
-	{
-		SHOWMSG("not a number");
-
-		/* Exponent = 255 and fraction != 0.0 -> not a number */
-		result = FP_NAN;
-	}
-	else if ((x.raw[0] & 0x7fffffff) == 0x7f800000)
-	{
-		SHOWMSG("infinity");
-
-		/* Exponent = 255 and fraction = 0.0 -> infinity */
-		result = FP_INFINITE;
-	}
-	else if ((x.raw[0] & 0x7fffffff) == 0)
-	{
-		SHOWMSG("zero");
-
-		/* Both exponent and fraction are zero -> zero */
-		result = FP_ZERO;
-	}
-	else if ((x.raw[0] & 0x7f800000) == 0)
-	{
-		SHOWMSG("subnormal");
-
-		/* Exponent = 0 -> subnormal (IEEE 754) */
-		result = FP_SUBNORMAL;
-	}
-	else
-	{
-		SHOWMSG("normal");
-
-		result = FP_NORMAL;
-	}
-
-	SHOWVALUE(result);
-
-	return(result);
-}
-
-/****************************************************************************/
-
-int
-__fpclassify_double(double number)
-{
-	union ieee_double x;
-	int result;
-
-	x.value = number;
-
-	D(("number = 0x%08lx%08lx",x.raw[0],x.raw[1]));
-
-	if(((x.raw[0] & 0x7ff00000) == 0x7ff00000) && ((x.raw[0] & 0x000fffff) != 0 || (x.raw[1] != 0)))
-	{
-		SHOWMSG("not a number");
-
-		/* Exponent = 2047 and fraction != 0.0 -> not a number */
-		result = FP_NAN;
-	}
-	else if (((x.raw[0] & 0x7fffffff) == 0x7ff00000) && (x.raw[1] == 0))
-	{
-		SHOWMSG("infinity");
-
-		/* Exponent = 2047 and fraction = 0.0 -> infinity */
-		result = FP_INFINITE;
-	}
-	else if ((((x.raw[0] & 0x7fffffff) == 0) && (x.raw[1] == 0)))
-	{
-		SHOWMSG("zero");
-
-		/* Both exponent and fraction are zero -> zero */
-		result = FP_ZERO;
-	}
-	else if ((x.raw[0] & 0x7fff0000) == 0)
-	{
-		SHOWMSG("subnormal");
-
-		/* Exponent = 0 -> subnormal (IEEE 754) */
-		result = FP_SUBNORMAL;
-	}
-	else
-	{
-		SHOWMSG("normal");
-
-		result = FP_NORMAL;
-	}
-
-	SHOWVALUE(result);
-
-	return(result);
+	return(x.value);
 }
 
 /****************************************************************************/

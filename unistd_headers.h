@@ -90,7 +90,7 @@ extern BOOL NOCOMMON __unix_path_semantics;
 /****************************************************************************/
 
 extern int __set_current_path(const char * path_name);
-extern void __strip_double_slash(char * file_name,int len);
+extern int __strip_double_slash(char * file_name,int len);
 
 /****************************************************************************/
 

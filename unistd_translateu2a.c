@@ -524,8 +524,7 @@ __translate_unix_to_amiga_path_name(char const ** name_ptr,struct name_translati
 					name = replace;
 				}
 		
-				__strip_double_slash(name,len);
-				len = strlen(name);
+				len = __strip_double_slash(name,len);
 		
 				D(("name = '%s' (line %ld)",name,__LINE__));
 			}

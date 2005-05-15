@@ -89,9 +89,7 @@ __translate_amiga_to_unix_path_name(char const ** name_ptr,struct name_translati
 		strcpy(local_replacement,name);
 		name = local_replacement;
 
-		__strip_double_slash(name,len);
-
-		len = strlen(name);
+		len = __strip_double_slash(name,len);
 	}
 
 	/* The empty string corresponds to the current

@@ -210,7 +210,7 @@ extern int __isunordered_double(double x,double y);
 	(isunordered(x,y) ? 0 : (x) <= (y))
 
 #define islessgreater(x,y) \
-	(isunordered(x,y) ? 0 : (x) < (y) || (x) > (y))	/* ZZZ don't evaulate twice! */
+	(isunordered(x,y) ? 0 : (x) < (y) || (x) > (y))	/* ZZZ don't evaluate twice! */
 
 /****************************************************************************/
 

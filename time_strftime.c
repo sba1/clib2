@@ -239,10 +239,10 @@ format_date(const char *format,const struct tm *tm,struct Hook * hook)
 				format_date("%a %b %d %H:%M:%S %Y",tm,hook);
 				break;
 
-			/* The last two digits of a year ("00"; C99). */
+			/* The century number ("00"-"99"; C99). */
 			case 'C':
 
-				__number_to_string((unsigned int)(tm->tm_year % 100),buffer,sizeof(buffer),2);
+				__number_to_string((unsigned int)(tm->tm_year / 100),buffer,sizeof(buffer),2);
 				store_string_via_hook(buffer,2,hook);
 				break;
 

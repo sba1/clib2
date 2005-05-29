@@ -49,7 +49,13 @@ toupper(int c)
 	{
 		assert( LocaleBase != NULL );
 
-		result = ConvToUpper(__locale_table[LC_CTYPE],(ULONG)c);
+		/* The parameter must be either EOF or in the range of an
+		   'unsigned char'. If it's not, then the behaviour is
+		   undefined. */
+		if(c != EOF && ((0 <= c && c <= UCHAR_MAX) || ((c + 256) <= UCHAR_MAX)))
+			result = ConvToUpper(__locale_table[LC_CTYPE],(ULONG)(c & 255));
+		else
+			result = c;
 	}
 	else
 	{

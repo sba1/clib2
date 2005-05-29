@@ -60,6 +60,7 @@
 
 #include <locale.h>
 #include <assert.h>
+#include <limits.h>
 #include <ctype.h>
 
 /****************************************************************************/

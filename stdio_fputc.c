@@ -128,7 +128,7 @@ __fputc(int c,FILE *stream,int buffer_mode)
 	/* Clip everything but the least significant eight bits. This
 	   also takes care of the sign. Thus, a -1 (== EOF) always comes
 	   out as 255. */
-	result = (c & 0xff);
+	result = (c & 255);
 
  out:
 

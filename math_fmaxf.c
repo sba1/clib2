@@ -44,8 +44,28 @@
 float
 fmaxf(float x,float y)
 {
-	/* ZZZ unimplemented */
-	return(0);
+	float result;
+
+	if(isnan(x))
+	{
+		if(isnan(y))
+			result = nanf(NULL);
+		else
+			result = y;
+	}
+	else if (isnan(y))
+	{
+		result = x;
+	}
+	else
+	{
+		if(x > y)
+			result = x;
+		else
+			result = y;
+	}
+
+	return(result);
 }
 
 /****************************************************************************/

@@ -44,8 +44,28 @@
 double
 fmin(double x,double y)
 {
-	/* ZZZ unimplemented */
-	return(0);
+	double result;
+
+	if(isnan(x))
+	{
+		if(isnan(y))
+			result = nan(NULL);
+		else
+			result = y;
+	}
+	else if (isnan(y))
+	{
+		result = x;
+	}
+	else
+	{
+		if(x < y)
+			result = x;
+		else
+			result = y;
+	}
+
+	return(result);
 }
 
 /****************************************************************************/

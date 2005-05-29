@@ -44,8 +44,14 @@
 double
 fdim(double x,double y)
 {
-	/* ZZZ unimplemented */
-	return(0);
+	double result;
+
+	if(x > y)
+		result = x - y;
+	else
+		result = 0;
+
+	return(result);
 }
 
 /****************************************************************************/

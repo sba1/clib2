@@ -44,8 +44,14 @@
 float
 fdimf(float x,float y)
 {
-	/* ZZZ unimplemented */
-	return(0);
+	float result;
+
+	if(x > y)
+		result = x - y;
+	else
+		result = 0;
+
+	return(result);
 }
 
 /****************************************************************************/

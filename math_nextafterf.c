@@ -62,15 +62,15 @@ nextafterf(float x, float y)
 	ix = hx&0x7fffffff;		/* |x| */
 	iy = hy&0x7fffffff;		/* |y| */
 
-	if((ix>0x7f800000) ||   /* x is nan */ 
-	   (iy>0x7f800000))     /* y is nan */ 
-	   return x+y;				
+	if((ix>0x7f800000) ||   /* x is nan */
+	   (iy>0x7f800000))     /* y is nan */
+	   return (float)(x+y);
 	if(x==y) return x;		/* x=y, return x */
 	if(ix==0) {				/* x == 0 */
 	    SET_FLOAT_WORD(x,(hy&0x80000000U)|1);/* return +-minsubnormal */
 	    y = x*x;
 	    if(y==x) return y; else return x;	/* raise underflow flag */
-	} 
+	}
 	if(hx>=0) {				/* x > 0 */
 	    if(hx>hy) {				/* x > y, x -= ulp */
 		hx -= 1;
@@ -85,7 +85,7 @@ nextafterf(float x, float y)
 	    }
 	}
 	hy = hx&0x7f800000;
-	if(hy>=0x7f800000) return x+x;	/* overflow  */
+	if(hy>=0x7f800000) return (float)(x+x);	/* overflow  */
 	if(hy<0x00800000) {		/* underflow */
 	    y = x*x;
 	    if(y!=x) {		/* raise underflow flag */

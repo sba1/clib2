@@ -326,7 +326,7 @@ strtof(const char *str, char ** ptr)
 					float divisor;
 
 					/* A negative exponent means division. */
-					divisor = pow(radix,(float)exponent);
+					divisor = pow((double)radix,(float)exponent);
 					if(divisor != 0.0)
 					{
 						new_sum = sum / divisor;
@@ -343,7 +343,7 @@ strtof(const char *str, char ** ptr)
 				else
 				{
 					/* A positive exponent means multiplication. */
-					new_sum = sum * pow(radix,(float)exponent);
+					new_sum = sum * pow((double)radix,(float)exponent);
 					if(new_sum < sum)
 						error = ERANGE;
 					else

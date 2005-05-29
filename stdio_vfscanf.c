@@ -1107,14 +1107,14 @@ vfscanf(FILE *stream, const char *format, va_list arg)
 											double divisor;
 
 											/* A negative exponent means division. */
-											divisor = pow(radix,(double)exponent);
+											divisor = pow((double)radix,(double)exponent);
 											if(divisor != 0.0)
 												sum = sum / divisor;
 										}
 										else
 										{
 											/* A positive exponent means multiplication. */
-											new_sum = sum * pow(radix,(double)exponent);
+											new_sum = sum * pow((double)radix,(double)exponent);
 											if(new_sum >= sum)
 												sum = new_sum;
 											else

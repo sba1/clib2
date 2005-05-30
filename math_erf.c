@@ -133,7 +133,7 @@ erf(double x)
 	GET_HIGH_WORD(hx,x);
 	ix = hx&0x7fffffff;
 	if(ix>=0x7ff00000) {		/* erf(nan)=nan */
-	    i = ((__uint32_t)hx>>31)<<1;
+	    i = ((ULONG)hx>>31)<<1;
 	    return (double)(1-i)+one/x;	/* erf(+-inf)=+-1 */
 	}
 

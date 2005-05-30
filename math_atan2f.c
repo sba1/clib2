@@ -125,7 +125,7 @@ atan2f(float y, float x)
 	switch (m) {
 	    case 0: return       z  ;	/* atan(+,+) */
 	    case 1: {
-	    	      __uint32_t zh;
+	    	      ULONG zh;
 		      GET_FLOAT_WORD(zh,z);
 		      SET_FLOAT_WORD(z,zh ^ 0x80000000U);
 		    }

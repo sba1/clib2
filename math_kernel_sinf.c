@@ -53,42 +53,29 @@
 
 /****************************************************************************/
 
-#define	SQRT_FLT_MAX	1.84467429742e+19  /* 0x5f7fffff */
+static const float 
+half =  5.0000000000e-01,/* 0x3f000000 */
+S1  = -1.6666667163e-01, /* 0xbe2aaaab */
+S2  =  8.3333337680e-03, /* 0x3c088889 */
+S3  = -1.9841270114e-04, /* 0xb9500d01 */
+S4  =  2.7557314297e-06, /* 0x3638ef1b */
+S5  = -2.5050759689e-08, /* 0xb2d72f34 */
+S6  =  1.5896910177e-10; /* 0x2f2ec9d3 */
 
 float
-hypotf(float x, float y)
+__kernel_sinf(float x, float y, int iy)
 {
-	float a=x,b=y,t1,t2,w;
-	LONG j,ha,hb;
-
-	if (isunordered(x,y))
-		return (x-x)/(y-y);
-	if (!isfinite(x) || !isfinite(y)) {
-		__set_errno(ERANGE);
-		return __get_huge_valf();
-	}
-
-	GET_FLOAT_WORD(ha,x);
-	ha &= 0x7fffffff;
-	GET_FLOAT_WORD(hb,y);
-	hb &= 0x7fffffff;
-	if(hb < ha) {a=y;b=x;j=ha; ha=hb;hb=j;} else {a=x;b=y;}
-	SET_FLOAT_WORD(a,ha);	/* a <- |a| */
-	SET_FLOAT_WORD(b,hb);	/* b <- |b| */
-	t1 = (a > 0) ? (a/b) : 0;
-	if ((t1 >= SQRT_FLT_MAX) && isfinite(x) && isfinite(y)) {
-		__set_errno(ERANGE);
-		return __get_huge_valf();
-	}
-	t1 *= t1;
-	t2 = sqrtf(++t1);
-	if ((t2 > 1) && (b >= FLT_MAX)) {
-		__set_errno(ERANGE);
-		return __get_huge_valf();
-	}
-	w = t2 * b;
-
-	       return w;
+	float z,r,v;
+	LONG ix;
+	GET_FLOAT_WORD(ix,x);
+	ix &= 0x7fffffff;			/* high word of x */
+	if(ix<0x32000000)			/* |x| < 2**-27 */
+	   {if((int)x==0) return x;}		/* generate inexact */
+	z	=  x*x;
+	v	=  z*x;
+	r	=  S2+z*(S3+z*(S4+z*(S5+z*S6)));
+	if(iy==0) return x+v*(S1+z*r);
+	else      return x-((z*(half*y-v*r)-y)-v*S1);
 }
 
 /****************************************************************************/

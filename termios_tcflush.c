@@ -79,6 +79,8 @@ tcflush(int file_descriptor,int queue)
 
 	if(queue == TCIFLUSH || queue == TCIOFLUSH)
 	{
+		LONG num_bytes_read;
+
 		/* Set raw mode so we can read without blocking. */
 		if(FLAG_IS_SET(tios->c_lflag,ICANON))
 		{
@@ -92,7 +94,10 @@ tcflush(int file_descriptor,int queue)
 			if(__check_abort_enabled)
 				__check_abort();
 
-			Read(fd->fd_DefaultFile,buf,64); /* Read away available data. (upto 8k) */
+			/* Read away available data. (upto 8k) */
+			num_bytes_read = Read(fd->fd_DefaultFile,buf,64);
+			if(num_bytes_read == ERROR || num_bytes_read == 0)
+				break;
 		}
 
 		/* Restore the Raw/Cooked mode. */

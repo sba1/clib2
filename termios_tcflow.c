@@ -31,27 +31,35 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef _STDIO_HEADERS_H
-#include "stdio_headers.h"
-#endif /* _STDIO_HEADERS_H */
+#ifndef	_TERMIOS_HEADERS_H
+#include "termios_headers.h"
+#endif /* _TERMIOS_HEADERS_H */
 
 /****************************************************************************/
 
-void
-__initialize_fd(
-	struct fd *					fd,
-	file_action_fd_t			action_function,
-	BPTR						default_file,
-	ULONG						flags,
-	struct SignalSemaphore *	lock)
+int
+tcflow(int file_descriptor,int UNUSED action)
 {
-	assert( fd != NULL && action_function != NULL );
+	int result = ERROR;
+	struct fd *fd;
 
-	memset(fd,0,sizeof(*fd));
+	ENTER();
 
-	fd->fd_DefaultFile	= default_file;
-	fd->fd_Flags		= flags;
-	fd->fd_Action		= action_function;
-	fd->fd_Lock			= lock;
-	fd->fd_Aux			= NULL;
+	SHOWVALUE(file_descriptor);
+	SHOWVALUE(action);
+
+	fd=__get_file_descriptor(file_descriptor);
+	if(fd == NULL)
+	{
+		__set_errno(EBADF);
+		goto out;
+	}
+
+	/* XXX TODO */
+	result = OK;
+
+ out:
+
+	RETURN(result);
+	return(result);
 }

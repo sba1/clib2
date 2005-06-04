@@ -100,6 +100,9 @@ extern pid_t getpid(void);
 extern char *realpath(const char *file_name, char *resolved_name);
 extern int fsync(int file_descriptor);
 extern int fdatasync(int file_descriptor);
+extern char *ttyname(int);
+extern int ttyname_r(int file_descriptor,char *name,size_t buflen);
+extern int ttyname_t(int,char *,size_t);
 
 /****************************************************************************/
 

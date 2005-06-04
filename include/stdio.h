@@ -342,6 +342,14 @@ extern char *tmpnam(char *buf);
 
 /****************************************************************************/
 
+#define L_ctermid 32
+
+/****************************************************************************/
+
+extern char *ctermid(char *);
+
+/****************************************************************************/
+
 /*
  * A special buffer flush routine which returns the last character written
  * in case of success and EOF in case of failure. This is used by the

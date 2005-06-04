@@ -489,7 +489,6 @@ UNIX_LIB = \
 	termios_cfsetispeed.o \
 	termios_cfsetospeed.o \
 	termios_console_fdhookentry.o \
-	termios_headers.h
 	termios_openserial.o \
 	termios_tcdrain.o \
 	termios_tcflow.o \

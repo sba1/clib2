@@ -459,6 +459,7 @@ UNIX_LIB = \
 	fcntl_fcntl.o \
 	fcntl_open.o \
 	fcntl_get_default_file.o \
+	getopt_getopt_long.o \
 	mount_convertinfo.o \
 	mount_statfs.o \
 	stat_chmod.o \

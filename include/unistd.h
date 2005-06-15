@@ -104,6 +104,8 @@ extern char *ttyname(int);
 extern int ttyname_r(int file_descriptor,char *name,size_t buflen);
 extern int ttyname_t(int,char *,size_t);
 
+extern int profil(unsigned short *buffer, size_t bufSize, size_t offset, unsigned int scale);
+
 /****************************************************************************/
 
 extern char * getcwd(char * buffer, size_t buffer_size);

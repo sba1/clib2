@@ -246,13 +246,13 @@ static int getopt_long_internal(int argc, const char **argv, const char *optstri
 	if (*optstring == '+')
 	{
 		flags |= GETOPTF_POSIX;
-		*optstring++;
+		optstring++;
 	}
 		
 	if (*optstring == '-')
 	{
 		flags |= GETOPTF_ONE_ARG;
-		*optstring++;
+		optstring++;
 	}
 	
 	/* Check for reset */

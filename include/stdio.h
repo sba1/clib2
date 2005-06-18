@@ -50,6 +50,10 @@ extern "C" {
 #include <stdarg.h>
 #endif /* _STDARG_H */
 
+#ifndef _SYS_TYPES_H
+#include <sys/types.h>
+#endif /* _SYS_TYPES_H */
+
 /****************************************************************************/
 
 /* 'End of file' indicator returned by, for example, fgetc() */
@@ -388,6 +392,8 @@ extern int asprintf(char **ret, const char *format, ...);
 extern int vsnprintf(char *s,size_t size,const char *format,va_list arg);
 extern int pclose(FILE *stream);
 extern FILE * popen(const char *command, const char *type);
+extern int fseeko(FILE *stream, off_t offset, int wherefrom);
+extern off_t ftello(FILE *stream);
 
 /****************************************************************************/
 

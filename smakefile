@@ -378,8 +378,10 @@ STDIO_OBJ = \
 	stdio_freopen.o \
 	stdio_fscanf.o \
 	stdio_fseek.o \
+	stdio_fseeko.o \
 	stdio_fsetpos.o \
 	stdio_ftell.o \
+	stdio_ftello.o \
 	stdio_ftrylockfile.o \
 	stdio_funlockfile.o \
 	stdio_fwrite.o \

@@ -86,7 +86,7 @@ __convert_info_to_statfs(struct InfoData * id,struct statfs * f)
 	f->f_ffree	= LONG_MAX;
 	f->f_flags	= MNT_NOATIME|MNT_SYMPERM|MNT_LOCAL;
 
-	if(id->id_DiskType != ID_VALIDATED)
+	if(id->id_DiskState != ID_VALIDATED)
 		SET_FLAG(f->f_flags,MNT_RDONLY);
 
 	SHOWVALUE(f->f_bsize);

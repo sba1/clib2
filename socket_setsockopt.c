@@ -48,7 +48,7 @@
 /****************************************************************************/
 
 int
-setsockopt(int sockfd,int level,int optname,const void *optval,int optlen)
+setsockopt(int sockfd,int level,int optname,const void *optval,socklen_t optlen)
 {
 	struct fd * fd;
 	int result = ERROR;

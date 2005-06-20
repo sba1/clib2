@@ -48,7 +48,7 @@
 /****************************************************************************/
 
 int
-getpeername(int sockfd,struct sockaddr *name,int *namelen)
+getpeername(int sockfd,struct sockaddr *name,socklen_t *namelen)
 {
 	struct fd * fd;
 	int result = ERROR;

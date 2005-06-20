@@ -48,7 +48,7 @@
 /****************************************************************************/
 
 int
-recvfrom(int sockfd,void *buff,int len,int flags,struct sockaddr *from,int *fromlen)
+recvfrom(int sockfd,void *buff,int len,int flags,struct sockaddr *from,socklen_t *fromlen)
 {
 	struct fd * fd;
 	int result = ERROR;

@@ -48,7 +48,7 @@
 /****************************************************************************/
 
 int
-getsockname(int sockfd,struct sockaddr *name,int *namelen)
+getsockname(int sockfd,struct sockaddr *name,socklen_t *namelen)
 {
 	struct fd * fd;
 	int result = ERROR;

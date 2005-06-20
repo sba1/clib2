@@ -48,7 +48,7 @@
 /****************************************************************************/
 
 int
-getsockopt(int sockfd,int level,int optname,void *optval,int *optlen)
+getsockopt(int sockfd,int level,int optname,void *optval,socklen_t *optlen)
 {
 	struct fd * fd;
 	int result = ERROR;

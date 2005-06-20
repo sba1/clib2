@@ -48,7 +48,7 @@
 /****************************************************************************/
 
 struct hostent *
-gethostbyaddr(const char *addr, int len, int type)
+gethostbyaddr(const char *addr, socklen_t len, int type)
 {
 	struct hostent *result = NULL;
 

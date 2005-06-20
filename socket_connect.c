@@ -48,7 +48,7 @@
 /****************************************************************************/
 
 int
-connect(int sockfd,struct sockaddr *name,int namelen)
+connect(int sockfd,struct sockaddr *name,socklen_t namelen)
 {
 	struct fd * fd;
 	int result = ERROR;

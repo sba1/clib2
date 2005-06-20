@@ -48,7 +48,7 @@
 /****************************************************************************/
 
 int
-accept(int sockfd,struct sockaddr *cliaddr,int *addrlen)
+accept(int sockfd,struct sockaddr *cliaddr,socklen_t *addrlen)
 {
 	struct SignalSemaphore * lock = NULL;
 	struct fd * fd = NULL;

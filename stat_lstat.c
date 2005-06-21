@@ -123,7 +123,8 @@ lstat_lock(const char *name,const int mode,int * link_length)
 			}
 
 			/* Now ask the file system to resolve the entire path. */
-			result = ReadLink(dvp->dvp_Port,dvp->dvp_Lock,(STRPTR)name,(STRPTR)name,name_size);
+			result = ReadLink(dvp->dvp_Port,dvp->dvp_Lock,(STRPTR)name,(STRPTR)new_name,name_size);
+
 			if(result < 0)
 			{
 				/* This will return either -1 (resolution error) or -2

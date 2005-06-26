@@ -231,9 +231,13 @@ ARG_CONSTRUCTOR(arg_init)
 			{
 				char * arg;
 
-				/* If necessary, indicate that this parameter was quoted. */
-				if(__wildcard_quote_parameter(__argc) < 0)
-					goto out;
+				#if defined(UNIX_PATH_SEMANTICS)
+				{
+					/* If necessary, indicate that this parameter was quoted. */
+					if(__wildcard_quote_parameter(__argc) < 0)
+						goto out;
+				}
+				#endif /* UNIX_PATH_SEMANTICS */
 
 				str++;
 
@@ -311,10 +315,14 @@ ARG_CONSTRUCTOR(arg_init)
 
 		__argv[__argc] = NULL;
 
-		/* If necessary, expand wildcard patterns found in the command
-		   line string into file and directory names. */
-		if(__wildcard_expand_init() < 0)
-			goto out;
+		#if defined(UNIX_PATH_SEMANTICS)
+		{
+			/* If necessary, expand wildcard patterns found in the command
+			   line string into file and directory names. */
+			if(__wildcard_expand_init() < 0)
+				goto out;
+		}
+		#endif /* UNIX_PATH_SEMANTICS */
 	}
 	else
 	{

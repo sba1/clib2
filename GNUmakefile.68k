@@ -362,7 +362,6 @@ C_LIB = \
 	stdlib_udivsi4.o \
 	stdlib_umodsi3.o \
 	stdlib_unsetenv.o \
-	stdlib_wildcard_expand.o \
 	strings_ffs.o \
 	strings_strcasecmp.o \
 	strings_strncasecmp.o \
@@ -483,6 +482,7 @@ UNIX_LIB = \
 	stdio_record_locking.o \
 	stdio_remove.o \
 	stdio_rename.o \
+	stdlib_arg.o \
 	stdlib_main.o \
 	stdlib_mkdtemp.o \
 	stdlib_mkstemp.o \

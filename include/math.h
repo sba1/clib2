@@ -288,6 +288,14 @@ extern int ilogb(double x);
 
 /****************************************************************************/
 
+extern float exp2f(float x);
+extern double exp2(double x);
+
+extern double log2(double x);
+extern float log2f(float x);
+
+/****************************************************************************/
+
 #define FLT_EVAL_METHOD 0
 
 /****************************************************************************/

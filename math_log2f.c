@@ -44,8 +44,7 @@
 float
 log2f(float x)
 {
-	/* ZZZ unimplemented */
-	return(0);
+	return(logf(x) / logf(2.0));
 }
 
 /****************************************************************************/

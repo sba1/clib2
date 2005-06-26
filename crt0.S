@@ -25,16 +25,3 @@ _start:
 #endif
 
 	b	_main
-
-#if defined(BASEREL_DATA)
-	.section .rodata
-
-	.globl __data_segment_descriptor
-__data_segment_descriptor:
-	.long __data_start
-	.long __data_end
-	.long _DATA_BASE_
-
-	.section .dend, "wa", @nobits
-	.space 	4
-#endif

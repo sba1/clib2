@@ -31,10 +31,14 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef _UNISTD_HEADERS_H
-#include "unistd_headers.h"
-#endif /* _UNISTD_HEADERS_H */
+#ifndef EXEC_TYPES_H
+#include <exec/types.h>
+#endif /* EXEC_TYPES_H */
 
 /****************************************************************************/
 
-BOOL NOCOMMON __unix_path_semantics = TRUE;
+#include "macros.h"
+
+/****************************************************************************/
+
+BOOL NOCOMMON __lib_startup;

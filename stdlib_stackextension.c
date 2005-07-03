@@ -77,8 +77,8 @@ static struct stackframe *	__stk_spare;			/* spare stackframes */
 
 /****************************************************************************/
 
-ULONG __stk_extensions;	/* number of stack extensions performed */
-ULONG __stk_maxsize;	/* maximum amount of memory allocated for stack extension */	
+ULONG NOCOMMON __stk_extensions;	/* number of stack extensions performed */
+ULONG NOCOMMON __stk_maxsize;	/* maximum amount of memory allocated for stack extension */	
 
 /****************************************************************************/
 

@@ -49,9 +49,9 @@
 
 /* If the program's current directory was changed, here is where
    we find out about it. */
-BPTR __original_current_directory;
-BOOL __current_directory_changed;
-BOOL __unlock_current_directory;
+BPTR NOCOMMON __original_current_directory;
+BOOL NOCOMMON __current_directory_changed;
+BOOL NOCOMMON __unlock_current_directory;
 
 /****************************************************************************/
 

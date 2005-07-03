@@ -37,17 +37,21 @@
 
 /****************************************************************************/
 
-jmp_buf	__exit_jmp_buf;
-int		__exit_value = RETURN_FAIL;
+jmp_buf	NOCOMMON __exit_jmp_buf;
+int		NOCOMMON __exit_value = RETURN_FAIL;
+BOOL	NOCOMMON __exit_blocked;
 
 /****************************************************************************/
 
 void
 _exit(int return_code)
 {
-	__exit_value = return_code;
+	if(NOT __exit_blocked)
+	{
+		__exit_value = return_code;
 
-	longjmp(__exit_jmp_buf,1);
+		longjmp(__exit_jmp_buf,1);
+	}
 }
 
 /****************************************************************************/
@@ -56,7 +60,8 @@ _exit(int return_code)
 void
 _Exit(int return_code)
 {
-	_exit(return_code);
+	if(NOT __exit_blocked)
+		_exit(return_code);
 }
 
 /****************************************************************************/
@@ -64,7 +69,10 @@ _Exit(int return_code)
 void
 exit(int return_code)
 {
-	__exit_trap_trigger();
+	if(NOT __exit_blocked)
+	{
+		__exit_trap_trigger();
 
-	_exit(return_code);
+		_exit(return_code);
+	}
 }

@@ -37,4 +37,4 @@
 
 /****************************************************************************/
 
-char __current_path_name[MAXPATHLEN];
+char NOCOMMON __current_path_name[MAXPATHLEN];

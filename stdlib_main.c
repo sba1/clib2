@@ -66,7 +66,7 @@ extern int main(int arg_c,char ** arg_v);
 /****************************************************************************/
 
 /* This will be set to TRUE in case a stack overflow was detected. */
-BOOL __stack_overflow;
+BOOL NOCOMMON __stack_overflow;
 
 /****************************************************************************/
 

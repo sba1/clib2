@@ -39,12 +39,16 @@
 
 /****************************************************************************/
 
-struct ExecBase * SysBase;
+#include "macros.h"
+
+/****************************************************************************/
+
+struct ExecBase * NOCOMMON SysBase;
 
 /****************************************************************************/
 
 #if defined(__amigaos4__)
 
-struct ExecIFace * IExec;
+struct ExecIFace * NOCOMMON IExec;
 
 #endif /* __amigaos4__ */

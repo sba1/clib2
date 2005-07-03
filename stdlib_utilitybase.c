@@ -39,12 +39,16 @@
 
 /****************************************************************************/
 
-struct Library * __UtilityBase;
+#include "macros.h"
+
+/****************************************************************************/
+
+struct Library * NOCOMMON __UtilityBase;
 
 /****************************************************************************/
 
 #if defined(__amigaos4__)
 
-struct UtilityIFace * __IUtility;
+struct UtilityIFace * NOCOMMON __IUtility;
 
 #endif /* __amigaos4__ */

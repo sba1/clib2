@@ -135,10 +135,19 @@ __show_error(const char * message)
 	struct DOSIFace *		IDOS		= NULL;
 	#endif /* __amigaos4__ */
 
-	struct Library * IntuitionBase;
-	struct Library * DOSBase;
+	struct Library * IntuitionBase = NULL;
+	struct Library * DOSBase = NULL;
 
 	PROFILE_OFF();
+
+	/* Don't show anything if this is the thread-safe library and
+	   we were invoked indirectly by shared library startup code. */
+	#if defined(__THREAD_SAFE)
+	{
+		if(__lib_startup)
+			goto out;
+	}
+	#endif /* __THREAD_SAFE */
 
 	DOSBase			= OpenLibrary("dos.library",0);
 	IntuitionBase	= OpenLibrary("intuition.library",0);

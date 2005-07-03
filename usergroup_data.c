@@ -41,10 +41,10 @@
 
 /****************************************************************************/
 
-int __root_uid;
-int __root_gid;
-int __root_euid;
-int __root_egid;
+int NOCOMMON __root_uid;
+int NOCOMMON __root_gid;
+int NOCOMMON __root_euid;
+int NOCOMMON __root_egid;
 
 /****************************************************************************/
 

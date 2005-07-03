@@ -150,6 +150,7 @@ extern unsigned int NOCOMMON __random_seed;
 
 extern jmp_buf NOCOMMON	__exit_jmp_buf;
 extern int NOCOMMON		__exit_value;
+extern BOOL	NOCOMMON	__exit_blocked;
 
 /****************************************************************************/
 
@@ -185,6 +186,10 @@ extern UBYTE NOCOMMON __shell_escape_character;
 
 extern char ** NOCOMMON	__argv;
 extern int NOCOMMON		__argc;
+
+/****************************************************************************/
+
+extern BOOL NOCOMMON __lib_startup;
 
 /****************************************************************************/
 

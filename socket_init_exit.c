@@ -80,17 +80,17 @@ struct DaemonMessage
 
 /****************************************************************************/
 
-struct Library * __SocketBase;
+struct Library * NOCOMMON __SocketBase;
 
 /****************************************************************************/
 
 #if defined(__amigaos4__)
-struct SocketIFace *__ISocket;
+struct SocketIFace * NOCOMMON __ISocket;
 #endif /* __amigaos4__ */
 
 /****************************************************************************/
 
-int h_errno;
+int NOCOMMON h_errno;
 
 /****************************************************************************/
 

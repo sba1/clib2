@@ -65,21 +65,21 @@
 
 #if defined(IEEE_FLOATING_POINT_SUPPORT)
 
-struct Library * MathIeeeSingBasBase;
-struct Library * MathIeeeDoubBasBase;
-struct Library * MathIeeeDoubTransBase;
+struct Library * NOCOMMON MathIeeeSingBasBase;
+struct Library * NOCOMMON MathIeeeDoubBasBase;
+struct Library * NOCOMMON MathIeeeDoubTransBase;
 
 #endif /* IEEE_FLOATING_POINT_SUPPORT */
 
 /****************************************************************************/
 
-float	__infinity;
-float	__nan;
+float	NOCOMMON __infinity;
+float	NOCOMMON __nan;
 
 /****************************************************************************/
 
-float	__huge_val_float;
-double	__huge_val;
+float	NOCOMMON __huge_val_float;
+double	NOCOMMON __huge_val;
 
 /****************************************************************************/
 

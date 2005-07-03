@@ -54,14 +54,14 @@
 /****************************************************************************/
 
 /* The file handle table. */
-struct iob **	__iob;
-int				__num_iob;
+struct iob **	NOCOMMON __iob;
+int				NOCOMMON __num_iob;
 
 /****************************************************************************/
 
 /* The file descriptor table. */
-struct fd **	__fd;
-int				__num_fd;
+struct fd **	NOCOMMON __fd;
+int				NOCOMMON __num_fd;
 
 /****************************************************************************/
 

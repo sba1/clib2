@@ -43,6 +43,7 @@
 
 /****************************************************************************/
 
+/* ZZZ this function should be called somewhere, but where from? */
 int
 __machine_test(void)
 {

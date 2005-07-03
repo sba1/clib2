@@ -37,7 +37,7 @@
 
 /****************************************************************************/
 
-const char * const __abbreviated_week_day_names[7] =
+const char * const NOCOMMON __abbreviated_week_day_names[7] =
 {
 	"Sun",
 	"Mon",
@@ -48,7 +48,7 @@ const char * const __abbreviated_week_day_names[7] =
 	"Sat"
 };
 
-const char * const __week_day_names[7] =
+const char * const NOCOMMON __week_day_names[7] =
 {
 	"Sunday",
 	"Monday",
@@ -59,7 +59,7 @@ const char * const __week_day_names[7] =
 	"Saturday"
 };
 
-const char * const __abbreviated_month_names[12] =
+const char * const NOCOMMON __abbreviated_month_names[12] =
 {
 	"Jan",
 	"Feb",
@@ -75,7 +75,7 @@ const char * const __abbreviated_month_names[12] =
 	"Dec"
 };
 
-const char * const __month_names[12] =
+const char * const NOCOMMON __month_names[12] =
 {
 	"January",
 	"February",

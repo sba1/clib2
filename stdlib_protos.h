@@ -134,8 +134,6 @@ extern int __arg_init(void);
 /****************************************************************************/
 
 /* stdlib_malloc.c */
-extern int __memory_init(void);
-extern void __memory_exit(void);
 extern size_t __get_allocation_size(size_t size);
 extern void * __allocate_memory(size_t size,BOOL never_free,const char * file,int line);
 

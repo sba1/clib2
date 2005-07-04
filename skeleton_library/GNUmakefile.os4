@@ -37,7 +37,7 @@ WARNINGS = \
 
 CC = ppc-amigaos-gcc
 CPU =
-OPTIONS = -DNDEBUG
+OPTIONS = -DNDEBUG -mcrt=clib2-ts
 OPTIMIZE = -O
 DEBUG = -ggdb
 

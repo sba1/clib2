@@ -67,10 +67,10 @@ LONG _start(VOID);
 
 /****************************************************************************/
 
-STATIC struct SkeletonBase *ASM lib_init(REG (d0, struct SkeletonBase *sb ), REG (a0, BPTR segment_list ), REG (a6, APTR whatever ));
-STATIC struct SkeletonBase *ASM lib_open(REG (a6, APTR base ));
-STATIC BPTR ASM lib_expunge(REG (a6, APTR base ));
-STATIC BPTR ASM lib_close(REG (a6, APTR base ));
+STATIC struct SkeletonBase *ASM lib_init(REG(d0,struct SkeletonBase *sb),REG(a0,BPTR segment_list),REG(a6,APTR whatever));
+STATIC struct SkeletonBase *ASM lib_open(REG(a6,APTR base));
+STATIC BPTR ASM lib_expunge(REG(a6,APTR base));
+STATIC BPTR ASM lib_close(REG(a6,APTR base));
 
 /****************************************************************************/
 
@@ -435,7 +435,8 @@ STATIC CONST APTR lib_interfaces[] =
 
 /****************************************************************************/
 
-extern ULONG VecTable68K[];
+/* This is defined in the file "skeleton_68k.c". */
+extern CONST APTR VecTable68K[];
 
 /****************************************************************************/
 
@@ -460,6 +461,9 @@ CONST struct TagItem local_lib_create_tags[] =
 
 /****************************************************************************/
 
+/* This definition and how it is used makes sure that the library
+   version information will be visible even with an old 68k "Version"
+   command and not just with the OS4 "Version" command. */
 STATIC CONST UBYTE version_string[] = "$VER: " VSTRING;
 
 /****************************************************************************/

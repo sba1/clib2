@@ -1,0 +1,7 @@
+*.debug
+*.o
+*.library
+*.map
+*_rev.i
+*_rev.s
+ID

@@ -46,20 +46,26 @@
 
 /****************************************************************************/
 
+struct SkeletonBase;
+
+/****************************************************************************/
+
 struct UserData
 {
-	struct Library *	ud_SysBase;
+	struct Library *		ud_SysBase;
 
 	#if defined(__amigaos4__)
-	struct ExecIFace *	ud_IExec;
+	struct ExecIFace *		ud_IExec;
 	#endif /* __amigaos4__ */
 
-	ULONG				ud_UseCount;
+	struct SkeletonBase *	ud_SkeletonBase;
+
+	ULONG					ud_UseCount;
 };
 
 /****************************************************************************/
 
-BOOL UserLibInit(struct Library *SysBase,struct UserData *ud);
+BOOL UserLibInit(struct Library *SysBase,struct SkeletonBase *sb,struct UserData *ud);
 BOOL UserLibOpen(struct UserData *ud);
 VOID UserLibClose(struct UserData *ud);
 VOID UserLibExpunge(struct UserData *ud);

@@ -35,6 +35,10 @@
 
 /****************************************************************************/
 
+#include <dos.h>
+
+/****************************************************************************/
+
 /* The following function is called as part of the library initialization,
    right after the library is loaded. This function should perform only
    initialization operations which can be accomplished quickly and without
@@ -94,12 +98,33 @@ UserLibInit(
 BOOL
 UserLibOpen(struct UserData * ud)
 {
-	BOOL result;
+	BOOL result = FALSE;
+
+	/* For the AmigaOS4 build, invoke the clib2 shared library
+	   initialization code. Note that this is not strictly
+	   necessary. In fact, you should not need this functionality
+	   if you stick to use Amiga operating system routines only
+	   and stay away from using 'C' runtime library functions
+	   that are not reentrant, such as malloc() or fprintf().
+	   Use this feature only if you are porting code to the Amiga
+	   which cannot be easily converted to follow the AmigaOS
+	   API definitions only. */
+	#if defined(__amigaos4__) && defined(__THREAD_SAFE)
+	{
+		/* Note that the clib2 library initialization is
+		   called exactly once, when the first client
+		   opens this library. */
+		if(ud->ud_UseCount == 0 && !__lib_init(SysBase))
+			goto out;
+	}
+	#endif /* __amigaos4__ && __THREAD_SAFE */
 
 	/* Remember that one more customer is using this data structure. */
 	ud->ud_UseCount++;
 
 	result = TRUE;
+
+ out:
 
 	return(result);
 }
@@ -114,6 +139,25 @@ UserLibClose(struct UserData * ud)
 {
 	/* Remember that one less customer is using this data structure. */
 	ud->ud_UseCount--;
+
+	/* For the AmigaOS4 build, invoke the clib2 shared library
+	   cleanup code. Note that this is not strictly
+	   necessary. In fact, you should not need this functionality
+	   if you stick to use Amiga operating system routines only
+	   and stay away from using 'C' runtime library functions
+	   that are not reentrant, such as malloc() or fprintf().
+	   Use this feature only if you are porting code to the Amiga
+	   which cannot be easily converted to follow the AmigaOS
+	   API definitions only. */
+	#if defined(__amigaos4__) && defined(__THREAD_SAFE)
+	{
+		/* Note that the clib2 library cleanup code is
+		   called exactly once, when the first client
+		   opens this library. */
+		if(ud->ud_UseCount == 0)
+			__lib_exit();
+	}
+	#endif /* __amigaos4__ && __THREAD_SAFE */
 }
 
 /****************************************************************************/

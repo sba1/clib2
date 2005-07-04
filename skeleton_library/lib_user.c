@@ -152,8 +152,8 @@ UserLibClose(struct UserData * ud)
 	#if defined(__amigaos4__) && defined(__THREAD_SAFE)
 	{
 		/* Note that the clib2 library cleanup code is
-		   called exactly once, when the first client
-		   opens this library. */
+		   called exactly once, when the last client
+		   closes this library. */
 		if(ud->ud_UseCount == 0)
 			__lib_exit();
 	}

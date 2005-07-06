@@ -65,6 +65,8 @@ fchown(int file_descriptor, uid_t owner, gid_t group)
 	if(__check_abort_enabled)
 		__check_abort();
 
+	__stdio_lock();
+
 	fd = __get_file_descriptor(file_descriptor);
 	if(fd == NULL)
 	{
@@ -181,6 +183,8 @@ fchown(int file_descriptor, uid_t owner, gid_t group)
 		CurrentDir(old_current_dir);
 
 	PROFILE_ON();
+
+	__stdio_unlock();
 
 	RETURN(result);
 	return(result);

@@ -63,6 +63,8 @@ fsync(int file_descriptor)
 	assert( __fd[file_descriptor] != NULL );
 	assert( FLAG_IS_SET(__fd[file_descriptor]->fd_Flags,FDF_IN_USE) );
 
+	__stdio_lock();
+
 	fd = __get_file_descriptor(file_descriptor);
 	if(fd == NULL)
 	{
@@ -70,12 +72,18 @@ fsync(int file_descriptor)
 		goto out;
 	}
 
+	__fd_lock(fd);
+
 	if(__sync_fd(fd,1) < 0) /* flush everything */
 		goto out;
 
 	result = OK;
 
  out:
+
+	__fd_unlock(fd);
+
+	__stdio_unlock();
 
 	RETURN(result);
 	return(result);

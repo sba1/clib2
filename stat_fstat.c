@@ -52,8 +52,8 @@ fstat(int file_descriptor, struct stat * buffer)
 {
 	struct file_action_message fam;
 	D_S(struct FileInfoBlock,fib);
+	struct fd * fd = NULL;
 	int result = ERROR;
-	struct fd * fd;
 
 	ENTER();
 
@@ -64,6 +64,8 @@ fstat(int file_descriptor, struct stat * buffer)
 
 	if(__check_abort_enabled)
 		__check_abort();
+
+	__stdio_lock();
 
 	#if defined(CHECK_FOR_NULL_POINTERS)
 	{
@@ -88,6 +90,8 @@ fstat(int file_descriptor, struct stat * buffer)
 		goto out;
 	}
 
+	__fd_lock(fd);
+
 	SHOWMSG("calling the hook");
 
 	fam.fam_Action		= file_action_examine;
@@ -107,6 +111,10 @@ fstat(int file_descriptor, struct stat * buffer)
 	result = OK;
 
  out:
+
+	__fd_unlock(fd);
+
+	__stdio_unlock();
 
 	RETURN(result);
 	return(result);

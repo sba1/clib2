@@ -135,8 +135,10 @@ int
 tcgetattr(int file_descriptor,struct termios *user_tios)
 {
 	int result = ERROR;
-	struct fd *fd;
+	struct fd *fd = NULL;
 	struct termios *tios;
+
+	__stdio_lock();
 
 	if(user_tios == NULL)
 	{
@@ -150,6 +152,8 @@ tcgetattr(int file_descriptor,struct termios *user_tios)
 		__set_errno(EBADF);
 		goto out;
 	}
+
+	__fd_lock(fd);
 
 	if(FLAG_IS_SET(fd->fd_Flags,FDF_TERMIOS))
 	{
@@ -168,7 +172,11 @@ tcgetattr(int file_descriptor,struct termios *user_tios)
 
 	result = OK;
 
-out:
+ out:
+
+	__fd_unlock(fd);
+
+	__stdio_unlock();
 
 	return(result);
 }

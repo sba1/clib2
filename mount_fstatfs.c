@@ -66,6 +66,8 @@ fstatfs(int file_descriptor, struct statfs *buf)
 	if(__check_abort_enabled)
 		__check_abort();
 
+	__stdio_lock();
+
 	#if defined(CHECK_FOR_NULL_POINTERS)
 	{
 		if(buf == NULL)
@@ -134,6 +136,8 @@ fstatfs(int file_descriptor, struct statfs *buf)
  out:
 
 	__fd_unlock(fd);
+
+	__stdio_unlock();
 
 	UnLock(parent_dir);
 

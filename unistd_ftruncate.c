@@ -65,6 +65,8 @@ ftruncate(int file_descriptor, off_t length)
 
 	PROFILE_OFF();
 
+	__stdio_lock();
+
 	fd = __get_file_descriptor(file_descriptor);
 	if(fd == NULL)
 	{
@@ -199,6 +201,8 @@ ftruncate(int file_descriptor, off_t length)
 		Seek(fd->fd_DefaultFile,initial_position,OFFSET_CURRENT);
 
 	__fd_unlock(fd);
+
+	__stdio_unlock();
 
 	PROFILE_ON();
 

@@ -65,6 +65,8 @@ fchmod(int file_descriptor, mode_t mode)
 	if(__check_abort_enabled)
 		__check_abort();
 
+	__stdio_lock();
+
 	fd = __get_file_descriptor(file_descriptor);
 	if(fd == NULL)
 	{
@@ -168,6 +170,8 @@ fchmod(int file_descriptor, mode_t mode)
  out:
 
 	__fd_unlock(fd);
+
+	__stdio_unlock();
 
 	if(current_dir_changed)
 		CurrentDir(old_current_dir);

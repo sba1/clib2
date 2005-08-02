@@ -42,6 +42,7 @@
 
 /****************************************************************************/
 
+#define BUSY ((struct IORequest *)NULL)
 #define CANNOT !
 #define DO_NOTHING ((void)0)
 #define NO !

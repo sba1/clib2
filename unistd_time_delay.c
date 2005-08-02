@@ -106,7 +106,7 @@ __time_delay(unsigned long seconds,unsigned long microseconds)
 			{
 				ULONG seconds_now;
 
-				if(CheckIO((struct IORequest *)__timer_request))
+				if(CheckIO((struct IORequest *)__timer_request) == BUSY)
 					AbortIO((struct IORequest *)__timer_request);
 
 				WaitIO((struct IORequest *)__timer_request);

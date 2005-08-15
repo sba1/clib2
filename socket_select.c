@@ -809,12 +809,14 @@ select(int num_fds,fd_set *read_fds,fd_set *write_fds,fd_set *except_fds,struct 
 									{
 										if(FLAG_IS_SET(fd->fd_Flags,FDF_CACHE_POSITION))
 										{
-											if((ULONG)fib->fib_FileSize > fd->fd_Position)
+											/* Is there new data to read? */
+											if((ULONG)fib->fib_Size > fd->fd_Position)
 												got_input = TRUE;
 										}
 										else
 										{
-											if(fib->fib_FileSize != 0)
+											/* Does the pipe contain any data to read? */
+											if(fib->fib_Size != 0)
 												got_input = TRUE;
 										}
 									}
@@ -989,12 +991,12 @@ select(int num_fds,fd_set *read_fds,fd_set *write_fds,fd_set *except_fds,struct 
 									{
 										if(FLAG_IS_SET(fd->fd_Flags,FDF_CACHE_POSITION))
 										{
-											if((ULONG)fib->fib_FileSize > fd->fd_Position)
+											if((ULONG)fib->fib_Size > fd->fd_Position)
 												got_input = TRUE;
 										}
 										else
 										{
-											if(fib->fib_FileSize != 0)
+											if(fib->fib_Size != 0)
 												got_input = TRUE;
 										}
 									}

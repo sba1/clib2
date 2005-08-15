@@ -331,6 +331,14 @@ map_descriptor_sets(
 						SHOWMSG("file is unusable; we cannot examine the file.");
 						continue;
 					}
+
+					/* If we can't make assumptions about the file position, then
+					   this better be a pipe. */
+					if(FLAG_IS_CLEAR(fd->fd_Flags,FDF_CACHE_POSITION) && fib->fib_DirEntryType != ST_PIPEFILE)
+					{
+						SHOWMSG("file is unusable; it is not a file system and not a pipe.");
+						continue;
+					}
 				}
 
 				if(file_fds != NULL && file_fd < num_file_fds)

@@ -249,7 +249,7 @@ __wildcard_expand_init(void)
 
 			for(j = 0 ; j < arg_len ; j++)
 			{
-				if(arg[j] == '*' && last_c != '`')
+				if(arg[j] == '*' && last_c != '\'')
 					star_count++;
 
 				last_c = arg[j];
@@ -275,7 +275,7 @@ __wildcard_expand_init(void)
 				/* Replace each "*" with "#?". */
 				for(j = k = 0 ; j < arg_len ; j++)
 				{
-					if(arg[j] == '*' && last_c != '`')
+					if(arg[j] == '*' && last_c != '\'')
 					{
 						replacement_arg[k++] = '#';
 						replacement_arg[k++] = '?';

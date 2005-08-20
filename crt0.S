@@ -6,6 +6,7 @@
 
 	.text
 
+	.globl  main
 	.globl  _main
 	.globl  _start
 

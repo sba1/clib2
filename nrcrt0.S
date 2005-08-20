@@ -56,6 +56,7 @@ MEMF_CLEAR = 65536
 
 	.text
 
+	.globl  _main
 	.globl	__main
 	.globl	___is_resident
 

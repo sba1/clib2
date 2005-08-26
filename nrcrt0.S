@@ -56,7 +56,7 @@ MEMF_CLEAR = 65536
 
 	.text
 
-	.globl  _main
+	.globl  _main			| This enforces linkage against the main() function
 	.globl	__main
 	.globl	___is_resident
 

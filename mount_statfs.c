@@ -84,6 +84,14 @@ statfs(const char *path, struct statfs *buf)
 	{
 		if(__unix_path_semantics)
 		{
+			if(path[0] == '\0')
+			{
+				SHOWMSG("no name given");
+
+				__set_errno(ENOENT);
+				goto out;
+			}
+
 			if(__translate_unix_to_amiga_path_name(&path,&path_nti) != 0)
 				goto out;
 

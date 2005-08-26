@@ -101,7 +101,7 @@ logb(double x)
 
 	if(x == 0.0)
 	{
-		result = -__get_huge_val();
+		result = -__inf();
 		goto out;
 	}
 

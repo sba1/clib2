@@ -35,7 +35,7 @@
 
 	.text
 
-	.globl  _main
+	.globl  _main	| This enforces linkage against the main() function
 	.globl	__main
 
 |-----------------------------------------------------------------------------

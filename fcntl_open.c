@@ -158,6 +158,14 @@ open(const char *path_name, int open_flag, ... /* mode_t mode */ )
 	{
 		if(__unix_path_semantics)
 		{
+			if(path_name[0] == '\0')
+			{
+				SHOWMSG("no name given");
+
+				__set_errno(ENOENT);
+				goto out;
+			}
+
 			if(__translate_unix_to_amiga_path_name(&path_name,&path_name_nti) != 0)
 				goto out;
 

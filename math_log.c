@@ -252,8 +252,7 @@ log(double x)
 	{
 		__set_errno(ERANGE);
 
-		/* This should really be minus infinity. */
-		result = (-__get_huge_val());
+		result = -__inf();
 	}
 
 	return(result);

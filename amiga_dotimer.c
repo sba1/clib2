@@ -67,9 +67,10 @@ DoTimer(struct timeval *tv,LONG unit,LONG command)
 	#if defined(__amigaos4__)
 	{
 		mp = AllocSysObjectTags(ASOT_PORT,
-			ASOPORT_Action,	PA_SIGNAL,
-			ASOPORT_Signal,	SIGB_SINGLE,
-			ASOPORT_Target,	FindTask(NULL),
+			ASOPORT_Action,			PA_SIGNAL,
+			ASOPORT_AllocSignal,	FALSE,
+			ASOPORT_Signal,			SIGB_SINGLE,
+			ASOPORT_Target,			FindTask(NULL),
 		TAG_DONE);
 
 		if(mp == NULL)
@@ -113,7 +114,7 @@ DoTimer(struct timeval *tv,LONG unit,LONG command)
 
 	PROFILE_OFF();
 
-	SetSignal(0,SIGF_SINGLE);
+	SetSignal(0,(1UL << mp->mp_SigBit));
 
 	error = DoIO((struct IORequest *)tr);
 

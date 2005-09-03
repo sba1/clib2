@@ -68,7 +68,7 @@ DoTimer(struct timeval *tv,LONG unit,LONG command)
 	{
 		mp = AllocSysObjectTags(ASOT_PORT,
 			ASOPORT_Action,			PA_SIGNAL,
-			ASOPORT_AllocSignal,	FALSE,
+			ASOPORT_AllocSig,	FALSE,
 			ASOPORT_Signal,			SIGB_SINGLE,
 			ASOPORT_Target,			FindTask(NULL),
 		TAG_DONE);

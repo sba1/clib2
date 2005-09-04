@@ -136,9 +136,9 @@ call_main(void)
 
 	/* If we end up here with the __stack_overflow variable
 	   set then the stack overflow handler dropped into
-	   longjmp() and _exit() did not get called. This
+	   longjmp() and exit() did not get called. This
 	   means that we will have to show the error message
-	   and invoke _exit() all on our own. */
+	   and invoke exit() all on our own. */
 	if(__stack_overflow)
 	{
 		SHOWMSG("we have a stack overflow");
@@ -149,7 +149,7 @@ call_main(void)
 		__show_error("Stack overflow detected");
 
 		if(setjmp(__exit_jmp_buf) == 0)
-			_exit(RETURN_FAIL);
+			exit(RETURN_FAIL);
 	}
 
 	/* If necessary, print stack size usage information. */

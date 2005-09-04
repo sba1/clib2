@@ -154,7 +154,7 @@ typedef struct
 #define L_tmpnam 10
 
 /* Maximum number of unique file names tmpnam() can generate */
-#define TMP_MAX 0x3ffff
+#define TMP_MAX 0x40000
 
 /****************************************************************************/
 

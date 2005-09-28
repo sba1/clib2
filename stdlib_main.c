@@ -73,6 +73,8 @@ BOOL NOCOMMON __stack_overflow;
 STATIC int
 call_main(void)
 {
+	volatile LONG saved_io_err;
+
 	ENTER();
 
 	/* This plants the return buffer for _exit(). */
@@ -128,6 +130,9 @@ call_main(void)
 
  out:
 
+	/* Save the current IoErr() value in case it is needed later. */
+	saved_io_err = IoErr();
+
 	/* Switch off function name printing, if it was enabled. */
 	__hide_profile_names();
 
@@ -170,6 +175,9 @@ call_main(void)
 	_fini();
 
 	SHOWMSG("done.");
+
+	/* Restore the IoErr() value before we return. */
+	SetIoErr(saved_io_err);
 
 	RETURN(__exit_value);
 	return(__exit_value);

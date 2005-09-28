@@ -178,10 +178,7 @@ strtoul(const char *str, char **ptr, int base)
 
 	/* Did we convert anything? */
 	if(num_digits_converted == 0)
-	{
-		__set_errno(ERANGE);
 		goto out;
-	}
 
 	if(is_negative)
 		result = (-sum);

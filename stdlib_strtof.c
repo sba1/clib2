@@ -364,8 +364,6 @@ strtof(const char *str, char ** ptr)
 
 		if(num_digits_converted == 0)
 		{
-			__set_errno(ERANGE);
-
 			sum = 0;
 		}
 		else

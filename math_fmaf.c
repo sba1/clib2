@@ -44,8 +44,9 @@
 float
 fmaf(float x,float y,float z)
 {
-	/* ZZZ unimplemented */
-	return(0);
+	/* ZZZ this should be a *fused* multiply & add, and
+	   not a sequential operation as declared below! */
+	return((x * y) + z);
 }
 
 /****************************************************************************/

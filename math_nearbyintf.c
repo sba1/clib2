@@ -44,8 +44,8 @@
 float
 nearbyintf(float x)
 {
-	/* ZZZ unimplemented */
-	return(0);
+	/* ZZZ is this such a good idea? */
+	return(rintf(x));
 }
 
 /****************************************************************************/

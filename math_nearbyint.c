@@ -44,8 +44,8 @@
 double
 nearbyint(double x)
 {
-	/* ZZZ unimplemented */
-	return(0);
+	/* ZZZ is this such a good idea? */
+	return(rint(x));
 }
 
 /****************************************************************************/

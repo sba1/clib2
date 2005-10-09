@@ -48,7 +48,7 @@
 /****************************************************************************/
 
 int
-bind(int sockfd,struct sockaddr *name,int namelen)
+bind(int sockfd,const struct sockaddr *name,socklen_t namelen)
 {
 	struct fd * fd;
 	int result = ERROR;
@@ -84,7 +84,7 @@ bind(int sockfd,struct sockaddr *name,int namelen)
 		goto out;
 
 	PROFILE_OFF();
-	result = __bind((LONG)fd->fd_DefaultFile,name,namelen);
+	result = __bind((LONG)fd->fd_DefaultFile,(struct sockaddr *)name,namelen);
 	PROFILE_ON();
 
  out:

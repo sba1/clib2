@@ -48,7 +48,7 @@
 /****************************************************************************/
 
 int
-gethostname(const char *hostname,int size)
+gethostname(const char *hostname,size_t size)
 {
 	int result = ERROR;
 

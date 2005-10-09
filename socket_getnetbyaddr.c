@@ -42,7 +42,7 @@
 /****************************************************************************/
 
 struct netent *
-getnetbyaddr(long net,int type)
+getnetbyaddr(in_addr_t net,int type)
 {
 	struct netent *result = NULL;
 

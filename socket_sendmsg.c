@@ -48,7 +48,7 @@
 /****************************************************************************/
 
 int
-sendmsg(int sockfd,struct msghdr *msg,int flags)
+sendmsg(int sockfd,const struct msghdr *msg,int flags)
 {
 	struct fd * fd;
 	int result = ERROR;
@@ -84,7 +84,7 @@ sendmsg(int sockfd,struct msghdr *msg,int flags)
 		goto out;
 
 	PROFILE_OFF();
-	result = __sendmsg((LONG)fd->fd_DefaultFile,msg,flags);
+	result = __sendmsg((LONG)fd->fd_DefaultFile,(struct msghdr *)msg,flags);
 	PROFILE_ON();
 
  out:

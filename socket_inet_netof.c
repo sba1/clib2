@@ -41,10 +41,10 @@
 
 /****************************************************************************/
 
-unsigned long
+in_addr_t
 inet_netof(struct in_addr in)
 {
-	unsigned long result;
+	in_addr_t result;
 
 	ENTER();
 

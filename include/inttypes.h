@@ -56,6 +56,12 @@
 
 /****************************************************************************/
 
+#ifdef __cplusplus
+extern "C" {
+#endif /* __cplusplus */
+
+/****************************************************************************/
+
 /* printf() format specifications for different types. */
 
 /* "Decimal" */
@@ -312,6 +318,12 @@ extern uintmax_t strtoumax(const char *str, char **ptr, int base);
 
 extern intmax_t wcstoimax(const wchar_t *str, char **ptr, int base);
 extern uintmax_t wcstoumax(const wchar_t *str, char **ptr, int base);
+
+/****************************************************************************/
+
+#ifdef __cplusplus
+}
+#endif /* __cplusplus */
 
 /****************************************************************************/
 

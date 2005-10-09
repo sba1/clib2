@@ -31,22 +31,12 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef _FCNTL_H
-#define _FCNTL_H
+#ifndef _SYS_IOCCOM_H
+#define _SYS_IOCCOM_H
 
 /****************************************************************************/
 
 /* The following is not part of the ISO 'C' (1994) standard. */
-
-/****************************************************************************/
-
-#ifndef _SYS_TYPES_H
-#include <sys/types.h>
-#endif /* _SYS_TYPES_H */
-
-#ifndef _STDDEF_H
-#include <stddef.h>
-#endif /* _STDDEF_H */
 
 /****************************************************************************/
 
@@ -56,62 +46,26 @@ extern "C" {
 
 /****************************************************************************/
 
-#define O_RDONLY	0
-#define O_WRONLY	1
-#define O_RDWR		2
+#define	IOCPARM_MASK	0x1fff		/* parameter length, at most 13 bits */
+#define	IOCPARM_LEN(x)	(((x) >> 16) & IOCPARM_MASK)
+#define	IOCBASECMD(x)	((x) & ~(IOCPARM_MASK << 16))
+#define	IOCGROUP(x)		(((x) >> 8) & 0xff)
 
-#define O_APPEND	(1<<2)
-#define O_CREAT		(1<<3)
-#define O_EXCL		(1<<4)
-#define O_TRUNC		(1<<5)
-#define O_NONBLOCK	(1<<6)
-#define O_NDELAY	O_NONBLOCK
-#define O_SYNC		(0)
-#define O_NOCTTY	(0)
-#define O_ASYNC		(1<<7)
+#define	IOCPARM_MAX	NBPG	/* max size of ioctl args, mult. of NBPG */
 
-/****************************************************************************/
+#define	IOC_VOID	(0x20000000UL)		/* no parameters */
+#define	IOC_OUT		(0x40000000UL)		/* copy parameters out */
+#define	IOC_IN		(0x80000000UL)		/* copy parameters in */
+#define	IOC_INOUT	(IOC_IN|IOC_OUT)	/* copy paramters in and out */
+#define	IOC_DIRMASK	(0xe0000000UL)		/* mask for IN/OUT/VOID */
 
-#define F_DUPFD		0
-#define F_GETFD		1
-#define F_SETFD		2
-#define F_GETFL		3
-#define F_SETFL		4
-#define F_GETOWN	5
-#define F_SETOWN	6
+#define	_IOC(inout,group,num,len) \
+	(inout | ((len & IOCPARM_MASK) << 16) | ((group) << 8) | (num))
 
-/****************************************************************************/
-
-/*
- * Advisory file segment locking data type -
- * information passed to system by user
- */
-struct flock
-{
-	short	l_type;		/* lock type: read/write, etc. */
-	short	l_whence;	/* type of l_start */
-	off_t	l_start;	/* starting offset */
-	off_t	l_len;		/* len = 0 means until end of file */
-	pid_t	l_pid;		/* lock owner */
-};
-
-#define F_GETLK		100	/* get record locking information */
-#define F_SETLK		101	/* set record locking information */
-#define F_SETLKW	102	/* F_SETLK; wait if blocked */
-
-#define F_RDLCK		1	/* shared or read lock */
-#define F_UNLCK		2	/* unlock */
-#define F_WRLCK		3	/* exclusive or write lock */
-
-/****************************************************************************/
-
-extern int open(const char *path_name, int open_flag, ... /* mode_t mode */ );
-extern int creat(const char * path_name, mode_t mode);
-extern int close(int file_descriptor);
-extern off_t lseek(int file_descriptor, off_t offset, int mode);
-extern ssize_t read(int file_descriptor, void * buffer, size_t num_bytes);
-extern ssize_t write(int file_descriptor, const void * buffer, size_t num_bytes);
-extern int fcntl(int file_descriptor, int cmd, ... /* int arg */ );
+#define	_IO(g,n)		_IOC(IOC_VOID,	(g), (n), 0)
+#define	_IOR(g,n,t)		_IOC(IOC_OUT,	(g), (n), sizeof(t))
+#define	_IOW(g,n,t)		_IOC(IOC_IN,	(g), (n), sizeof(t))
+#define	_IOWR(g,n,t)	_IOC(IOC_INOUT,	(g), (n), sizeof(t))
 
 /****************************************************************************/
 
@@ -121,4 +75,4 @@ extern int fcntl(int file_descriptor, int cmd, ... /* int arg */ );
 
 /****************************************************************************/
 
-#endif /* _FCNTL_H */
+#endif /* _SYS_IOCCOM_H */

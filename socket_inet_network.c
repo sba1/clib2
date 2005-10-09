@@ -47,10 +47,10 @@
 
 /****************************************************************************/
 
-unsigned long
+in_addr_t
 inet_network(const char *cp)
 {
-	unsigned long result = ~0UL;
+	in_addr_t result = ~0UL;
 
 	ENTER();
 

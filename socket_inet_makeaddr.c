@@ -42,7 +42,7 @@
 /****************************************************************************/
 
 struct in_addr
-inet_makeaddr(int net,int host)
+inet_makeaddr(in_addr_t net,in_addr_t host)
 {
 	struct in_addr result;
 

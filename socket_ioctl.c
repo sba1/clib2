@@ -52,7 +52,7 @@
 /****************************************************************************/
 
 int
-ioctl(int sockfd,unsigned long request, ... /* char *arg */)
+ioctl(int sockfd,int request, ... /* char *arg */)
 {
 	va_list arg;
 	char * param;

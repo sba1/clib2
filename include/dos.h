@@ -40,12 +40,6 @@
 
 /****************************************************************************/
 
-#ifdef __cplusplus
-extern "C" {
-#endif /* __cplusplus */
-
-/****************************************************************************/
-
 #ifndef _STDIO_H
 #include <stdio.h>
 #endif /* _STDIO_H */
@@ -59,6 +53,12 @@ extern "C" {
 #ifndef WORKBENCH_STARTUP_H
 #include <workbench/startup.h>
 #endif /* WORKBENCH_STARTUP_H */
+
+/****************************************************************************/
+
+#ifdef __cplusplus
+extern "C" {
+#endif /* __cplusplus */
 
 /****************************************************************************/
 

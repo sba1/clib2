@@ -40,6 +40,22 @@
 #include <netinet/in.h>
 #endif /* _NETINET_IN_H */
 
+#ifndef _SYS_SOCKET_H
+#include <sys/socket.h>
+#endif /* _SYS_SOCKET_H */
+
+#ifndef _SYS_FILIO_H
+#include <sys/filio.h>
+#endif /* _SYS_FILIO_H */
+
+#ifndef _ARPA_INET_H
+#include <arpa/inet.h>
+#endif /* _ARPA_INET_H */
+
+#ifndef _NETDB_H
+#include <netdb.h>
+#endif /* _NETDB_H */
+
 /****************************************************************************/
 
 #ifndef _STDIO_HEADERS_H

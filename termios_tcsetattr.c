@@ -135,7 +135,7 @@ int
 tcsetattr(int file_descriptor,int how,struct termios *tios)
 {
 	int result = ERROR;
-	struct fd *fd;
+	struct fd *fd = NULL;
 	struct termios new_tios;
 	int type;
 

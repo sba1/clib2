@@ -55,7 +55,7 @@ readv(int file_descriptor,const struct iovec *iov,int vec_count)
 	ssize_t total_num_bytes_read;
 	ssize_t part_num_bytes_read;
 	ssize_t num_bytes_read;
-	struct fd * fd;
+	struct fd * fd = NULL;
 	int i;
 
 	ENTER();

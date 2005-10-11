@@ -52,7 +52,7 @@
 
 #ifdef __cplusplus
 extern "C" {
-#endif #endif /* __cplusplus */
+#endif /* __cplusplus */
 
 /****************************************************************************/
 

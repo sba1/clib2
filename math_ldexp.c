@@ -51,7 +51,7 @@
 /****************************************************************************/
 
 double
-ldexp(double value, int exp)
+ldexp(double x, int exp)
 {
 	double result;
 

@@ -31,8 +31,8 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef _CYTPE_H
-#define _CYTPE_H
+#ifndef _CTYPE_H
+#define _CTYPE_H
 
 /****************************************************************************/
 
@@ -120,4 +120,4 @@ extern const unsigned char __ctype_table[];
 
 /****************************************************************************/
 
-#endif /* _CYTPE_H */
+#endif /* _CTYPE_H */

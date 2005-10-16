@@ -244,6 +244,7 @@ extern float tanhf(float x);
 
 extern float acoshf(float x);
 extern float asinhf(float x);
+extern float atanhf(float x);
 extern float cbrtf(float x);
 extern float copysignf(float x, float y);
 extern float erfcf(float x);
@@ -275,6 +276,7 @@ extern int ilogbf(float x);
 
 extern double acosh(double x);
 extern double asinh(double x);
+extern double atanh(double x);
 extern double cbrt(double x);
 extern double copysign(double x, double y);
 extern double erf(double x);

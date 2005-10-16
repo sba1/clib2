@@ -191,6 +191,8 @@ MATH_OBJ = \
 	math_atan2.o \
 	math_atan2f.o \
 	math_atanf.o \
+	math_atanh.o \
+	math_atanhf.o \
 	math_cbrt.o \
 	math_cbrtf.o \
 	math_ceil.o \

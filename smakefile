@@ -353,7 +353,9 @@ SOCKET_OBJ = \
 	socket_shutdown.o \
 	socket_socket.o \
 	socket_hook_entry.o \
-	socket_hstrerror.o
+	socket_hstrerror.o \
+	socket_get_h_errno.o \
+	socket_set_h_errno.o
 
 STAT_OBJ = \
 	stat_chmod.o \

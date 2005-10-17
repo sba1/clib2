@@ -94,6 +94,8 @@ extern int NOCOMMON h_errno;
 
 extern struct fd * __get_file_descriptor_socket(int socket_descriptor);
 extern int __socket_hook_entry(struct fd * fd,struct file_action_message * fam);
+extern int __get_h_errno(void);
+extern void __set_h_errno(int new_h_errno);
 
 /****************************************************************************/
 

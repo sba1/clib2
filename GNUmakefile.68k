@@ -755,6 +755,7 @@ NET_LIB = \
 	socket_ioctl.o \
 	socket_isdaemon.o \
 	socket_listen.o \
+	socket_obtain_daemon.o \
 	socket_recv.o \
 	socket_recvfrom.o \
 	socket_recvmsg.o \

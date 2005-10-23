@@ -104,10 +104,10 @@ __obtain_daemon_message(VOID)
 
 			PROFILE_ON();
 
-			/* If it's safe to call IsServerProcess(), ask if the
+			/* If it's safe to call ProcessIsServer(), ask if the
 			   "struct DaemonMessage" pointer is valid. If it's not,
 			   set the message pointer to NULL, ignoring it altogether. */
-			if(have_server_api && NOT IsServerProcess())
+			if(have_server_api && NOT __ProcessIsServer(NULL))
 				dm = NULL;
 		}
 

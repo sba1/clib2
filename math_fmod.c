@@ -102,7 +102,7 @@ static const double
 one = 1.0, 
 Zero[] = {0.0, -0.0,};
 
-INLINE STATIC const double
+INLINE STATIC double
 __fmod(double x,double y)
 {
 	int n,hx,hy,hz,ix,iy,sx,i;

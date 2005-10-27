@@ -135,7 +135,7 @@ ARG_CONSTRUCTOR(arg_init)
 		while(is_space(*arg_str))
 			arg_str++;
 
-		arg_len = strlen(arg_str);
+		arg_len = strlen((char *)arg_str);
 
 		while(arg_len > 0 && is_space(arg_str[arg_len - 1]))
 			arg_len--;

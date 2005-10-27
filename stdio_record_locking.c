@@ -462,7 +462,7 @@ create_file_lock_node(struct fd * fd,struct FileLockNode ** result_ptr)
 		goto out;
 	}
 
-	strcpy(fln->fln_FileName,fib->fib_FileName);
+	strcpy((char *)fln->fln_FileName,fib->fib_FileName);
 
 	NewList((struct List *)&fln->fln_LockedRegionList);
 
@@ -523,7 +523,7 @@ find_file_lock_node_by_drawer_and_name(
 
 		if(status == LOCK_SAME)
 		{
-			if(Stricmp(fln->fln_FileName,file_name) == SAME)
+			if(Stricmp((STRPTR)fln->fln_FileName,file_name) == SAME)
 			{
 				error = OK;
 

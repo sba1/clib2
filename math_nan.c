@@ -47,7 +47,7 @@
 /****************************************************************************/
 
 double
-nan(const char * UNUSED tagp)
+nan(const char * UNUSED unused_tagp)
 {
 	union ieee_double x;
 

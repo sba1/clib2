@@ -139,7 +139,7 @@ __tanh(double x)
 
 static const double one=1.0, two=2.0, tiny = 1.0e-300;
 
-INLINE STATIC const double
+INLINE STATIC double
 __tanh(double x)
 {
 	double t,z;

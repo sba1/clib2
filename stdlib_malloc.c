@@ -94,7 +94,7 @@ __get_allocation_size(size_t size)
 /****************************************************************************/
 
 void *
-__allocate_memory(size_t size,BOOL never_free,const char * UNUSED file,int UNUSED line)
+__allocate_memory(size_t size,BOOL never_free,const char * UNUSED unused_file,int UNUSED unused_line)
 {
 	struct MemoryNode * mn;
 	size_t allocation_size;

@@ -152,7 +152,7 @@ __ceil(double x)
 
 static const double huge = 1.0e300;
 
-INLINE STATIC const double
+INLINE STATIC double
 __ceil(double x)
 {
 	int i0,i1,j0;

@@ -64,7 +64,7 @@ lroundf(float x)
   w &= 0x7fffff;
   w |= 0x800000;
 
-  if (exponent_less_127 < (8 * sizeof (long int)) - 1)
+  if (exponent_less_127 < (LONG)(8 * sizeof (long int)) - 1)
     {
       if (exponent_less_127 < 0)
         return exponent_less_127 < -1 ? 0 : sign;

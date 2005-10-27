@@ -150,7 +150,7 @@ Lg6 = 1.531383769920937332e-01,  /* 3FC39A09 D078C69F */
 Lg7 = 1.479819860511658591e-01,  /* 3FC2F112 DF3E5244 */
 zero = 0.0;
 
-INLINE STATIC const double
+INLINE STATIC double
 __log(double x)
 {
 	double hfsq,f,s,z,R,w,t1,t2,dk;

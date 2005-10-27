@@ -137,7 +137,7 @@ __sin(double x)
 
 #if defined(PPC_FLOATING_POINT_SUPPORT)
 
-INLINE STATIC const double
+INLINE STATIC double
 __sin(double x)
 {
 	double y[2],z=0.0;

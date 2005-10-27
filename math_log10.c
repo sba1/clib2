@@ -144,7 +144,7 @@ log10_2hi  =  3.01029995663611771306e-01, /* 0x3FD34413, 0x509F6000 */
 log10_2lo  =  3.69423907715893078616e-13, /* 0x3D59FEF3, 0x11F12B36 */
 zero       =  0.0;
 
-INLINE STATIC const double
+INLINE STATIC double
 __log10(double x)
 {
 	double y,z;

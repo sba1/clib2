@@ -139,7 +139,7 @@ __sqrt(double x)
 
 static	const double	one	= 1.0, tiny=1.0e-300;
 
-INLINE STATIC const double
+INLINE STATIC double
 __sqrt(double x)
 {
 	double z;

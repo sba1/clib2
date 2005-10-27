@@ -169,7 +169,7 @@ static const double
 one   = 1.0,
 huge   = 1.0e300;
 
-INLINE STATIC const double
+INLINE STATIC double
 __atan(double x)
 {
 	double w,s1,s2,z;

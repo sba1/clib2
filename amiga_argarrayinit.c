@@ -61,11 +61,11 @@ struct DiskObject * CXLIB_disko;
 STRPTR *
 ArgArrayInit(LONG argc, CONST_STRPTR * argv)
 {
-	unsigned char ** result = NULL;
+	STRPTR * result = NULL;
 
 	if(argc != 0) /* run from CLI */
 	{
-		int i;
+		LONG i;
 
 		if(argc == 1)
 			goto out; /* skip command name */

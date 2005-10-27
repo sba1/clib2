@@ -47,7 +47,7 @@
 /****************************************************************************/
 
 float
-nanf(const char * UNUSED tagp)
+nanf(const char * UNUSED unused_tagp)
 {
 	union ieee_single x;
 

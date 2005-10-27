@@ -134,7 +134,7 @@ __fabs(double x)
 
 /****************************************************************************/
 
-INLINE STATIC const double
+INLINE STATIC double
 __fabs(double x)
 {
 	double res;

@@ -70,7 +70,7 @@ __logb(double x)
 
 #if defined(PPC_FLOATING_POINT_SUPPORT)
 
-INLINE STATIC const double
+INLINE STATIC double
 __logb(double x)
 {
 	unsigned int lx,ix;

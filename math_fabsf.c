@@ -108,7 +108,7 @@ __fabsf(float x)
 
 /****************************************************************************/
 
-INLINE STATIC const float
+INLINE STATIC float
 __fabsf(float number)
 {
 	union ieee_single x;

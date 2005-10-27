@@ -146,7 +146,7 @@ __frexp(double x,int * nptr)
 static const double
 two54 =  1.80143985094819840000e+16; /* 0x43500000, 0x00000000 */
 
-INLINE STATIC const double
+INLINE STATIC double
 __frexp(double x,int * eptr)
 {
 	int hx, ix, lx;

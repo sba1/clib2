@@ -329,6 +329,8 @@ int __rem_pio2(double x, double *y)
 	if(ix>=0x7ff00000) {		/* x is inf or NaN */
 	    y[0]=y[1]=x-x; return 0;
 	}
+	/* keep the compiler happy */
+	z = 0;
     /* set z = __scalbn(|x|,ilogb(x)-23) */
 	GET_LOW_WORD(low,x);
 	SET_LOW_WORD(z,low);

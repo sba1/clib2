@@ -139,7 +139,7 @@ __sinh(double x)
 
 static const double one = 1.0, shuge = 1.0e307;
 
-INLINE STATIC const double
+INLINE STATIC double
 __sinh(double x)
 {	
 	double t,w,h;

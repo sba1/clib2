@@ -116,7 +116,10 @@ __allocate_memory(size_t size,BOOL never_free,const char * UNUSED unused_file,in
 
 	/* Zero length allocations are by default rejected. */
 	if(size == 0)
+	{
+		__set_errno(EINVAL);
 		goto out;
+	}
 
 	if(__free_memory_threshold > 0 && AvailMem(MEMF_ANY|MEMF_LARGEST) < __free_memory_threshold)
 	{

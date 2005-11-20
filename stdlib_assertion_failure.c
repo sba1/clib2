@@ -101,7 +101,7 @@ __assertion_failure(
 
 				es.es_StructSize	= sizeof(es);
 				es.es_Title			= (STRPTR)__program_name;
-				es.es_TextFormat	= (STRPTR)"Assertion of expression\n\"%s\"\nfailed in file \"%s\", line %ld.";
+				es.es_TextFormat	= (STRPTR)"Assertion of condition\n\"%s\"\nfailed in file \"%s\", line %ld.";
 				es.es_GadgetFormat	= (STRPTR)"Sorry";
 
 				EasyRequest(NULL,&es,NULL,

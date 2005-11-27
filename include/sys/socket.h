@@ -30,12 +30,12 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  *
- ****************************************************************************/
+ *****************************************************************************
  *
  * Documentation and source code for this library, and the most recent library
  * build are available from <http://sourceforge.net/projects/clib2>.
  *
- ****************************************************************************/
+ *****************************************************************************
  */
 
 #ifndef _SYS_SOCKET_H

@@ -522,6 +522,8 @@ UNIX_LIB = \
 	stdio_record_locking.o \
 	stdio_remove.o \
 	stdio_rename.o \
+	stdlib_alloca.o \
+	stdlib_alloca_cleanup.o \
 	stdlib_arg.o \
 	stdlib_main.o \
 	stdlib_mkdtemp.o \

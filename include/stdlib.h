@@ -29,6 +29,13 @@
  * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
+ *
+ ****************************************************************************/
+ *
+ * Documentation and source code for this library, and the most recent library
+ * build are available from <http://sourceforge.net/projects/clib2>.
+ *
+ ****************************************************************************/
  */
 
 #ifndef _STDLIB_H
@@ -153,7 +160,7 @@ extern int rand_r(unsigned int * seed);
 
 /****************************************************************************/
 
-#if defined(__GNUC__)
+#if defined(__GNUC__) && !defined(__USE_CLIB2_ALLOCA)
  #undef alloca
  #define alloca(size) __builtin_alloca(size)
 #else

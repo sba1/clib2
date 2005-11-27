@@ -29,6 +29,13 @@
  * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
+ *
+ ****************************************************************************/
+ *
+ * Documentation and source code for this library, and the most recent library
+ * build are available from <http://sourceforge.net/projects/clib2>.
+ *
+ ****************************************************************************/
  */
 
 #ifndef	_STDINT_H
@@ -36,7 +43,8 @@
 
 /****************************************************************************/
 
-/* The following is not part of the ISO 'C' (1994) standard. */
+/* The following is not part of the ISO 'C' (1994) standard, but it should
+   be part of ISO/IEC 9899:1999, also known as "C99". */
 
 /****************************************************************************/
 

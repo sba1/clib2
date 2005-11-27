@@ -139,12 +139,9 @@ extern void * __allocate_memory(size_t size,BOOL never_free,const char * file,in
 
 /* stdlib_free.c */
 extern struct MemoryNode * __find_memory_node(void * address);
-extern void __force_free(void * ptr,const char * file,int line);
 extern void __check_memory_allocations(const char * file,int line);
+extern void __free_memory(void * ptr,BOOL force,const char * file,int line);
 extern void __free_memory_node(struct MemoryNode * mn,const char * file,int line);
-
-/* stdlib_alloca.c */
-extern void __alloca_cleanup(const char * file,int line);
 
 /****************************************************************************/
 

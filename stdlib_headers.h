@@ -154,6 +154,10 @@ extern BOOL	NOCOMMON	__exit_blocked;
 
 /****************************************************************************/
 
+extern void NOCOMMON (*__alloca_cleanup)(const char * file,int line);
+
+/****************************************************************************/
+
 extern unsigned int NOCOMMON (* __get_default_stack_size)(void);
 
 /****************************************************************************/

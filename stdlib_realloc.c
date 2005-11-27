@@ -51,6 +51,7 @@ __static void *
 __realloc(void *ptr,size_t size,const char * file,int line)
 {
 	void * result = NULL;
+	BOOL locked = FALSE;
 
 	ENTER();
 
@@ -79,6 +80,9 @@ __realloc(void *ptr,size_t size,const char * file,int line)
 		BOOL reallocate;
 
 		assert( ptr != NULL );
+
+		__memory_lock();
+		locked = TRUE;
 
 		/* Try to find the allocation in the list. */
 		mn = __find_memory_node(ptr);
@@ -181,6 +185,9 @@ __realloc(void *ptr,size_t size,const char * file,int line)
 	}
 
  out:
+
+	if(locked)
+		__memory_unlock();
 
 	if(result == NULL)
 		SHOWMSG("ouch! realloc failed");

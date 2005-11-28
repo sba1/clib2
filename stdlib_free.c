@@ -372,6 +372,9 @@ remove_and_free_memory_node(struct MemoryNode * mn)
 	else
 		FreeMem(mn,allocation_size);
 
+	__current_memory_allocated -= allocation_size;
+	__current_num_memory_chunks_allocated--;
+
 	__memory_unlock();
 }
 
@@ -412,9 +415,6 @@ __free_memory_node(struct MemoryNode * mn,const char * UNUSED file,int UNUSED li
 			}
 			else
 			{
-				__current_memory_allocated -= size;
-				__current_num_memory_chunks_allocated--;
-
 				remove_and_free_memory_node(mn);
 			}
 		}

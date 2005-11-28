@@ -170,6 +170,11 @@ __alloca(size_t size,const char * file,int line)
 
 	__memory_unlock();
 
+	/* If we are about to return NULL and a trap function is
+	   provided, call it rather than returning NULL. */
+	if(result == NULL && __alloca_trap != NULL)
+		(*__alloca_trap)();
+
 	return(result);
 }
 

@@ -197,6 +197,10 @@ extern BOOL NOCOMMON __lib_startup;
 
 /****************************************************************************/
 
+extern void NOCOMMON (*__alloca_trap)(void);
+
+/****************************************************************************/
+
 #ifndef _STDLIB_PROTOS_H
 #include "stdlib_protos.h"
 #endif /* _STDLIB_PROTOS_H */

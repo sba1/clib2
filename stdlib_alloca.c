@@ -138,6 +138,10 @@ __alloca(size_t size,const char * file,int line)
 
 	__memory_lock();
 
+	/* Initialize this if it hasn't been taken care of yet. */
+	if(alloca_memory_list.mlh_Head == NULL)
+		NewList((struct List *)&alloca_memory_list);
+
 	__alloca_cleanup = alloca_cleanup;
 	(*__alloca_cleanup)(file,line);
 

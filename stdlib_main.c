@@ -571,28 +571,3 @@ _main(void)
 
 	return(return_code);
 }
-
-/****************************************************************************/
-
-/* The following is automatically called by the main() function through code
-   inserted by GCC. In theory, this could be removed by updating the machine
-   definition, but for now we'll just keep this stub around. It is intended
-   to call the constructor functions, but we do this in our own _main()
-   anyway. */
-
-#if defined(__GNUC__)
-
-/****************************************************************************/
-
-void __main(void);
-
-/****************************************************************************/
-
-void
-__main(void)
-{
-}
-
-/****************************************************************************/
-
-#endif /* __GNUC__ */

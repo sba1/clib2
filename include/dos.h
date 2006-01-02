@@ -427,7 +427,7 @@ extern int __translate_io_error_to_errno(LONG io_error);
  * linker library.
  */
 extern VOID __lib_exit(VOID);
-extern BOOL __lib_init(struct Library * SysBase);
+extern BOOL __lib_init(struct Library * _SysBase);
 
 /****************************************************************************/
 

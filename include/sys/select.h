@@ -64,6 +64,14 @@ extern "C" {
 /****************************************************************************/
 
 /*
+ * In case the select() data structures and macros are already
+ * defined by somebody else...
+ */
+#ifndef FD_SET
+
+/****************************************************************************/
+
+/*
  * select() uses bit masks of file descriptors in longs. These macros
  * manipulate such bit fields.
  *
@@ -84,6 +92,10 @@ typedef	struct fd_set
 #define	FD_ISSET(n,p)	(((unsigned long)n) < FD_SETSIZE && ((p)->bits[((unsigned long)n) >> 5] & (1UL << (((unsigned long)n) & 31))) != 0)
 #define	FD_COPY(f,t)	((void)memmove(t,f,sizeof(*(f))))
 #define	FD_ZERO(p)		((void)memset(p,0,sizeof(*(p))))
+
+/****************************************************************************/
+
+#endif /* FD_SET */
 
 /****************************************************************************/
 

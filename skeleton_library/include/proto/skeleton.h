@@ -5,7 +5,7 @@
 ** $Id$
 **
 ** Prototype/inline/pragma header file combo
-** Copyright (c) 2002-2005 by Olaf Barthel <olsen@sourcery.han.de>
+** Copyright (c) 2002-2006 by Olaf Barthel <olsen (at) sourcery.han.de>
 ** All rights reserved.
 **
 ** Redistribution and use in source and binary forms, with or without

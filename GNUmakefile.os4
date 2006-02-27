@@ -150,7 +150,7 @@ INCLUDES = -Iinclude -I. -I$(SDK_INCLUDE)
 #OPTIONS = -D__THREAD_SAFE -DNDEBUG -DUSE_64_BIT_INTS -D__USE_INLINE__ -Wa,-mregnames -fno-common -std=gnu99
  OPTIONS =                 -DNDEBUG -DUSE_64_BIT_INTS -D__USE_INLINE__ -Wa,-mregnames -fno-common -std=gnu99
 OPTIMIZE = -O3
-#DEBUG = -ggdb
+ DEBUG = -ggdb
 
 CFLAGS = $(WARNINGS) $(OPTIMIZE) $(DEBUG) $(OPTIONS) $(CODE_TYPE) $(INCLUDES)
 

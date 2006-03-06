@@ -51,6 +51,10 @@
 #include <stdarg.h>
 #endif /* _STDARG_H */
 
+#ifndef _LIMITS_H
+#include <limits.h>
+#endif /* _LIMITS_H */
+
 #ifndef _SYS_TYPES_H
 #include <sys/types.h>
 #endif /* _SYS_TYPES_H */
@@ -349,7 +353,7 @@ extern char *tmpnam(char *buf);
 
 /****************************************************************************/
 
-#define MAXPATHLEN (4 * FILENAME_MAX)
+#define MAXPATHLEN PATH_MAX
 
 /****************************************************************************/
 

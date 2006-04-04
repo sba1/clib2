@@ -55,6 +55,10 @@
 #include <sys/uio.h>
 #endif /* _SYS_UIO_H_ */
 
+#ifndef _SYS_TIME_H
+#include <sys/time.h>
+#endif /* _SYS_TIME_H */
+
 /****************************************************************************/
 
 #ifdef __cplusplus

@@ -51,6 +51,18 @@
 
 /****************************************************************************/
 
+/* A quick workaround for the timeval/timerequest->TimeVal/TimeRequest
+   change in the recent OS4 header files. */
+
+#if defined(__NEW_TIMEVAL_DEFINITION_USED__)
+
+#define timerequest	TimeRequest
+#define tr_node		Request
+
+#endif /* __NEW_TIMEVAL_DEFINITION_USED__ */
+
+/****************************************************************************/
+
 /* Local timer I/O. */
 struct MsgPort *		NOCOMMON __timer_port;
 struct timerequest *	NOCOMMON __timer_request;

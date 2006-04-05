@@ -52,6 +52,19 @@ extern struct Library * SysBase;
 
 /****************************************************************************/
 
+/* A quick workaround for the timeval/timerequest->TimeVal/TimeRequest
+   change in the recent OS4 header files. */
+
+#if defined(__NEW_TIMEVAL_DEFINITION_USED__)
+
+#define timerequest	TimeRequest
+#define tr_node		Request
+#define tr_time		Time
+
+#endif /* __NEW_TIMEVAL_DEFINITION_USED__ */
+
+/****************************************************************************/
+
 struct SPROFMSG
 {
 	struct Message		message;

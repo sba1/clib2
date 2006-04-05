@@ -124,6 +124,19 @@ extern void __check_abort(void);
 /****************************************************************************/
 
 /*
+ * You can override the default break signal mask which is used by
+ * __check_abort() and other functions. This must be done at link
+ * time because the break signal checking is set up very early on
+ * while the program startup code is preparing your code to be run.
+ * In particular, this affects the socket I/O functionality which
+ * configures the break signal only once. The default value of the
+ * __break_signal_mask variable is SIGBREAKF_CTRL_C.
+ */
+extern ULONG __break_signal_mask;
+
+/****************************************************************************/
+
+/*
  * Call this function to set up the environment information for your
  * program to access its data. This is typically used in Task or Process
  * functions, as launched from the main program.

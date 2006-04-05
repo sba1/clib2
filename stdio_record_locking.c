@@ -1031,7 +1031,7 @@ __handle_record_locking(int cmd,struct flock * l,struct fd * fd,int * error_ptr)
 				const int rand_max = RAND_MAX / 65536;
 				int num_random_ticks;
 
-				if(__check_abort_enabled && (SetSignal(0,0) & SIGBREAKF_CTRL_C) != 0)
+				if(__check_abort_enabled && (SetSignal(0,0) & __break_signal_mask) != 0)
 				{
 					SHOWMSG("lock polling loop stopped");
 

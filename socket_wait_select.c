@@ -42,11 +42,11 @@
 /****************************************************************************/
 
 int
-select(int num_fds,fd_set *read_fds,fd_set *write_fds,fd_set *except_fds,struct timeval *timeout)
+wait_select(int num_fds,fd_set *read_fds,fd_set *write_fds,fd_set *except_fds,struct timeval *timeout,ULONG * signal_mask)
 {
 	int result;
 
-	result = __select(num_fds,read_fds,write_fds,except_fds,timeout,NULL);
+	result = __select(num_fds,read_fds,write_fds,except_fds,timeout,signal_mask);
 
 	return(result);
 }

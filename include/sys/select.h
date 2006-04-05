@@ -108,6 +108,22 @@ typedef	struct fd_set
 
 extern int select(int nfds, fd_set *readfds,fd_set *writefds, fd_set *errorfds,struct timeval *timeout);
 
+/* This is a special select() function which takes an extra Amiga signal
+   bit mask pointer parameter. This function works like select(), but it will
+   also return if any of the signals indicated by the 'signal_mask' parameter
+   are set. When this function returns, the variable pointed to by the
+   'signal_mask' parameter will have all the bits set which were set at the
+   time the function was called and for which signals arrived while the
+   function was still running. When this function returns, any signals
+   received while it was running for which bits were set in the 'signal_mask'
+   parameter value will be cleared with the exception of SIGBREAKF_CTRL_C.
+   In brief, wait_select() works exactly like the bsdsocket.library/WaitSelect()
+   function. */
+
+#ifndef __NO_WAIT_SELECT
+extern int wait_select(int num_fds,fd_set *read_fds,fd_set *write_fds,fd_set *except_fds,struct timeval *timeout,ULONG * signal_mask);
+#endif /* __NO_WAIT_SELECT */
+
 #endif /* __NO_NET_API */
 
 /****************************************************************************/

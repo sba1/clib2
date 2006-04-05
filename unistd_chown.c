@@ -116,8 +116,8 @@ chown(const char * path_name, uid_t owner, gid_t group)
 
 		/* Try to find out which owner/group information
 		   is currently in use. */
-		lock = Lock(path_name,SHARED_LOCK);
-		if(lock == ZERO || CANNOT Examine(file_lock,fib))
+		file_lock = Lock((STRPTR)path_name,SHARED_LOCK);
+		if(file_lock == ZERO || CANNOT Examine(file_lock,fib))
 		{
 			PROFILE_ON();
 
@@ -125,8 +125,8 @@ chown(const char * path_name, uid_t owner, gid_t group)
 			goto out;
 		}
 
-		UnLock(lock);
-		lock = ZERO;
+		UnLock(file_lock);
+		file_lock = ZERO;
 
 		PROFILE_ON();
 

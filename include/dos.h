@@ -470,6 +470,25 @@ extern BOOL __thread_safe_errno_h_errno;
 
 /****************************************************************************/
 
+/*
+ * If you link against libunix.a then the default command line processing
+ * function will attempt to expand every single wildcard parameter on the
+ * command line into a series of file and directories names matching the
+ * wildcards. The idea is to provide functionality which on Unix the
+ * shell is responsible for. On AmigaDOS the shell commands need to perform
+ * the expansion. However, if you are mixing AmigaDOS commands which expand
+ * wildcard patterns with a shell that already does the job, you may run into
+ * big trouble. To disable the expansion, declare the global variable named
+ * "__expand_wildcard_args" in your code and have it set to FALSE. Because
+ * the program startup code checks this variable early on, its value must
+ * be available at that time, i.e. you cannot just set it differently in
+ * your code lateron because by that time the startup code will have already
+ * checked it.
+ */
+extern BOOL __expand_wildcard_args;
+
+/****************************************************************************/
+
 #ifdef __cplusplus
 }
 #endif /* __cplusplus */

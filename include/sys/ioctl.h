@@ -47,6 +47,16 @@
 
 /****************************************************************************/
 
+#ifndef _SYS_SELECT_H
+#include <sys/select.h>
+#endif /* _SYS_SELECT_H */
+
+#ifndef _SYS_FILIO_H
+#include <sys/filio.h>
+#endif /* _SYS_FILIO_H */
+
+/****************************************************************************/
+
 #ifdef __cplusplus
 extern "C" {
 #endif /* __cplusplus */

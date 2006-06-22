@@ -40,6 +40,8 @@ CPU =
 OPTIONS = -DNDEBUG -mcrt=clib2-ts
 OPTIMIZE = -O
 DEBUG = -ggdb
+CRTBEGIN = /usr/local/amiga/ppc-amigaos/clib2/lib/crtbegin.o
+CRTEND = /usr/local/amiga/ppc-amigaos/clib2/lib/crtend.o
 
 ###############################################################################
 
@@ -52,7 +54,7 @@ OBJS = \
 
 ###############################################################################
 
-LIBS = -lc -lamiga
+LIBS = $(CRTBEGIN) -lc -lamiga $(CRTEND)
 
 ###############################################################################
 

@@ -160,7 +160,6 @@ CFLAGS = $(WARNINGS) $(OPTIMIZE) $(DEBUG) $(OPTIONS) $(CODE_TYPE) $(INCLUDES)
 C_LIB = \
 	c.lib_rev.o \
 	crtbegin.o \
-	crtend.o \
 	ctype_isalnum.o \
 	ctype_isalpha.o \
 	ctype_isascii.o \
@@ -496,7 +495,8 @@ C_LIB = \
 	unistd_unlink.o \
 	unistd_usleep.o \
 	utime_utime.o \
-	utsname_uname.o
+	utsname_uname.o \
+	crtend.o
 
 # All objects files which make up libunix.a
 UNIX_LIB = \

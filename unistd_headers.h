@@ -112,4 +112,8 @@ extern unsigned int __time_delay(unsigned long seconds,unsigned long microsecond
 
 /****************************************************************************/
 
+extern long __pathconf(struct MsgPort *port,int name);
+
+/****************************************************************************/
+
 #endif /* _UNISTD_HEADERS_H */

@@ -36,6 +36,10 @@
 
 /****************************************************************************/
 
+/* The following is not part of the ISO 'C' (1994) standard. */
+
+/****************************************************************************/
+
 #if defined(SOCKET_SUPPORT) && !defined(_SOCKET_HEADERS_H)
 #include "socket_headers.h"
 #endif /* SOCKET_SUPPORT && !_SOCKET_HEADERS_H */

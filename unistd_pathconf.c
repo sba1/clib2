@@ -31,13 +31,15 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include <ulimit.h>
+#ifndef _STDLIB_NULL_POINTER_CHECK_H
+#include "stdlib_null_pointer_check.h"
+#endif /* _STDLIB_NULL_POINTER_CHECK_H */
 
 /****************************************************************************/
 
-#ifndef _STDLIB_HEADERS_H
-#include "stdlib_headers.h"
-#endif /* _STDLIB_HEADERS_H */
+#ifndef _UNISTD_HEADERS_H
+#include "unistd_headers.h"
+#endif /* _UNISTD_HEADERS_H */
 
 /****************************************************************************/
 
@@ -46,49 +48,74 @@
 /****************************************************************************/
 
 long
-ulimit(int cmd,long newlim)
+pathconf(const char *path,int name)
 {
+	struct name_translation_info path_name_nti;
+	struct DevProc * dvp = NULL;
+	BOOL ignore_port = FALSE;
 	long ret = -1;
 
-	switch(cmd)
+	ENTER();
+
+	SHOWSTRING(path);
+	SHOWVALUE(name);
+
+	#if defined(CHECK_FOR_NULL_POINTERS)
 	{
-		case UL_GETFSIZE:
+		if(path == NULL)
+		{
+			SHOWMSG("invalid path name");
 
-			/* Maximum number of 512-byte blocks in a file. Largefile aware programs should not use ulimit() anyway. */
-			ret = (0x7fffffffL >> 9) - 1L; /* Max Filesize/512 - 1 */
-			break;
-
-		case UL_GMEMLIM:	/* Which flags are appropriate for AvailMem()? */
-
-			#if defined(__amigaos4__)
-			{
-				ret = AvailMem(MEMF_TOTAL|MEMF_VIRTUAL);
-			}
-			#else
-			{
-				ret = AvailMem(MEMF_ANY|MEMF_LARGEST);	/* Too conservative? */
-			}
-			#endif
-
-			break;
-
-		case UL_GDESLIM:	/* No limit, so we just return a reasonably large value. */
-
-			ret = 1024;
-			break;
-
-		case UL_SETFSIZE:	/* Not supported */
-
-			__set_errno(EPERM);
+			__set_errno(EFAULT);
 			goto out;
+		}
+	}
+	#endif /* CHECK_FOR_NULL_POINTERS */
 
-		default:
+	#if defined(UNIX_PATH_SEMANTICS)
+	{
+		if(__unix_path_semantics)
+		{
+			if(path[0] == '\0')
+			{
+				SHOWMSG("Empty name");
 
-			__set_errno(EINVAL);
+				__set_errno(ENOENT);
+				goto out;
+			}
+
+			if(__translate_unix_to_amiga_path_name(&path,&path_name_nti) != 0)
+				goto out;
+
+			if(path_name_nti.is_root)
+			{
+				/* Should we disallow / or use OFS as the lowest common denominator? */
+				ignore_port = TRUE;
+			}
+		}
+	}
+	#endif /* UNIX_PATH_SEMANTICS */
+
+	if(!ignore_port)
+	{
+		dvp = GetDeviceProc((STRPTR)path,NULL);
+		if(dvp == NULL)
+		{
+			__set_errno(__translate_access_io_error_to_errno(IoErr()));
 			goto out;
+		}
 	}
 
- out:
+	ret = __pathconf((dvp != NULL) ? dvp->dvp_Port : NULL,name);
 
+out:
+
+	if(dvp != NULL)
+	{
+		FreeDeviceProc(dvp);
+		dvp = NULL;
+	}
+
+	RETURN(ret);
 	return(ret);
 }

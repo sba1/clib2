@@ -31,13 +31,15 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include <ulimit.h>
+#ifndef _STDLIB_NULL_POINTER_CHECK_H
+#include "stdlib_null_pointer_check.h"
+#endif /* _STDLIB_NULL_POINTER_CHECK_H */
 
 /****************************************************************************/
 
-#ifndef _STDLIB_HEADERS_H
-#include "stdlib_headers.h"
-#endif /* _STDLIB_HEADERS_H */
+#ifndef _UNISTD_HEADERS_H
+#include "unistd_headers.h"
+#endif /* _UNISTD_HEADERS_H */
 
 /****************************************************************************/
 
@@ -46,49 +48,27 @@
 /****************************************************************************/
 
 long
-ulimit(int cmd,long newlim)
+fpathconf(int file_descriptor,int name)
 {
+	struct FileHandle *fh;
 	long ret = -1;
+	struct fd *fd;
 
-	switch(cmd)
+	ENTER();
+
+	fd = __get_file_descriptor(file_descriptor);
+	if(fd == NULL)
 	{
-		case UL_GETFSIZE:
-
-			/* Maximum number of 512-byte blocks in a file. Largefile aware programs should not use ulimit() anyway. */
-			ret = (0x7fffffffL >> 9) - 1L; /* Max Filesize/512 - 1 */
-			break;
-
-		case UL_GMEMLIM:	/* Which flags are appropriate for AvailMem()? */
-
-			#if defined(__amigaos4__)
-			{
-				ret = AvailMem(MEMF_TOTAL|MEMF_VIRTUAL);
-			}
-			#else
-			{
-				ret = AvailMem(MEMF_ANY|MEMF_LARGEST);	/* Too conservative? */
-			}
-			#endif
-
-			break;
-
-		case UL_GDESLIM:	/* No limit, so we just return a reasonably large value. */
-
-			ret = 1024;
-			break;
-
-		case UL_SETFSIZE:	/* Not supported */
-
-			__set_errno(EPERM);
-			goto out;
-
-		default:
-
-			__set_errno(EINVAL);
-			goto out;
+		__set_errno(EINVAL);
+		goto out;
 	}
+
+	fh = BADDR(fd->fd_DefaultFile);
+
+	ret = __pathconf(fh->fh_Type,name); /* Ok if fh->fh_Type==NULL */
 
  out:
 
+	RETURN(ret);
 	return(ret);
 }

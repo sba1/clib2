@@ -49,6 +49,12 @@
 
 /****************************************************************************/
 
+#ifdef __cplusplus
+extern "C" {
+#endif /* __cplusplus */
+
+/****************************************************************************/
+
 /* The following is not part of the ISO 'C' (1994) standard. */
 
 /****************************************************************************/
@@ -81,6 +87,12 @@ struct rlimit
 
 extern int getrlimit(int resource,struct rlimit *rlp);
 extern int setrlimit(int resource,const struct rlimit *rlp);
+
+/****************************************************************************/
+
+#ifdef __cplusplus
+}
+#endif /* __cplusplus */
 
 /****************************************************************************/
 

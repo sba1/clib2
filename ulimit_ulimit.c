@@ -29,45 +29,62 @@
  * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
- *
- *****************************************************************************
- *
- * Documentation and source code for this library, and the most recent library
- * build are available from <http://sourceforge.net/projects/clib2>.
- *
- *****************************************************************************
  */
 
-#ifndef	_ULIMIT_H
-#define	_ULIMIT_H
+#include <ulimit.h>
 
 /****************************************************************************/
 
-/* The following is not part of the ISO 'C' (1994) standard. */
+#ifndef _STDLIB_HEADERS_H
+#include "stdlib_headers.h"
+#endif /* _STDLIB_HEADERS_H */
 
 /****************************************************************************/
 
-#ifdef __cplusplus
-extern "C" {
-#endif /* __cplusplus */
+long
+ulimit(int cmd,long newlim)
+{
+	long ret = -1;
 
-/****************************************************************************/
+	switch(cmd)
+	{
+		case UL_GETFSIZE:
 
-#define	UL_GETFSIZE	1
-#define	UL_SETFSIZE	2
-#define	UL_GMEMLIM	3
-#define	UL_GDESLIM	4
+			/* Maximum number of 512-byte blocks in a file. Largefile aware programs should not use ulimit() anyway. */
+			ret = (0x7fffffffL >> 9) - 1L; /* Max Filesize/512 - 1 */
+			break;
 
-/****************************************************************************/
+		case UL_GMEMLIM:	/* Which flags are appropriate for AvailMem()? */
 
-extern long ulimit(int cmd,long newlimit);
+			#if defined(__amigaos4__)
+			{
+				ret = AvailMem(MEMF_TOTAL|MEMF_VIRTUAL);
+			}
+			#else
+			{
+				ret = AvailMem(MEMF_ANY|MEMF_LARGEST);	/* Too conservative? */
+			}
+			#endif
 
-/****************************************************************************/
+			break;
 
-#ifdef __cplusplus
+		case UL_GDESLIM:	/* No limit, so we just return a reasonably large value. */
+
+			ret = 1024;
+			break;
+
+		case UL_SETFSIZE:	/* Not supported */
+
+			__set_errno(EPERM);
+			goto out;
+
+		default:
+
+			__set_errno(EINVAL);
+			goto out;
+	}
+
+ out:
+
+	return(ret);
 }
-#endif /* __cplusplus */
-
-/****************************************************************************/
-
-#endif /* _ULIMIT_H */

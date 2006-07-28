@@ -38,8 +38,8 @@
  *****************************************************************************
  */
 
-#ifndef	_ULIMIT_H
-#define	_ULIMIT_H
+#ifndef _SYS_SYSTEMINFO_H
+#define _SYS_SYSTEMINFO_H
 
 /****************************************************************************/
 
@@ -53,14 +53,25 @@ extern "C" {
 
 /****************************************************************************/
 
-#define	UL_GETFSIZE	1
-#define	UL_SETFSIZE	2
-#define	UL_GMEMLIM	3
-#define	UL_GDESLIM	4
+/* Numbers are picked to be the same as for Solaris */
+
+#define	SI_SYSNAME			1
+#define	SI_HOSTNAME			2
+#define	SI_RELEASE			3
+#define	SI_VERSION			4
+#define	SI_MACHINE			5
+#define	SI_ARCHITECTURE		6
+#define	SI_HW_SERIAL		7
+#define	SI_HW_PROVIDER		8
+
+#define	SI_SET_HOSTNAME		258
+
+#define	SI_PLATFORM			513
+#define	SI_ISALIST			514
 
 /****************************************************************************/
 
-extern long ulimit(int cmd,long newlimit);
+extern long sysinfo(int cmd,char *buf,long buflen);
 
 /****************************************************************************/
 
@@ -70,4 +81,4 @@ extern long ulimit(int cmd,long newlimit);
 
 /****************************************************************************/
 
-#endif /* _ULIMIT_H */
+#endif /* _SYS_SYSTEMINFO_H */

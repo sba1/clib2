@@ -527,6 +527,12 @@ UNIX_LIB = \
 	unistd_chdir_exit.o \
 	unistd_chown.o \
 	unistd_common_pathconf.o \
+	unistd_execl.o \
+	unistd_execle.o \
+	unistd_execlp.o \
+	unistd_execv.o \
+	unistd_execve.o \
+	unistd_execvp.o \
 	unistd_fpathconf.o \
 	unistd_getcwd.o \
 	unistd_lchown.o \

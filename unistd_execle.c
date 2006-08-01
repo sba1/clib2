@@ -72,31 +72,24 @@ execle(const char *path, const char *arg0, ...)
 		goto out;
 	}
 
+	va_start(args,arg0);
+
 	if(argc > 0)
 	{
 		size_t i;
 
 		argv[0] = arg0;
 
-		va_start(args,arg0);
-
 		for(i = 1 ; i < argc ; i++)
 			argv[i] = va_arg(args,const char *);
 
 		/* Skip the NULL terminator */
 		(void)va_arg(args, char **);
-		envp = va_arg(args, char **);
-
-		va_end(args);
 	}
-	else
-	{
-		va_start(args,arg0);
 
-		envp = va_arg(args, char **);
+	envp = va_arg(args, char **);
 
-		va_end(args);
-	}
+	va_end(args);
 
 	argv[argc] = NULL;
 

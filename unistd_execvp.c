@@ -41,11 +41,6 @@
 
 /****************************************************************************/
 
-char ** __default_path_delimiter = ":";
-char ** __default_path = "/gcc/bin:/SDK/C:/SDK/Local/C:/C:.";
-
-/****************************************************************************/
-
 /* A local version of the BSD strsep() function. */
 static char *
 local_strsep(char ** string_ptr, const char * delimiter)

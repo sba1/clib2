@@ -489,6 +489,11 @@ extern BOOL __expand_wildcard_args;
 
 /****************************************************************************/
 
+extern char ** __default_path_delimiter;
+extern char ** __default_path;
+
+/****************************************************************************/
+
 #ifdef __cplusplus
 }
 #endif /* __cplusplus */

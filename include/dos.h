@@ -489,8 +489,13 @@ extern BOOL __expand_wildcard_args;
 
 /****************************************************************************/
 
-extern char ** __default_path_delimiter;
-extern char ** __default_path;
+/*
+ * Defaults for path delimiter (":") and the shell search path
+ * ("/gcc/bin:/SDK/C:/SDK/Local/C:/C:.") as used by the execvp()
+ * function.
+ */
+extern char * __default_path_delimiter;
+extern char * __default_path;
 
 /****************************************************************************/
 

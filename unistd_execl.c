@@ -87,7 +87,7 @@ execl(const char *path, const char *arg0, ...)
 
 	argv[argc] = NULL;
 
-	result = execve(path,(char * const *)argv, NULL /*environ*/ );
+	result = execve(path,(char * const *)argv,environ);
 
  out:
 

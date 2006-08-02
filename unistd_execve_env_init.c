@@ -31,46 +31,19 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef _STDLIB_NULL_POINTER_CHECK_H
-#include "stdlib_null_pointer_check.h"
-#endif /* _STDLIB_NULL_POINTER_CHECK_H */
+#ifndef _UNISTD_HEADERS_H
+#include "unistd_headers.h"
+#endif /* _UNISTD_HEADERS_H */
 
 /****************************************************************************/
 
-#ifndef _STDLIB_HEADERS_H
-#include "stdlib_headers.h"
-#endif /* _STDLIB_HEADERS_H */
-
-/****************************************************************************/
-
-#if defined(USE_64_BIT_INTS)
-
-/****************************************************************************/
-
-long long
-atoll(const char *str)
+/* This is a stub which you need override with your own implementation. The
+   Function expects a non-NULL pointer to an environment table and will
+   do whatever is necessary to prepare a subsequent call to RunCommand()
+   to use the environment data. If your function succeeds, return 0 and
+   a negative value if it fails. */
+int
+__execve_environ_init(char * const envp[])
 {
-	long long result = 0;
-
-	assert( str != NULL );
-
-	#if defined(CHECK_FOR_NULL_POINTERS)
-	{
-		if(str == NULL)
-		{
-			__set_errno(EFAULT);
-			goto out;
-		}
-	}
-	#endif /* CHECK_FOR_NULL_POINTERS */
-
-	result = strtoll(str, (char **)NULL, 10);
-
- out:
-
-	return(result);
+	return(0);
 }
-
-/****************************************************************************/
-
-#endif /* USE_64_BIT_INTS */

@@ -46,7 +46,7 @@ execv(const char *path,char * const argv[])
 {
 	int result;
 
-	result = execve(path,argv,NULL	/*environ*/);
+	result = execve(path,argv,environ);
 
 	return(result);
 }

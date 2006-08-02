@@ -109,7 +109,7 @@ execvp(const char *command,char * const argv[])
 	/* If it's an absolute or relative path name, it's easy. */
 	if(strchr(command,'/') != NULL || strchr(command,':') != NULL)
 	{
-		result = execve(command, argv, NULL /*environ*/);
+		result = execve(command, argv, environ);
 	}
 	else
 	{
@@ -177,7 +177,7 @@ execvp(const char *command,char * const argv[])
 			command_buffer[complete_path_len] = '\0';
 
 			/* Now try to run that command. */
-			result = execve(command_buffer, argv, NULL /*environ*/);
+			result = execve(command_buffer, argv, environ);
 
 			/* Did it work? And if it didn't work, did it fail because
 			   the command to be run could not be executed? */

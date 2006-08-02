@@ -75,12 +75,12 @@ execlp(const char *path, const char *arg0, ...)
 	{
 		size_t i;
 
-		argv[0] = arg0;
+		argv[0] = (char *)arg0;
 
 		va_start(args,arg0);
 
 		for(i = 1 ; i < argc ; i++)
-			argv[i] = va_arg(args,const char *);
+			argv[i] = va_arg(args,char *);
 
 		va_end(args);
 	}

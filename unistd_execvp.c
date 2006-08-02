@@ -98,7 +98,6 @@ execvp(const char *command,char * const argv[])
 	char * command_buffer = NULL;
 	char * path_copy = NULL;
 	int result = -1;
-	char * bp;
 
 	/* Do not allow null command */
 	if(command == NULL || (*command) == '\0')

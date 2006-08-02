@@ -78,10 +78,10 @@ execle(const char *path, const char *arg0, ...)
 	{
 		size_t i;
 
-		argv[0] = arg0;
+		argv[0] = (char *)arg0;
 
 		for(i = 1 ; i < argc ; i++)
-			argv[i] = va_arg(args,const char *);
+			argv[i] = va_arg(args,char *);
 
 		/* Skip the NULL terminator */
 		(void)va_arg(args, char **);

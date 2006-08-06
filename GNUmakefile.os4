@@ -580,6 +580,7 @@ UNIX_LIB = \
 	unistd_execve.o \
 	unistd_execve_env_exit.o \
 	unistd_execve_env_init.o \
+	unistd_execve_exit.o \
 	unistd_execvp.o \
 	unistd_fpathconf.o \
 	unistd_getcwd.o \

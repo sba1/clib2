@@ -622,6 +622,8 @@ MATH_LIB = \
 	math_expm1f.o \
 	math_fabs.o \
 	math_fabsf.o \
+	math_fdim.o \
+	math_fdimf.o \
 	math_floor.o \
 	math_floorf.o \
 	math_fma.o \

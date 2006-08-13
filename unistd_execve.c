@@ -247,7 +247,6 @@ find_command(const char * path,struct program_info ** result_ptr)
 	APTR old_window_ptr;
 	int result = -1;
 	BPTR old_dir;
-	int error;
 	BOOL found_path_separator;
 	const char *p = path;
 	char c;

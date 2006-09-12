@@ -328,7 +328,7 @@ __termios_console_hook(
 				}
 				else
 				{
-					if(WaitForChar(fd->fd_DefaultFile,100000*tios->c_cc[VTIME]))
+					if(WaitForChar(file,100000*tios->c_cc[VTIME]))
 						result = Read(file,fam->fam_Data,fam->fam_Size);
 				}
 			}

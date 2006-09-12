@@ -63,6 +63,12 @@ fpathconf(int file_descriptor,int name)
 		goto out;
 	}
 
+	if(FLAG_IS_SET(fd->fd_Flags,FDF_STDIO) || FLAG_IS_SET(fd->fd_Flags,FDF_IS_SOCKET))
+	{
+		__set_errno(EBADF);
+		goto out;
+	}
+
 	fh = BADDR(fd->fd_DefaultFile);
 
 	ret = __pathconf(fh->fh_Type,name); /* Ok if fh->fh_Type==NULL */

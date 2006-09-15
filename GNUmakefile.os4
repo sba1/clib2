@@ -538,6 +538,7 @@ UNIX_LIB = \
 	stdlib_alloca_trap.o \
 	stdlib_arg.o \
 	stdlib_expand_wildcard.o \
+	stdlib_expand_wildcard_check.o \
 	stdlib_getmemstats.o \
 	stdlib_main.o \
 	stdlib_main_stub.o \

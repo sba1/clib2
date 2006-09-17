@@ -106,6 +106,7 @@ extern void *memset(void *ptr, int val, size_t len);
 
 /****************************************************************************/
 
+extern int strerror_r(int error,char * buffer,size_t buffer_size);
 extern char * index(const char *s, int c);
 extern char * rindex(const char *s, int c);
 

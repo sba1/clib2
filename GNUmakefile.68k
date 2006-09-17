@@ -388,6 +388,7 @@ C_LIB = \
 	string_strcspn.o \
 	string_strdup.o \
 	string_strerror.o \
+	string_strerror_r.o \
 	string_strlcat.o \
 	string_strlcpy.o \
 	string_strlen.o \

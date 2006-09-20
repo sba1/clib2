@@ -168,6 +168,9 @@ struct iob;
 /* The same for a console stream. */
 #define ST_CONSOLE (20050402)
 
+/* And something for NIL: */
+#define ST_NIL (20060920)
+
 /****************************************************************************/
 
 /* Operations that can be performed by the file action function. */

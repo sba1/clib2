@@ -581,7 +581,18 @@ __fd_hook_entry(
 
 			fh = BADDR(file);
 
-			if(CANNOT __safe_examine_file_handle(file,fam->fam_FileInfo))
+			/* Special treatment for "NIL:", for which we make
+			   some stuff up. */
+			if(fh->fh_Type == NULL)
+			{
+				/* Make up some stuff for this stream. */
+				memset(fam->fam_FileInfo,0,sizeof(*fam->fam_FileInfo));
+
+				DateStamp(&fam->fam_FileInfo->fib_Date);
+
+				fam->fam_FileInfo->fib_DirEntryType = ST_NIL;
+			}
+			else if (CANNOT __safe_examine_file_handle(file,fam->fam_FileInfo))
 			{
 				LONG error;
 

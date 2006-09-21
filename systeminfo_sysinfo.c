@@ -191,7 +191,7 @@ sysinfo(int cmd,char *buf,long buflen)
 
 			#if defined(SOCKET_SUPPORT)
 			{
-				ret = snprintf(buf,buflen,"%u",gethostid());
+				ret = snprintf(buf,buflen,"%lu",gethostid());
 			}
 			#else
 			{

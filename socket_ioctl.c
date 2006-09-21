@@ -91,14 +91,14 @@ ioctl(int sockfd,int request, ... /* char *arg */)
 	{
 		int * option = (int *)param;
 
-		if(request == (unsigned int)FIONBIO)
+		if(request == (int)FIONBIO)
 		{
 			if((*option) != 0)
 				SET_FLAG(fd->fd_Flags,FDF_NON_BLOCKING);
 			else
 				CLEAR_FLAG(fd->fd_Flags,FDF_NON_BLOCKING);
 		}
-		else if (request == (unsigned int)FIOASYNC)
+		else if (request == (int)FIOASYNC)
 		{
 			if((*option) != 0)
 				SET_FLAG(fd->fd_Flags,FDF_ASYNC_IO);

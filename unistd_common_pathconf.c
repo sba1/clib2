@@ -173,7 +173,7 @@ __pathconf(struct MsgPort *port,int name)
 				uint32 Bufsize;
 				struct TagItem TagList[2]=
 				{
-					{DC_FHBufferR,	&Bufsize},
+					{DC_FHBufferR,	(ULONG)&Bufsize},
 					{TAG_DONE,		0}
 				};
 

@@ -271,7 +271,7 @@ lstat(const char * path_name, struct stat * st)
 		time(&mtime);
 
 		st->st_mode		= S_IFLNK | S_IRUSR | S_IXUSR | S_IRGRP | S_IXGRP | S_IROTH | S_IXOTH;
-		st->st_dev		= (ULONG)DeviceProc((STRPTR)path_name);
+		st->st_dev		= (dev_t)DeviceProc((STRPTR)path_name);
 		st->st_size		= link_length;
 		st->st_mtime	= mtime;
 		st->st_atime	= mtime;

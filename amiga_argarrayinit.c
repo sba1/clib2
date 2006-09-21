@@ -77,7 +77,7 @@ ArgArrayInit(LONG argc, CONST_STRPTR * argv)
 		for(i = 1 ; i < argc ; i++)
 			CXLIB_argarray[i-1] = argv[i];
 
-		result = (unsigned char **)CXLIB_argarray;
+		result = (STRPTR *)CXLIB_argarray;
 	}
 	else if (IconBase != NULL)
 	{
@@ -90,7 +90,7 @@ ArgArrayInit(LONG argc, CONST_STRPTR * argv)
 		if(CXLIB_disko == NULL)
 			goto out;
 
-		result = (unsigned char **)CXLIB_disko->do_ToolTypes;
+		result = (STRPTR *)CXLIB_disko->do_ToolTypes;
 	}
 
  out:

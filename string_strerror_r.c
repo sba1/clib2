@@ -41,7 +41,7 @@
 
 /****************************************************************************/
 
-static char * error_table[EILSEQ - EPERM + 1] =
+static const char * error_table[EILSEQ - EPERM + 1] =
 {
 	"Operation not permitted",
 	"No such file or directory",
@@ -136,7 +136,7 @@ int
 strerror_r(int number,char * buffer,size_t buffer_size)
 {
 	int result = -1;
-	char * str;
+	const char * str;
 	size_t len;
 
 	if(number < EPERM || number > EILSEQ)

@@ -135,6 +135,9 @@ ARG_CONSTRUCTOR(arg_init)
 		{
 			expand_wildcard_args = __expand_wildcard_args;
 
+			if(FindVar("DISABLE_COMMANDLINE_WILDCARD_EXPANSION",LV_VAR) != NULL)
+				expand_wildcard_args = FALSE;
+
 			if(__expand_wildcard_args_check != NULL)
 				expand_wildcard_args = (*__expand_wildcard_args_check)();
 		}

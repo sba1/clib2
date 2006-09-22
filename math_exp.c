@@ -158,7 +158,7 @@ P5   =  4.13813679705723846039e-08;        /* 0x3E663769, 0x72BEA4D0 */
 INLINE STATIC double
 __exp(double x)
 {
-	double y,hi,lo,c,t;
+	double y,hi=0,lo=0,c,t;
 	int k,xsb;
 	unsigned int hx;
 

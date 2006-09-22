@@ -143,7 +143,7 @@ INLINE STATIC double
 __sqrt(double x)
 {
 	double z;
-	int sign = (int)0x80000000; 
+	unsigned int sign = (unsigned int)0x80000000; 
 	unsigned int r,t1,s1,ix1,q1;
 	int ix0,s0,q,m,t,i;
 

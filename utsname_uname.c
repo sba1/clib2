@@ -68,7 +68,7 @@ uname(struct utsname *info)
 {
 	struct Library * VersionBase;
 	int Version,Revision;
-	char * version_string;
+	const char * version_string;
 	int result = ERROR;
 
 	ENTER();

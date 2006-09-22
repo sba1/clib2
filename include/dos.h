@@ -484,6 +484,10 @@ extern BOOL __thread_safe_errno_h_errno;
  * be available at that time, i.e. you cannot just set it differently in
  * your code lateron because by that time the startup code will have already
  * checked it.
+ *
+ * Note that the startup code will disable wildcard expansion if the local
+ * shell environment variable "DISABLE_COMMANDLINE_WILDCARD_EXPANSION"
+ * is set.
  */
 extern BOOL __expand_wildcard_args;
 

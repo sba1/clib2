@@ -501,7 +501,7 @@ _main(void)
 		tags[i].	ti_Tag	= NP_StackSize;
 		tags[i++].	ti_Data	= stack_size;
 		tags[i].	ti_Tag	= NP_Name;
-		tags[i++].	ti_Data	= (ULONG)(__process_name != NULL ? __process_name : FilePart(program_name));
+		tags[i++].	ti_Data	= (ULONG)(__process_name != NULL ? __process_name : (char *)FilePart(program_name));
 		tags[i].	ti_Tag	= NP_CommandName;
 		tags[i++].	ti_Data	= (ULONG)FilePart(program_name);
 		tags[i].	ti_Tag	= NP_Cli;

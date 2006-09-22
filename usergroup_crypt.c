@@ -79,7 +79,7 @@ crypt(const char *key,const char *salt)
 	#endif /* CHECK_FOR_NULL_POINTERS */
 
 	PROFILE_OFF();
-	result = __crypt((STRPTR)key,(STRPTR)salt);
+	result = (char *)__crypt((STRPTR)key,(STRPTR)salt);
 	PROFILE_ON();
 
 	SHOWSTRING(result);

@@ -58,7 +58,7 @@ basename(char *path)
 
 	if(path == NULL || path[0] == '\0')
 	{
-		result = ".";
+		result = (char *)".";
 	}
 	else
 	{
@@ -86,7 +86,7 @@ basename(char *path)
 		}
 		else
 		{
-			result = "/";
+			result = (char *)"/";
 		}
 	}
 

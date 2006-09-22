@@ -347,7 +347,7 @@ _main(void)
 	/* Try to open the libraries we need to proceed. */
 	if(CANNOT open_libraries())
 	{
-		char * error_message;
+		const char * error_message;
 
 		/* If available, use the error message provided by the client. */
 		error_message = __minimum_os_lib_error;

@@ -160,7 +160,7 @@ _SHOWVALUE(
 {
 	if(__debug_level >= DEBUGLEVEL_Reports)
 	{
-		char *fmt;
+		const char *fmt;
 
 		switch(size)
 		{
@@ -207,7 +207,7 @@ _SHOWPOINTER(
 {
 	if(__debug_level >= DEBUGLEVEL_Reports)
 	{
-		char *fmt;
+		const char *fmt;
 
 		_INDENT();
 

@@ -177,7 +177,7 @@ __asctime_r(const struct tm *tm,char * buffer,size_t buffer_size)
 	}
 	else
 	{
-		result = "";
+		result = (char *)"";
 	}
 
  out:

@@ -58,7 +58,7 @@ dirname(char *path)
 
 	if(path == NULL || path[0] == '\0')
 	{
-		result = ".";
+		result = (char *)".";
 	}
 	else
 	{
@@ -71,7 +71,7 @@ dirname(char *path)
 
 		if(len > 0)
 		{
-			result = ".";
+			result = (char *)".";
 
 			for(i = len-1 ; i >= 0 ; i--)
 			{
@@ -87,7 +87,7 @@ dirname(char *path)
 		}
 		else
 		{
-			result = "/";
+			result = (char *)"/";
 		}
 	}
 

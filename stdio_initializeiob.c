@@ -54,7 +54,7 @@ __initialize_iob(
 	memset(iob,0,sizeof(*iob));
 
 	iob->iob_CustomBuffer	= custom_buffer;
-	iob->iob_Buffer			= buffer;
+	iob->iob_Buffer			= (UBYTE *)buffer;
 	iob->iob_BufferSize		= buffer_size;
 	iob->iob_Descriptor		= file_descriptor;
 	iob->iob_SlotNumber		= slot_number;

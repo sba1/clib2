@@ -66,7 +66,7 @@ __fill_iob_read_buffer(struct iob * file)
 	SHOWVALUE(file->iob_BufferSize);
 
 	fam.fam_Action	= file_action_read;
-	fam.fam_Data	= file->iob_Buffer;
+	fam.fam_Data	= (char *)file->iob_Buffer;
 	fam.fam_Size	= file->iob_BufferSize;
 
 	assert( file->iob_Action != NULL );

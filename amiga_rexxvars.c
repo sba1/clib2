@@ -154,7 +154,7 @@ CheckRexxMsg(struct RexxMsg *message)
 LONG
 GetRexxVar(struct RexxMsg *message,STRPTR variable_name,STRPTR *buffer_pointer)
 {
-	static UBYTE buffer[256];
+	static TEXT buffer[256];
 	LONG result;
 
 	/* The following uses a function which was added to rexxsyslib.library V45.

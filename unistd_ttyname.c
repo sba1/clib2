@@ -136,7 +136,7 @@ ttyname(int file_descriptor)
 		goto out;
 	}
 
-	result = "CONSOLE:";
+	result = (char *)"CONSOLE:";
 
  out:
 

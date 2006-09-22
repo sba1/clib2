@@ -312,8 +312,8 @@ __memcpy(unsigned char * to,unsigned char * from,size_t len)
 				len -= sizeof(long);
 			}		
 
-			to		= (char *)_to;
-			from	= (char *)_from;
+			to		= (unsigned char *)_to;
+			from	= (unsigned char *)_from;
 		}
 	}
 

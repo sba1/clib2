@@ -136,8 +136,8 @@ sysinfo(int cmd,char *buf,long buflen)
 				/* Solaris uses "ppc" as the isa name, but gcc uses powerpc. "ppc+altivec" follows the
 				   convention of specifying isa+ext from Solaris on SPARC machines. This way of implementing
 				   SI_ISALIST seemed like a good idea at the time. */
+				const char * s;
 				uint32 vecu;
-				char * s;
 
 				GetCPUInfoTags(GCIT_VectorUnit,&vecu,TAG_DONE);
 

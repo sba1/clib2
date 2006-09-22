@@ -37,4 +37,4 @@
 
 /****************************************************************************/
 
-char * NOCOMMON __file_lock_semaphore_name = "Advisory File Locking";
+char * NOCOMMON __file_lock_semaphore_name = (char *)"Advisory File Locking";

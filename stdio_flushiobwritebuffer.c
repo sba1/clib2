@@ -70,7 +70,7 @@ __flush_iob_write_buffer(struct iob * file)
 		SHOWMSG("calling the hook");
 
 		fam.fam_Action	= file_action_write;
-		fam.fam_Data	= file->iob_Buffer;
+		fam.fam_Data	= (char *)file->iob_Buffer;
 		fam.fam_Size	= file->iob_BufferWriteBytes;
 
 		assert( file->iob_Action != NULL );

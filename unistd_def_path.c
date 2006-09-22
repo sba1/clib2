@@ -37,4 +37,4 @@
 
 /****************************************************************************/
 
-char * __default_path = "/gcc/bin:/SDK/C:/SDK/Local/C:/C:.";
+char * __default_path = (char *)"/gcc/bin:/SDK/C:/SDK/Local/C:/C:.";

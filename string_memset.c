@@ -116,7 +116,7 @@ __memset(unsigned char * to,unsigned char value,size_t len)
 				len -= sizeof(long);
 			}		
 
-			to = (char *)_to;
+			to = (unsigned char *)_to;
 		}
 	}
 

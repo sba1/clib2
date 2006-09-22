@@ -75,7 +75,7 @@ ArgArrayInit(LONG argc, CONST_STRPTR * argv)
 			goto out;
 
 		for(i = 1 ; i < argc ; i++)
-			CXLIB_argarray[i-1] = argv[i];
+			CXLIB_argarray[i-1] = (unsigned char *)argv[i];
 
 		result = (STRPTR *)CXLIB_argarray;
 	}

@@ -37,4 +37,4 @@
 
 /****************************************************************************/
 
-char * __default_path_delimiter = ":";
+char * __default_path_delimiter = (char *)":";

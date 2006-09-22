@@ -161,7 +161,7 @@ execvp(const char *command,char * const argv[])
 		while((search_prefix = local_strsep(&path,path_delimiter)) != NULL)
 		{
 			if((*search_prefix) == '\0')
-				search_prefix = ".";
+				search_prefix = (char *)".";
 
 			search_prefix_len = strlen(search_prefix);
 

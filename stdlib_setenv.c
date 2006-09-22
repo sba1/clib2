@@ -220,7 +220,7 @@ setenv(const char *original_name, const char *original_value, int overwrite)
 	}
 
 	if(value == NULL)
-		value = "";
+		value = (char *)"";
 
 	SHOWSTRING(name);
 	SHOWSTRING(value);

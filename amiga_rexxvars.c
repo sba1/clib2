@@ -142,7 +142,7 @@ CheckRexxMsg(struct RexxMsg *message)
 	if(message->rm_TaskBlock == NULL)
 		goto out;
 
-	if(NOT IsRexxMsg(message))
+	if(NOT IsRexxMsg((struct Message *)message))
 		goto out;
 
 	result = TRUE;
@@ -165,7 +165,7 @@ GetRexxVar(struct RexxMsg *message,STRPTR variable_name,STRPTR *buffer_pointer)
 
 	/* The following uses a function which was added to rexxsyslib.library V45.
 	   We therefore have a minimum library version requirement. */
-	if(RexxSysBase == NULL || RexxSysBase->lib_Version < 45 || NOT IsRexxMsg(message))
+	if(RexxSysBase == NULL || RexxSysBase->lib_Version < 45 || NOT IsRexxMsg((struct Message *)message))
 	{
 		result = ERR10_010; /* invalid message packet */
 		goto out;
@@ -195,7 +195,7 @@ SetRexxVar(struct RexxMsg *message,STRPTR variable_name,STRPTR value,ULONG lengt
 
 	/* The following uses a function which was added to rexxsyslib.library V45.
 	   We therefore have a minimum library version requirement. */
-	if(RexxSysBase == NULL || RexxSysBase->lib_Version < 45 || NOT IsRexxMsg(message))
+	if(RexxSysBase == NULL || RexxSysBase->lib_Version < 45 || NOT IsRexxMsg((struct Message *)message))
 	{
 		result = ERR10_010; /* invalid message packet */
 		goto out;

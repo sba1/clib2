@@ -89,7 +89,7 @@ ioctl(int sockfd,int request, ... /* char *arg */)
 
 	if(result == 0)
 	{
-		int * option = (int *)param;
+		const int * option = (const int *)param;
 
 		if(request == (int)FIONBIO)
 		{

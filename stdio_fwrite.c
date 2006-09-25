@@ -104,7 +104,7 @@ fwrite(const void *ptr,size_t element_size,size_t count,FILE *stream)
 
 	if(element_size > 0 && count > 0)
 	{
-		unsigned char * data = (unsigned char *)ptr;
+		const unsigned char * data = (unsigned char *)ptr;
 		unsigned char c;
 		int buffer_mode;
 		size_t total_bytes_written = 0;

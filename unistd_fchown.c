@@ -163,7 +163,7 @@ fchown(int file_descriptor, uid_t owner, gid_t group)
 					new_name->name[0] = len;
 					memmove(&new_name->name[1],fib->fib_FileName,len);
 
-					success	= DoPkt(dvp->dvp_Port,ACTION_SET_OWNER,dvp->dvp_Lock,MKBADDR(new_name),(LONG)((((ULONG)owner) << 16) | (ULONG)group),0,0);
+					success	= DoPkt(dvp->dvp_Port,ACTION_SET_OWNER,0,dvp->dvp_Lock,MKBADDR(new_name),(LONG)((((ULONG)owner) << 16) | (ULONG)group),0);
 					error	= IoErr();
 
 					FreeDeviceProc(dvp);

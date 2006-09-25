@@ -201,7 +201,7 @@ __show_error(const char * message)
 		}
 		else
 		{
-			if(GetProgramName(program_name,sizeof(program_name)))
+			if(GetProgramName((STRPTR)program_name,sizeof(program_name)))
 				title_string = FilePart((STRPTR)program_name);
 			else
 				title_string = (STRPTR)"Error";

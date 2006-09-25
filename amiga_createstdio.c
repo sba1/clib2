@@ -50,6 +50,10 @@
 
 /****************************************************************************/
 
+struct IOStdReq * CreateStdIO(CONST struct MsgPort * port);
+
+/****************************************************************************/
+
 struct IOStdReq *
 CreateStdIO(CONST struct MsgPort * port)
 {

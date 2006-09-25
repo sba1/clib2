@@ -209,6 +209,10 @@ CreateTask(CONST_STRPTR name,LONG pri,CONST APTR init_pc,ULONG stack_size)
 
 /****************************************************************************/
 
+struct Task * CreateTask(CONST_STRPTR name,LONG pri,CONST APTR init_pc,ULONG stack_size);
+
+/****************************************************************************/
+
 struct Task *
 CreateTask(CONST_STRPTR name,LONG pri,CONST APTR init_pc,ULONG stack_size)
 {

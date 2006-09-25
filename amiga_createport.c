@@ -50,6 +50,10 @@
 
 /****************************************************************************/
 
+struct MsgPort * CreatePort(CONST_STRPTR name, LONG pri);
+
+/****************************************************************************/
+
 struct MsgPort *
 CreatePort(CONST_STRPTR name, LONG pri)
 {

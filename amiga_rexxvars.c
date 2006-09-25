@@ -68,6 +68,12 @@ static struct RexxSysIFace * IRexxSys;
 
 /****************************************************************************/
 
+BOOL CheckRexxMsg(struct RexxMsg *message);
+LONG GetRexxVar(struct RexxMsg *message,STRPTR variable_name,STRPTR *buffer_pointer);
+LONG SetRexxVar(struct RexxMsg *message,STRPTR variable_name,STRPTR value,ULONG length);
+
+/****************************************************************************/
+
 CLIB_CONSTRUCTOR(rexxvars_init)
 {
 	ENTER();

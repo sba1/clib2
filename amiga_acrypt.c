@@ -49,6 +49,10 @@
 
 /****************************************************************************/
 
+UBYTE * ACrypt(UBYTE * buffer, const UBYTE * password, const UBYTE * user);
+
+/****************************************************************************/
+
 UBYTE *
 ACrypt(UBYTE * buffer, const UBYTE * password, const UBYTE * user)
 {

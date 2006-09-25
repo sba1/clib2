@@ -103,6 +103,10 @@ BeginIO(struct IORequest *ior)
 
 /****************************************************************************/
 
+VOID BeginIO(struct IORequest *ior);
+
+/****************************************************************************/
+
 VOID
 BeginIO(struct IORequest *ior)
 {

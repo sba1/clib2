@@ -50,6 +50,10 @@
 
 /****************************************************************************/
 
+struct IORequest * CreateExtIO(CONST struct MsgPort * port, LONG io_size);
+
+/****************************************************************************/
+
 struct IORequest *
 CreateExtIO(CONST struct MsgPort * port, LONG io_size)
 {

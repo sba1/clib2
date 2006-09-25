@@ -48,7 +48,7 @@
 
 /****************************************************************************/
 
-extern char **CXLIB_argarray;
+extern const unsigned char **CXLIB_argarray;
 
 extern struct DiskObject * CXLIB_disko;
 

@@ -433,7 +433,7 @@ extern int NOCOMMON				__num_fd;
 
 /****************************************************************************/
 
-extern char * NOCOMMON __file_lock_semaphore_name;
+extern const char * NOCOMMON __file_lock_semaphore_name;
 
 /****************************************************************************/
 

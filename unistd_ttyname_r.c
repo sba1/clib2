@@ -44,6 +44,7 @@
 int
 ttyname_r(int file_descriptor,char *name,size_t buflen)
 {
+	const char *tty_file_name;
 	BOOL is_tty = FALSE;
 	struct fd *fd;
 	int result;
@@ -136,13 +137,23 @@ ttyname_r(int file_descriptor,char *name,size_t buflen)
 		goto out;
 	}
 
-	if(buflen < _POSIX_TTY_NAME_MAX) /* XXX Should this be _POSIX_PATH_MAX? */
+	#if defined(UNIX_PATH_SEMANTICS)
+	{
+		tty_file_name = "/CONSOLE";
+	}
+	#else
+	{
+		tty_file_name = "CONSOLE:";
+	}
+	#endif /* UNIX_PATH_SEMANTICS */
+
+	if(buflen < strlen(tty_file_name)+1) /* XXX Should this be _POSIX_PATH_MAX? */
 	{
 		result = ERANGE;
 		goto out;
 	}
 
-	strcpy(name,"CONSOLE:"); /* The buffer is at least 9 bytes, so this is ok. */
+	strcpy(name,tty_file_name);
 
 	result = OK;
 

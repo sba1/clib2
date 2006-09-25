@@ -210,9 +210,9 @@ strtod(const char *str, char ** ptr)
 
 		if(__locale_table[LC_NUMERIC] != NULL)
 		{
-			char * point;
+			const char * point;
 
-			point = (char *)__locale_table[LC_NUMERIC]->loc_DecimalPoint;
+			point = (const char *)__locale_table[LC_NUMERIC]->loc_DecimalPoint;
 			if((*point) == (*str))
 			{
 				decimal_point_matches = 1;

@@ -509,8 +509,8 @@ extern BOOL (*__expand_wildcard_args_check)(void);
  * ("/gcc/bin:/SDK/C:/SDK/Local/C:/C:.") as used by the execvp()
  * function.
  */
-extern char * __default_path_delimiter;
-extern char * __default_path;
+extern const char * __default_path_delimiter;
+extern const char * __default_path;
 
 /****************************************************************************/
 

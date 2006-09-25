@@ -476,7 +476,7 @@ _main(void)
 	{
 		struct CommandLineInterface * cli = Cli();
 		struct TagItem tags[12];
-		UBYTE program_name[256];
+		TEXT program_name[256];
 		unsigned int stack_size;
 		int i;
 
@@ -492,7 +492,7 @@ _main(void)
 		if(stack_size < cli->cli_DefaultStack * sizeof(LONG))
 			stack_size = cli->cli_DefaultStack * sizeof(LONG);
 
-		GetProgramName(program_name,sizeof(program_name));
+		GetProgramName(program_name,(LONG)sizeof(program_name));
 
 		i = 0;
 

@@ -1329,12 +1329,18 @@ vfprintf(FILE * stream,const char * format, va_list arg)
 			#if defined(NDEBUG)
 			{
 				if(output_buffer == NULL)
-					output_buffer = (char *)"";
+				{
+					output_buffer = buffer;
+					strcpy(output_buffer,"");
+				}
 			}
 			#else
 			{
 				if(output_buffer == NULL)
-					output_buffer = "*NULL POINTER*";
+				{
+					output_buffer = buffer;
+					strcpy(output_buffer,"*NULL POINTER*");
+				}
 			}
 			#endif /* NDEBUG */
 

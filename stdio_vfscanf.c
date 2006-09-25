@@ -897,9 +897,9 @@ vfscanf(FILE *stream, const char *format, va_list arg)
 							 */
 							if(__locale_table[LC_NUMERIC] != NULL)
 							{
-								unsigned char * point;
+								const unsigned char * point;
 
-								point = (unsigned char *)__locale_table[LC_NUMERIC]->loc_DecimalPoint;
+								point = (const unsigned char *)__locale_table[LC_NUMERIC]->loc_DecimalPoint;
 
 								if(c == (*point) || c == '.')
 								{

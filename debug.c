@@ -273,7 +273,7 @@ _DPRINTF(const char *fmt,...)
 		va_list args;
 
 		va_start(args,fmt);
-		KPutFmt((char *)fmt,args);
+		KPutFmt(fmt,args);
 		va_end(args);
 
 		KPrintF("\n");
@@ -288,7 +288,7 @@ _DLOG(const char *fmt,...)
 		va_list args;
 
 		va_start(args,fmt);
-		KPutFmt((char *)fmt,args);
+		KPutFmt(fmt,args);
 		va_end(args);
 	}
 }

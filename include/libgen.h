@@ -53,8 +53,8 @@ extern "C" {
 
 /****************************************************************************/
 
-char * basename(char *path);
-char * dirname(char *path);
+char * basename(const char *path);
+char * dirname(const char *path);
 
 /****************************************************************************/
 

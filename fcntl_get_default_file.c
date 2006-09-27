@@ -60,7 +60,7 @@ __get_default_file(int file_descriptor,long * file_ptr)
 		goto out;
 	}
 
-	__fd_unlock(fd);
+	__fd_lock(fd);
 
 	#if defined(__THREAD_SAFE)
 	{

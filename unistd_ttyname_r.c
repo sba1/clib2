@@ -111,12 +111,8 @@ ttyname_r(int file_descriptor,char *name,size_t buflen)
 					break;
 			}
 
-			__fd_lock(fd);
-
 			if(file != ZERO && IsInteractive(file))
 				is_tty = TRUE;
-
-			__fd_unlock(fd);
 		}
 		else
 		{

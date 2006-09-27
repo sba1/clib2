@@ -59,7 +59,8 @@ extern char NOCOMMON __current_path_name[MAXPATHLEN];
 /****************************************************************************/
 
 /* Names of files and directories to delete when shutting down. */
-extern struct MinList NOCOMMON __unlink_list;
+extern struct MinList NOCOMMON			__unlink_list;
+extern struct SignalSemaphore NOCOMMON	__unlink_semaphore;
 
 /****************************************************************************/
 

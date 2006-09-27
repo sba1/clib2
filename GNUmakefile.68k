@@ -455,6 +455,7 @@ C_LIB = \
 	unistd_time_delay.o \
 	unistd_truncate.o \
 	unistd_unlink.o \
+	unistd_unlink_retries.o \
 	unistd_usleep.o \
 	utime_utime.o \
 	utsname_uname.o

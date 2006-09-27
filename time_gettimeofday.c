@@ -59,6 +59,23 @@
 
 /****************************************************************************/
 
+/* A quick workaround for the timeval/timerequest->TimeVal/TimeRequest
+   change in the recent OS4 header files. */
+
+#if defined(__NEW_TIMEVAL_DEFINITION_USED__)
+
+#define timeval		TimeVal
+#define tv_secs		Seconds
+#define tv_micro	Microseconds
+
+#define timerequest	TimeRequest
+#define tr_node		Request
+#define tr_time		Time
+
+#endif /* __NEW_TIMEVAL_DEFINITION_USED__ */
+
+/****************************************************************************/
+
 int
 gettimeofday(struct timeval *tp, struct timezone *tzp)
 {

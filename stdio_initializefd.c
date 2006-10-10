@@ -49,6 +49,7 @@ __initialize_fd(
 
 	memset(fd,0,sizeof(*fd));
 
+	fd->fd_Version		= 1;
 	fd->fd_DefaultFile	= default_file;
 	fd->fd_Flags		= flags;
 	fd->fd_Action		= action_function;

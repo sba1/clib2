@@ -55,8 +55,8 @@ __duplicate_fd(struct fd * duplicate_fd,struct fd * original_fd)
 		duplicate_fd->fd_Original = original_fd;
 
 	/* Add the duplicate at the beginning of the list. */
-	duplicate_fd->fd_NextLink				= duplicate_fd->fd_Original->fd_NextLink;
-	duplicate_fd->fd_Original->fd_NextLink	= duplicate_fd;
+	duplicate_fd->fd_NextAlias				= duplicate_fd->fd_Original->fd_NextAlias;
+	duplicate_fd->fd_Original->fd_NextAlias	= duplicate_fd;
 
 	__fd_unlock(original_fd);
 }

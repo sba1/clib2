@@ -183,6 +183,7 @@ C_LIB = \
 	stat_fchmod.o \
 	stat_fstat.o \
 	stat_lstat.o \
+	stat_lock.o \
 	stat_mkdir.o \
 	stat_rmdir.o \
 	stat_stat.o \
@@ -478,6 +479,7 @@ UNIX_LIB = \
 	stat_chmod.o \
 	stat_fstat.o \
 	stat_lstat.o \
+	stat_lock.o \
 	stat_mkdir.o \
 	stat_rmdir.o \
 	stat_stat.o \

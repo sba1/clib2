@@ -21,7 +21,6 @@ LIBS += \
 
 C_LIB := \
 	c.lib_rev.o \
-	crtbegin.o \
 	ctype_isalnum.o \
 	ctype_isalpha.o \
 	ctype_isascii.o \
@@ -85,6 +84,7 @@ C_LIB := \
 	stat_fchmod.o \
 	stat_fstat.o \
 	stat_lstat.o \
+	stat_lock.o \
 	stat_mkdir.o \
 	stat_rmdir.o \
 	stat_stat.o \
@@ -359,8 +359,7 @@ C_LIB := \
 	unistd_unlink.o \
 	unistd_usleep.o \
 	utime_utime.o \
-	utsname_uname.o \
-	crtend.o
+	utsname_uname.o
 
 ##############################################################################
 

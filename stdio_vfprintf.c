@@ -580,7 +580,7 @@ vfprintf(FILE * stream,const char * format, va_list arg)
 
 				conversion_type = 'x';
 
-				SET_FLAG(format_flags,FORMATF_AlternateConversion);
+				SET_FLAG(format_flags,FORMATF_HexPrefix);
 
 				fill_character = '0';
 				minimum_field_width = 8;
@@ -1269,6 +1269,16 @@ vfprintf(FILE * stream,const char * format, va_list arg)
 				const char * digit_encoding;
 				int radix;
 
+				/* Only add the zero (%o) or hex (%x) prefix if the value to
+				   be converted is non-zero. */
+				if(FLAG_IS_SET(format_flags,FORMATF_AlternateConversion) && v != 0)
+				{
+					if(conversion_type == 'o')
+						SET_FLAG(format_flags,FORMATF_ZeroPrefix);
+					else if (conversion_type == 'x')
+						SET_FLAG(format_flags,FORMATF_HexPrefix);
+				}
+
 				if(conversion_type == 'o')
 					radix = 8;
 				else if (conversion_type == 'x')
@@ -1290,14 +1300,6 @@ vfprintf(FILE * stream,const char * format, va_list arg)
 					v /= radix;
 				}
 				while(v > 0 && buffer < output_buffer);
-
-				if(FLAG_IS_SET(format_flags,FORMATF_AlternateConversion))
-				{
-					if(conversion_type == 'o')
-						SET_FLAG(format_flags,FORMATF_ZeroPrefix);
-					else if (conversion_type == 'x')
-						SET_FLAG(format_flags,FORMATF_HexPrefix);
-				}
 
 				while(output_len < precision && output_buffer > buffer)
 				{

@@ -90,6 +90,8 @@ C_LIB := \
 	stat_stat.o \
 	stat_umask.o \
 	stdio_asprintf.o \
+	stdio_change_fd_action.o \
+	stdio_change_fd_user_data.o \
 	stdio_clearerr.o \
 	stdio_dropiobreadbuffer.o \
 	stdio_duplicate_fd.o \
@@ -129,6 +131,7 @@ C_LIB := \
 	stdio_getchar.o \
 	stdio_getchar_unlocked.o \
 	stdio_gets.o \
+	stdio_get_fd.o \
 	stdio_get_file_descriptor.o \
 	stdio_growfdtable.o \
 	stdio_growiobtable.o \

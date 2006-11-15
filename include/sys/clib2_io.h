@@ -153,6 +153,27 @@ struct _fd
 
 /****************************************************************************/
 
+/* Obtain a pointer to the _fd data structure associated with a file
+   descriptor number. Note that this does not perform any locking, which
+   means that you have to be absolutely certain that the file will not be
+   closed while you are still looking at it. This function can return
+   NULL if the file descriptor you provided is not valid. */
+extern struct _fd * __get_fd(int file_descriptor);
+
+/* Replaces the action callback function and (optionally) returns the old
+   function pointer; returns 0 for success and -1 for failure if you
+   provided an invalid file descriptor. This function performs proper locking
+   and is thus safe to use in a thread-safe environment. */
+extern int __change_fd_action(int file_descriptor,_file_action_fd_t new_action,_file_action_fd_t * old_action_ptr);
+
+/* Replaces the user data pointer and (optionally) returns the old user
+   data pointer; returns 0 for success and -1 for failure if you
+   provided an invalid file descriptor. This function performs proper locking
+   and is thus safe to use in a thread-safe environment. */
+extern int __change_fd_user_data(int file_descriptor,void * new_user_data,void ** old_user_data_ptr);
+
+/****************************************************************************/
+
 #ifdef __cplusplus
 }
 #endif /* __cplusplus */

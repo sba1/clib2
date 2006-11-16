@@ -106,7 +106,7 @@ fstatfs(int file_descriptor, struct statfs *buf)
 	}
 
 	PROFILE_OFF();
-	parent_dir = __safe_parent_of_file_handle(fd->fd_DefaultFile);
+	parent_dir = __safe_parent_of_file_handle(fd->fd_File);
 	PROFILE_ON();
 
 	if(parent_dir == ZERO)

@@ -41,33 +41,75 @@
 
 /****************************************************************************/
 
-int
-__get_default_file(int file_descriptor,long * file_ptr)
+#if defined(__THREAD_SAFE)
+
+/****************************************************************************/
+
+#ifdef __resolve_fd_file
+#undef __resolve_fd_file
+#endif /* __resolve_fd_file */
+
+/****************************************************************************/
+
+BPTR
+__resolve_fd_file(struct fd * fd)
 {
-	int result = ERROR;
-	struct fd * fd;
+	BPTR file;
 
-	assert( file_descriptor >= 0 && file_descriptor < __num_fd );
-	assert( __fd[file_descriptor] != NULL );
-	assert( FLAG_IS_SET(__fd[file_descriptor]->fd_Flags,FDF_IN_USE) );
-	assert( file_ptr != NULL );
-
-	fd = __get_file_descriptor(file_descriptor);
-	if(fd == NULL)
+	/* Is this one the standard I/O streams for which the associated file
+	   handle should be determined dynamically? */
+	if(FLAG_IS_SET(fd->fd_Flags,FDF_STDIO))
 	{
-		__set_errno(EBADF);
-		goto out;
+		switch(fd->fd_File)
+		{
+			case STDIN_FILENO:
+
+				file = Input();
+				break;
+
+			case STDOUT_FILENO:
+
+				file = Output();
+				break;
+
+			case STDERR_FILENO:
+
+				#if defined(__amigaos4__)
+				{
+					file = ErrorOutput();
+				}
+				#else
+				{
+					struct Process * this_process = (struct Process *)FindTask(NULL);
+
+					file = this_process->pr_CES;
+				}
+				#endif /* __amigaos4__ */
+
+				/* The following is rather controversial; if the standard error stream
+				   is unavailable, we default to reuse the standard output stream. This
+				   is problematic if the standard output stream was redirected and should
+				   not be the same as the standard error output stream. */
+				if(file == ZERO)
+					file = Output();
+
+				break;
+
+			default:
+
+				file = ZERO;
+				break;
+		}
+	}
+	else
+	{
+		/* Just return what's there. */
+		file = fd->fd_File;
 	}
 
-	__fd_lock(fd);
-
-	(*file_ptr) = (long)__resolve_fd_file(fd);
-
-	result = 0;
-
- out:
-
-	__fd_unlock(fd);
-
-	return(result);
+	return(file);
 }
+
+/****************************************************************************/
+
+#endif /* __THREAD_SAFE */

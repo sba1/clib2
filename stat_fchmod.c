@@ -127,7 +127,7 @@ fchmod(int file_descriptor, mode_t mode)
 		SET_FLAG(protection,FIBF_OTR_EXECUTE);
 
 	PROFILE_OFF();
-	parent_dir = __safe_parent_of_file_handle(fd->fd_DefaultFile);
+	parent_dir = __safe_parent_of_file_handle(fd->fd_File);
 	PROFILE_ON();
 
 	if(parent_dir == ZERO)
@@ -139,7 +139,7 @@ fchmod(int file_descriptor, mode_t mode)
 	}
 
 	PROFILE_OFF();
-	success = __safe_examine_file_handle(fd->fd_DefaultFile,fib);
+	success = __safe_examine_file_handle(fd->fd_File,fib);
 	PROFILE_ON();
 
 	if(NO success)

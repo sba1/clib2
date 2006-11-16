@@ -256,6 +256,7 @@ C_LIB = \
 	stdio_remove.o \
 	stdio_remove_fd_alias.o \
 	stdio_rename.o \
+	stdio_resolve_fd_file.o \
 	stdio_rewind.o \
 	stdio_scanf.o \
 	stdio_setbuf.o \

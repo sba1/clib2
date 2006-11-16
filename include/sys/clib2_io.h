@@ -127,6 +127,7 @@ struct _fd
 /* Sneaky preprocessor tricks to make access to the file/socket IDs
    work smoothly. */
 #define fd_DefaultFile	fdu_Default.fdu_File
+#define fd_File			fdu_Default.fdu_File
 #define fd_Socket		fdu_Default.fdu_Socket
 
 /****************************************************************************/

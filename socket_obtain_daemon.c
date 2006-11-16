@@ -93,7 +93,7 @@ __obtain_daemon_message(VOID)
 			struct TagItem tags[2];
 
 			/* Check if it is safe to call the IsServerProcess() function. */
-			tags[0].ti_Tag	= SBTM_GETREF(SBTC_BREAKMASK);
+			tags[0].ti_Tag	= SBTM_GETREF(SBTC_HAVE_SERVER_API);
 			tags[0].ti_Data	= (ULONG)&have_server_api;
 			tags[1].ti_Tag	= TAG_END;
 

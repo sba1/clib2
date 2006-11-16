@@ -84,7 +84,7 @@ ioctl(int sockfd,int request, ... /* char *arg */)
 	SHOWPOINTER(param);
 
 	PROFILE_OFF();
-	result = __IoctlSocket((LONG)fd->fd_DefaultFile,request,param);
+	result = __IoctlSocket(fd->fd_Socket,request,param);
 	PROFILE_ON();
 
 	if(result == 0)

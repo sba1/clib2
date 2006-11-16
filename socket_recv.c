@@ -86,7 +86,7 @@ recv(int sockfd,void *buff,size_t nbytes,int flags)
 		goto out;
 
 	PROFILE_OFF();
-	result = __recv((LONG)fd->fd_DefaultFile,buff,(LONG)nbytes,flags);
+	result = __recv(fd->fd_Socket,buff,(LONG)nbytes,flags);
 	PROFILE_ON();
 
  out:

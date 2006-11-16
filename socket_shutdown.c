@@ -64,7 +64,7 @@ shutdown(int sockfd, int how)
 		goto out;
 
 	PROFILE_OFF();
-	result = __shutdown((LONG)fd->fd_DefaultFile,how);
+	result = __shutdown(fd->fd_Socket,how);
 	PROFILE_ON();
 
  out:

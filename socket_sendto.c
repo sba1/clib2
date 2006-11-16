@@ -87,7 +87,7 @@ sendto(int sockfd,const void *buff,size_t len,int flags,const struct sockaddr *t
 		goto out;
 
 	PROFILE_OFF();
-	result = __sendto((LONG)fd->fd_DefaultFile,(void *)buff,len,flags,(struct sockaddr *)to,tolen);
+	result = __sendto(fd->fd_Socket,(void *)buff,len,flags,(struct sockaddr *)to,tolen);
 	PROFILE_ON();
 
  out:

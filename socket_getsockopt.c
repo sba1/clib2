@@ -86,7 +86,7 @@ getsockopt(int sockfd,int level,int optname,void *optval,socklen_t *optlen)
 		goto out;
 
 	PROFILE_OFF();
-	result = __getsockopt((LONG)fd->fd_DefaultFile,level,optname,optval,(LONG *)optlen);
+	result = __getsockopt(fd->fd_Socket,level,optname,optval,(LONG *)optlen);
 	PROFILE_ON();
 
  out:

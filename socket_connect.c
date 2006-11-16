@@ -84,7 +84,7 @@ connect(int sockfd,const struct sockaddr *name,socklen_t namelen)
 		goto out;
 
 	PROFILE_OFF();
-	result = __connect((LONG)fd->fd_DefaultFile,(struct sockaddr *)name,namelen);
+	result = __connect(fd->fd_Socket,(struct sockaddr *)name,namelen);
 	PROFILE_ON();
 
  out:

@@ -64,7 +64,7 @@ listen(int sockfd,int backlog)
 		goto out;
 
 	PROFILE_OFF();
-	result = __listen((LONG)fd->fd_DefaultFile,backlog);
+	result = __listen(fd->fd_Socket,backlog);
 	PROFILE_ON();
 
  out:

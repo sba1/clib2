@@ -95,7 +95,7 @@ accept(int sockfd,struct sockaddr *cliaddr,socklen_t *addrlen)
 		goto out;
 
 	/* Remember the socket number for later. */
-	socket_fd = (LONG)fd->fd_DefaultFile;
+	socket_fd = fd->fd_Socket;
 
 	/* Now let go of the stdio lock, so that the only locking performed
 	   will be done inside the accept() call. */

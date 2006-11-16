@@ -86,7 +86,7 @@ send(int sockfd,const void *buff,size_t nbytes,int flags)
 		goto out;
 
 	PROFILE_OFF();
-	result = __send((LONG)fd->fd_DefaultFile,(void *)buff,(LONG)nbytes,flags);
+	result = __send(fd->fd_Socket,(void *)buff,(LONG)nbytes,flags);
 	PROFILE_ON();
 
  out:

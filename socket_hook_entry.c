@@ -79,7 +79,7 @@ __socket_hook_entry(
 
 			PROFILE_OFF();
 
-			result = __recv((LONG)fd->fd_DefaultFile,fam->fam_Data,fam->fam_Size,0);
+			result = __recv(fd->fd_Socket,fam->fam_Data,fam->fam_Size,0);
 			if(result < 0)
 				fam->fam_Error = __get_errno();
 
@@ -99,7 +99,7 @@ __socket_hook_entry(
 
 			PROFILE_OFF();
 
-			result = __send((LONG)fd->fd_DefaultFile,fam->fam_Data,fam->fam_Size,0);
+			result = __send(fd->fd_Socket,fam->fam_Data,fam->fam_Size,0);
 			if(result < 0)
 				fam->fam_Error = __get_errno();
 
@@ -126,7 +126,7 @@ __socket_hook_entry(
 				{
 					PROFILE_OFF();
 
-					result = __CloseSocket((LONG)fd->fd_DefaultFile);
+					result = __CloseSocket(fd->fd_Socket);
 
 					PROFILE_ON();
 				}
@@ -163,7 +163,7 @@ __socket_hook_entry(
 
 			param = (int)(fam->fam_Arg == 0);
 
-			result = __IoctlSocket(fd->fd_DefaultFile,FIONBIO,&param);
+			result = __IoctlSocket(fd->fd_Socket,FIONBIO,&param);
 			if(result < 0)
 				fam->fam_Error = __get_errno();
 
@@ -175,7 +175,7 @@ __socket_hook_entry(
 
 			param = (int)(fam->fam_Arg != 0);
 
-			result = __IoctlSocket(fd->fd_DefaultFile,FIOASYNC,&param);
+			result = __IoctlSocket(fd->fd_Socket,FIOASYNC,&param);
 			if(result < 0)
 				fam->fam_Error = __get_errno();
 

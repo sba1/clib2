@@ -84,7 +84,7 @@ getpeername(int sockfd,struct sockaddr *name,socklen_t *namelen)
 		goto out;
 
 	PROFILE_OFF();
-	result = __getpeername((LONG)fd->fd_DefaultFile,name,(LONG *)namelen);
+	result = __getpeername(fd->fd_Socket,name,(LONG *)namelen);
 	PROFILE_ON();
 
  out:

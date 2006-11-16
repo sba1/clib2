@@ -87,7 +87,7 @@ recvfrom(int sockfd,void *buff,size_t len,int flags,struct sockaddr *from,sockle
 		goto out;
 
 	PROFILE_OFF();
-	result = __recvfrom((LONG)fd->fd_DefaultFile,buff,len,flags,from,(LONG *)fromlen);
+	result = __recvfrom(fd->fd_Socket,buff,len,flags,from,(LONG *)fromlen);
 	PROFILE_ON();
 
  out:

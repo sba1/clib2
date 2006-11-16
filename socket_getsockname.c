@@ -84,7 +84,7 @@ getsockname(int sockfd,struct sockaddr *name,socklen_t *namelen)
 		goto out;
 
 	PROFILE_OFF();
-	result = __getsockname((LONG)fd->fd_DefaultFile,name,(LONG *)namelen);
+	result = __getsockname(fd->fd_Socket,name,(LONG *)namelen);
 	PROFILE_ON();
 
  out:

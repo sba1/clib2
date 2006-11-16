@@ -84,7 +84,7 @@ recvmsg(int sockfd,struct msghdr *msg,int flags)
 		goto out;
 
 	PROFILE_OFF();
-	result = __recvmsg((LONG)fd->fd_DefaultFile,msg,flags);
+	result = __recvmsg(fd->fd_Socket,msg,flags);
 	PROFILE_ON();
 
  out:

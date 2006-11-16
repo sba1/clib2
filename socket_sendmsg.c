@@ -84,7 +84,7 @@ sendmsg(int sockfd,const struct msghdr *msg,int flags)
 		goto out;
 
 	PROFILE_OFF();
-	result = __sendmsg((LONG)fd->fd_DefaultFile,(struct msghdr *)msg,flags);
+	result = __sendmsg(fd->fd_Socket,(struct msghdr *)msg,flags);
 	PROFILE_ON();
 
  out:

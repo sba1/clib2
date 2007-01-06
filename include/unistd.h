@@ -51,6 +51,10 @@
 #include <fcntl.h>
 #endif /* _FCNTL_H */
 
+#ifndef _STDIO_H
+#include <stdio.h>
+#endif /* _STDIO_H */
+
 #if !defined(__NO_NET_API) && !defined(_SYS_SELECT_H)
 #include <sys/select.h>
 #endif /* __NO_NET_API && _SYS_SELECT_H */

@@ -297,6 +297,7 @@ extern double hypot(double x,double y);
 extern double lgamma(double x);
 extern double log1p(double x);
 extern double logb(double x);
+extern long long int llrint(double x);
 extern long int lrint(double x);
 extern long int lround(double x);
 extern double nan(const char *tagp);

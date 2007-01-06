@@ -117,6 +117,7 @@ MATH_LIB := \
 	math_ldexpf.o \
 	math_lgamma.o \
 	math_lgammaf.o \
+	math_llrint.o \
 	math_log.o \
 	math_log10.o \
 	math_log10f.o \

@@ -244,7 +244,7 @@ log(double x)
 {
 	double result;
 
-	if(x > DBL_EPSILON)
+	if(x > 0)
 	{
 		result = __log(x);
 	}

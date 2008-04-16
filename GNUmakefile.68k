@@ -29,7 +29,7 @@ ifneq ($(HOST), AmigaOS)
    RANLIB = m68k-amigaos-ranlib
    COPY = cp
    DELETE = rm -rf
-   MAKEDIR = mkdir
+   MAKEDIR = mkdir -p
 endif
 
 ##############################################################################

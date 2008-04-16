@@ -661,7 +661,7 @@ SetRexxVar(struct RexxMsg *context,STRPTR variable_name,STRPTR value,LONG length
 	}
 
 	/* Install the value string. */
-	_SetValue(environment,value_string,symbol_table_node
+	_SetValue(environment,value_string,symbol_table_node);
 
 	error = 0;
 

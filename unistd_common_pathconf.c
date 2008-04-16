@@ -55,6 +55,18 @@
 #define ID_RAWCON (0x52415700L) /* 'RAW\0' */
 #endif /* ID_RAWCON */
 
+#ifndef ID_BUSY_DISK
+#define ID_BUSY_DISK (0x42555359L) /* 'BUSY' */
+#endif /* ID_LONGNAME_DOS_DISK */
+
+#ifndef ID_LONGNAME_DOS_DISK
+#define ID_LONGNAME_DOS_DISK (0x444F5306L) /* 'DOS\6' */
+#endif /* ID_LONGNAME_DOS_DISK */
+
+#ifndef ID_LONGNAME_FFS_DISK
+#define ID_LONGNAME_FFS_DISK (0x444F5307L) /* 'DOS\7' */
+#endif /* ID_LONGNAME_FFS_DISK */
+
 /****************************************************************************/
 
 struct fs_info

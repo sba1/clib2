@@ -67,6 +67,12 @@ isatty(int file_descriptor)
 		goto out;
 	}
 
+	if(FLAG_IS_SET(fd->fd_Flags,FDF_IS_SOCKET))
+	{
+		__set_errno(ENOTTY);
+		goto out;
+	}
+
 	__fd_lock(fd);
 
 	result = 1;

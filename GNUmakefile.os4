@@ -212,19 +212,19 @@ lib.threadsafe/baserel/%.o : %.c
 ##############################################################################
 
 define COMPILE
-$(MAKEDIR) $(@D)
+-$(MAKEDIR) $(@D)
 echo "Compiling $< [$(@D)]"
 $(CC) -o $@ -c $(CFLAGS) $< $(LOG_COMMAND)
 endef
 
 define ASSEMBLE
-$(MAKEDIR) $(@D)
+-$(MAKEDIR) $(@D)
 echo "Assembling $< [$(@D)]"
 $(CC) -o $@ -c $(AFLAGS) $< $(LOG_COMMAND)
 endef
 
 define MAKELIB
-$(MAKEDIR) $@
+-$(MAKEDIR) $@
 $(DELETE) $@
 echo "Making $@"
 $(AR) $@ $^ $(LOG_COMMAND)

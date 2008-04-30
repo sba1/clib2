@@ -68,7 +68,7 @@ extern int iswdigit(wint_t c);
 extern int iswxdigit(wint_t c);
 
 extern int iswgraph(wint_t c);
-extern int iswpunc(wint_t c);
+extern int iswpunct(wint_t c);
 extern int iswprint(wint_t c);
 
 extern int iswlower(wint_t c);

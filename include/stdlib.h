@@ -195,7 +195,7 @@ extern int rand_r(unsigned int * seed);
 
 extern int setenv(const char *name, const char *value, int overwrite);
 extern int putenv(const char *string);
-extern void unsetenv(const char *name);
+extern int unsetenv(const char *name);
 extern char * mktemp(char * name_template);
 extern int mkstemp(char *name_template);
 extern char * mkdtemp(char *name_template);

@@ -53,10 +53,12 @@
 
 /****************************************************************************/
 
-void
+int
 unsetenv(const char *name)
 {
 	char * name_copy = NULL;
+	int result = -1;
+	LONG status;
 	size_t i;
 
 	if(__check_abort_enabled)
@@ -91,11 +93,21 @@ unsetenv(const char *name)
 	}
 
 	PROFILE_OFF();
-	DeleteVar((STRPTR)name,0);
+	status = DeleteVar((STRPTR)name,0);
 	PROFILE_ON();
+	
+	if(status == DOSFALSE)
+	{
+		__set_errno(__translate_access_io_error_to_errno(IoErr()));
+		goto out;
+	}
+	
+	result = 0;
 
  out:
 
 	if(name_copy != NULL)
 		free(name_copy);
+		
+	return(result);
 }

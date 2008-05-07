@@ -154,7 +154,9 @@ popen(const char *command, const char *type)
 			goto out;
 	}
 
-	/* The current PIPE: device only supports unidirectional connections. */
+	/* The current PIPE: device only supports unidirectional connections. Worse: even if
+	   a PIPE: device with bidirectional connection support were available, we would
+	   be unable to detect this property. */
 	if((type[1] == '+') || (type[1] != '\0' && type[2] == '+'))
 	{
 		D(("unsupported access mode '%s'",type));

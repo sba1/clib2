@@ -49,6 +49,14 @@
 
 /****************************************************************************/
 
+#ifdef __amigaos4__
+#define MEMORY_TYPE MEMF_PRIVATE
+#else
+#define MEMORY_TYPE MEMF_ANY
+#endif /* __amigaos4__ */
+
+/****************************************************************************/
+
 static BOOL free_program_name;
 
 /****************************************************************************/
@@ -83,7 +91,7 @@ STDLIB_CONSTRUCTOR(stdlib_program_name_init)
 		const size_t program_name_size = 256;
 
 		/* Make a copy of the current command name string. */
-		__program_name = AllocVec((ULONG)program_name_size,MEMF_ANY);
+		__program_name = AllocVec((ULONG)program_name_size,MEMORY_TYPE);
 		if(__program_name == NULL)
 			goto out;
 

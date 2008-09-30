@@ -143,9 +143,21 @@ __allocate_memory(size_t size,BOOL never_free,const char * UNUSED unused_file,in
 	#endif /* __MEM_DEBUG */
 
 	if(__memory_pool != NULL)
+	{
 		mn = AllocPooled(__memory_pool,allocation_size);
+	}
 	else
-		mn = AllocMem(allocation_size,MEMF_ANY);
+	{
+		#if defined(__amigaos4__)
+		{
+			mn = AllocMem(allocation_size,MEMF_PRIVATE);
+		}
+		#else
+		{
+			mn = AllocMem(allocation_size,MEMF_ANY);
+		}
+		#endif /* __amigaos4__ */
+	}
 
 	if(mn == NULL)
 	{
@@ -401,7 +413,7 @@ STDLIB_CONSTRUCTOR(stdlib_memory_init)
 
 	#if defined(__amigaos4__)
 	{
-		__memory_pool = CreatePool(MEMF_ANY,(ULONG)__default_pool_size,(ULONG)__default_puddle_size);
+		__memory_pool = CreatePool(MEMF_PRIVATE,(ULONG)__default_pool_size,(ULONG)__default_puddle_size);
 	}
 	#else
 	{

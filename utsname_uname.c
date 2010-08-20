@@ -135,7 +135,9 @@ uname(struct utsname *info)
 	 * 45.3		3.9-BB2
 	 */
 
-	if (46 <= Version && Version <= 52)
+	if (Version == 53)
+		version_string = "4.1";
+	else if (46 <= Version && Version <= 52)
 		version_string = "4.0";
 	else if (Version == 45)
 		version_string = "3.9";

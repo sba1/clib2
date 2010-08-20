@@ -78,7 +78,14 @@ strncmp(const char *s1, const char *s2, size_t n)
 			}
 			else
 			{
-				result = (*s1) - (*s2);
+				int c1,c2;
+				
+				/* The comparison must be performed as if the
+				   characters were unsigned characters. */
+				c1 = *(unsigned char *)s1;
+				c2 = *(unsigned char *)s2;
+				
+				result = c1 - c2;
 				break;
 			}
 		}

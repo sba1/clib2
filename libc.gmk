@@ -205,6 +205,10 @@ C_LIB := \
 	stdlib_div.o \
 	stdlib_divsi3.o \
 	stdlib_divsi4.o \
+	stdlib_dlclose.o \
+	stdlib_dlerror.o \
+	stdlib_dlopen.o \
+	stdlib_dlsym.o \
 	stdlib_dosbase.o \
 	stdlib_exit.o \
 	stdlib_free.o \

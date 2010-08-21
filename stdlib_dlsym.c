@@ -52,25 +52,22 @@
 /****************************************************************************/
 
 extern struct ElfIFace *	__IElf;
-extern Elf32_Handle			__elf_handle;
-
-/****************************************************************************/
-
+extern Elf32_Handle			__dl_elf_handle;
 extern Elf32_Error			__elf_error_code;
 
 /****************************************************************************/
 
-void dlsym(void * handle,const char * symbol_name)
+void * dlsym(void * handle,const char * symbol_name)
 {
 	void * result = NULL;
 
-	if(__elf_handle != NULL)
+	if(__dl_elf_handle != NULL)
 	{
 		struct ElfIFace * IElf = __IElf;
 		APTR symbol_data = NULL;
 		Elf32_Error error;
 
-		error = DLSym(__elf_handle,handle,symbol_name,&symbol_data);
+		error = DLSym(__dl_elf_handle,handle,symbol_name,&symbol_data);
 		if(error != ELF32_NO_ERROR)
 		{
 			__elf_error_code = error;

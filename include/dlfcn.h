@@ -59,10 +59,11 @@ extern "C" {
 /****************************************************************************/
 
 /* We only support a subset of the flags available on Unix systems. */
-#define RTLD_LAZY	0
-#define RTLD_NOW	0
-#define RTLD_LOCAL	4
-#define RTLD_GLOBAL	8
+#define RTLD_LAZY		1
+#define RTLD_NOW		2
+#define RTLD_LOCAL		4
+#define RTLD_GLOBAL		8
+#define RTLD_DEFAULT	((void *)0)
 
 /****************************************************************************/
 

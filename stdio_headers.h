@@ -279,10 +279,9 @@ struct iob
 #define __putc(c,f,m) \
 	(((((struct iob *)(f))->iob_BufferWriteBytes < ((struct iob *)(f))->iob_BufferSize)) ? \
 	  (((struct iob *)(f))->iob_Buffer[((struct iob *)(f))->iob_BufferWriteBytes++] = (c), \
-	  (((m) == IOBF_BUFFER_MODE_LINE && \
-	  ((struct iob *)(f))->iob_Buffer[((struct iob *)(f))->iob_BufferWriteBytes-1] == '\n') ? \
+	  (((m) == IOBF_BUFFER_MODE_LINE && (c) == '\n') ? \
 	   __flush(f) : \
-	   (((struct iob *)(f))->iob_Buffer[((struct iob *)(f))->iob_BufferWriteBytes-1]))) : \
+	   (c))) : \
 	  __fputc((c),(f),(m)))
 
 #define __putc_fully_buffered(c,f) \

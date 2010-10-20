@@ -168,11 +168,6 @@ extern void __assertion_failure(const char *file_name,int line_number,const char
 
 /****************************************************************************/
 
-/* stdlib_stackoverflow.c */
-extern void __stkovf(void);
-
-/****************************************************************************/
-
 /* stdlib_termination_message.c */
 extern void __print_termination_message(const char * termination_message);
 

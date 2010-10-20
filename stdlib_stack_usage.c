@@ -43,11 +43,6 @@ static struct StackSwapStruct stack_swap_struct;
 
 /****************************************************************************/
 
-ULONG __stk_extensions;	/* number of stack extensions performed */
-ULONG __stk_maxsize;	/* maximum amount of memory allocated for stack extension */	
-
-/****************************************************************************/
-
 #define STACK_FILL_COOKIE 0xA1
 
 /****************************************************************************/
@@ -95,17 +90,6 @@ __stack_usage_exit(void)
 
 		stack_swap_struct.stk_Lower = NULL;
 		stack_swap_struct.stk_Upper = 0;
-	}
-
-	if(__stk_maxsize == 0)
-	{
-		kprintf("[%s] no stack extension was performed\n",
-			__program_name);
-	}
-	else
-	{
-		kprintf("[%s] maximum size of extended stack = %ld bytes, stack was extended %ld times\n",
-			__program_name,__stk_maxsize,__stk_extensions);
 	}
 }
 

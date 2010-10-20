@@ -162,21 +162,7 @@ extern unsigned int NOCOMMON (* __get_default_stack_size)(void);
 
 /****************************************************************************/
 
-extern unsigned int NOCOMMON	__stack_size;
-extern UBYTE * NOCOMMON			__stk_limit;
-extern UBYTE * NOCOMMON			__base;
-
-/****************************************************************************/
-
-extern ULONG NOCOMMON __stk_extensions;
-extern ULONG NOCOMMON __stk_maxsize;
-
-/****************************************************************************/
-
-extern ULONG NOCOMMON __stk_argbytes;
-extern ULONG NOCOMMON __stk_safezone;
-extern ULONG NOCOMMON __stk_size;
-extern ULONG NOCOMMON __stk_minframe;
+extern unsigned int NOCOMMON __stack_size;
 
 /****************************************************************************/
 

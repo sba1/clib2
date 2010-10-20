@@ -145,6 +145,8 @@ __socket_hook_entry(
 			/* And that's the last for this file descriptor. */
 			memset(fd,0,sizeof(*fd));
 
+			fd = NULL;
+
 			break;
 
 		case file_action_seek:

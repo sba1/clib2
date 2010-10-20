@@ -134,7 +134,7 @@ fwrite(const void *ptr,size_t element_size,size_t count,FILE *stream)
 			{
 				c = (*data++);
 
-				if(__putc_line_buffered(c,(FILE *)file) < 0)
+				if(__putc_line_buffered(c,(FILE *)file) == EOF)
 					goto out;
 
 				total_bytes_written++;
@@ -146,7 +146,7 @@ fwrite(const void *ptr,size_t element_size,size_t count,FILE *stream)
 			{
 				c = (*data++);
 
-				if(__putc_fully_buffered(c,(FILE *)file) < 0)
+				if(__putc_fully_buffered(c,(FILE *)file) == EOF)
 					goto out;
 
 				total_bytes_written++;

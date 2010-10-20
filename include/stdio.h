@@ -285,11 +285,11 @@ extern char *tmpnam(char *buf);
 	(((((FILE *)(f))->flags & (__FILE_IN_USE|__FILE_WRITABLE)) == (__FILE_IN_USE|__FILE_WRITABLE) && \
 	 (((FILE *)(f))->flags & __FILE_BUFFER_MASK) != _IONBF && \
 	 (((FILE *)(f))->num_write_bytes < ((FILE *)(f))->size)) ? \
-	  (((FILE *)(f))->buffer[((FILE *)(f))->num_write_bytes++] = (c), \
+	  (((FILE *)(f))->buffer[((FILE *)(f))->num_write_bytes] = (c), \
 	  (((((FILE *)(f))->flags & __FILE_BUFFER_MASK) == _IOLBF && \
-	  (c) == '\n') ? \
-	   __flush(f) : \
-	   (c))) : \
+	  ((FILE *)(f))->buffer[((FILE *)(f))->num_write_bytes] == '\n') ? \
+	   ((FILE *)(f))->num_write_bytes++, __flush(f) : \
+	   ((FILE *)(f))->buffer[((FILE *)(f))->num_write_bytes++])) : \
 	   fputc((c),(f)))
 
 /****************************************************************************/

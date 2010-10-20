@@ -474,6 +474,7 @@ __termios_console_hook(
 
 			/* And that's the last for this file descriptor. */
 			memset(fd,0,sizeof(*fd));
+			fd = NULL;
 
 			break;
 

@@ -44,14 +44,14 @@
 
 	jbsr	_geta4
 
-	movel	#___bss_size,d1
+	movel	#___bss_size,%d1
 	beqs	no_bss
-	lea		a4@(__edata:W),a1
+	lea		%a4@(__edata:W),%a1
 
 clear_bss:
 
-	clrl	a1@+
-	subql	#4,d1
+	clrl	%a1@+
+	subql	#4,%d1
 	bnes	clear_bss
 
 no_bss:
@@ -64,14 +64,14 @@ no_bss:
 
 	jbsr	_geta4
 
-	movel	#___bss_size,d1
+	movel	#___bss_size,%d1
 	beqs	no_bss
-	lea		a4@(__edata:L),a1
+	lea		%a4@(__edata:L),%a1
 
 clear_bss:
 
-	clrl	a1@+
-	subql	#4,d1
+	clrl	%a1@+
+	subql	#4,%d1
 	bnes	clear_bss
 
 no_bss:
@@ -89,11 +89,11 @@ no_bss:
 _geta4:
 
 #if defined(SMALL_DATA)
-	lea	___a4_init,a4
+	lea	___a4_init,%a4
 #endif /* SMALL_DATA */
 
 #if defined(SMALL_DATA32)
-	lea	___a4_init,a4
+	lea	___a4_init,%a4
 #endif /* SMALL_DATA32 */
 
 	rts
@@ -104,7 +104,7 @@ _geta4:
 
 ___get_a4:
 
-	movel	a4,d0
+	movel	%a4,%d0
 	rts
 
 |-----------------------------------------------------------------------------
@@ -113,5 +113,5 @@ ___get_a4:
 
 ___set_a4:
 
-	movel	sp@(4),a4
+	movel	%sp@(4),%a4
 	rts

@@ -82,11 +82,11 @@ asm("
 
 ___ceil:
 
-	movel	a6,sp@-
-	movel	"A4(_MathIeeeDoubBasBase)",a6
-	moveml	sp@(8),d0/d1
-	jsr		a6@(-96:W)
-	movel	sp@+,a6
+	movel	%a6,%sp@-
+	movel	"A4(_MathIeeeDoubBasBase)",%a6
+	moveml	%sp@(8),%d0/%d1
+	jsr		%a6@(-96:W)
+	movel	%sp@+,%a6
 	rts
 
 ");
@@ -125,19 +125,19 @@ __ceil(double x)
 	int rounding_mode, round_up;
 	double result;
 
-	__asm __volatile ("fmove%.l fpcr,%0"
+	__asm __volatile ("fmove%.l %%fpcr,%0"
 	                  : "=dm" (rounding_mode)
 	                  : /* no inputs */ );
 
 	round_up = rounding_mode | 0x30;
 
-	__asm __volatile ("fmove%.l %0,fpcr"
+	__asm __volatile ("fmove%.l %0,%%fpcr"
 	                  : /* no outputs */
 	                  : "dmi" (round_up));
 	__asm __volatile ("fint%.x %1,%0"
 	                  : "=f" (result)
 	                  : "f" (x));
-	__asm __volatile ("fmove%.l %0,fpcr"
+	__asm __volatile ("fmove%.l %0,%%fpcr"
 	                  : /* no outputs */
 	                  : "dmi" (rounding_mode));
 

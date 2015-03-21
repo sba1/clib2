@@ -125,13 +125,13 @@ __floor(double x)
 	int rounding_mode, round_down;
 	double result;
 
-	__asm __volatile ("fmove%.l fpcr,%0"
+	__asm __volatile ("fmove%.l %%fpcr,%0"
 	                  : "=dm" (rounding_mode)
 	                  : /* no inputs */ );
 
 	round_down = (rounding_mode & ~0x10) | 0x20;
 
-	__asm __volatile ("fmove%.l %0,fpcr"
+	__asm __volatile ("fmove%.l %0,%%fpcr"
 	                  : /* no outputs */
 	                  : "dmi" (round_down));
 
@@ -139,7 +139,7 @@ __floor(double x)
 	                  : "=f" (result)
 	                  : "f" (x));
 
-	__asm __volatile ("fmove%.l %0,fpcr"
+	__asm __volatile ("fmove%.l %0,%%fpcr"
 	                  : /* no outputs */
 	                  : "dmi" (rounding_mode));
 

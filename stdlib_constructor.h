@@ -81,16 +81,16 @@
 #else
 
 #define CONSTRUCTOR(name,pri) \
-	asm(".stabs \"___INIT_LIST__\",22,0,0,___ctor_" #name); \
+	asm(".stabs \"___INIT_LIST__\",22,0,0,___ctor_" #name "_"); \
 	asm(".stabs \"___INIT_LIST__\",20,0,0," #pri); \
-	VOID __ctor_##name##(VOID); \
-	VOID __ctor_##name##(VOID)
+	VOID __ctor_##name##_(VOID); \
+	VOID __ctor_##name##_(VOID)
 
 #define DESTRUCTOR(name,pri) \
-	asm(".stabs \"___EXIT_LIST__\",22,0,0,___dtor_" #name); \
+	asm(".stabs \"___EXIT_LIST__\",22,0,0,___dtor_" #name "_"); \
 	asm(".stabs \"___EXIT_LIST__\",20,0,0," #pri); \
-	VOID __dtor_##name##(VOID); \
-	VOID __dtor_##name##(VOID)
+	VOID __dtor_##name##_(VOID); \
+	VOID __dtor_##name##_(VOID)
 
 #endif /* __amigaos4__ */
 

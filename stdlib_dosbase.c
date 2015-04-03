@@ -34,7 +34,7 @@
 #define __NOLIBBASE__
 
 #ifndef PROTO_DOS_H
-#include <proto/dos.h>
+//#include <proto/dos.h>
 #endif /* PROTO_DOS_H */
 
 /****************************************************************************/

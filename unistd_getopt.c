@@ -57,7 +57,7 @@ char *	optarg;
 int
 getopt(int argc, char * const argv[], const char *opts)
 {
-	static int sp = 1;
+	static int space = 1;
 	int result = EOF;
 	char *cp;
 	int c;
@@ -87,7 +87,7 @@ getopt(int argc, char * const argv[], const char *opts)
 
 	SHOWVALUE(optind);
 
-	if(sp == 1)
+	if(space == 1)
 	{
 		if(optind >= argc || argv[optind][0] != '-' || argv[optind][1] == '\0')
 		{
@@ -101,18 +101,18 @@ getopt(int argc, char * const argv[], const char *opts)
 		}
 	}
 
-	optopt = c = argv[optind][sp];
+	optopt = c = argv[optind][space];
 
 	if(c == ':' || (cp = strchr(opts, c)) == NULL)
 	{
 		if(opterr != 0)
 			fprintf(stderr, "%s%s%c\n", argv[0], ": illegal option -- ", c);
 
-		if(argv[optind][++sp] == '\0')
+		if(argv[optind][++space] == '\0')
 		{
 			optind++;
 
-			sp = 1;
+			space = 1;
 		}
 
 		result = '?';
@@ -121,16 +121,16 @@ getopt(int argc, char * const argv[], const char *opts)
 
 	if(*++cp == ':')
 	{
-		if(argv[optind][sp+1] != '\0')
+		if(argv[optind][space+1] != '\0')
 		{
-			optarg = &argv[optind++][sp+1];
+			optarg = &argv[optind++][space+1];
 		}
 		else if (++optind >= argc)
 		{
 			if(opterr != 0)
 				fprintf(stderr, "%s%s%c\n", argv[0], ": option requires an argument -- ", c);
 
-			sp = 1;
+			space = 1;
 
 			result = '?';
 			goto out;
@@ -140,13 +140,13 @@ getopt(int argc, char * const argv[], const char *opts)
 			optarg = argv[optind++];
 		}
 
-		sp = 1;
+		space = 1;
 	}
 	else
 	{
-		if(argv[optind][++sp] == '\0')
+		if(argv[optind][++space] == '\0')
 		{
-			sp = 1;
+			space = 1;
 
 			optind++;
 		}

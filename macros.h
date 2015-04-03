@@ -121,7 +121,9 @@
 #endif /* ASM */
 
 #ifndef REG
-#define REG(r,p) p __asm(#r)
+/* Not working with unpatched gcc */
+//#define REG(r,p) p __asm(#r)
+#define REG(r,p) p
 #endif /* REG */
 
 #ifndef INTERRUPT
